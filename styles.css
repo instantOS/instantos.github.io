@@ -25,3 +25,13 @@ h1 {
     width: 90%;
     cursor: pointer;
 }
+
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: black;
+}
+
+::selection {
+    color: white;
+    background: black;
+}
