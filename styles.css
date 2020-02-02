@@ -17,21 +17,13 @@ h1 {
     border: none;
     outline: none;
     background-color: transparent;
-    font-size: 30px;
+    font-size: 50px;
     font-family: 'Nunito', sans-serif;
     text-align: center;
     align-self: center;
     margin-left: 5%;
     width: 90%;
     cursor: pointer;
-}
-
-::-moz-selection { /* Code for Firefox */
-    color: white;
-    background: black;
-}
-
-::selection {
-    color: white;
-    background: black;
+    color: black;
+    background: white;
 }
