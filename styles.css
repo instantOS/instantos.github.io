@@ -21,9 +21,10 @@ h1 {
     font-family: 'Nunito', sans-serif;
     text-align: center;
     align-self: center;
-    margin-left: 5%;
-    width: 90%;
+    margin-left: 15%;
+    width: 70%;
     cursor: pointer;
-    color: black;
-    background: white;
+    color: white;
+    background: black;
+    border-radius: 20px;
 }
