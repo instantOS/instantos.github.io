@@ -34,8 +34,9 @@ Everything is lightning fast and works out of the box.
 
 ## Support
 
-The Distro being quite new enables its developers to get back to you on any problem you might have. 
-You can open issues on Github
+Until the userbase outgrows this, any questions will be answered immediatly by the devs. 
+You can open issues on [Github](https://github.com/instantOS),
+ask for help on the [Discord server](https://invite.gg/instantos), on the [Subreddit](https://reddit.com/r/instantos) or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
