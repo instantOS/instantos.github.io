@@ -6,46 +6,59 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-    {% include head.html %}
-	</head>
-	<body class="is-loading">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<head>
+	{% include head.html %}
+</head>
 
-				<!-- Header -->
-				<header id="header">
-					<a href="{{ "/" | absolute_url }}" class="logo">{{site.title}}</a>
-				</header>
+<body class="is-loading">
 
-				<!-- Nav -->
-					<nav id="nav">
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+		{% if page.url == "/" %}
+		<div id="intro">
+			<h1>instantOS</h1>
+			<h2>it works. fast. powerful.</h2>
+			<img width="300" height="300" src="https://raw.githubusercontent.com/instantOS/instantLOGO/master/png/light.png">
 
-            {% include nav.html %}
+			<ul class="actions">
+				<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+			</ul>
+		</div>
+		{% endif %}
+		<!-- Header -->
+		<header id="header">
+			<a href="{{ "/" | absolute_url }}" class="logo">{{site.title}}</a>
+		</header>
 
-					</nav>
+		<!-- Nav -->
+		<nav id="nav">
 
-				<!-- Main -->
-				<div id="main">
+			{% include nav.html %}
 
-					<!-- Post -->
-					<section class="post">
-						<p>{{content}}</p>
-					</section>
+		</nav>
 
-					<!-- Footer -->
-						<footer>
-						</footer>
-					</div>
+		<!-- Main -->
+		<div id="main">
 
-				<!-- Footer -->
-        {% include foot.html %}
+			<!-- Post -->
+			<section class="post">
+				<p>{{content}}</p>
+			</section>
 
-			</div>
+			<!-- Footer -->
+			<footer>
+			</footer>
+		</div>
 
-			<!-- Scripts -->
-			{% include scripts-main.html %}
+		<!-- Footer -->
+		{% include foot.html %}
 
-	</body>
+	</div>
+
+	<!-- Scripts -->
+	{% include scripts-main.html %}
+
+</body>
+
 </html>

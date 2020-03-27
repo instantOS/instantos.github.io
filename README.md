@@ -1,13 +1,4 @@
-<div>
-    <h1>instantOS</h1>
-    <p>it works. powerful. fast. </p>
-    <img width="300" height="300" src="https://raw.githubusercontent.com/instantOS/instantLOGO/master/png/logo.png">
-</div>
-
-<p align="left">
-<a href="https://www.buymeacoffee.com/paperbenni" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important; width: 217px !important; " ></a>
-</p>
-
+# Welcome
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a5ff3ab070e34744a0fd3f47c1a46a63)](https://app.codacy.com/gh/instantOS/instantOS?utm_source=github.com&utm_medium=referral&utm_content=instantOS/instantOS&utm_campaign=Badge_Grade_Settings)
 ![Discord](https://img.shields.io/discord/683782260071071764)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
@@ -20,12 +11,15 @@ Everything is lightning fast and works out of the box.
 </div>
 
 ## instantOS has three key principles:
-1. It just works: Everything is set up straight out of the box, from wifi to brightness controlls and wallpapers. You can install it, learn the keybindings and forget about it.
+1. It just works: Everything is set up straight out of the box, from wifi to brightness controlls and wallpapers. You can install it, 
+   learn the keybindings and forget about it.
 2. Focused on power users: There's loads of keybindings and powerful features.
 3. Speed and low Resource consumption: instantOS sits at 130mb ram at idle. It comes with as little bloat as possible without sacrificing features.
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
+    <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
+
 </ul>
 
 instantOS has full compatibility with all Manjaro packages so it is able to use the AUR and Arch-Wiki
