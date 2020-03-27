@@ -13,12 +13,12 @@ Everything is lightning fast and works out of the box.
     <iframe width="100%" height="500px" src="https://www.youtube.com/embed/9J1sWrmhJGU" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## instantOS has three key principles:
+## instantOS has three key principles
 
 <dl>
     <dt>Just works</dt>
     <dd>
-        <p>Everything is set up straight out of the box, from wifi to brightness controlls, media keys and wallpapers. You can install it, learn the keybindings and forget about it. I also looks pretty despite being fast. It is possible. You can have both. </p>
+        <p>Everything is set up straight out of the box, from wifi to brightness controlls, media keys and wallpapers. You can install it, learn the keybindings and forget about it. I also looks pretty despite being fast. It is possible. You can have both.</p>
     </dd>
     <dt>Power-user friendly</dt>
     <dd>

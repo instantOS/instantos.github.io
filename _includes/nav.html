@@ -2,6 +2,7 @@
     <li class="{% if page.url == "/" %} active {% endif %}"><a href="{{ "/" | absolute_url }}">Home</a></li>
     <li class="{% if page.url contains '/download' %} active {% endif %}"><a href="{{ "instantos.github.io/download" | absolute_url }}">Download</a></li>
     <li class="{% if page.url contains '/documentation' %} active {% endif %}"><a href="{{ "instantos.github.io/documentation" | absolute_url }}">Documentation</a></li>
+    <li class="{% if page.url contains '/roadmap' %} active {% endif %}"><a href="{{ "instantos.github.io/roadmap" | absolute_url }}">Roadmap</a></li>
     <li class="{% if page.url contains '/about' %} active {% endif %}"><a href="{{ "instantos.github.io/about" | absolute_url }}">About</a></li>
   </ul>
 
