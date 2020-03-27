@@ -1,4 +1,7 @@
 # Welcome
+<ul class="actions">
+    <li><a href="https://sourceforge.net/projects/instantos/files/latest/download" class="button special icon fa-download">Download</a></li>
+</ul>
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a5ff3ab070e34744a0fd3f47c1a46a63)](https://app.codacy.com/gh/instantOS/instantOS?utm_source=github.com&utm_medium=referral&utm_content=instantOS/instantOS&utm_campaign=Badge_Grade_Settings)
 ![Discord](https://img.shields.io/discord/683782260071071764)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
@@ -11,10 +14,28 @@ Everything is lightning fast and works out of the box.
 </div>
 
 ## instantOS has three key principles:
-1. It just works: Everything is set up straight out of the box, from wifi to brightness controlls and wallpapers. You can install it, 
-   learn the keybindings and forget about it.
-2. Focused on power users: There's loads of keybindings and powerful features.
-3. Speed and low Resource consumption: instantOS sits at 130mb ram at idle. It comes with as little bloat as possible without sacrificing features.
+
+<dl>
+    <dt>Just works</dt>
+    <dd>
+        <p>Everything is set up straight out of the box, from wifi to brightness controlls, media keys and wallpapers. You can install it, learn the keybindings and forget about it. I also looks pretty despite being fast. It is possible. You can have both. </p>
+    </dd>
+    <dt>Power-user friendly</dt>
+    <dd>
+        <p>There are loads of keybindings and powerful features. You can do almost everything with a keyboard or mouse. Things are done in a way that is fast and efficient, not easy to guess. There are no tradeoffs made. For instance there is no indicator for changing volume. You have to know that you can scroll your mouse wheel over your status bar to change volume. No screenspace wasted and you don't have to click on anything first to change volume. Of course mouse <b>and</b> media keys <b>and</b> keyboard shortcuts are supported. That same philosophy is kept throughout the entire os. </p>
+    </dd>
+    <dt>Speed</dt>
+    <dd>
+        <p>instantOS sits at <b>130mb RAM</b> at idle. It comes with as little bloat as possible without sacrificing features.
+        Window manager and menus are written in pure c. Things should happen before you even let go of the key. The window manager never takes a single percent of cpu or even a single megabyte of RAM, letting you and your computer focus on what matters. 
+        </p>
+    </dd>
+</dl>
+
+## Support
+
+The Distro being quite new enables its developers to get back to you on any problem you might have. 
+You can open issues on Github
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
