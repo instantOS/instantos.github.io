@@ -6,6 +6,6 @@
 
 ## required skills
 
-<ul class="shortcuts">
+<ul class="actions">
     <li><a href="https://instantos.github.io/instantos.github.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
 </ul>
