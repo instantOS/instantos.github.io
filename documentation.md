@@ -15,3 +15,4 @@ Each video lists what you need to know to understand it and links to videos wher
 - [floating windows](https://instantos.github.io/instantos.github.io/youtube/floating)
 - [visibility options](https://instantos.github.io/instantos.github.io/youtube/visibility)
 - [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
+- [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
