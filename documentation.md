@@ -8,7 +8,8 @@ Each video lists what you need to know to understand it and links to videos wher
 </ul>
 
 ## list of features
-
+- [opening applications](https://instantos.github.io/instantos.github.io/youtube/apps)
+- [layouts](https://instantos.github.io/instantos.github.io/youtube/layouts)
 - [instantASSIST](https://instantos.github.io/instantos.github.io/youtube/assist)
 - [shortcuts](https://instantos.github.io/instantos.github.io/youtube/shortcuts)
 - [tags](https://instantos.github.io/instantos.github.io/youtube/tags)
