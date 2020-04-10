@@ -17,3 +17,4 @@ Each video lists what you need to know to understand it and links to videos wher
 - [visibility options](https://instantos.github.io/instantos.github.io/youtube/visibility)
 - [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
 - [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
+- [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
