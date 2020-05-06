@@ -7,7 +7,7 @@ instantOS is a manjaro based distro that works out of the box but is still aimed
 Everything is lightning fast and works out of the box.
 
 <div align="center">
-    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/9J1sWrmhJGU" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/kwfdLO5vgO8" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ## instantOS has three key principles
