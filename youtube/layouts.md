@@ -14,5 +14,9 @@
     <li><a href="https://instantos.github.io/instantos.github.io/youtube/apps" class="button special icon fa-youtube">opening applications</a></li>
 </ul>
 
+## Basics
+Windows have two modes: Floating and tiling. The default mode is tiling and is the one taking advantage of layouts.
+The OS automatically assigns a position and size to every window in tiling mode. 
+It does so according to a simple set of rules called a layout. 
 
-
+You can see the currently selected layout to the right of the tag indicators. 

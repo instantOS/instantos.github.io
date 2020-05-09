@@ -1,7 +1,9 @@
 # Documentation
 
-You can learn how to use instantOS in a series of short videos. 
-Each video lists what you need to know to understand it and links to videos where you can learn those things
+You can learn how to use instantOS by adding one feature at a time to your workflow. 
+Each feature lists what you need to know to understand it and links to documentation pages where you can learn those things. 
+
+Each feature has a short video explaining it or a text based description below it if you prefer that. 
 
 <ul class="actions">
     <li><a href="https://www.youtube.com/playlist?list=PLczWCikHiuy_2fBZ_ttJuybBXVERrJDAu" class="button special icon fa-youtube">Get started</a></li>
