@@ -36,8 +36,26 @@ Super + Ctrl + J and Super + Ctrl + K makes the current window and the window ne
 
 ## Rundown of all layouts
 
-### Tile
+### Tile +
 This layout has a master area on the left and a stack area on the right. 
 
-### Grid
+### Grid \#
 Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack. 
+
+### Horizontal stack 1 ===
+This works basically the same as the tiling layout except the tiling is done horizontally. 
+
+### Horizontal stack 2 TTT
+This works basically the same as the Horizontal stack 1 layout, but the stack itself is tiled vertically
+
+### Monocle [n]
+All windows are Fullscreen and layered on top of each other. The window currently in focus is always on top
+
+### Floating _
+This completely disables window tiling. Use this to get a floating wm like experience. 
+
+### Overview O
+This is the overview layout. It is used by the overview feature. It stacks all windows in a way that each of them is visible but without resizing them from their previous layout. This can be used to quickly switch between windows. 
+
+### Half stack D n
+This is a hybrid of the tiling and monocle layout. The master area is tiled normally, but the stack works like the monocle layout with all windows layered on top of each other. 
