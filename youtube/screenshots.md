@@ -9,3 +9,8 @@
 <ul class="actions">
     <li><a href="https://instantos.github.io/instantos.github.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
+Keybindings:
+
+Print: Take fullscreen screenshot into the clipboard
+Super + Print: Take screenshot of selected area
+Super + Print: Take screenshot of selected area

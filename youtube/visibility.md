@@ -12,3 +12,10 @@
 <ul class="actions">
     <li><a href="https://instantos.github.io/instantos.github.io/youtube/tags" class="button special icon fa-youtube">tags</a></li>
 </ul>
+
+
+You can toggle several visual elements of instantOS
+You can toggle the top bar with Super + B
+
+Super + Shift + S hides all tags without a window on them
+Super + S changes from tag numbers to symbols. They behave identically but might be easier to remember for some people.
