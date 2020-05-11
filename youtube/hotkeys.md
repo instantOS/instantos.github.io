@@ -33,6 +33,26 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Super + A</td>
                 <td>instantASSIST</td>
             </tr>
+            <tr>
+                <td>Super + A</td>
+                <td>instantASSIST</td>
+            </tr>
+            <tr>
+                <td>Super + Number</td>
+                <td>Switch to tag Number</td>
+            </tr>
+            <tr>
+                <td>Super + Left/Right</td>
+                <td>Switch to adjacent tag</td>
+            </tr>
+            <tr>
+                <td>Super + Up/Down</td>
+                <td>Switch focus</td>
+            </tr>
+            <tr>
+                <td>Super + J/K</td>
+                <td>Switch focus</td>
+            </tr>
         </tbody>
     </table>
 </div>
