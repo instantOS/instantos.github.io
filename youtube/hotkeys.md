@@ -53,6 +53,39 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Super + J/K</td>
                 <td>Switch focus</td>
             </tr>
+            <tr>
+                <td>Super + Comma/Period</td>
+                <td>Switch monitor focus</td>
+            </tr>
+            <tr>
+                <td>Super + Shift + Comma/Period</td>
+                <td>Move Window to other monitor</td>
+            </tr>
+            <tr>
+                <td>Super + H/L</td>
+                <td>Resize Master area</td>
+            </tr>
+            <tr>
+                <td>Super + Shift + H/J/K/L</td>
+                <td>Move floating window</td>
+            </tr>
+            <tr>
+                <td>Super + Shift + H/J/K/L</td>
+                <td>Resize floating window</td>
+            </tr>
+            <tr>
+                <td>Super + Space</td>
+                <td>Open text based application launcher</td>
+            </tr>
+            <tr>
+                <td>Super + Ctrl + Space</td>
+                <td>Open super lightweight command launcher</td>
+            </tr>
+            <tr>
+                <td>Super + Y</td>
+                <td>Open graphical application launcher</td>
+            </tr>
+
         </tbody>
     </table>
 </div>
