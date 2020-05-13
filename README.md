@@ -37,8 +37,9 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
-    <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
     <li><a href="https://instantos.github.io/instantos.github.io/documentation" class="button special icon fa-youtube">see it in action</a></li>
+    <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
+    <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
 </ul>
 
 instantOS has full compatibility with all Manjaro packages so it is able to use the AUR and Arch-Wiki
