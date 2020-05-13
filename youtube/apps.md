@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/shurtcuts" class="button special icon fa-youtube">shortcuts</a></li>
+    <li><a href="https://instantos.github.io/instantos.github.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
 </ul>
 
 Opening applications can be done in several ways. 
