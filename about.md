@@ -1,8 +1,9 @@
 ## About
 
-instantOS is based on [Manjaro](https://manjaro.org/), but with a way smaller footprint. The ISO fits on a 2gb USB stick and **RAM usage on idle is ~140MB**.
+instantOS is based on [Arch](https://archlinux.org/) and maintains full compatibility with the Arch-Wiki and AUR.
 It uses a custom window manager with a bunch of facilitating custom software to provide an experience similar to a desktop environment but as **powerful and
 fast as a window manager**. In fact, all pieces being made for each other allows things that wouldn't be possible by just editing dotfiles.
+It also has its own installer instantARCH
 
 ## suckless
 

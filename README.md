@@ -1,33 +1,32 @@
 # Welcome
 <ul class="actions">
-    <li><a href="https://sourceforge.net/projects/instantos/files/latest/download" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/beta2/instantos_beta_2.iso" class="button special icon fa-download">Download</a></li>
 </ul>
 
-instantOS is a manjaro based distro that works out of the box but is still aimed at power users.
-Everything is lightning fast and works out of the box.
+instantOS is an Arch based distro that works out of the box but is still aimed at power users.
+Everything is lightning fast, flexible and just works.
 
 <div align="center">
     <iframe width="100%" height="500px" src="https://www.youtube.com/embed/kwfdLO5vgO8" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## instantOS has three key principles
+## Features
 
-<dl>
-    <dt>Just works</dt>
-    <dd>
-        <p>Everything is set up straight out of the box, from wifi to brightness controlls, media keys and wallpapers. You can install it, learn the keybindings and forget about it. I also looks pretty despite being fast. It is possible. You can have both.</p>
-    </dd>
-    <dt>Power-user friendly</dt>
-    <dd>
-        <p>There are loads of keybindings and powerful features. You can do almost everything with a keyboard or mouse. Things are done in a way that is fast and efficient, not easy to guess. There are no tradeoffs made. For instance there is no indicator for changing volume. You have to know that you can scroll your mouse wheel over your status bar to change volume. No screenspace wasted and you don't have to click on anything first to change volume. Of course mouse <b>and</b> media keys <b>and</b> keyboard shortcuts are supported. That same philosophy is kept throughout the entire os. </p>
-    </dd>
-    <dt>Speed</dt>
-    <dd>
-        <p>instantOS sits at <b>130mb RAM</b> at idle. It comes with as little bloat as possible without sacrificing features.
-        Window manager and menus are written in pure c. Things should happen before you even let go of the key. The window manager never takes a single percent of cpu or even a single megabyte of RAM, letting you and your computer focus on what matters. 
-        </p>
-    </dd>
-</dl>
+### Just works
+The user does not have to worry about everything from wifi to volume and brightness, theming and notification-management. 
+The distro is also tested with non-techies as well as power users. 
+
+### Power-user friendly
+Loads keybindings and extra features ensure optimal
+
+### Flexible
+instantOS can be used with only a keyboard, mouse or even touchscreen (which makes it the only tiling capable distro with full tablet support)
+It has support for tiling and floating windows and allows working with both of them. 
+
+### Ultra lightweight
+The RAM usage on idle is about 140-150Mb. That is less half of what the lightest Ubuntu flavor uses. 
+It comes with as little bloat as possible without sacrificing on features. 
+
 
 ## Support
 
@@ -42,12 +41,12 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
     <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
 </ul>
 
-instantOS has full compatibility with all Manjaro packages so it is able to use the AUR and Arch-Wiki
 
-## Installation
+## Disclaimer
 
-instantOS has a graphical installer that takes care of everything.
-You install it as you would any distro like Ubuntu
+The current build beta 2 is the first one published after the transition from Manjaro to Arch as well as the first version and distro ever to use the
+[instantARCH](https://github.com/instantOS/instantARCH) installer.
+It is called beta for a reason and is not tested with all possible hardware configurations yet. 
 
 --------
 
