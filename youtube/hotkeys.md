@@ -13,9 +13,32 @@ They are just for reference, to properly learn instantOS, refer to the documenta
             </tr>
         </thead>
         <tbody>
+                <td>Super + Space</td>
+                <td>Open text based application launcher</td>
+            </tr>
             <tr>
-                <td>Super + B</td>
-                <td>Toggle status bar</td>
+                <td>Super + Ctrl + Space</td>
+                <td>Open super lightweight command launcher</td>
+            </tr>
+            <tr>
+                <td>Super + Y</td>
+                <td>Open graphical application launcher</td>
+            </tr>
+            <tr>
+                <td>Super + Q</td>
+                <td>Close Application</td>
+            </tr>
+            <tr>
+                <td>Super + Ctrl + W</td>
+                <td>Define overlay</td>
+            </tr>
+            <tr>
+                <td>Super + W</td>
+                <td>Toggle overlay</td>
+            </tr>
+            <tr>
+                <td>Alt + F4</td>
+                <td>Close Application</td>
             </tr>
             <tr>
                 <td>Super + C</td>
@@ -62,6 +85,14 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Move Window to other monitor</td>
             </tr>
             <tr>
+                <td>Super + Ctrl + Comma/Period</td>
+                <td>Cycle through all layouts</td>
+            </tr>
+            <tr>
+                <td>Super + B</td>
+                <td>Toggle status bar</td>
+            </tr>
+            <tr>
                 <td>Super + H/L</td>
                 <td>Resize Master area</td>
             </tr>
@@ -74,18 +105,6 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Resize floating window</td>
             </tr>
             <tr>
-                <td>Super + Space</td>
-                <td>Open text based application launcher</td>
-            </tr>
-            <tr>
-                <td>Super + Ctrl + Space</td>
-                <td>Open super lightweight command launcher</td>
-            </tr>
-            <tr>
-                <td>Super + Y</td>
-                <td>Open graphical application launcher</td>
-            </tr>
-
         </tbody>
     </table>
 </div>
