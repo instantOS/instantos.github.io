@@ -42,7 +42,10 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 </ul>
 
 
-## Disclaimer
+## beta Build 2 released!
+<div align="center">
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/OVwghcmhGNs" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 The current build beta 2 is the first one published after the transition from Manjaro to Arch as well as the first version and distro ever to use the
 [instantARCH](https://github.com/instantOS/instantARCH) installer.
