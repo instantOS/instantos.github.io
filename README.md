@@ -2,6 +2,7 @@
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/beta2/instantos_beta_2.iso" class="button special icon fa-download">Download</a></li>
 </ul>
+[alternative download](https://osdn.net/dl/instantos/instantos_beta_2.iso)
 
 instantOS is an Arch based distro that works out of the box but is still aimed at power users.
 Everything is lightning fast, flexible and just works.
