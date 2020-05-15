@@ -108,3 +108,36 @@ They are just for reference, to properly learn instantOS, refer to the documenta
         </tbody>
     </table>
 </div>
+
+
+## Terminal Keybindings
+
+<div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Binding</th>
+                <th>Funcionality</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Alt + C</td>
+                <td>Copy</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Alt + V</td>
+                <td>Paste</td>
+            </tr>
+            <tr>
+                <td>Shift + Left Mouse</td>
+                <td>Select Text</td>
+            </tr>
+            <tr>
+                <td>Ctrl + D</td>
+                <td>Close terminal</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
