@@ -18,7 +18,6 @@
         <tbody>
             <td>Super + Space</td>
             <td>Open text based application launcher</td>
-            </tr>
             <tr>
                 <td>Super + Ctrl + Space</td>
                 <td>Open super lightweight command launcher</td>
@@ -214,6 +213,16 @@
                 <td>Right Click</td>
                 <td>Status text</td>
                 <td>Open App switcher</td>
+            </tr>
+            <tr>
+                <td>Scroll</td>
+                <td>Window bar</td>
+                <td>Switch focus</td>
+            </tr>
+            <tr>
+                <td>Shift + Scroll</td>
+                <td>Window bar</td>
+                <td>Move Window through stack</td>
             </tr>
         </tbody>
     </table>
