@@ -121,11 +121,10 @@
 </div>
 
 <div class="table-wrapper">
-    <h2>Terminal</h2>
     <table>
         <thead>
             <tr>
-                <th>Binding</th>
+                <th>Terminal Binding</th>
                 <th>Funcionality</th>
             </tr>
         </thead>
