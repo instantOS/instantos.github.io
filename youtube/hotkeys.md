@@ -222,6 +222,11 @@
                 <td>Open app launcher</td>
             </tr>
             <tr>
+                <td>Middle Click</td>
+                <td>Status text</td>
+                <td>Open Terminal</td>
+            </tr>
+            <tr>
                 <td>Right Click</td>
                 <td>Status text</td>
                 <td>Open App switcher</td>
