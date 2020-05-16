@@ -3,9 +3,9 @@
 This is a rundown of all keybindings. 
 They are just for reference, to properly learn instantOS, refer to the documentation. 
 
-<h2>General</h2>
 
 <div class="table-wrapper">
+<h2>General</h2>
     <table>
         <thead>
             <tr>
@@ -117,11 +117,8 @@ They are just for reference, to properly learn instantOS, refer to the documenta
         </tbody>
     </table>
 </div>
-
-
-<h2>Terminal</h2>
-
 <div class="table-wrapper">
+<h2>Terminal</h2>
     <table>
         <thead>
             <tr>
@@ -146,7 +143,41 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Ctrl + D</td>
                 <td>Close terminal</td>
             </tr>
+        </tbody>
+    </table>
+</div>
 
+<div class="table-wrapper">
+<h2>Mouse</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Binding</th>
+                <th>Part of the Screen</th>
+                <th>Funcionality</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Scroll</td>
+                <td>Status text</td>
+                <td>Change volume</td>
+            </tr>
+            <tr>
+                <td>Super + scroll</td>
+                <td>Status text</td>
+                <td>Change brightness (laptop only)</td>
+            </tr>
+            <tr>
+                <td>Click</td>
+                <td>Window title</td>
+                <td>Focus window</td>
+            </tr>
+            <tr>
+                <td>Middle Click</td>
+                <td>Window title</td>
+                <td>Close Window</td>
+            </tr>
         </tbody>
     </table>
 </div>
