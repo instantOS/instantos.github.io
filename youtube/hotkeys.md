@@ -115,16 +115,16 @@
                 <td>Super + Shift + H/J/K/L</td>
                 <td>Resize floating window</td>
             </tr>
-            <tr>
         </tbody>
     </table>
 </div>
 
 <div class="table-wrapper">
+    <h2>Terminal</h2>
     <table>
         <thead>
             <tr>
-                <th>Terminal Binding</th>
+                <th>Binding</th>
                 <th>Funcionality</th>
             </tr>
         </thead>
@@ -194,6 +194,26 @@
                 <td>Drag Left Mouse button</td>
                 <td>Window title</td>
                 <td>Move window</td>
+            </tr>
+            <tr>
+                <td>Left Click</td>
+                <td>Desktop</td>
+                <td>Open app launcher</td>
+            </tr>
+            <tr>
+                <td>Right Click</td>
+                <td>Desktop</td>
+                <td>Open text based app launcher</td>
+            </tr>
+            <tr>
+                <td>Left Click</td>
+                <td>Status text</td>
+                <td>Open app launcher</td>
+            </tr>
+            <tr>
+                <td>Right Click</td>
+                <td>Status text</td>
+                <td>Open App switcher</td>
             </tr>
         </tbody>
     </table>
