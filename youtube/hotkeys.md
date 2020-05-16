@@ -23,12 +23,40 @@
                 <td>Open super lightweight command launcher</td>
             </tr>
             <tr>
-                <td>Super + Y</td>
-                <td>Open graphical application launcher</td>
-            </tr>
-            <tr>
                 <td>Super + Q</td>
                 <td>Close Application</td>
+            </tr>
+            <tr>
+                <td>Super + C</td>
+                <td>Grid layout</td>
+            </tr>
+            <tr>
+                <td>Super + M</td>
+                <td>Monocle layout</td>
+            </tr>
+            <tr>
+                <td>Super + Number</td>
+                <td>Switch to tag Number</td>
+            </tr>
+            <tr>
+                <td>Super + Shift + Number</td>
+                <td>Move window to tag Number</td>
+            </tr>
+            <tr>
+                <td>Super + Alt + Number</td>
+                <td>Follow window to tag Number</td>
+            </tr>
+            <tr>
+                <td>Super + Shift + Comma/Period</td>
+                <td>Move Window to other monitor</td>
+            </tr>
+            <tr>
+                <td>Super + J/K</td>
+                <td>Switch focus</td>
+            </tr>
+            <tr>
+                <td>Super + Y</td>
+                <td>Open graphical application launcher</td>
             </tr>
             <tr>
                 <td>Super + Ctrl + W</td>
@@ -39,12 +67,12 @@
                 <td>Toggle overlay</td>
             </tr>
             <tr>
-                <td>Alt + F4</td>
-                <td>Close Application</td>
+                <td>Super + E</td>
+                <td>Go into overview mode, press again to switch back</td>
             </tr>
             <tr>
-                <td>Super + C</td>
-                <td>Grid layout</td>
+                <td>Alt + F4</td>
+                <td>Close Application</td>
             </tr>
             <tr>
                 <td>Super + Ctrl + L</td>
@@ -52,19 +80,11 @@
             </tr>
             <tr>
                 <td>Super + Ctrl + Q</td>
-                <td>Shutdown menu</td>
+                <td>Open shutdown menu</td>
             </tr>
             <tr>
                 <td>Super + A</td>
                 <td>instantASSIST</td>
-            </tr>
-            <tr>
-                <td>Super + A</td>
-                <td>instantASSIST</td>
-            </tr>
-            <tr>
-                <td>Super + Number</td>
-                <td>Switch to tag Number</td>
             </tr>
             <tr>
                 <td>Super + Left/Right</td>
@@ -75,16 +95,8 @@
                 <td>Switch focus</td>
             </tr>
             <tr>
-                <td>Super + J/K</td>
-                <td>Switch focus</td>
-            </tr>
-            <tr>
                 <td>Super + Comma/Period</td>
                 <td>Switch monitor focus</td>
-            </tr>
-            <tr>
-                <td>Super + Shift + Comma/Period</td>
-                <td>Move Window to other monitor</td>
             </tr>
             <tr>
                 <td>Super + Ctrl + Comma/Period</td>
@@ -223,6 +235,11 @@
                 <td>Shift + Scroll</td>
                 <td>Window bar</td>
                 <td>Move Window through stack</td>
+            </tr>
+            <tr>
+                <td>Left/Right click</td>
+                <td>Layout indicator</td>
+                <td>Cycle through layouts</td>
             </tr>
         </tbody>
     </table>

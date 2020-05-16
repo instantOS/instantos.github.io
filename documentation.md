@@ -20,3 +20,6 @@ Each feature has a short video explaining it or a text based description below i
 - [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
 - [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
 - [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
+
+## [List of keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+This is meant for reference after learning the feature, NOT as a replacement for the documentation
