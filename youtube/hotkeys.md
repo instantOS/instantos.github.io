@@ -71,6 +71,10 @@
                 <td>Go into overview mode, press again to switch back</td>
             </tr>
             <tr>
+                <td>Alt + Tab</td>
+                <td>Open application switcher</td>
+            </tr>
+            <tr>
                 <td>Alt + F4</td>
                 <td>Close Application</td>
             </tr>
