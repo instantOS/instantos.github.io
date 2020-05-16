@@ -117,6 +117,7 @@ They are just for reference, to properly learn instantOS, refer to the documenta
         </tbody>
     </table>
 </div>
+
 <div class="table-wrapper">
 <h2>Terminal</h2>
     <table>
@@ -176,7 +177,22 @@ They are just for reference, to properly learn instantOS, refer to the documenta
             <tr>
                 <td>Middle Click</td>
                 <td>Window title</td>
-                <td>Close Window</td>
+                <td>Close window</td>
+            </tr>
+            <tr>
+                <td>Right Click</td>
+                <td>Window title</td>
+                <td>Put window into master</td>
+            </tr>
+            <tr>
+                <td>Drag Right Mouse button</td>
+                <td>Window title</td>
+                <td>Resize window</td>
+            </tr>
+            <tr>
+                <td>Drag Left Mouse button</td>
+                <td>Window title</td>
+                <td>Move window</td>
             </tr>
         </tbody>
     </table>
