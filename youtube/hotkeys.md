@@ -3,6 +3,7 @@
 This is a rundown of all keybindings. 
 They are just for reference, to properly learn instantOS, refer to the documentation. 
 
+<h2>General</h2>
 
 <div class="table-wrapper">
     <table>
@@ -93,6 +94,14 @@ They are just for reference, to properly learn instantOS, refer to the documenta
                 <td>Toggle status bar</td>
             </tr>
             <tr>
+                <td>Super + S</td>
+                <td>Toggle tag icons</td>
+            </tr>
+            <tr>
+                <td>Super + Shift  + S</td>
+                <td>Hide unused tags </td>
+            </tr>
+            <tr>
                 <td>Super + H/L</td>
                 <td>Resize Master area</td>
             </tr>
@@ -110,7 +119,7 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 </div>
 
 
-## Terminal Keybindings
+<h2>Terminal</h2>
 
 <div class="table-wrapper">
     <table>
