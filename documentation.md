@@ -10,19 +10,19 @@ Each feature has a short video explaining it or a text based description below i
 </ul>
 
 ## list of features
-- [opening applications](https://instantos.github.io/instantos.github.io/youtube/apps)
-- [layouts](https://instantos.github.io/instantos.github.io/youtube/layouts)
-- [instantASSIST](https://instantos.github.io/instantos.github.io/youtube/assist)
-- [shortcuts](https://instantos.github.io/instantos.github.io/youtube/shortcuts)
-- [tags](https://instantos.github.io/instantos.github.io/youtube/tags)
-- [floating windows](https://instantos.github.io/instantos.github.io/youtube/floating)
-- [visibility options](https://instantos.github.io/instantos.github.io/youtube/visibility)
-- [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
-- [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
-- [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
-- [customizing](https://instantos.github.io/instantos.github.io/youtube/customize)
+-   [opening applications](https://instantos.github.io/instantos.github.io/youtube/apps)
+-   [layouts](https://instantos.github.io/instantos.github.io/youtube/layouts)
+-   [instantASSIST](https://instantos.github.io/instantos.github.io/youtube/assist)
+-   [shortcuts](https://instantos.github.io/instantos.github.io/youtube/shortcuts)
+-   [tags](https://instantos.github.io/instantos.github.io/youtube/tags)
+-   [floating windows](https://instantos.github.io/instantos.github.io/youtube/floating)
+-   [visibility options](https://instantos.github.io/instantos.github.io/youtube/visibility)
+-   [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
+-   [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
+-   [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
+-   [customizing](https://instantos.github.io/instantos.github.io/youtube/customize)
 
 ## [List of keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
-- [all keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+-   [all keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
 
 This list is meant for reference after learning how to use features, NOT as a replacement for the documentation

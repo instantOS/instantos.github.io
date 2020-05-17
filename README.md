@@ -42,7 +42,6 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
     <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
 </ul>
 
-
 ## beta Build 2 released!
 <div align="center">
     <iframe width="100%" height="500px" src="https://www.youtube.com/embed/OVwghcmhGNs" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -53,6 +52,5 @@ The current build beta 2 is the first one published after the transition from Ma
 It is called beta for a reason and is not tested with all possible hardware configurations yet. 
 
 --------
-
 ## instantOS is still in early beta, contributions always welcome
 
