@@ -3,8 +3,9 @@
 This is a rundown of all keybindings.
 They are just for reference, to properly learn instantOS, refer to the documentation.
 
+You can access this list by pressing Super + F1
 
-## general
+## General
 
 | Binding                      | Funcionality                                      |
 | ---------------------------- | ------------------------------------------------- |
