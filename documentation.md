@@ -11,6 +11,7 @@ Each feature has a short video explaining it or a text based description below i
 
 ## list of features
 -   [opening applications](https://instantos.github.io/instantos.github.io/youtube/apps)
+-   [closing applications](https://instantos.github.io/instantos.github.io/youtube/close)
 -   [layouts](https://instantos.github.io/instantos.github.io/youtube/layouts)
 -   [instantASSIST](https://instantos.github.io/instantos.github.io/youtube/assist)
 -   [shortcuts](https://instantos.github.io/instantos.github.io/youtube/shortcuts)

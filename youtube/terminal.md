@@ -4,6 +4,7 @@
 
 A terminal can be opened up by pressing Return on an empty tag or super + Return at any time. 
 You can also use the mouse by middle clicking on the status bar in the top right. 
+The Super + Space application launcher can also launch any application in a terminal by pressing Shift + Return instead of just return to launch it. 
 
 ## Copy paste
 
