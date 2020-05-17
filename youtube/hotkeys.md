@@ -22,6 +22,7 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + Alt + Number         | Follow window to tag number                       |
 | Super + Shift + Comma/Period | Move Window to other monitor                      |
 | Super + J/K                  | Switch focus                                      |
+| Super + Ctrl + J/K           | Move window through stack                         |
 | Super + Y                    | Open graphical application launcher               |
 | Super + Ctrl + W             | Define overlay                                    |
 | Super + W                    | Toggle overlay                                    |
@@ -54,6 +55,9 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + Shift + D            | Enter window drawing mode                         |
 | Super + Ctrl + H             | Minimize window                                   |
 | Super + Ctrl + Alt + H       | unminimize all windows                            |
+| Super + Shift + Alt + D      | Toggle performance modes                          |
+| Super + Shift + M            | Enter move mode                                   |
+| Super + Alt + M              | Enter resize mode                                 |
 
 
 ## Terminal
@@ -68,25 +72,30 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 
 ## Mouse
 
-| Binding                 | Part of the Screen | Funcionality                    |
-| ----------------------- | ------------------ | ------------------------------- |
-| Scroll                  | Status text        | Change volume                   |
-| Super + scroll          | Status text        | Change brightness (laptop only) |
-| Click                   | Window title       | Focus window                    |
-| Middle Click            | Window title       | Close window                    |
-| Right Click             | Window title       | Put window into master          |
-| Drag Right Mouse button | Window title       | Resize window                   |
-| Drag Left Mouse button  | Window title       | Move window                     |
-| Left Click              | Desktop            | Open app launcher               |
-| Right Click             | Desktop            | Open text based app launcher    |
-| Left Click              | Status text        | Open app launcher               |
-| Middle Click            | Status text        | Open Terminal                   |
-| Right Click             | Status text        | Open App switcher               |
-| Scroll                  | Window bar         | Switch focus                    |
-| Shift + Scroll          | Window bar         | Move Window through stack       |
-| Super + Click           | Window bar         | Toggle overlay                  |
-| Super + Click           | Desktop            | Toggle overlay                  |
-| Left/Right click        | Layout indicator   | Cycle through layouts           |
+| Binding                                | Part of the Screen | Funcionality                        |
+| -------------------------------------- | ------------------ | ----------------------------------- |
+| Scroll                                 | Status text        | Change volume                       |
+| Super + scroll                         | Status text        | Change brightness (laptop only)     |
+| Click                                  | Window title       | Focus window                        |
+| Middle Click                           | Window title       | Close window                        |
+| Right Click                            | Window title       | Put window into master              |
+| Drag Right Mouse button                | Window title       | Resize window                       |
+| Drag Left Mouse button                 | Window title       | Move window                         |
+| Super + Drag left mouse button         | Window             | Move window                         |
+| Super + Drag right mouse button        | Window             | Resize window                       |
+| Super + Shift + drag left mouse button | Window             | Resize window and keep aspect ratio |
+| Left Click                             | Desktop            | Open app launcher                   |
+| Right Click                            | Desktop            | Open text based app launcher        |
+| Left Click                             | Status text        | Open app launcher                   |
+| Middle Click                           | Status text        | Open Terminal                       |
+| Right Click                            | Status text        | Open App switcher                   |
+| Scroll                                 | Window bar         | Switch focus                        |
+| Shift + Scroll                         | Window bar         | Move Window through stack           |
+| Super + Click                          | Window bar         | Toggle overlay                      |
+| Super + Click                          | Desktop            | Toggle overlay                      |
+| Left/Right click                       | Layout indicator   | Cycle through layouts               |
+| Click                                  | Shutdown button    | Open Shutdown menu                  |
+| Right Click                            | Shutdown button    | Lock screen                         |
 
 ## Desktop
 These are only active when there is no window on the current tag
