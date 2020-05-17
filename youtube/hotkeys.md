@@ -13,9 +13,13 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + Q                    | Close Application                                 |
 | Super + C                    | Grid layout                                       |
 | Super + M                    | Monocle layout                                    |
-| Super + Number               | Switch to tag Number                              |
-| Super + Shift + Number       | Move window to tag Number                         |
-| Super + Alt + Number         | Follow window to tag Number                       |
+| Super + Number               | Switch to tag number                              |
+| Super + Tab                  | Switch between two most recent tags               |
+| Super + Shift + Number       | Move window to tag number                         |
+| Super + Return               | Open terminal                                     |
+| Super + Shift + Return       | Move window into master area                      |
+| Super + Ctrl + Number        | Toggle on additional tag                          |
+| Super + Alt + Number         | Follow window to tag number                       |
 | Super + Shift + Comma/Period | Move Window to other monitor                      |
 | Super + J/K                  | Switch focus                                      |
 | Super + Y                    | Open graphical application launcher               |
@@ -27,16 +31,26 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + Ctrl + L             | Lock screen                                       |
 | Super + Ctrl + Q             | Open shutdown menu                                |
 | Super + A                    | instantASSIST                                     |
+| Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
+| Super + Shift + Left/Right   | Move Window to adjacent tag                       |
+| Super + Alt + Left/Right     | Follow Window to adjacent tag                     |
 | Super + Up/Down              | Switch focus                                      |
 | Super + Comma/Period         | Switch monitor focus                              |
 | Super + Ctrl + Comma/Period  | Cycle through all layouts                         |
 | Super + B                    | Toggle status bar                                 |
 | Super + S                    | Toggle tag icons                                  |
-| Super + Shift + S            | Hide unused tags                                  |
+| Super + N                    | Open file manager                                 |
+| Super + R                    | Open Ranger                                       |
+| Super + R                    | Open Ranger                                       |
+| Super + F                    | Disable Tiling for current tag                    |
 | Super + H/L                  | Resize Master area                                |
 | Super + Shift + H/J/K/L      | Move floating window                              |
 | Super + Shift + H/J/K/L      | Resize floating window                            |
+| Super + P                    | Switch between two most recent layouts            |
+| Super + X                    | Open application switcher                         |
+| Super + ^                    | Open graphical application switcher               |
+| Super + Ctrl + Space         | Open super lightweight application launcher       |
 
 
 ## Terminal
