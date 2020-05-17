@@ -100,8 +100,11 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 ## Desktop
 These are only active when there is no window on the current tag
 
-| Binding | Funcionality  |
-| ------- | ------------- |
-| Return  | Open Terminal |
-| F       | Open Firefox  |
-| C       | Open VS Code  |
+| Binding    | Funcionality       |
+| ---------- | ------------------ |
+| Return     | Open Terminal      |
+| F          | Open Firefox       |
+| C          | Open VS Code       |
+| +/-        | change volume      |
+| left/right | go to adjacent tag |
+
