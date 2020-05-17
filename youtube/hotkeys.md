@@ -51,6 +51,7 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + X                    | Open application switcher                         |
 | Super + ^                    | Open graphical application switcher               |
 | Super + Ctrl + Space         | Open super lightweight application launcher       |
+| Super + Shift + D            | Enter window drawing mode                         |
 
 
 ## Terminal
@@ -81,4 +82,15 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Right Click             | Status text        | Open App switcher               |
 | Scroll                  | Window bar         | Switch focus                    |
 | Shift + Scroll          | Window bar         | Move Window through stack       |
+| Super + Click           | Window bar         | Toggle overlay                  |
+| Super + Click           | Desktop            | Toggle overlay                  |
 | Left/Right click        | Layout indicator   | Cycle through layouts           |
+
+## Desktop
+These are only active when there is no window on the current tag
+
+| Binding | Funcionality  |
+| ------- | ------------- |
+| Return  | Open Terminal |
+| F       | Open Firefox  |
+| C       | Open VS Code  |
