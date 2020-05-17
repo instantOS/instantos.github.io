@@ -52,6 +52,8 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 | Super + ^                    | Open graphical application switcher               |
 | Super + Ctrl + Space         | Open super lightweight application launcher       |
 | Super + Shift + D            | Enter window drawing mode                         |
+| Super + Ctrl + H             | Minimize window                                   |
+| Super + Ctrl + Alt + H       | unminimize all windows                            |
 
 
 ## Terminal
