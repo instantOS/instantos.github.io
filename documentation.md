@@ -23,6 +23,7 @@ Each feature has a short video explaining it or a text based description below i
 -   [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
 -   [customizing](https://instantos.github.io/instantos.github.io/youtube/customize)
 -   [audio](https://instantos.github.io/instantos.github.io/youtube/audio)
+-   [overlays](https://instantos.github.io/instantos.github.io/youtube/overlays)
 
 ## [List of keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
 -   [all keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
