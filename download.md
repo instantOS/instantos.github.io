@@ -24,3 +24,8 @@ bash <(curl -Ls git.io/instantarch)
 
 This will download and start the installer.
 It works identically to the graphical installer and does not require any special knowledge to use.
+
+## 32 Bit
+
+Experimental 32 bit support is available. There is no live session yet, but you can use the CLI installer (see instructions above)
+It works identically to the 64 bit installer, but has to run off an Arch 32 iso that you can [download here](https://www.archlinux32.org/download/)
