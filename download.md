@@ -9,6 +9,11 @@
 instantOS specific packages are hosted on [instantos.surge.sh](http://instantos.surge.sh)  
 For other packages, the default Arch repos are used.
 
+### Torrent
+
+[Magnet link](magnet:?xt=urn:btih:FNK3ERFNZLRCC3U63MXRKXT5DJQTQ5CT)
+[Torrent file](https://instantos.github.io/instantos.github.io/torrent/instantos_beta_2.iso.torrent)
+
 ## CLI installer
 
 In case the live ISO does not boot or does not fit on your flash drive, there is a CLI installer. 
