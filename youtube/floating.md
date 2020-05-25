@@ -21,3 +21,17 @@ Super + Right mouse button resizes a window. The cursor will snap to the nearest
 
 
 The window-drawing feature can also be used to resize and move windows
+
+## Dragging gestures
+Dragging a window onto a tag number and letting go of it will move it to that number and follow it there.
+Holding shift while letting go will move it there but keep the view focused on the current tag. 
+Dragging the green indicator on the tag numbers will move the currently active window to that tag number. 
+Holding shift while letting go will follow the window there. 
+
+Dragging a window to the side of the screen and letting go of it with the shift key held down will snap it to half of
+the screen like on traditional desktop environments. 
+
+Dragging a window to the left/right side of the screen and letting go of it will move it to the adjacent tag. 
+The lower third of the screen will move it there and not follow it, anything above that will follow the window to that tag. 
+
+
