@@ -18,7 +18,7 @@ The user does not have to worry about everything from wifi to volume and brightn
 The distro is also tested with non-techies as well as power users. 
 
 ### Power-user friendly
-Loads keybindings and extra features ensure optimal
+Loads of keybindings and extra features ensure a high skill ceiling that is still simple to get started with. 
 
 ### Flexible
 instantOS can be used with only a keyboard, mouse or even touchscreen (which makes it the only tiling capable distro with full tablet support)
