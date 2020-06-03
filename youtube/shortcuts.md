@@ -4,7 +4,7 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/VvEglk3jYvU" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-instantOS can be controlled usin the mouse or the keyboard. 
+instantOS can be controlled using the mouse or the keyboard. 
 If you are a more advanced user, you can likely skip this part of the documentation. 
 
 All keybindings follow a simple convention:

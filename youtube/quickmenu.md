@@ -48,3 +48,10 @@ code "$(cat /tmp/workspacecode)"
 
 Demo
 ![demo gif](https://i.imgur.com/npniuho.gif)
+
+
+## Other information
+
+Quickmenu only depends on imenu and instantmenu to run. 
+The setup of all entries is completely portable. It resides in ~/instantos/quickmenu
+and can be freely moved or copied between different machines. 
