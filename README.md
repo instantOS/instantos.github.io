@@ -1,4 +1,4 @@
-# Welcome
+## Welcome
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/beta2/instantos_beta_2.iso" class="button special icon fa-download">Download</a></li>
 </ul>
