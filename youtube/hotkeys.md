@@ -60,6 +60,7 @@ You can access this list by pressing Super + F1
 | Super + Shift + Alt + D      | Toggle performance modes                          |
 | Super + Shift + M            | Enter move mode                                   |
 | Super + Alt + M              | Enter resize mode                                 |
+| Super + V                    | Open quickmenu                                    |
 
 
 ## Terminal
