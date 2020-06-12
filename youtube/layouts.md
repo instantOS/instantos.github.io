@@ -40,10 +40,8 @@ Super + Ctrl + J and Super + Ctrl + K makes the current window and the window ne
 This layout has a master area on the left and a stack area on the right. 
 
 ### Grid \#
+<p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/grid.png" alt="image missing" height="60" /></span>
 Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack. 
-
-<p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/grid.png" alt="image missing" height="40" /></span>
-This is a test paragraph
 </p>
 
 ### Horizontal stack 1 ===
