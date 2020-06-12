@@ -42,6 +42,8 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Comma/Period  | Cycle through all layouts                         |
 | Super + B                    | Toggle status bar                                 |
 | Super + S                    | Toggle tag icons                                  |
+| Super + Shift + S            | Hide empty tags                                   |
+| Super + Alt + Shift + S      | Toggle animations                                 |
 | Super + N                    | Open file manager                                 |
 | Super + R                    | Open Ranger                                       |
 | Super + R                    | Open Ranger                                       |
@@ -58,6 +60,7 @@ You can access this list by pressing Super + F1
 | Super + Shift + Alt + D      | Toggle performance modes                          |
 | Super + Shift + M            | Enter move mode                                   |
 | Super + Alt + M              | Enter resize mode                                 |
+| Super + V                    | Open quickmenu                                    |
 
 
 ## Terminal
@@ -102,11 +105,14 @@ You can access this list by pressing Super + F1
 ## Desktop
 These are only active when there is no window on the current tag
 
-| Binding    | Funcionality       |
-| ---------- | ------------------ |
-| Return     | Open Terminal      |
-| F          | Open Firefox       |
-| C          | Open VS Code       |
-| +/-        | change volume      |
-| left/right | go to adjacent tag |
+| Binding    | Funcionality         |
+| ---------- | ---------------------|
+| Return     | Open Terminal        |
+| F          | Open Firefox         |
+| R          | Open ranger          |
+| N          | Open nautilus        |
+| Tag Number | Switch to Tag Number |
+| C          | Open VS Code         |
+| +/-        | change volume        |
+| left/right | go to adjacent tag   |
 

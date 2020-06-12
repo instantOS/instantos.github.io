@@ -59,3 +59,16 @@ This is the overview layout. It is used by the overview feature. It stacks all w
 
 ### Half stack D n
 This is a hybrid of the tiling and monocle layout. The master area is tiled normally, but the stack works like the monocle layout with all windows layered on top of each other. 
+
+## Switching layouts
+
+You can toggle through all layouts by left/right clicking on the layout indicator or with
+Super + Ctrl + Comma/Period. 
+Middle clicking on the indicator resets to the default tiling layout. 
+Some layouts also have a direct Shortcut. 
+
+Here is a list of them
+-  Super + M Monocle
+-  Super + T Tiling
+-  Super + C Grid
+-  Super + F disable layouts

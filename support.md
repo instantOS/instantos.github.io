@@ -1,4 +1,4 @@
-# Support
+## Support
 
 Any questions or problems you might have will be answered as soon as possible. 
 You can request assistance in the following plances. 
