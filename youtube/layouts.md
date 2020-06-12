@@ -42,6 +42,10 @@ This layout has a master area on the left and a stack area on the right.
 ### Grid \#
 Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack. 
 
+<p><span class="image left"><img src="{{ "/images/layouts/grid.jpg" | absolute_url }}" alt="" /></span>
+This is a test paragraph
+</p>
+
 ### Horizontal stack 1 ===
 This works basically the same as the tiling layout except the tiling is done horizontally. 
 
