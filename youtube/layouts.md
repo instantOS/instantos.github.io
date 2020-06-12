@@ -15,6 +15,7 @@
 </ul>
 
 ## Basics
+
 Windows have two modes: Floating and tiling. The default mode is tiling and is the one taking advantage of layouts.
 The OS automatically assigns a position and size to every window in tiling mode. 
 It does so according to a simple set of rules called a layout. 
@@ -22,6 +23,7 @@ It does so according to a simple set of rules called a layout.
 You can see the currently selected layout to the right of the tag indicators. 
 
 ## Master and Stack. 
+
 Most layouts have two areas, the master and the stack. 
 The master usually contains the main Application you're using like a web browser or text editor while the stack contains additional applications like music players, terminals or file browsers. 
 Some layouts also allow to have multiple applications in the master area
@@ -37,38 +39,50 @@ Super + Ctrl + J and Super + Ctrl + K makes the current window and the window ne
 ## Rundown of all layouts
 
 ### Tile +
+
 This layout has a master area on the left and a stack area on the right. 
 
 ### Grid \#
+
 <p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/grid.png" alt="image missing" height="60" /></span>
 Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack. 
 </p>
 
 ### Horizontal stack 1 ===
+
 <p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/horizstack1.png" alt="image missing" height="60" /></span>
 This works basically the same as the tiling layout except the tiling is done horizontally. 
 </p>
 
 ### Horizontal stack 2 TTT
+
 <p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/horizstack2.png" alt="image missing" height="60" /></span>
 This works basically the same as the Horizontal stack 1 layout, but the stack itself is tiled vertically
 </p>
 
 ### Monocle [n]
+
 <p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/monocle.png" alt="image missing" height="60" /></span>
 All windows are Fullscreen and layered on top of each other. The window currently in focus is always on top
 </p>
 
 ### Floating _
+
 <p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/floating.png" alt="image missing" height="60" /></span>
 This completely disables window tiling. Use this to get a floating wm like experience. 
 </p>
 
 ### Overview O
+
+<p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/overview.png" alt="image missing" height="60" /></span>
 This is the overview layout. It is used by the overview feature. It stacks all windows in a way that each of them is visible but without resizing them from their previous layout. This can be used to quickly switch between windows. 
+</p>
 
 ### Half stack D n
+
+<p><span class="image left"><img src="https://instantos.github.io/instantos.github.io/images/layouts/halfstack.png" alt="image missing" height="60" /></span>
 This is a hybrid of the tiling and monocle layout. The master area is tiled normally, but the stack works like the monocle layout with all windows layered on top of each other. 
+</p>
 
 ## Switching layouts
 
@@ -78,7 +92,8 @@ Middle clicking on the indicator resets to the default tiling layout.
 Some layouts also have a direct Shortcut. 
 
 Here is a list of them
--  Super + M Monocle
--  Super + T Tiling
--  Super + C Grid
--  Super + F disable layouts
+
+*  Super + M Monocle
+*  Super + T Tiling
+*  Super + C Grid
+*  Super + F disable layouts
