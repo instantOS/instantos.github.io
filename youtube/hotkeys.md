@@ -62,12 +62,13 @@ You can access this list by pressing Super + F1
 
 ## Terminal
 
-| Binding            | Funcionality   |
-| ------------------ | -------------- |
-| Ctrl + Alt + C     | Copy           |
-| Ctrl + Alt + V     | Paste          |
-| Shift + Left Mouse | Select Text    |
-| Ctrl + D           | Close terminal |
+| Binding            | Funcionality     |
+| ------------------ | ---------------- |
+| Ctrl + Shift + C   | Copy             |
+| Ctrl + Shift + V   | Paste            |
+| Ctrl + +/-         | Adjust font size |
+| Shift + Left Mouse | Select Text      |
+| Ctrl + D           | Close terminal   |
 
 
 ## Mouse
