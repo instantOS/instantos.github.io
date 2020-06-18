@@ -32,6 +32,7 @@ You can access this list by pressing Super + F1
 | Alt + F4                     | Close Application                                 |
 | Super + Ctrl + L             | Lock screen                                       |
 | Super + Ctrl + Q             | Open shutdown menu                                |
+| Super + Ctrl + Shift + Q     | Restart Window Manager                            |
 | Super + A                    | instantASSIST                                     |
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
