@@ -1,8 +1,8 @@
 ## Download ISO
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/beta2/instantos_beta_2.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://osdn.net/dl/instantos/instantos_beta_2.iso" class="button special icon fa-download">Mirror</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v3-beta/instantos_beta3.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://osdn.net/dl/instantos/instantos_beta3.iso" class="button special icon fa-download">Mirror</a></li>
 </ul>
 
 
