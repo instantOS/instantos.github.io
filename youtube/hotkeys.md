@@ -12,6 +12,7 @@ You can access this list by pressing Super + F1
 | Super + Space                | Open text based application launcher              |
 | Super + Ctrl + Space         | Open super lightweight command launcher           |
 | Super + Q                    | Close Application                                 |
+| Super + Shift + C            | Close Application                                 |
 | Super + C                    | Grid layout                                       |
 | Super + M                    | Monocle layout                                    |
 | Super + Number               | Switch to tag number                              |
