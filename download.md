@@ -5,6 +5,8 @@
     <li><a href="https://osdn.net/dl/instantos/instantos_beta3.iso" class="button special icon fa-download">Mirror</a></li>
 </ul>
 
+md5 hash: ```82d2e4259e38a28dc7e653a809fb9573```
+
 
 instantOS specific packages are hosted on [instantos.surge.sh](http://instantos.surge.sh)  
 For other packages, the default Arch repos are used.
