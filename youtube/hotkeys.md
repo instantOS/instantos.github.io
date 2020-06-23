@@ -47,7 +47,6 @@ You can access this list by pressing Super + F1
 | Super + Alt + Shift + S      | Toggle animations                                 |
 | Super + N                    | Open file manager                                 |
 | Super + R                    | Open Ranger                                       |
-| Super + R                    | Open Ranger                                       |
 | Super + F                    | Disable Tiling for current tag                    |
 | Super + H/L                  | Resize Master area                                |
 | Super + Shift + H/J/K/L      | Move floating window                              |
