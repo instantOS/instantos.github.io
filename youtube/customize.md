@@ -21,8 +21,8 @@ After doing that, you can set up your own themes for all of the above applicatio
 
 ### Terminal
 
-instantOS uses urxvt as its terminal emulator. The colors ars customized using the ~/. Xresources file. 
-Doing this is very well documented and is not covered here. 
+instantOS uses st as its terminal emulator. The colors ars customized using the ~/. Xresources file. 
+You can also roll your own st build if you want to and instantOS will use it instead of the default one as long as it's installed in /usr/local/bin
 
 ### Gtk
 
