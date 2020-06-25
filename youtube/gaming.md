@@ -22,3 +22,15 @@ It is recommended to play wine games with steam play or lutris wine versions as 
 If the game still behaves weird (transparent splash screens are often problematic), enable virtual desktop in Lutris and/or winecfg. 
 
 Fakefullscreen is really helpful for lots of games, especially ones running in wine virtual desktops
+
+## todo feature documentation
+
+- fakefullscreen
+- forceresize
+- hidebar
+- redraw
+- latency
+- nocompositing
+- steam installer preinstalled
+- switch away from any game
+- overlays for discord
