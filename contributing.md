@@ -23,11 +23,11 @@ used to build the instantmenu package
 Dotfiles shipped with instantOS
 used to build the instantdotfiles package
 
-## [instantSHELL]
+## [instantSHELL](https://github.com/instantOS/instantSHELL)
 
 used to build the instantshell package
 
-## [extra]
+## [extra](https://github.com/instantOS/extra)
 
 contains all PKGBUILD files for instantOS packages and a list of AUR packages to be precompiled and hosted on the instantOS repos
 
@@ -48,6 +48,61 @@ It also provides a way to switch between a light and dark theme
 ## instantSHELL(https://github.com/instantOS/instantSHELL)
 
 the zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
+
+## [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank)
+
+the GUI control panel for configuration of lots of different things
+used to build the instantsettings package
+
+## [iso](https://github.com/instantOS/iso)
+
+everything needed to build an instantOS live iso
+
+## [liveutils](https://github.com/instantOS/liveutils)
+
+Everything that is contained on the live installation disk but not on the installed version
+
+## [sent](https://github.com/instantOS/sent)
+
+just regular sent with instantOS color scheme and font. Not really relevant to the rest of the system. 
+
+## [imenu](https://github.com/instantOS/imenu)
+
+A wrapper script for instantMENU, fzf and dialog. With it you're able to create prompts that will work in a graphical environment and in a terminal. 
+It will use the different programs depending on the mode but will always accept the same options and generate the same output. 
+It is being used in the instantARCH installer. 
+
+## [mirror](https://github.com/instantOS/mirror)
+
+a mirror of all binary packages hosted int the instantOS pacman repo
+
+## [instantTOOLS](https://github.com/instantOS/instantTOOLS)
+
+a set of scripts used for instantOS development
+
+## [instantWELCOME](https://github.com/instantOS/instantWELCOME)
+
+the welcome prompt coming up on the installation medium and on a fresh system
+
+## [instantLOCK](https://github.com/instantOS/instantLOCK)
+
+The lock screen. This is a very basic slock fork
+
+## [raspi](https://github.com/instantOS/raspi)
+
+An attempt to bring instantOS to the raspberry pi. Not very much work has been done here recently. 
+
+## [islide](https://github.com/instantOS/islide)
+
+Basically dmenu but for sliders instead of text selection. Used for volume and brightness sliders
+
+## [wallpapers](https://github.com/instantOS/wallpapers)
+
+Just a collection of pictures included as a category in instantWALLPAPER
+
+## [instantMETA](https://github.com/instantOS/instantMETA)
+
+a completely empty package used as a placeholder for git links
 
 ## [snap-dummy](https://github.com/instantOS/snap-dummy)
 
