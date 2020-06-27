@@ -50,7 +50,7 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 </div>
 
 ## [Contributing](https://instantos.github.io/instantos.github.io/repoinfo)
-a list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
+A list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
 
 --------
 ## instantOS is still in early beta, contributions always welcome
