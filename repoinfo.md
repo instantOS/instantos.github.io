@@ -40,12 +40,12 @@ it is also used to set and scale the wallpapers. It makes use of nitrogen and im
 
 a small configuration utility that serves as an easy way to store and retrieve settings. 
 
-## instantTHEMES(https://github.com/instantOS/instantTHEMES)
+## [instantTHEMES](https://github.com/instantOS/instantTHEMES)
 
 This contains theming files for instantOS that make as much applications as possible conform to the overall system look. 
 It also provides a way to switch between a light and dark theme 
 
-## instantSHELL(https://github.com/instantOS/instantSHELL)
+## [instantSHELL](https://github.com/instantOS/instantSHELL)
 
 the zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
 
@@ -106,4 +106,10 @@ a completely empty package used as a placeholder for git links
 
 ## [snap-dummy](https://github.com/instantOS/snap-dummy)
 
-instantOS doesn't ship with enabled snap support. This tells you not to use them because they're resource heavy, unstable and unsafe (loads of proprietary low quality applications with no review process and access to your home directory ) and basically proprietary. It then offers to enable snap support if you still really want/have to. 
+instantOS doesn't ship with enabled snap support.
+This tells you not to use them because they're resource heavy, 
+unstable and unsafe
+(loads of proprietary low quality applications with no review process
+and access to your home directory )
+and basically proprietary. It then offers to enable snap support
+if you still really want/have to. 
