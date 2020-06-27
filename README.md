@@ -49,6 +49,9 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
     <iframe width="100%" height="500px" src="https://www.youtube.com/embed/XTjAO3yUqpQ" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## [Contributing](https://instantos.github.io/instantos.github.io/repoinfo)
+a list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
+
 --------
 ## instantOS is still in early beta, contributions always welcome
 

@@ -23,10 +23,6 @@ used to build the instantmenu package
 Dotfiles shipped with instantOS
 used to build the instantdotfiles package
 
-## [instantSHELL](https://github.com/instantOS/instantSHELL)
-
-used to build the instantshell package
-
 ## [extra](https://github.com/instantOS/extra)
 
 contains all PKGBUILD files for instantOS packages and a list of AUR packages to be precompiled and hosted on the instantOS repos
@@ -48,6 +44,7 @@ It also provides a way to switch between a light and dark theme
 ## [instantSHELL](https://github.com/instantOS/instantSHELL)
 
 the zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
+used to build the instantshell package
 
 ## [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank)
 
