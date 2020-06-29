@@ -2,6 +2,12 @@
 
 instantWM is customized through ~/. Xresources
 
+The syntax for changing a parameter value is the following
+```
+instantwm.parameter: value
+```
+
+
 # bar height
 
 ## example
