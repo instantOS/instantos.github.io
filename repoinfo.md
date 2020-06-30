@@ -118,3 +118,25 @@ unstable and unsafe
 and access to your home directory )
 and basically proprietary. It then offers to enable snap support
 if you still really want/have to. 
+
+### [instantSUPPORT](https://github.com/instantOS/instantSUPPORT)
+
+Like teamviewer but for ssh and really small and for instantOS support
+
+### [instantWIDGETS](https://github.com/instantOS/instantWIDGETS)
+
+Conky widget configuration for instantOS
+
+### [grub-instantos](https://github.com/instantOS/grub-instantos)
+
+the grub theme for insatntOS. this only contains the theme, nothing else. 
+
+### [rox-filer](https://github.com/instantOS/rox-filer)
+
+a basic fork of rox-filer to be used for optional desktop icons. 
+
+### [instantDEB](https://github.com/instantOS/instantDEB)
+
+a way to create debian packages from arch PKGBUILD files. 
+Originally created to enable a debian edition of instantOS. 
+Not much work has been done here recently
