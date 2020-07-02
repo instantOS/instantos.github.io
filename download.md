@@ -14,8 +14,8 @@ For other packages, the default Arch repos are used.
 
 ### Torrent
 
-[Magnet link](magnet:?xt=urn:btih:FNK3ERFNZLRCC3U63MXRKXT5DJQTQ5CT)
-[Torrent file](https://instantos.github.io/instantos.github.io/torrent/instantos_beta_2.iso.torrent)
+[Magnet link](magnet:?xt=urn:btih:CD7PJHRN5KB6XAQDEFDLDN3L34AR6RCK)
+[Torrent file](https://instantos.github.io/instantos.github.io/torrent/instantos_beta3.iso.torrent)
 
 ## CLI installer
 
