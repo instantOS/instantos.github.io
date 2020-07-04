@@ -51,7 +51,7 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 
 -------------------
 
-## [People to thank](https://instantos.github.io/instantos.github.io/thanks)
+## [Partners](https://instantos.github.io/instantos.github.io/thanks)
 
 ## [Contributing](https://instantos.github.io/instantos.github.io/repoinfo)
 A list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
