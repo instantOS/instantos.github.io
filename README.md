@@ -44,9 +44,9 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
     <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
 </ul>
 
-## beta Build 3 adresses DistroTube issues
+## Thank you
 <div align="center">
-    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/XTjAO3yUqpQ" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/4a7IzLM0sPc" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 -------------------
