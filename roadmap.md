@@ -1,8 +1,6 @@
 # Roadmap
 
-Here is an overview of the features planned for instantOS
-
-a more technical list of concrete features can be found [here](https://github.com/instantOS/instantOS/projects/1)
+A more technical list of concrete features can be found [here](https://github.com/instantOS/instantOS/projects/1)
 
 ## Finish up Documentation
 
