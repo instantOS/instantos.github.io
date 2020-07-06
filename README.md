@@ -1,9 +1,9 @@
-## Welcome
+## instantOS - Home
+
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/v3-beta/instantos_beta3.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://instantos.github.io/instantos.github.io/download" class="button special icon fa-download">Other Downloads</a></li>
 </ul>
-
-[alternative download](https://osdn.net/dl/instantos/instantos_beta3.iso)
 
 instantOS is an Arch based distro that works out of the box but is still aimed at power users.
 Everything is lightning fast, flexible and just works.
@@ -26,7 +26,7 @@ instantOS can be used with only a keyboard, mouse or even touchscreen (which mak
 It has support for tiling and floating windows and allows working with both of them. 
 
 ### Ultra lightweight
-The RAM usage on idle is about 140-150Mb. That is less half of what the lightest Ubuntu flavor uses. 
+The RAM usage on idle is about 150-160Mb. That is less half of what the lightest Ubuntu flavor uses. 
 It comes with as little bloat as possible without sacrificing on features. 
 
 
@@ -39,23 +39,22 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
     <li><a href="https://instantos.github.io/instantos.github.io/documentation" class="button special icon fa-youtube">see it in action</a></li>
-    <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
     <li><a href="https://www.patreon.com/paperbenni" class="button special icon fa-patreon">patreon</a></li>
+    <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
     <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
 </ul>
 
-## beta Build 3 adresses DistroTube issues
+## Thank you
 <div align="center">
-    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/XTjAO3yUqpQ" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/4a7IzLM0sPc" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 -------------------
 
-## [People to thank](https://instantos.github.io/instantos.github.io/thanks)
+## [Partners](https://instantos.github.io/instantos.github.io/thanks)
 
 ## [Contributing](https://instantos.github.io/instantos.github.io/repoinfo)
 A list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
 
 --------
 ## instantOS is still in early beta, contributions always welcome
-

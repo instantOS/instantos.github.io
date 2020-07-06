@@ -1,5 +1,7 @@
 # Contributing
 
+Development of the distro is done on [GitHub](https://github.com/instantOS)
+
 ## Todo
 
 [here](https://github.com/instantOS/instantOS/projects/1) is a list of all things that still need to be done

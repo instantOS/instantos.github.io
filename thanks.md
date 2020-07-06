@@ -1,12 +1,10 @@
-# Thanks
-
-Huge thanks to the following people for helping out instantOS
+The following people are helping to improve instantOS
 
 ## [file.coffee](https://file.coffee)
 
 ![filecoffee](https://file.coffee/img/logo/coffee.webp)  
 Downloads kindly provided by [file.coffee](https://file.coffee/) - File sharing, redefined
 
-## Patreon
+## Patreon Supporters
 
 Jean-Luc Burhop
