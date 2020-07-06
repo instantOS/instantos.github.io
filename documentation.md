@@ -37,6 +37,11 @@ Each feature has a short video explaining it or a text based description below i
  - Coming soon
 
 ## [List of keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+
 -   [all keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+
+## Information for contributors
+
+- [Repository overview](https://instantos.github.io/instantos.github.io/repoinfo)
 
 This list is meant for reference after learning how to use features, NOT as a replacement for the documentation

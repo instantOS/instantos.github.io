@@ -43,6 +43,7 @@ it is also used to set and scale the wallpapers. It makes use of nitrogen and im
 ### [instantCONF](https://github.com/instantOS/instantCONF)
 
 a small configuration utility that serves as an easy way to store and retrieve settings. 
+provides the iconf utility
 
 ### [instantTHEMES](https://github.com/instantOS/instantTHEMES)
 
