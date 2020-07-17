@@ -43,7 +43,7 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Comma/Period  | Cycle through all layouts                         |
 | Super + B                    | Toggle status bar                                 |
 | Super + Alt + S              | Toggle tag icons                                  |
-| Super + S                    | Make current window sticky                        |
+| Super + Ctrl + S             | Make current window sticky                        |
 | Super + Shift + S            | Hide empty tags                                   |
 | Super + Alt + Shift + S      | Toggle animations                                 |
 | Super + N                    | Open file manager                                 |
