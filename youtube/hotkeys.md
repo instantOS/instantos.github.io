@@ -33,7 +33,7 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + L             | Lock screen                                       |
 | Super + Ctrl + Q             | Open shutdown menu                                |
 | Super + Ctrl + Shift + Q     | Restart Window Manager                            |
-| Super + A                    | instantASSIST                                     |
+| Super + A                    | open instantASSIST                                |
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
@@ -62,6 +62,10 @@ You can access this list by pressing Super + F1
 | Super + Shift + M            | Enter move mode                                   |
 | Super + Alt + M              | Enter resize mode                                 |
 | Super + V                    | Open quickmenu                                    |
+| Super + Ctrl + C             | Open settings                                     |
+| Super + Print                | Take area screenshot to pictures folder           |
+| Super + Ctrl + Print         | Take area screenshot to clipboard                 |
+| Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
 
 
 ## Terminal
