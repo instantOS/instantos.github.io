@@ -7,11 +7,11 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/shurtcuts" class="button special icon fa-youtube">shortcuts</a></li>
+    <li><a href="https://instantos.io/instantos.io/youtube/shurtcuts" class="button special icon fa-youtube">shortcuts</a></li>
 </ul>
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/apps" class="button special icon fa-youtube">opening applications</a></li>
+    <li><a href="https://instantos.io/instantos.io/youtube/apps" class="button special icon fa-youtube">opening applications</a></li>
 </ul>
 
 ## Basics
@@ -44,43 +44,43 @@ This layout has a master area on the left and a stack area on the right.
 
 ### Grid \#
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/grid.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/grid.png" alt="image missing" height="60" /></span>
 Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack. 
 </p>
 
 ### Horizontal stack 1 ===
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/horizstack1.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/horizstack1.png" alt="image missing" height="60" /></span>
 This works basically the same as the tiling layout except the tiling is done horizontally. 
 </p>
 
 ### Horizontal stack 2 TTT
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/horizstack2.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/horizstack2.png" alt="image missing" height="60" /></span>
 This works basically the same as the Horizontal stack 1 layout, but the stack itself is tiled vertically
 </p>
 
 ### Monocle [n]
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/monocle.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/monocle.png" alt="image missing" height="60" /></span>
 All windows are Fullscreen and layered on top of each other. The window currently in focus is always on top
 </p>
 
 ### Floating _
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/floating.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/floating.png" alt="image missing" height="60" /></span>
 This completely disables window tiling. Use this to get a floating wm like experience. 
 </p>
 
 ### Overview O
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/overview.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/overview.png" alt="image missing" height="60" /></span>
 This is the overview layout. It is used by the overview feature. It stacks all windows in a way that each of them is visible but without resizing them from their previous layout. This can be used to quickly switch between windows. 
 </p>
 
 ### Half stack D n
 
-<p><span class="image right"><img src="https://instantos.github.io/instantos.github.io/images/layouts/halfstack.png" alt="image missing" height="60" /></span>
+<p><span class="image right"><img src="https://instantos.io/instantos.io/images/layouts/halfstack.png" alt="image missing" height="60" /></span>
 This is a hybrid of the tiling and monocle layout. The master area is tiled normally, but the stack works like the monocle layout with all windows layered on top of each other. 
 </p>
 

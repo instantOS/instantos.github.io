@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/shortcuts" class="button special icon fa-youtube">instantASSIST</a></li>
+    <li><a href="https://instantos.io/instantos.io/youtube/shortcuts" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
 
 instantOS comes with instantASSIST, a collection of small little programs that can be accessed using only a few keystrokes. 

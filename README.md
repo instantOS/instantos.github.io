@@ -2,7 +2,7 @@
 
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/v3-beta/instantos_beta3.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://instantos.github.io/instantos.github.io/download" class="button special icon fa-download">Other Downloads</a></li>
+    <li><a href="https://instantos.io/instantos.io/download" class="button special icon fa-download">Other Downloads</a></li>
 </ul>
 
 instantOS is an Arch based distro that works out of the box but is still aimed at power users.
@@ -38,7 +38,7 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
-    <li><a href="https://instantos.github.io/instantos.github.io/documentation" class="button special icon fa-youtube">see it in action</a></li>
+    <li><a href="https://instantos.io/instantos.io/documentation" class="button special icon fa-youtube">see it in action</a></li>
     <li><a href="https://www.patreon.com/paperbenni" class="button special icon fa-patreon">patreon</a></li>
     <li><a href="https://www.buymeacoffee.com/paperbenni" class="button special icon fa-coffee">buy me a coffee</a></li>
     <li><a href="https://liberapay.com/paperbenni/" class="button special icon fa-piggy-bank">liberapay</a></li>
@@ -51,10 +51,10 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 
 -------------------
 
-## [Partners](https://instantos.github.io/instantos.github.io/thanks)
+## [Partners](https://instantos.io/instantos.io/thanks)
 
-## [Contributing](https://instantos.github.io/instantos.github.io/repoinfo)
-A list of repos, todo and some guidelines can be found [here](https://instantos.github.io/instantos.github.io/repoinfo). 
+## [Contributing](https://instantos.io/instantos.io/repoinfo)
+A list of repos, todo and some guidelines can be found [here](https://instantos.io/instantos.io/repoinfo). 
 
 --------
 ## instantOS is still in early beta, contributions always welcome

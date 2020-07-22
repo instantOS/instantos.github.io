@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
+    <li><a href="https://instantos.io/instantos.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
 
 The most simple way to change volume is to hover over the status text and scroll with the most wheel. 

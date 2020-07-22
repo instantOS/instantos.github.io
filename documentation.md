@@ -11,37 +11,37 @@ Each feature has a short video explaining it or a text based description below i
 
 ## list of features
 ### Basics
--   [opening applications](https://instantos.github.io/instantos.github.io/youtube/apps)
--   [closing applications](https://instantos.github.io/instantos.github.io/youtube/close)
--   [shut down](https://instantos.github.io/instantos.github.io/youtube/shutdown)
--   [audio](https://instantos.github.io/instantos.github.io/youtube/audio)
--   [screenshots](https://instantos.github.io/instantos.github.io/youtube/screenshots)
--   [layouts](https://instantos.github.io/instantos.github.io/youtube/layouts)
--   [tags](https://instantos.github.io/instantos.github.io/youtube/tags)
--   [floating windows](https://instantos.github.io/instantos.github.io/youtube/floating)
--   [shortcuts](https://instantos.github.io/instantos.github.io/youtube/shortcuts)
+-   [opening applications](https://instantos.io/instantos.io/youtube/apps)
+-   [closing applications](https://instantos.io/instantos.io/youtube/close)
+-   [shut down](https://instantos.io/instantos.io/youtube/shutdown)
+-   [audio](https://instantos.io/instantos.io/youtube/audio)
+-   [screenshots](https://instantos.io/instantos.io/youtube/screenshots)
+-   [layouts](https://instantos.io/instantos.io/youtube/layouts)
+-   [tags](https://instantos.io/instantos.io/youtube/tags)
+-   [floating windows](https://instantos.io/instantos.io/youtube/floating)
+-   [shortcuts](https://instantos.io/instantos.io/youtube/shortcuts)
 
 ### Extra features
--   [overlays](https://instantos.github.io/instantos.github.io/youtube/overlays)
--   [alt-tab](https://instantos.github.io/instantos.github.io/youtube/alttab)
+-   [overlays](https://instantos.io/instantos.io/youtube/overlays)
+-   [alt-tab](https://instantos.io/instantos.io/youtube/alttab)
 
 ### Power-User Features
--   [instantASSIST](https://instantos.github.io/instantos.github.io/youtube/assist)
--   [quickmenu](https://instantos.github.io/instantos.github.io/youtube/quickmenu)
--   [visibility options](https://instantos.github.io/instantos.github.io/youtube/visibility)
--   [customizing](https://instantos.github.io/instantos.github.io/youtube/customize)
--   [terminal](https://instantos.github.io/instantos.github.io/youtube/terminal)
+-   [instantASSIST](https://instantos.io/instantos.io/youtube/assist)
+-   [quickmenu](https://instantos.io/instantos.io/youtube/quickmenu)
+-   [visibility options](https://instantos.io/instantos.io/youtube/visibility)
+-   [customizing](https://instantos.io/instantos.io/youtube/customize)
+-   [terminal](https://instantos.io/instantos.io/youtube/terminal)
 
 ### Gaming
 
  - Coming soon
 
-## [List of keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+## [List of keybindings](https://instantos.io/instantos.io/youtube/hotkeys)
 
--   [all keybindings](https://instantos.github.io/instantos.github.io/youtube/hotkeys)
+-   [all keybindings](https://instantos.io/instantos.io/youtube/hotkeys)
 
 ## Information for contributors
 
-- [Repository overview](https://instantos.github.io/instantos.github.io/repoinfo)
+- [Repository overview](https://instantos.io/instantos.io/repoinfo)
 
 This list is meant for reference after learning how to use features, NOT as a replacement for the documentation

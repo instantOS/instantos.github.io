@@ -23,5 +23,5 @@ The terminal emulator in use is Luke Smith's st build that you can find
 [here](https://github.com/LukeSmithxyz/st)
 Some keybindings have been changed but otherwise it is unaltered. 
 Colors can be changed from Xresources, but please read
-[this](https://instantos.github.io/instantos.github.io/youtube/customize)
+[this](https://instantos.io/instantos.io/youtube/customize)
 before doing any theming. 
