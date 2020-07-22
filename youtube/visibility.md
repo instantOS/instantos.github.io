@@ -7,10 +7,10 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.io/instantos.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
+    <li><a href="https://instantos.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
 </ul>
 <ul class="actions">
-    <li><a href="https://instantos.io/instantos.io/youtube/tags" class="button special icon fa-youtube">tags</a></li>
+    <li><a href="https://instantos.io/youtube/tags" class="button special icon fa-youtube">tags</a></li>
 </ul>
 
 

@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.io/instantos.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
+    <li><a href="https://instantos.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
 
 Keybindings:

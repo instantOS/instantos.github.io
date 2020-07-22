@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.io/instantos.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
+    <li><a href="https://instantos.io/youtube/shortcuts" class="button special icon fa-youtube">shortcuts</a></li>
 </ul>
 
 To shut down your computer, press Super + Ctrl + Q to open the shutdown menu. From there you can choose between multiple options. There also is a shutdown button to the right of the layout indicator. It only appears when all applications on the current tag are closed, encouraging you to do so before shutting down your computer. 
