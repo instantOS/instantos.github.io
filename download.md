@@ -21,7 +21,7 @@ For other packages, the default Arch repos are used.
 ## CLI installer
 
 In case the live ISO does not boot or does not fit on your flash drive, there is a CLI installer. 
-It can run off any Arch live ISO and doesn't need any graphical interface.
+It can run off any Arch live ISO (with experimental Artix support) and doesn't need any graphical interface.
 You could even use this to install instantOS over ssh if you wanted to. 
 
 To use it, boot into any recent arch installation ISO.
