@@ -28,7 +28,7 @@ To use it, boot into any recent arch installation ISO.
 Make sure you are connected to the internet and run the following command:
 
 ```sh
-bash <(curl -Ls git.io/instantarch)
+bash <(curl -L instantos.io/install)
 ```
 
 This will download and start the installer.
