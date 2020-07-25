@@ -21,7 +21,8 @@ You can access this list by pressing Super + F1
 | Super + Shift + Return       | Move window into master area                      |
 | Super + Ctrl + Number        | Toggle on additional tag                          |
 | Super + Alt + Number         | Follow window to tag number                       |
-| Super + Shift + Comma/Period | Move Window to other monitor                      |
+| Super + Shift + Comma/Period | Move window to other monitor                      |
+| Super + Alt + Comma/Period   | Move and follow window to other monitor           |
 | Super + J/K                  | Switch focus                                      |
 | Super + Ctrl + J/K           | Move window through stack                         |
 | Super + Y                    | Open graphical application launcher               |
