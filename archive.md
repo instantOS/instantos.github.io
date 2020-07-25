@@ -8,3 +8,8 @@
 </ul>
 
 md5 hash: ```82d2e4259e38a28dc7e653a809fb9573```
+
+### Torrent
+
+[Magnet link](magnet:?xt=urn:btih:CD7PJHRN5KB6XAQDEFDLDN3L34AR6RCK)
+[Torrent file](https://instantos.io/torrent/instantos_beta3.iso.torrent)
