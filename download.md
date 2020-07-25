@@ -39,6 +39,6 @@ It works identically to the 64 bit installer, but has to run off an Arch 32 iso 
 
 the default user and password are instantos and instantos with no root password. 
 
-## [Archive](instantos.io/archive)
+## [Archive](archive)
 
 This contains an archive of older installation isos. It is ususally recommended not to use these and go for the latest build instead. 
