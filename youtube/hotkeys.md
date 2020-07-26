@@ -45,7 +45,7 @@ You can access this list by pressing Super + F1
 | Super + B                    | Toggle status bar                                 |
 | Super + Alt + S              | Toggle tag icons                                  |
 | Super + Ctrl + S             | Make current window sticky                        |
-| Super + Shift + S            | Hide empty tags                                   |
+| Super + Ctrl + Shift + S     | Hide empty tags                                   |
 | Super + Alt + Shift + S      | Toggle animations                                 |
 | Super + N                    | Open file manager                                 |
 | Super + R                    | Open Ranger                                       |
