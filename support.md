@@ -1,7 +1,7 @@
 ## Support
 
 Any questions or problems you might have will be answered as soon as possible. 
-You can request assistance in the following plances. 
+You can request assistance in the following places. 
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">GitHub</a></li>
