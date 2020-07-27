@@ -26,7 +26,7 @@ instantOS can be used with only a keyboard, mouse or even touchscreen (which mak
 It has support for tiling and floating windows and allows working with both of them. 
 
 ### Ultra lightweight
-The RAM usage on idle is about 150-160Mb. That is less half of what the lightest Ubuntu flavor uses. 
+The RAM usage on idle is about 150-160Mb. That is less than half of what the lightest Ubuntu flavor uses. 
 It comes with as little bloat as possible without sacrificing on features. 
 
 
