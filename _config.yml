@@ -1,3 +1,6 @@
 remote_theme: jekyllup/jekyll-theme-massively
 
 theme: jekyll-theme-slate
+
+plugins:
+    - jekyll-sitemap
