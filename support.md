@@ -9,5 +9,6 @@ You can request assistance in the following places.
     <li><a href="https://discord.io/instantos" class="button special icon fa-discord">Discord</a></li>
     <li><a href="mailto:instantos@paperbenni.xyz" class="button special icon fa-envelope">Mail</a></li>
     <li><a href="https://t.me/instantos" class="button special icon fa-telegram">Telegram</a></li>
+    <li><a href="https://gitter.im/instantOS/community?source=orgpage" class="button special icon fa-gitter">Gitter</a></li>
     <li><a href="https://matrix.to/#/!oegFDcozfbMAMKyeIE:matrix.org?via=matrix.org&via=t2bot.io&via=tchncs.de" class="button special icon fa-comments">Matrix</a></li>    
 </ul>
