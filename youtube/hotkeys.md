@@ -44,6 +44,8 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Comma/Period  | Cycle through all layouts                         |
 | Super + B                    | Toggle status bar                                 |
 | Super + Alt + S              | Toggle tag icons                                  |
+| Super + Shift + S            | Move application to scratchpad                    |
+| Super + S                    | Toggle scratchpad                                 |
 | Super + Ctrl + S             | Make current window sticky                        |
 | Super + Ctrl + Shift + S     | Hide empty tags                                   |
 | Super + Alt + Shift + S      | Toggle animations                                 |
