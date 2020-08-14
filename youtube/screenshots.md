@@ -7,10 +7,10 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
+    <li><a href="https://instantos.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
-Keybindings:
 
-Print: Take fullscreen screenshot into the clipboard
-Super + Print: Take screenshot of selected area
-Super + Print: Take screenshot of selected area
+Keybindings:
+Super + Print: take screenshot of selected area to the pictures folder
+Super + Ctrl + Print: take screenshot of selected area to the clipboard
+Super + Shift + Print: take fullscreen screenshot to the clipboard

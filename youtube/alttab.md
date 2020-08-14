@@ -7,7 +7,7 @@
 ## required skills
 
 <ul class="actions">
-    <li><a href="https://instantos.github.io/instantos.github.io/youtube/tags" class="button special icon fa-youtube">tags</a></li>
+    <li><a href="https://instantos.io/youtube/tags" class="button special icon fa-youtube">tags</a></li>
 </ul>
 
 If you are coming from Windows or another desktop environment, you are likely familiar with alt-tab menus. 

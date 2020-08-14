@@ -23,11 +23,11 @@ Putting 0 here would mean the text would touch the bars boundaries.
 
 Example of a top bar with the height 2
 
-![2px](https://instantos.github.io/instantos.github.io/images/topbar/2px.png)
+![2px](https://instantos.io/images/topbar/2px.png)
 
 Example of a top bar with the height 24
 
-![24px](https://instantos.github.io/instantos.github.io/images/topbar/24px.png)
+![24px](https://instantos.io/images/topbar/24px.png)
 
 ## Fonts
 

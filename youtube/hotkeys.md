@@ -21,7 +21,8 @@ You can access this list by pressing Super + F1
 | Super + Shift + Return       | Move window into master area                      |
 | Super + Ctrl + Number        | Toggle on additional tag                          |
 | Super + Alt + Number         | Follow window to tag number                       |
-| Super + Shift + Comma/Period | Move Window to other monitor                      |
+| Super + Shift + Comma/Period | Move window to other monitor                      |
+| Super + Alt + Comma/Period   | Move and follow window to other monitor           |
 | Super + J/K                  | Switch focus                                      |
 | Super + Ctrl + J/K           | Move window through stack                         |
 | Super + Y                    | Open graphical application launcher               |
@@ -33,7 +34,7 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + L             | Lock screen                                       |
 | Super + Ctrl + Q             | Open shutdown menu                                |
 | Super + Ctrl + Shift + Q     | Restart Window Manager                            |
-| Super + A                    | instantASSIST                                     |
+| Super + A                    | open instantASSIST                                |
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
@@ -43,8 +44,10 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Comma/Period  | Cycle through all layouts                         |
 | Super + B                    | Toggle status bar                                 |
 | Super + Alt + S              | Toggle tag icons                                  |
+| Super + Shift + S            | Move application to scratchpad                    |
+| Super + S                    | Toggle scratchpad                                 |
 | Super + Ctrl + S             | Make current window sticky                        |
-| Super + Shift + S            | Hide empty tags                                   |
+| Super + Ctrl + Shift + S     | Hide empty tags                                   |
 | Super + Alt + Shift + S      | Toggle animations                                 |
 | Super + N                    | Open file manager                                 |
 | Super + R                    | Open Ranger                                       |
@@ -62,6 +65,10 @@ You can access this list by pressing Super + F1
 | Super + Shift + M            | Enter move mode                                   |
 | Super + Alt + M              | Enter resize mode                                 |
 | Super + V                    | Open quickmenu                                    |
+| Super + Ctrl + C             | Open settings                                     |
+| Super + Print                | Take area screenshot to pictures folder           |
+| Super + Ctrl + Print         | Take area screenshot to clipboard                 |
+| Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
 
 
 ## Terminal
