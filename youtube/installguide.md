@@ -1,7 +1,7 @@
 # Installation guide
 
 This is a noob friendly installation guide intended for people who are new to
-Linux and installing operating systems. If you have already installed any other
+Linux or installing operating systems. If you have already installed any other
 Linux Distro you can likely skip this guide, but if you're having problems installing,
 it may still help you.  
 
@@ -73,7 +73,7 @@ polkit GUI.
 Shut down the target computer and insert the live medium.
 Next turn on the target computer.
 A lot of new computers automatically boot from a live medium if one is detected.
-If you see a brief status text or the instantOS logo, followed by a welcome screen,
+If you see an instantOS splash screen,
 you are done with this step. If that's not the case for you continue with the
 next instruction. Most computers have a splash screen that
 briefly appears before continuing the booting process. It usually contains the
@@ -92,6 +92,8 @@ can differ depending on the manufacturer.
 
 ### 5. Installation
 
+After booting the iso, confirm the first option in the instantOS splash screen
+using the enter key to enter the live session.
 Inside the live session you should have a welcome app with an install entry.
 Click on that or the applet in the top right to start the installation. This
 requires a constant internet access, ethernet is recommended. The installer
@@ -101,4 +103,4 @@ by using the enter key or left clicking. After you input all the information the
 installation process will begin and the computer will automatically reboot.
 In case it boots into the live session again, choose "boot existing OS" and you
 should be ready to use instantOS. If you have any questions or need help with
-something, feel free to ask in any of the places listed in support //weiter
+something, feel free to ask in any of the places listed in [support](/support)
