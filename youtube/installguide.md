@@ -104,3 +104,4 @@ installation process will begin and the computer will automatically reboot.
 In case it boots into the live session again, choose "boot existing OS" and you
 should be ready to use instantOS. If you have any questions or need help with
 something, feel free to ask in any of the places listed in [support](/support)
+
