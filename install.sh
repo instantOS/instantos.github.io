@@ -5,9 +5,11 @@
 ## instantOS is migrating from calamares to this ##
 ###################################################
 
-# copied from instantARCH
-
 # main script calling others
+
+# fix old mirror
+sed -i 's/instantos\.surge\.sh/packages.instantos.io/g' /etc/pacman.conf
+sed -i 's/repo\.instantos\.sh/packages.instantos.io/g' /etc/pacman.conf
 
 if ! whoami | grep -iq '^root'; then
     echo "not running as root, switching"
@@ -55,14 +57,19 @@ if command -v python; then
     pkill python3
 fi
 
-# sort mirrors
-pacman -Sy --noconfirm
-pacman -S git --noconfirm --needed
+while [ -z "$CONTINUEINSTALLATION" ]; do
+    if ! pacman -Sy --noconfirm || ! pacman -S git --noconfirm --needed; then
+        yes | pacman -Scc
+        pacman -Sy --noconfirm
+    else
+        export CONTINUEINSTALLATION="true"
+    fi
+done
 
-cd /root
+cd /root || exit 1
 [ -e instantARCH ] && rm -rf instantARCH
 git clone --depth=1 https://github.com/instantos/instantARCH.git
-cd instantARCH
+cd instantARCH || exit 1
 
 # use alternative versions of the installer
 if [ -n "$1" ]; then
@@ -87,15 +94,16 @@ if [ -n "$1" ]; then
     esac
 
 fi
-chmod +x *.sh
-chmod +x */*.sh
+
+chmod +x ./*.sh
+chmod +x ./*/*.sh
 
 ./depend/depend.sh
 ./artix/preinstall.sh
 
 [ -e /usr/share/liveutils ] && pkill instantmenu
 
-cd /root/instantARCH
+cd /root/instantARCH || exit
 
 ./ask.sh || {
     if ! [ -e /opt/instantos/installcanceled ]; then
@@ -108,8 +116,8 @@ cd /root/instantARCH
     fi
 }
 
-chmod +x *.sh
-chmod +x **/*.sh
+chmod +x ./*.sh
+chmod +x ./**/*.sh
 
 echo "local install"
 ./localinstall.sh 2>&1 | tee /opt/localinstall &&
@@ -130,7 +138,7 @@ uploadlogs() {
         cat /opt/systeminstall >>/opt/install.log
     fi
 
-    cd /opt
+    cd /opt || exit
     cp /root/instantARCH/data/netrc ~/.netrc
     curl -n -F 'f:1=@install.log' ix.io
     dialog --msgbox "installation failed

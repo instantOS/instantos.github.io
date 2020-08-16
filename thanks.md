@@ -8,7 +8,13 @@ The following people are helping to improve instantOS
 Downloads kindly provided by [file.coffee](https://file.coffee/) - File sharing,
 redefined
 
-## Patreon Supporters
+## [Patreon](https://patreon.com/paperbenni) Supporters
 
-Lambdascientist
-// weiter
+con-f-use
+CHAITANYA CHALASANI
+LambdaScientist
+Omry Ginzburg
+Michal Siedlaczek
+Carlos Echenique
+Jason Crabtree
+Nick
