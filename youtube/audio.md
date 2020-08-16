@@ -10,8 +10,10 @@
     <li><a href="https://instantos.io/youtube/assist" class="button special icon fa-youtube">instantASSIST</a></li>
 </ul>
 
-The most simple way to change volume is to hover over the status text and scroll with the most wheel. 
-To only use the keyboard you can either use the media keys if you have those or the p-assist, that means opening up instantASSIT using Super + A and typing in P.
+The most simple way to change volume is to hover over the status text and scroll
+with the mouse wheel. 
+To only use the keyboard you can either use the media keys if you have those or
+the p-assist, that means opening up instantASSIT using Super + A and typing in P.
 This brings up a volume slider. You can use the arrow keys, the j/k keys or +/- to change volume now.
 You can also use the mouse to drag or click on the slider. 
 To set it to a specific value, type in the number and confirm with the return key. 
