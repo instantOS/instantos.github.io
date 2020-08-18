@@ -15,26 +15,33 @@ Everything is lightning fast, flexible and just works.
 ## Features
 
 ### Just works
-The user does not have to worry about everything from wifi to volume and brightness, theming and notification-management. 
-The distro is also tested with non-techies as well as power users. 
+
+The user does not have to worry about everything from wifi to volume and brightness,
+theming and notification-management.
+The distro is also tested with non-techies as well as power users.
 
 ### Power-user friendly
+
 Loads of keybindings and extra features ensure a high skill ceiling that is still simple to get started with. 
 
 ### Flexible
-instantOS can be used with only a keyboard, mouse or even touchscreen (which makes it the only tiling capable distro with full tablet support)
-It has support for tiling and floating windows and allows working with both of them. 
+
+instantOS can be used with only a keyboard, mouse or even touchscreen (which
+makes it the only tiling capable distro with full tablet support)
+It has support for tiling and floating windows and allows working with both of them.
 
 ### Ultra lightweight
-The RAM usage on idle is about 150-160Mb. That is less than half of what the lightest Ubuntu flavor uses. 
-It comes with as little bloat as possible without sacrificing on features. 
 
+The RAM usage on idle is about 150-160Mb. That is less than half of what the
+lightest Ubuntu flavor uses. It comes with as little bloat as possible without
+sacrificing on features. 
 
 ## Support
 
-Until the userbase outgrows this, any questions will be answered immediatly by the devs. 
-You can open issues on [Github](https://github.com/instantOS),
-ask for help on the [Discord server](https://discord.io/instantos), on the [Subreddit](https://reddit.com/r/instantos) or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
+Until the userbase outgrows this, any questions will be answered immediately
+by the devs. You can open issues on [Github](https://github.com/instantOS),
+ask for help on the [Discord server](https://discord.io/instantos), on the [Subreddit](https://reddit.com/r/instantos)
+or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
 
 <ul class="actions">
     <li><a href="https://github.com/instantos" class="button special icon fa-github">get involved</a></li>
@@ -54,7 +61,9 @@ ask for help on the [Discord server](https://discord.io/instantos), on the [Subr
 ## [Partners](https://instantos.io/thanks)
 
 ## [Contributing](https://instantos.io/repoinfo)
-A list of repos, todo and some guidelines can be found [here](https://instantos.io/repoinfo). 
 
---------
+A list of repos, todo and some guidelines can be found [here](https://instantos.io/repoinfo).
+
+-------------------
+
 ## instantOS is still in early beta, contributions always welcome

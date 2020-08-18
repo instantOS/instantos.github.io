@@ -14,9 +14,9 @@ things work and what you're doing.
 
 To install an operating system you need a live medium. That's a fancy term for
 saying that you create a copy of that OS on a removable medium like a USB stick
-or a DVD (although those have falled out of fashion in recent years)
+or a DVD (although those have fallen out of fashion in recent years)
 This copy of the OS is a special version that's non-persistent meaning that any changes
-you make while using it are wipen upon rebootin. It also contains an installer program
+you make while using it are wiped upon rebooting. It also contains an installer program
 that can copy the operating system to your computers disk, meaning it will be
 what the computer is normally running.
 
@@ -51,8 +51,8 @@ be the one you plan on installing to).
 ### 2. Download etcher.io
 
 Next you'll need a piece of software called etcher. it can be downloaded from [https://etcher.io](https://etcher.io)
-and like instantOS is completely free and open source. On Linux the Appimage
-version is recommended. Other usb burning programs may work as well, although
+and like instantOS is completely free and open source. On Linux the AppImage
+version is recommended. Other USB burning programs may work as well, although
 dd has been proven to be problematic, so for the best results it is recommended to
 use etcher.
 
@@ -81,7 +81,7 @@ Logo of the manufacturer. Somewhere, usually below the logo there should be a
 list of keys that can be pressed while the splash screen is active and a
 description of what they do. Look for "boot medium" or somethings similar, and
 if that is not there, go for "BIOS" or "setup". If you missed the key the first
-time around, shut the computer back down and start repeadedly pressing it as soon
+time around, shut the computer back down and start repeatedly pressing it as soon
 as it turns on. If the "boot medium" option is available you should get a menu that
 lists all storage devices that are plugged in. The installation medium is usually
 called usb flash drive or something similar. Choose that, usually using the arrow
@@ -97,7 +97,7 @@ using the enter key to enter the live session.
 Inside the live session you should have a welcome app with an install entry.
 Click on that or the applet in the top right to start the installation. This
 requires a constant internet access, ethernet is recommended. The installer
-asks a few questions and shouls be fairly self explanatory. You can select things
+asks a few questions and should be fairly self explanatory. You can select things
 using either the arrow keys, by searching for items or using the mouse. Confirm options
 by using the enter key or left clicking. After you input all the information the
 installation process will begin and the computer will automatically reboot.

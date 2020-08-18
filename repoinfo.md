@@ -121,7 +121,7 @@ Just a collection of pictures included as a category in instantWALLPAPER
 
 ### [instantMETA](https://github.com/instantOS/instantMETA)
 
-a completely empty package used as a placeholder for git links
+A completely empty package used as a placeholder for git links
 
 ### [snap-dummy](https://github.com/instantOS/snap-dummy)
 
@@ -152,10 +152,10 @@ The grub theme for insatntOS. This only contains the theme, nothing else.
 
 ### [rox-filer](https://github.com/instantOS/rox-filer)
 
-a basic fork of rox-filer to be used for optional desktop icons.
+A basic fork of rox-filer to be used for optional desktop icons.
 
 ### [instantDEB](https://github.com/instantOS/instantDEB)
 
-a way to create debian packages from arch PKGBUILD files.
-Originally created to enable a debian edition of instantOS.
+A way to create Debian packages from arch PKGBUILD files.
+Originally created to enable a Debian edition of instantOS.
 Not much work has been done here as of recently.

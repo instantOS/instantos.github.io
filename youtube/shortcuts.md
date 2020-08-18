@@ -9,7 +9,7 @@ If you are a more advanced user, you can likely skip this part of the documentat
 
 All keybindings follow a simple convention:
 Hold down a set of special keys, also called modifiers, and then press a
-normal key to do an action. Most keybinding make use of the super key. On most
+normal key to do an action. Most keybindings make use of the super key. On most
 keyboards it will have a Windows logo on it, on a Mac it is the command key.
 When noting a keyboard shortcut, the modifiers are listed first, followed by
 the action key. For example: Super + A refers to holding down the super key

@@ -18,7 +18,7 @@ They work like this:
 ```
 
 They might look strange at first but the reasoning behind them is that they are
-on the homerow and easier to access than the arrow keys when typing.
-Lots of linux users are already familiar with them and using existing muscle
+on the home row and easier to access than the arrow keys when typing.
+Lots of Linux users are already familiar with them and using existing muscle
 memory is always good. It also leaves the arrow keys to be used for other functionality.
 

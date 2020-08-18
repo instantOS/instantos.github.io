@@ -22,19 +22,23 @@ It does so according to a simple set of rules called a layout.
 
 You can see the currently selected layout to the right of the tag indicators.
 
-## Master and Stack.
+## Master and Stack
 
 Most layouts have two areas, the master and the stack.
-The master usually contains the main Application you're using like a web browser or text editor while the stack contains additional applications like music players, terminals or file browsers.
-Some layouts also allow to have multiple applications in the master area
+The master usually contains the main Application you're using like a web
+browser or text editor while the stack contains additional applications like
+music players, terminals or file browsers. Some layouts also allow to have
+multiple applications in the master area
 
-Use Super + Shift + Return to put a window into the master or into the stack if it already is in the master area.
+Use Super + Shift + Return to put a window into the master or into the stack
+if it already is in the master area.
 
 Some layouts also allow resizing the master and stack area.
 The keybinding for this are Super + H and Super + L.
 
-Reorder windows
-Super + Ctrl + J and Super + Ctrl + K makes the current window and the window next to it swap places.
+Reorder windows  
+Super + Ctrl + J and Super + Ctrl + K makes the current window and the window
+next to it swap places.
 
 ## Rundown of all layouts
 

@@ -10,12 +10,13 @@ beta 4
 
 md5 hash: ```b66d104918859c8ea84da5b5eeaa1461```
 
-updating to a new build does NOT require reinstalling the OS.   
-a simple
-```
+updating to a new build does NOT require reinstalling the OS. a simple
+
+```sh
 instantupdate
 ```
-takes care of that. 
+
+takes care of that.
 
 instantOS specific packages are hosted on [instantos.surge.sh](https://instantos.surge.sh)  
 For other packages, the default Arch repos are used.

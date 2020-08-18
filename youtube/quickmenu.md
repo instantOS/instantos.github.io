@@ -18,7 +18,7 @@ directory of quickmenu.
 
 First it will prompt you to provide a name. This will be what shows up as the
 entry in the menu.
-Any unix filename is valid here.
+Any Unix filename is valid here.
 Next you will have to type in what the entry should be mapped to.
 All entries are interpreted in a bash shell so you can use as much scripting
 magic as you like.
