@@ -30,6 +30,7 @@ it if you prefer that.
 - [overlays](https://instantos.io/youtube/overlays)
 - [scratchpad](https://instantos.io/youtube/scratchpad)
 - [alt-tab](https://instantos.io/youtube/alttab)
+- [sticky windows](https://instantos.io/youtube/sticky)
 
 ### Power-User Features
 
