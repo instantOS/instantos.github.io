@@ -16,25 +16,39 @@ Everything is lightning fast, flexible and just works.
 
 ### Just works
 
-The user does not have to worry about everything from wifi to volume and brightness,
-theming and notification-management.
-The distro is also tested with non-techies as well as power users.
+The user does not have to worry about everything from wifi to volume and
+brightness, theming and notification-management. A graphical settings menu
+ensures accessibility for anyone just like with a desktop environment.
 
 ### Power-user friendly
 
-Loads of keybindings and extra features ensure a high skill ceiling that is still simple to get started with. 
-
-### Flexible
-
-instantOS can be used with only a keyboard, mouse or even touchscreen (which
-makes it the only tiling capable distro with full tablet support)
-It has support for tiling and floating windows and allows working with both of them.
+instantOS has lots of functionality that goes beyond that of a normal desktop
+environment like tiling and instantASSIST that ensure a high skill ceiling
 
 ### Ultra lightweight
 
-The RAM usage on idle is about 150-160Mb. That is less than half of what the
-lightest Ubuntu flavor uses. It comes with as little bloat as possible without
-sacrificing on features. 
+The RAM usage on idle is about 150-160Mb (tested on a fresh install on
+Virtualbox). That is less than half of what the lightest Ubuntu flavor uses. It
+comes with as little bloat as possible without sacrificing on features.
+
+## Feature rich
+
+The small footprint is **not** achieved through measures like slimming down the
+kernel or compromising on features and visuals.
+
+### Hybrid window manager
+
+instantWM can do both tiling and floating windows with none of them being a
+second class citizen. It maintains full feature parity with dwm when it comes
+to tiling and the floating features can rival most DEs.
+
+## Keyboard and Mouse/touch support
+
+A keyboard centered workflow can make you much more productive but getting rid
+of the mouse is not the best thing for everyone. Tiling WMs actually make a lot
+of sense for tablets since screen estate is important and if you are using a
+graphics tablet it may be important as well to have a way of doing things with
+the mouse. That's why the interface can be fully navigated using only the mouse.
 
 ## Support
 
