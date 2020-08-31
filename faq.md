@@ -55,3 +55,25 @@ the installation process without releasing a new iso every time.  That is why
 instantARCH is netinstall only at the moment. An option to install without
 internet access will be added in the future.
 
+## Why is this not a Manjaro flavour
+
+instantOS used to be based on Manjaro in the beginning, but switched to being
+based on pure Arch for a few reasons.
+
+- Manjaro uses Calamares which is not a good fit for instantOS, see the reasons above
+- forking a fork comes with a bunch of problems
+  The Manjaro version had a bunch of issues like being laggy or not working on
+  some systems, bad internet connectivity, installation issues etc. With how
+  messy Manjaro development tools are it was hard to tell where the issues came
+  from and at some point it was just becoming easier to switch to Arch which is
+  what most people wanted anyway.
+- Arch is available for more architectures than manjaro. Manjaro 32 bit is
+  unmaintained and the other versions are a mess. instantOS being a lightweight
+  distro has a target audience on ARM and 32 bit, both of which can be served
+  better on Arch. You can read more about the experience with Manjaro tools [here](https://instantos.io/todo)
+- It does things different than Manjaro which lead to development basically
+  fighting its bloaty base.
+- Most users want it to be based of Arch after beta 1
+- Arch can be trusted to be always there and maintained, Manjaro can't as the
+  recent drama, forums being set to read only and so on shows
+
