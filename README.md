@@ -12,7 +12,7 @@ Everything is lightning fast, flexible and just works.
     <iframe width="100%" height="500px" src="https://www.youtube.com/embed/kwfdLO5vgO8" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Features
+## Overview
 
 ### Just works
 
@@ -31,7 +31,7 @@ The RAM usage on idle is about 150-160Mb (tested on a fresh install on
 Virtualbox). That is less than half of what the lightest Ubuntu flavor uses. It
 comes with as little bloat as possible without sacrificing on features.
 
-## Feature rich
+### Feature rich
 
 The small footprint is **not** achieved through measures like slimming down the
 kernel or compromising on features and visuals.
@@ -42,7 +42,7 @@ instantWM can do both tiling and floating windows with none of them being a
 second class citizen. It maintains full feature parity with dwm when it comes
 to tiling and the floating features can rival most DEs.
 
-## Keyboard and Mouse/touch support
+### Keyboard and Mouse/touch support
 
 A keyboard centered workflow can make you much more productive but getting rid
 of the mouse is not the best thing for everyone. Tiling WMs actually make a lot
@@ -50,7 +50,7 @@ of sense for tablets since screen estate is important and if you are using a
 graphics tablet it may be important as well to have a way of doing things with
 the mouse. That's why the interface can be fully navigated using only the mouse.
 
-## Support
+## Support/Community
 
 Until the userbase outgrows this, any questions will be answered immediately
 by the devs. You can open issues on [Github](https://github.com/instantOS),
