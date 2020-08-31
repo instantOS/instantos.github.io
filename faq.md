@@ -77,3 +77,25 @@ based on pure Arch for a few reasons.
 - Arch can be trusted to be always there and maintained, Manjaro can't as the
   recent drama, forums being set to read only and so on shows
 
+## YoUrE FrAgMeNtInG tHe LiNuX DeSkToP REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE, become a gnome contributor instead
+
+Sorry if this one is getting a little defensive but the question is provocative
+and so is the answer.  The question of why a distro should exist is an
+interesting one, so let me explain why I think instantOS doesn't fall into the
+"30th fork of something that doesn't contribute to the original but still
+breaks in different ways"-category.  First of all, if you wanted to rid the
+earth of such projects, start with Zorin OS. It is Ubuntu Gnome with a custom
+gtk theme. That is not even exaggerated, if you take a look at their Github
+that's the only thing you'll find, among with a fork of kde connect that's also
+just a rename. The amount of press Zorin has managed to gather with absolutely
+no substance is staggering. And no, I also think that we do not need yet
+another debian iso with kde or xfce preinstalled and a changed wallpaper.
+The reason why I created instantOS is that it **didn't** exist before. It is
+unique and its experience is not offered by any other Distro and I suspect that
+won't change. It's amining to be lightweight, feature rich, power user friendly
+and still usable for people who are not experienced with standalone WMs.
+It has a GUI control center that is not dependant on any desktop environment, a
+hybrind WM, a noob friendly lightweight installer any many more things that
+offer a desktop experience that is unique. It also ticks the technical boxes
+that make it a distro like having its own repos.
+
