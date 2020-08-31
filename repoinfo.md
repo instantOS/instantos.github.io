@@ -31,7 +31,7 @@ The menu system. It is responsible for things like the start menu, quick menu,
 shutdown menu and can also be used as a dmenu replacement (of which it is a fork)
 used to build the instantmenu package
 
-### [paperbenni/dotfiles](https://github.com/paperbenni/dotfiles)
+### [instantOS/dotfiles](https://github.com/instantOS/dotfiles)
 
 Dotfiles shipped with instantOS
 used to build the instantdotfiles package
