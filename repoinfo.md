@@ -38,7 +38,7 @@ used to build the instantdotfiles package
 
 ### [extra](https://github.com/instantOS/extra)
 
-contains all PKGBUILD files for instantOS packages and a list of AUR packages to
+Contains all PKGBUILD files for instantOS packages and a list of AUR packages to
 be precompiled and hosted on the instantOS repos
 
 ### [instantWALLPAPER](https://github.com/instantOS/instantWALLPAPER)
@@ -49,8 +49,8 @@ and imagemagick.
 
 ### [instantCONF](https://github.com/instantOS/instantCONF)
 
-a small configuration utility that serves as an easy way to store and retrieve settings.
-provides the iconf utility
+A small configuration utility that serves as an easy way to store and retrieve settings.
+Provides the iconf utility
 
 ### [instantTHEMES](https://github.com/instantOS/instantTHEMES)
 
@@ -60,17 +60,17 @@ It also provides a way to switch between a light and dark theme.
 
 ### [instantSHELL](https://github.com/instantOS/instantSHELL)
 
-the zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
+The zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
 used to build the instantshell package
 
 ### [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank)
 
-the GUI control panel for configuration of lots of different things
+The GUI control panel for configuration of lots of different things
 used to build the instantsettings package
 
 ### [iso](https://github.com/instantOS/iso)
 
-everything needed to build an instantOS live iso
+Everything needed to build an instantOS live iso
 
 ### [liveutils](https://github.com/instantOS/liveutils)
 
@@ -92,15 +92,15 @@ It is being used in the instantARCH installer.
 
 ### [mirror](https://github.com/instantOS/mirror)
 
-a mirror of all binary packages hosted int the instantOS pacman repo
+A mirror of all binary packages hosted int the instantOS pacman repo
 
 ### [instantTOOLS](https://github.com/instantOS/instantTOOLS)
 
-a set of scripts used for instantOS development
+A set of scripts used for instantOS development
 
 ### [instantWELCOME](https://github.com/instantOS/instantWELCOME)
 
-the welcome prompt coming up on the installation medium and on a fresh system
+The welcome prompt coming up on the installation medium and on a fresh system
 
 ### [instantLOCK](https://github.com/instantOS/instantLOCK)
 
@@ -125,7 +125,7 @@ A completely empty package used as a placeholder for git links
 
 ### [snap-dummy](https://github.com/instantOS/snap-dummy)
 
-instantOS doesn't ship with enabled snap support.
+instantOS doesn't ship with pre-enabled snap support.
 This tells you not to use them because they're resource heavy,
 unstable and unsafe
 (loads of proprietary low quality applications with no review process
@@ -148,7 +148,7 @@ some patches and fixes.
 
 ### [grub-instantos](https://github.com/instantOS/grub-instantos)
 
-The grub theme for insatntOS. This only contains the theme, nothing else.
+The grub theme for instantOS. This only contains the theme, nothing else.
 
 ### [rox-filer](https://github.com/instantOS/rox-filer)
 

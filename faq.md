@@ -60,24 +60,26 @@ internet access will be added in the future.
 instantOS used to be based on Manjaro in the beginning, but switched to being
 based on pure Arch for a few reasons.
 
-- Manjaro uses Calamares which is not a good fit for instantOS, see the reasons above
-- forking a fork comes with a bunch of problems
+- Manjaro uses Calamares which is not a good fit for instantOS, see the reasons
+  above  
+- forking a fork comes with a bunch of problems  
   The Manjaro version had a bunch of issues like being laggy or not working on
   some systems, bad internet connectivity, installation issues etc. With how
   messy Manjaro development tools are it was hard to tell where the issues came
   from and at some point it was just becoming easier to switch to Arch which is
-  what most people wanted anyway.
+  what most people wanted anyway.  
 - Arch is available for more architectures than manjaro. Manjaro 32 bit is
   unmaintained and the other versions are a mess. instantOS being a lightweight
   distro has a target audience on ARM and 32 bit, both of which can be served
-  better on Arch. You can read more about the experience with Manjaro tools [here](https://instantos.io/todo)
+  better on Arch. You can read more about the experience with Manjaro tools
+  [here](https://instantos.io/todo)  
 - It does things different than Manjaro which lead to development basically
-  fighting its bloaty base.
-- Most users want it to be based of Arch after beta 1
+  fighting its bloaty base.  
+- Most users want it to be based of Arch after beta 1  
 - Arch can be trusted to be always there and maintained, Manjaro can't as the
-  recent drama, forums being set to read only and so on shows
+  recent drama, forums being set to read only and so on shows  
 
-## YoUrE FrAgMeNtInG tHe LiNuX DeSkToP REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE, become a gnome contributor instead
+## YoUrE FrAgMeNtInG tHe LiNuX DeSkToP REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE, become a gnome contributor instead
 
 Sorry if this one is getting a little defensive but the question is provocative
 and so is the answer.  The question of why a distro should exist is an
