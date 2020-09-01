@@ -67,6 +67,7 @@ You can access this list by pressing Super + F1
 | Super + V                    | Open quickmenu                                    |
 | Super + Ctrl + C             | Open settings                                     |
 | Super + Print                | Take area screenshot to pictures folder           |
+| Super + Shift + V            | Open clipboard manager                            | 
 | Super + Ctrl + Print         | Take area screenshot to clipboard                 |
 | Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
 
