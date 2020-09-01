@@ -70,7 +70,6 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Print         | Take area screenshot to clipboard                 |
 | Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
 
-
 ## Terminal
 
 | Binding            | Funcionality     |
@@ -111,14 +110,16 @@ You can access this list by pressing Super + F1
 | Right Click                            | Shutdown button    | Lock screen                          |
 
 ## Desktop
+
 These are only active when there is no window on the current tag
 
 | Binding    | Funcionality         |
 | ---------- | ---------------------|
-| Return     | Open Terminal        |
-| F          | Open Firefox         |
+| Return     | Open terminal        |
+| F          | Open browser         |
+| E          | Open text editor     |
 | R          | Open ranger          |
-| N          | Open nautilus        |
+| N          | Open file manager    |
 | Tag Number | Switch to Tag Number |
 | C          | Open VS Code         |
 | +/-        | change volume        |
