@@ -56,5 +56,5 @@ the default user and password are instantos and instantos with no root password.
 
 ## [Archive](archive)
 
-This contains an archive of older installation isos. It is ususally recommended
+This contains an archive of older installation isos. It is usually recommended
 not to use these and go for the latest build instead.
