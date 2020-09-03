@@ -9,7 +9,10 @@ beta 4
 </ul>
 
 md5 hash:
-```b66d104918859c8ea84da5b5eeaa1461```
+
+```txt
+b66d104918859c8ea84da5b5eeaa1461
+```
 
 updating to a new build does NOT require reinstalling the OS. a simple
 
