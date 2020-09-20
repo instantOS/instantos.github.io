@@ -1,9 +1,11 @@
 # About me
 
-<p><span class="image right"><img src="https://github.com/paperbenni.png" alt="image missing" height="60" /></span>
-Hi, I am paperbenni, the creator and pretty much main developer of instantOS.
-instantOS is a passion project but I am motivated and could very well imagine
-this becoming a part time job if it continues to grow.
+<p><span class="image right"><img src="https://github.com/paperbenni.png" alt="image missing" height="100" /></span>
+
+Hi, I am paperbenni, the creator and pretty much main developer of Linux Distro
+instantOS and its desktop.  instantOS is a passion project but I am motivated
+and could very well imagine this becoming a part time job if it continues to
+grow.
 
 ## Technologies
 
@@ -15,7 +17,7 @@ I am comfortable with but not limited to
 - C
 - Python
 
-<p><span class="image right"><img src="github.com/paperbenni.png" alt="image missing" height="60" /></span>
+I also do a bit of design and motion graphics using Blender
 
 ## Links
 
