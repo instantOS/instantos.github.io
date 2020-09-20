@@ -23,7 +23,7 @@ management for all dotfiles and disabling the built in theming.
 Lots of themes are managed by instantOS. This includes Gtk, Qt, Terminal
 colors, rofi (application launcher) and dunst (notification daemon).
 This enables things like automatically switching to a dark mode at night.
-You can disable all theme management in the instantOS section of the control panel.
+You can disable all theme management in the appearance section of the settings panel.
 After doing that, you can set up your own themes for all of the above applications
 
 ### Terminal
@@ -34,4 +34,6 @@ instantOS will use it instead of the default one as long as it's installed in /u
 
 ### Gtk
 
-The appearance section of the control panel allows changing the gtk theme, font, icon set and cursor. 
+The appearance section of the control panel allows changing the gtk theme,
+font, icon set and cursor.
+
