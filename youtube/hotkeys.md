@@ -38,6 +38,7 @@ You can access this list by pressing Super + F1
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
+| Overlay: Super + Shift + Arrows| Move Window to adjacent tag                       |
 | Super + Alt + Left/Right     | Follow Window to adjacent tag                     |
 | Super + Up/Down              | Switch focus                                      |
 | Super + Comma/Period         | Switch monitor focus                              |
