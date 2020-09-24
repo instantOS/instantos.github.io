@@ -1,18 +1,16 @@
 # Download ISO
 
-beta 4
+beta 5
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v4-beta/instantos_beta4.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://instantos.file.coffee/iso/instantos_beta4.iso" class="button special icon fa-download">Mirror 1</a></li>
-    <li><a href="https://osdn.net/dl/instantos/instantos_beta4.iso" class="button special icon fa-download">Mirror 2</a></li>
-    <li><a href="http://raboninco.com/1Vxao" class="button special icon fa-download">Adfly Support Download</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://osdn.net/dl/instantos/instantos_beta5.iso" class="button special icon fa-download">Mirror 1</a></li>
 </ul>
 
 md5 hash:
 
 ```txt
-b66d104918859c8ea84da5b5eeaa1461
+cd0f64304c4753009faae9ddeea3657c
 ```
 
 updating to a new build does NOT require reinstalling the OS. a simple
