@@ -1,7 +1,7 @@
 ## instantOS - Home
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
     <li><a href="https://instantos.io/download" class="button special icon fa-download">Other Downloads</a></li>
 </ul>
 

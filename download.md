@@ -3,7 +3,7 @@
 beta 5
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
     <li><a href="https://osdn.net/dl/instantos/instantos_beta5.iso" class="button special icon fa-download">Mirror 1</a></li>
 </ul>
 
