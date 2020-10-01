@@ -10,7 +10,7 @@ beta 5
 md5 hash:
 
 ```txt
-cd0f64304c4753009faae9ddeea3657c
+805b4f5d64ccaa29cc495348a642a34a
 ```
 
 updating to a new build does NOT require reinstalling the OS. a simple
