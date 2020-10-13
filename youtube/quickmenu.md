@@ -66,6 +66,6 @@ Demo
 ## Other information
 
 Quickmenu only depends on imenu and instantmenu to run.
-The setup of all entries is completely portable. It resides in ~/instantos/quickmenu
+The setup of all entries is completely portable. It resides in ~/.config/instantos/quickmenu
 and can be freely moved or copied between different machines.
 

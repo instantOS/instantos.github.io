@@ -24,6 +24,8 @@ should lock the screen instead.
 - Lock screen: Lock the screen. For more information, refer to the Lockscreen article.
 - Kill WM: Restart the window manager. This is only really useful for
 tampering with it or recovering from a crash or freeze
+- suspend: keep current ram contents and pause the rest of the system. Can be
+  used to save battery.
 - Cancel: Closes the menu. You can also close it using the right mouse button
 or the escape key.
 
