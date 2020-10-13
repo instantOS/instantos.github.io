@@ -1,3 +1,25 @@
+# Archive
+
+This page contains download links for older versions of instantOS.  In most
+cases these should not be used and installation should always happen from the
+latest ISO or latest Arch ISO.
+
+
+## beta 4
+
+<ul class="actions">
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v4-beta/instantos_beta4.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://instantos.file.coffee/iso/instantos_beta4.iso" class="button special icon fa-download">Mirror 1</a></li>
+    <li><a href="https://osdn.net/dl/instantos/instantos_beta4.iso" class="button special icon fa-download">Mirror 2</a></li>
+    <li><a href="http://raboninco.com/1Vxao" class="button special icon fa-download">Adfly Support Download</a></li>
+</ul>
+
+md5 hash:
+
+```txt
+b66d104918859c8ea84da5b5eeaa1461
+```
+
 ## beta 3
 
 <ul class="actions">

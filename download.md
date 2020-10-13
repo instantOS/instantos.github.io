@@ -1,18 +1,21 @@
 # Download ISO
 
-beta 4
+beta 5
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v4-beta/instantos_beta4.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://osdn.net/dl/instantos/instantos_beta4.iso" class="button special icon fa-download">Mirror 1</a></li>
-    <li><a href="http://raboninco.com/1Vxao" class="button special icon fa-download">Adfly Support Download</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://osdn.net/dl/instantos/instantos_beta5_1.iso" class="button special icon fa-download">Mirror 1</a></li>
 </ul>
 
 md5 hash:
 
 ```txt
-b66d104918859c8ea84da5b5eeaa1461
+805b4f5d64ccaa29cc495348a642a34a
 ```
+
+NOTICE: there are two isos of beta 5, instantos_beta5_1.iso is the one that should
+be used. It's the same software but with a different build process for the iso
+that solves multiple issues present in the older iso
 
 updating to a new build does NOT require reinstalling the OS. a simple
 

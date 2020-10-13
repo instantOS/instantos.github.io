@@ -2,7 +2,6 @@
 
 ###################################################
 ## This is the official installer for instantOS  ##
-## instantOS is migrating from calamares to this ##
 ###################################################
 
 if ! whoami | grep -iq '^root'; then
@@ -21,6 +20,16 @@ else
     curl -s 'https://raw.githubusercontent.com/instantOS/instantLOGO/master/ascii.txt' | sed 's/^/    /g'
     echo ""
     echo ""
+fi
+
+# prevent multiple instances from being launched
+if [ -e /tmp/instantarchpid ]; then
+    echo "pidfile found"
+    if kill -0 "$(cat /tmp/instantarchpid)"; then
+        notify-send "installer already running, please do not start multiple instances"
+    fi
+else
+    echo "$$" >/tmp/instantarchpid
 fi
 
 if ! command -v imenu; then
@@ -66,16 +75,20 @@ done
 
 cd /root || exit 1
 [ -e instantARCH ] && rm -rf instantARCH
-git clone --depth=1 https://github.com/instantos/instantARCH.git
+
+if [ "$1" = "test" ]; then
+    echo "switching to testing branch"
+    git clone --single-branch --branch testing --depth=1 https://github.com/instantos/instantARCH.git
+    export INSTANTARCHTESTING="true"
+else
+    git clone --depth=1 https://github.com/instantos/instantARCH.git
+fi
+
 cd instantARCH || exit 1
 
 # use alternative versions of the installer
 if [ -n "$1" ]; then
     case "$1" in
-    "test")
-        echo "switching to testing branch"
-        git checkout -b testing
-        ;;
     "manual")
         if ! [ -e /root/manualarch ]; then
             echo "no manual instantARCH version found. Please clone it to /root/manualarch"
@@ -85,6 +98,7 @@ if [ -n "$1" ]; then
         fi
         rm -rf ./*
         cp -r /root/manualarch/* .
+        export INSTANTARCHMANUAL="true"
         ;;
     *)
         echo "running normal installer version"
@@ -98,6 +112,11 @@ chmod +x ./*/*.sh
 
 ./depend/depend.sh
 ./artix/preinstall.sh
+
+if [ -n "$INSTANTARCHTESTING" ]; then
+    echo "install config"
+    iroot installtest 1
+fi
 
 [ -e /usr/share/liveutils ] && pkill instantmenu
 

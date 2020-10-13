@@ -15,12 +15,38 @@ use the CLI installer
 There are some people working on an arm community edition.
 Development is happening on [GitHub](https://github.com/instantOS/instantOS-arm)
 
-## I want to use instantOS software on my Distro
+## Why is this a Distro not a DE
 
-At the moment, getting everything to work on instantOS has priority, but after
-the first stable release of instantOS, instantOS programs will be adjusted to
-work on other Distros too, Arch and Manjaro first, followed by Debian-based and
-NixOS.
+instantOS has an approach similar to elementary OS (apart from providing a
+different workflow) in that it's technically a collection of custom software
+that can be run under any distro but actually doing so could require some extra
+steps. Being a Distro everything about the initial setup can be controlled and
+things are pretty much guaranteed to work properly. instantOS should be
+accessible to anyone with as little upfront effort as possible.  It also gets
+you a near Arch experience under the hood, more so than Manjaro or Endeavour as
+the installer is compliant with the official install guide. This is ideal as a
+base system and previously not accessible to non-technical people.
+
+## Wayland
+
+instantOS will eventually transition to Wayland but this will only happen once
+certain conditions are met.  First off, hardware support needs to be on part or
+better than Xorg, namely nvidia needs to be working reliably and fast. There
+also needs to be feature parity between wayland and x11. Screen recording and
+screenshots must be stable and working. No OBS features or anything like that
+should be missing.  It also won't be among the first applicatios to adapt
+wayland. As long as 90% of GUIs still run in xwayland switching doesn't make
+sense.  Lastly, things need to be as stable as Xorg, instantOS won't be an
+experimental example of what wayland can do, it's meant as an actual operating
+system people can use, not a tech demo.  I know that this sounds like a lot to
+ask but under no circumstances will the jump to wayland come with a worse user
+experience. Who cares if under the hood things are theoretically clean and
+modern if they don't work?
+
+"But I have been using wayland for years and it's fine"
+
+It might work for you but it's far from working for everyone. To be a suitable
+replacement for Xorg that needs to be the case.
 
 ## Can I change keybindings
 
