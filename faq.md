@@ -27,6 +27,7 @@ you a near Arch experience under the hood, more so than Manjaro or Endeavour as
 the installer is compliant with the official install guide. This is ideal as a
 base system and previously not accessible to non-technical people.
 
+
 ## Wayland
 
 instantOS will eventually transition to Wayland but this will only happen once
@@ -34,7 +35,7 @@ certain conditions are met.  First off, hardware support needs to be on part or
 better than Xorg, namely nvidia needs to be working reliably and fast. There
 also needs to be feature parity between wayland and x11. Screen recording and
 screenshots must be stable and working. No OBS features or anything like that
-should be missing.  It also won't be among the first applicatios to adapt
+should be missing.  It also won't be among the first applications to adapt
 wayland. As long as 90% of GUIs still run in xwayland switching doesn't make
 sense.  Lastly, things need to be as stable as Xorg, instantOS won't be an
 experimental example of what wayland can do, it's meant as an actual operating
@@ -104,6 +105,16 @@ based on pure Arch for a few reasons.
 - Most users want it to be based of Arch after beta 1  
 - Arch can be trusted to be always there and maintained, Manjaro can't as the
   recent drama, forums being set to read only and so on shows  
+
+## is instantOS just Arch with instantWM
+
+No it isn't. Just take a look at the [GitHub](https://github.com/instantOS) and
+tell me if you just see a window manager. Installing instantWM on Arch will
+*just* give you a window manager. No application launcher, no settings, no
+start menu, just a window manager. installing the instantOS packages on another
+distribution will get you pretty close to the stock instantOS experience.
+Please note that that is not the intended use case for instantOS packages. It
+is harder to provide support for these "frankensteined" systems.
 
 ## YoUrE FrAgMeNtInG tHe LiNuX DeSkToP REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE, become a gnome contributor instead
 
