@@ -23,16 +23,22 @@ down.
 ## Fakefullscreen
 
 Fakefullscreen allows you to resize and move fullscreen windows. The
-application will still think it is in full screen.
-This can be used to move applications that would otherwise be stuck on the
-monitor they launched on or to correct applications that behave incorrectly.
+application will still think it is in full screen.  This can be used to move
+applications that would otherwise be stuck on the monitor they launched on or
+to correct applications that behave incorrectly.
 
-To toggle fakefullscreen, press Super + Shift + F
-If the application is not in fullscreen, this will not have any noticeable effect.
-But as soon as the application goes into fullscreen, it will not cover the
-entire screen, but can still be put into layouts, moved around in floating
-mode or even resized. Some applications will not like being resized while in
-full screen mode, so be careful with that. Fakefullscreen can also be
-activated for applications that are already in fullscreen mode.
-Pressing Super + Shift + F a second time will deactivate fakefullscreen.
+To toggle fakefullscreen, press Super + Shift + F. If the application is not
+already in fullscreen, this will not have any noticeable effect.  But as soon
+as the application goes into fullscreen, it will not cover the entire screen,
+but can still be put into layouts, moved around in floating mode or even
+resized. Some applications will not like being resized while in full screen
+mode, so be careful with that. Fakefullscreen can also be activated for
+applications that are already in fullscreen mode.  Pressing Super + Shift + F a
+second time will deactivate fakefullscreen.
+
+Applications for this are forcing games that like to appear in fullscreen and
+on the wrong monitor to behave and make video players or websites that don't
+support picture-in-picture functionality "support" it by entering fullscreen
+mode and then floating them around with fakefullscreen.
+
 
