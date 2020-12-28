@@ -5,7 +5,8 @@
     <li><a href="https://instantos.io/download" class="button special icon fa-download">Other Downloads</a></li>
 </ul>
 
-instantOS is an Arch based distro that works out of the box but is still aimed at power users.
+instantOS is an Arch based distro that works out of the box but is still aimed
+at power users.  
 Everything is lightning fast, flexible and just works.
 
 <div align="center">
@@ -40,7 +41,7 @@ kernel or compromising on features and visuals.
 
 instantWM can do both tiling and floating windows with none of them being a
 second class citizen. It maintains full feature parity with dwm when it comes
-to tiling and the floating features can rival most DEs.
+to tiling and the floating features can rival most conventional desktop environments.
 
 ### Keyboard and Mouse/touch support
 
