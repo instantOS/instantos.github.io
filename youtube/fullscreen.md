@@ -2,7 +2,7 @@
 
 ## Fullscreen apps
 
-Applications that are in fullscreen like a youtube video or game work just like
+Applications that are in fullscreen like a YouTube video or game work just like
 on any other DE as in they take the entire screen and cover any UI elements.
 They can however still be moved to other tags or you can switch to another tag
 to still retain multitasking functionality.
@@ -12,7 +12,7 @@ to still retain multitasking functionality.
 This feature allows you to temporarily put a window into fullscreen mode
 without impacting any of the other windows or its actual position and size. It
 can be activated using Super + Ctrl + F and using it a second time restores the
-window to its normal behaviour.
+window to its normal behavior.
 
 For example you could be in the grid layout working with lots of windows but
 would like to examine the contents of a window using the entire screen. Instead

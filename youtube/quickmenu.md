@@ -24,7 +24,7 @@ All entries are interpreted in a bash shell so you can use as much scripting
 magic as you like.
 
 The option "enter command" allows you to quickly type in a command.
-"edit script" opens up a full neovim window that allows you to write multiline scripts.
+"edit script" opens up a full neovim window that allows you to write multi-line scripts.
 
 At the top of the script template are two comments
 

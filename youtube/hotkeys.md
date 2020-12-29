@@ -7,7 +7,7 @@ You can access this list by pressing Super + F1
 
 ## General
 
-| Binding                      | Funcionality                                      |
+| Binding                      | Functionality                                      |
 | ---------------------------- | ------------------------------------------------- |
 | Super + Space                | Open text based application launcher              |
 | Super + Ctrl + Space         | Open super lightweight command launcher           |
@@ -75,7 +75,7 @@ You can access this list by pressing Super + F1
 
 ## Terminal
 
-| Binding            | Funcionality     |
+| Binding            | Functionality     |
 | ------------------ | ---------------- |
 | Ctrl + Shift + C   | Copy             |
 | Ctrl + Shift + V   | Paste            |
@@ -86,7 +86,7 @@ You can access this list by pressing Super + F1
 
 ## Mouse
 
-| Binding                                | Part of the Screen | Funcionality                         |
+| Binding                                | Part of the Screen | Functionality                         |
 | -------------------------------------- | ------------------ | ------------------------------------ |
 | Scroll                                 | Status text        | Change volume                        |
 | Super + scroll                         | Status text        | Change brightness (laptop only)      |
@@ -102,7 +102,7 @@ You can access this list by pressing Super + F1
 | Right Click                            | Desktop            | Open text based app launcher         |
 | Left Click                             | Status text        | Open app launcher                    |
 | Middle Click                           | Status text        | Open Terminal                        |
-| Middle Click                           | Desktop            | Open super lightweigt command runner |
+| Middle Click                           | Desktop            | Open super lightweight command runner |
 | Right Click                            | Status text        | Open App switcher                    |
 | Scroll                                 | Window bar         | Switch focus                         |
 | Shift + Scroll                         | Window bar         | Move Window through stack            |
@@ -116,7 +116,7 @@ You can access this list by pressing Super + F1
 
 These are only active when there is no window on the current tag
 
-| Binding    | Funcionality         |
+| Binding    | Functionality         |
 | ---------- | ---------------------|
 | Return     | Open terminal        |
 | F          | Open browser         |

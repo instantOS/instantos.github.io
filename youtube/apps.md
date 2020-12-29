@@ -32,7 +32,7 @@ entries meaning that pretty much all applications are accessible from here.
 That includes applications that do not open any windows like grep or htop. Just
 like the graphical launcher this launcher remembers frequently used
 applications and puts them higher up in the list.  This launcher can also be
-used to run applications with specific arguments or from absolte paths.
+used to run applications with specific arguments or from absolute paths.
 
 It also has a few different modes. You can switch between them using Shift +
 Left/Right Arrow The default normal mode is using $PATH and executes the given
@@ -61,14 +61,14 @@ based launcher. It does however provide a desktop file meaning that it is
 accessible from the graphical menu. Some applications do not provide desktop
 files at all *and* are installed into directories not included in $PATH. In
 that case you can either add that directory to PATH or execute the program
-using its absolute path. In the case of davinci resolve that would be
+using its absolute path. In the case of Davinci resolve that would be
 /opt/resolve/bin/resolve. Wine programs can directly be invoked using wine
 /path/to/program.exe
 
 ### dafuq is $PATH ?!
 
 $PATH is an environment variable containing a list of directories. If you
-execute a command then linux goes through all those directories and checks if
+execute a command then Linux goes through all those directories and checks if
 any of them contain an executable with that name. It then stops and executes that
 application.
 
@@ -76,7 +76,7 @@ application.
 
 You likely installed instantWM on an existing system. instantWM is just a
 window manager does not include any other programs. These have to be installed
-seperately from [http://packages.instantos.io.](http://packages.instantos.io).
+separately from [http://packages.instantos.io.](http://packages.instantos.io).
 It is also a lot harder to provide support for these frankensteined systems
 since lots of things can vary depending on what your base system looks like.
 

@@ -4,7 +4,7 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/T40cfbBVBQw" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Overlays work similar to dropdown terminals like Guake, but are integrated
+Overlays work similar to drop-down terminals like Guake, but are integrated
 into the WM and work with any application. To create an overlay, press Super +
 Ctrl + W or drag a window to the top right corner. You can now toggle the
 overlay on or off by pressing Super + W or hovering over the corner.

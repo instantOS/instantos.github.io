@@ -5,7 +5,7 @@
 The default file explorer in instantOS is gnome's nautilus. It comes with an
 excellent file search engine that can be accessed by just typing the search
 term with nautilus in focus or clicking on the magnifying glass in the top right.
-It searches recursively through the current directory prefering more direct
+It searches recursively through the current directory preferring more direct
 matches that are higher up in the file tree. It can however slow down when
 searching through large amounts of files. For a faster option, see the
 instantSEARCH section below.
@@ -14,12 +14,12 @@ instantSEARCH section below.
 
 instantOS comes with a tool called instantSEARCH. It is accessed with the
 shortcut Super + Alt + F. It is using mlocate and plocate as a backend and
-works by scanning your entire harddrive first to build and index that it then
+works by scanning your entire hard drive first to build and index that it then
 searches through that index for your search term. This allows you to search
 through everything on your entire drive in less than a second (tested with over
-500000 files on my archive hdd). This has the drawback that running it for the
+500000 files on my archive HDD). This has the drawback that running it for the
 first time will take a while and new files only appear after scanning for
-changes. Rescanning with an existing database will take considerably less time
+changes. Re-scanning with an existing database will take considerably less time
 though.
 After opening instantSEARCH type in your search term and a list of matches will
 pop up. This list itself can be navigated by searching or using the arrow keys

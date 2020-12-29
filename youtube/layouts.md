@@ -49,7 +49,7 @@ This layout has a master area on the left and a stack area on the right.
 ### Grid \#
 
 <p><span class="image right"><img src="https://instantos.io/images/layouts/grid.png" alt="image missing" height="60" /></span>
-Applications get arranged into a grid where earch one gets resized to the same size. It does not distunguish between master or stack.
+Applications get arranged into a grid where each one gets resized to the same size. It does not distinguish between master or stack.
 </p>
 
 ### Horizontal stack 1 ===
@@ -73,7 +73,7 @@ All windows are Fullscreen and layered on top of each other. The window currentl
 ### Floating _
 
 <p><span class="image right"><img src="https://instantos.io/images/layouts/floating.png" alt="image missing" height="60" /></span>
-This completely disables window tiling. Use this to get a floating wm like experience.
+This completely disables window tiling. Use this to get a floating WM like experience.
 </p>
 
 ### Overview O

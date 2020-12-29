@@ -45,7 +45,7 @@ You need
 ### 1. Download ISO
 
 Head over to [https://instantos.io/download](https://instantos.io/download) and
-download the latest iso to your computer (can be any computer, does not have to
+download the latest ISO to your computer (can be any computer, does not have to
 be the one you plan on installing to).
 
 ### 2. Download etcher.io
@@ -59,9 +59,9 @@ use etcher.
 ### 3. Burn the USB
 
 This step will wipe the entire USB stick, so back up any data you may have on it
-elsewhere. After the installation the usb stick can be used to store regular
+elsewhere. After the installation the USB stick can be used to store regular
 files again. Begin by inserting the USB stick. Start up Etcher and choose
-the iso you downloaded in step 1. Next choose the USB drive. Be sure you choose
+the ISO you downloaded in step 1. Next choose the USB drive. Be sure you choose
 the right one because again, all data on it will be wiped.
 Then click "Flash" and wait until the process has finished.
 On windows you will need administrator rights and on Linux you will need to enter
@@ -84,7 +84,7 @@ if that is not there, go for "BIOS" or "setup". If you missed the key the first
 time around, shut the computer back down and start repeatedly pressing it as soon
 as it turns on. If the "boot medium" option is available you should get a menu that
 lists all storage devices that are plugged in. The installation medium is usually
-called usb flash drive or something similar. Choose that, usually using the arrow
+called USB flash drive or something similar. Choose that, usually using the arrow
 keys, newer computers might support a mouse here, and confirm using the enter key.
 If you don't have the boot device menu and instead have to use the bios, try looking
 for "boot order" and put the live medium as the first item in this list. This process
@@ -92,7 +92,7 @@ can differ depending on the manufacturer.
 
 ### 5. Installation
 
-After booting the iso, confirm the first option in the instantOS splash screen
+After booting the ISO, confirm the first option in the instantOS splash screen
 using the enter key to enter the live session.
 Inside the live session you should have a welcome app with an install entry.
 Click on that or the applet in the top right to start the installation. This

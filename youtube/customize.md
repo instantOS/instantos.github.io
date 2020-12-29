@@ -34,6 +34,6 @@ instantOS will use it instead of the default one as long as it's installed in /u
 
 ### Gtk
 
-The appearance section of the control panel allows changing the gtk theme,
+The appearance section of the control panel allows changing the Gtk theme,
 font, icon set and cursor.
 

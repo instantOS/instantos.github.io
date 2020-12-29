@@ -21,7 +21,7 @@ shutting down your computer.
 - Logout: log out of your user session and go back to the display manager. If
 your goal is to keep your computer secure while leaving it unattended, you
 should lock the screen instead.
-- Lock screen: Lock the screen. For more information, refer to the Lockscreen article.
+- Lock screen: Lock the screen. For more information, refer to the Lock screen article.
 - Kill WM: Restart the window manager. This is only really useful for
 tampering with it or recovering from a crash or freeze
 - suspend: keep current ram contents and pause the rest of the system. Can be

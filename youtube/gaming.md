@@ -18,7 +18,7 @@ You can do that by pressing Super + A and typing in c
 Repeat the same to turn it back on. 
 
 If a wine game freezes, minimizing and unminimizing it usually solves the issue. 
-It is recommended to play wine games with steam play or lutris wine versions as they contain more gaming related patches and are more up to date. Just make sure you always select the newest version of wine when using lutris. 
+It is recommended to play wine games with steam play or Lutris wine versions as they contain more gaming related patches and are more up to date. Just make sure you always select the newest version of wine when using Lutris. 
 If the game still behaves weird (transparent splash screens are often problematic), enable virtual desktop in Lutris and/or winecfg. 
 
 Fakefullscreen is really helpful for lots of games, especially ones running in wine virtual desktops

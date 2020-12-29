@@ -19,7 +19,7 @@ Notifications can be read from the notification center by left clicking on them.
 ## Deleting notifications
 
 Notifications can either be deleted individually by selecting them and
-choosing the delete option or by pressing shift + left/right arrow ley in
+choosing the delete option or by pressing shift + left/right arrow key in
 the notification center where you can delete notifications that contain a
 certain keyword, come from a specific application or you van just clear all
 of them.
