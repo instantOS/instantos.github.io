@@ -76,9 +76,9 @@ or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
 
 ## [Partners](https://instantos.io/thanks)
 
-## [Contributing](https://instantos.io/repoinfo)
+## [Links](https://instantos.io/links)
 
-A list of repos, todo and some guidelines can be found [here](https://instantos.io/repoinfo).
+A list of repos, todo and some guidelines can be found [here](https://instantos.io/links).
 
 -------------------
 

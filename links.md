@@ -1,4 +1,4 @@
-# Contributing
+# Links
 
 Development of the distro is done on [GitHub](https://github.com/instantOS)
 
@@ -159,3 +159,8 @@ A basic fork of rox-filer to be used for optional desktop icons.
 A way to create Debian packages from arch PKGBUILD files.
 Originally created to enable a Debian edition of instantOS.
 Not much work has been done here as of recently.
+
+## [Arch wiki mirror](https://packages.instantos.io/archwiki)
+
+A mirror of the Arch wiki
+
