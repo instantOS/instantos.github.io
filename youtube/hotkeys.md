@@ -7,7 +7,7 @@ You can access this list by pressing Super + F1
 
 ## General
 
-| Binding                      | Functionality                                      |
+| Binding                      | Functionality                                     |
 | ---------------------------- | ------------------------------------------------- |
 | Super + Space                | Open text based application launcher              |
 | Super + Ctrl + Space         | Open super lightweight command launcher           |
@@ -53,6 +53,8 @@ You can access this list by pressing Super + F1
 | Super + N                    | Open file manager                                 |
 | Super + R                    | Open Ranger                                       |
 | Super + F                    | Disable Tiling for current tag                    |
+| Super + I                    | Increase number of windows in Master area         |
+| Super + D                    | Decrease number in Master area (0 -> no master)   |
 | Super + H/L                  | Resize Master area                                |
 | Super + Shift + H/J/K/L      | Move floating window                              |
 | Super + Shift + H/J/K/L      | Resize floating window                            |
@@ -127,4 +129,3 @@ These are only active when there is no window on the current tag
 | C          | Open VS Code         |
 | +/-        | change volume        |
 | left/right | go to adjacent tag   |
-
