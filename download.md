@@ -5,6 +5,7 @@ beta 5
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
     <li><a href="https://osdn.net/dl/instantos/instantos_beta5_1.iso" class="button special icon fa-download">Mirror 1</a></li>
+    <li><a href="https://gum.co/instantos" class="button special icon fa-download">Gumroad Support Download</a></li>
 </ul>
 
 md5 hash:
@@ -15,7 +16,7 @@ md5 hash:
 
 NOTICE: there are two isos of beta 5, instantos_beta5_1.iso is the one that should
 be used. It's the same software but with a different build process for the iso
-that solves multiple issues present in the older iso
+that solves multiple issues present in the older iso.
 
 updating to a new build does NOT require reinstalling the OS. a simple
 
@@ -32,8 +33,8 @@ For other packages, the default Arch repos are used.
 ## CLI installer
 
 In case the live ISO does not boot or does not fit on your flash drive, there
-is a CLI installer.  It can run off any Arch live ISO (with experimental Artix
-support) and doesn't need any graphical interface.  You could even use this to
+is a CLI installer. It can run off any Arch live ISO (with experimental Artix
+support) and doesn't need any graphical interface. You could even use this to
 install instantOS over ssh if you wanted to.
 
 To use it, boot into any recent arch installation ISO.
@@ -43,7 +44,7 @@ Make sure you are connected to the internet and run the following command:
 bash <(curl -L instantos.io/install)
 ```
 
-This will download and start the installer.  It works identically to the
+This will download and start the installer. It works identically to the
 graphical installer and does not require any special knowledge to use.
 
 ## 32 Bit
