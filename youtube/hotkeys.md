@@ -99,7 +99,7 @@ You can access this list by pressing Super + F1
 | Drag Left Mouse button                 | Window title       | Move window                          |
 | Super + Drag left mouse button         | Window             | Move window                          |
 | Super + Drag right mouse button        | Window             | Resize window                        |
-| Super + Shift + drag left mouse button | Window             | Resize window and keep aspect ratio  |
+| Super + Shift + drag right mousebutton | Window             | Resize window and keep aspect ratio  |
 | Left Click                             | Desktop            | Open app launcher                    |
 | Right Click                            | Desktop            | Open text based app launcher         |
 | Left Click                             | Status text        | Open app launcher                    |
