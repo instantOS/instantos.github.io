@@ -5,8 +5,8 @@
     <li><a href="https://instantos.io/download" class="button special icon fa-download">Other Downloads</a></li>
 </ul>
 
-instantOS is an Arch based distro that works out of the box but is still aimed
-at power users.  
+**instantOS** is an Archlinux-based distro that works out of the box but is still aimed
+at power users.
 Everything is lightning fast, flexible and just works.
 
 Packages for the [Nix](https://nixos.org/explore.html) universal package manager and [NixOS](https://nixos.org) are provided by **[instantNIX](https://github.com/instantOS/instantNIX/)**.

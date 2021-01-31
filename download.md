@@ -55,6 +55,16 @@ can use the CLI installer (see instructions above) It works identically to the
 64 bit installer, but has to run off an Arch 32 iso that you can
 [download here](https://www.archlinux32.org/download/)
 
+## Nix Packages
+
+Nix packages are available form the Nix User Repository (NUR) - completely 
+cached by cachix binary cache.
+Quick instructions on how to install using Nix and NixOS can be found here:
+
+ - **[instantNIX](https://github.com/instantOS/instantNIX)** github repo
+ - **[Wiki](https://github.com/instantOS/instantNIX/wiki)** for **instantNIX**
+
+
 ## Information about the live ISO
 
 the default user and password are instantos and instantos with no root password.
