@@ -10,7 +10,7 @@ It also has its own installer instantARCH
 
 ## suckless
 
-instantOS is not a suckless distro. instantWM, intantLOCK and instantMENU
+instantOS is not a suckless distro. instantWM, instantLOCK and instantMENU
 started out as suckless forks, but contain less than 40% original suckless
 code and go into different directions.
 For instance, programs that are under 40kb should not put storage at such a
