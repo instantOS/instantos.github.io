@@ -16,6 +16,7 @@ You can access this list by pressing Super + F1
 | Super + M                    | Monocle layout                                    |
 | Super + Number               | Switch to tag number                              |
 | Super + Tab                  | Switch between two most recent tags               |
+| Super + Shift + Tab          | Switch to last window                             |
 | Super + Shift + Number       | Move window to tag number                         |
 | Super + Return               | Open terminal                                     |
 | Super + Shift + Return       | Move window into master area                      |
