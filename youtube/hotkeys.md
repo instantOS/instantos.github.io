@@ -59,6 +59,7 @@ You can access this list by pressing Super + F1
 | Super + H/L                  | Resize Master area                                |
 | Super + Shift + H/J/K/L      | Move floating window                              |
 | Super + Shift + H/J/K/L      | Resize floating window                            |
+| Super + Alt + W              | Center floating window                            |
 | Super + P                    | Switch between two most recent layouts            |
 | Super + X                    | Open application switcher                         |
 | Super + ^                    | Open graphical application switcher               |
