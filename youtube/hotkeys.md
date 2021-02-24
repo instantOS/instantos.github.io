@@ -39,7 +39,7 @@ You can access this list by pressing Super + F1
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
-| Overlay: Super + Shift + Arrows| Move Window to adjacent tag                       |
+| Overlay: Super + Shift + Arrows| Switch overlay modes                            |
 | Super + Alt + Left/Right     | Follow Window to adjacent tag                     |
 | Super + Up/Down              | Switch focus                                      |
 | Super + Comma/Period         | Switch monitor focus                              |
@@ -58,7 +58,7 @@ You can access this list by pressing Super + F1
 | Super + D                    | Decrease number in Master area (0 -> no master)   |
 | Super + H/L                  | Resize Master area                                |
 | Super + Shift + H/J/K/L      | Move floating window                              |
-| Super + Shift + H/J/K/L      | Resize floating window                            |
+| Super + Alt + H/J/K/L        | Resize floating window                            |
 | Super + Alt + W              | Center floating window                            |
 | Super + P                    | Switch between two most recent layouts            |
 | Super + X                    | Open application switcher                         |
