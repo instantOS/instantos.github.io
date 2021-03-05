@@ -16,6 +16,12 @@ md5 hash:
 805b4f5d64ccaa29cc495348a642a34a
 ```
 
+## System requirements
+
+- 5.8 GB storage
+- 64 Bit processor
+- Potato or better
+
 NOTICE: there are two isos of beta 5, instantos_beta5_1.iso is the one that should
 be used. It's the same software but with a different build process for the iso
 that solves multiple issues present in the older iso.
