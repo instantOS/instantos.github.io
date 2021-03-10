@@ -30,12 +30,14 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + W             | Define overlay                                    |
 | Super + W                    | Toggle overlay                                    |
 | Super + E                    | Go into overview mode, press again to switch back |
+| Super + Shift + E            | Overview mode but all windows are stacked         |
 | Alt + Tab                    | Open application switcher                         |
 | Alt + F4                     | Close Application                                 |
 | Super + Ctrl + L             | Lock screen                                       |
 | Super + Ctrl + Q             | Open shutdown menu                                |
 | Super + Ctrl + Shift + Q     | Restart Window Manager                            |
-| Super + A                    | open instantASSIST                                |
+| Super + A                    | Open instantASSIST                                |
+| Super + Shift + A            | Repeat last instantASSIST action                  |
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
@@ -87,13 +89,16 @@ You can access this list by pressing Super + F1
 | Shift + Left Mouse | Select Text      |
 | Ctrl + D           | Close terminal   |
 
-
 ## Mouse
 
 | Binding                                | Part of the Screen | Functionality                         |
 | -------------------------------------- | ------------------ | ------------------------------------ |
 | Scroll                                 | Status text        | Change volume                        |
-| Super + scroll                         | Status text        | Change brightness (laptop only)      |
+| Super + Click                          | Status text        | Open settings                        |
+| Super + Right Click                    | Status text        | Pause/Unpause media                  |
+| Super + Middle Click                   | Status text        | Mute/unmute audio                    |
+| Super + Scroll                         | Status text        | Change brightness (laptop only)      |
+| Super + Shift + Click                  | Status text        | Open audio settings                  |
 | Click                                  | Window title       | Focus window                         |
 | Middle Click                           | Window title       | Close window                         |
 | Right Click                            | Window title       | Put window into master               |
@@ -113,7 +118,7 @@ You can access this list by pressing Super + F1
 | Super + Click                          | Window bar         | Toggle overlay                       |
 | Super + Click                          | Desktop            | Toggle overlay                       |
 | Left/Right click                       | Layout indicator   | Cycle through layouts                |
-| Click                                  | Shutdown button    | Open Shutdown menu                   |
+| Left Click                             | Shutdown button    | Open Shutdown menu                   |
 | Right Click                            | Shutdown button    | Lock screen                          |
 
 ## Desktop

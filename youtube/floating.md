@@ -6,8 +6,7 @@
 
 ### Basic explanation
 
-Each window has two modes: Floating and tiling. Tiling is explained here
-(insert link).
+Each window has two modes: Floating and tiling. Tiling is explained [here](https://instantos.io/youtube/floating)
 Floating mode allows you to freely move and resize any window.
 
 ### Activating floating mode
