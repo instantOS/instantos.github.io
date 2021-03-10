@@ -18,3 +18,4 @@ is unlocked by right clicking on the close button.
 Declaring a new overlay will replace the old one. The old overlay will return
 to being a normal window.
 
+Alternative way to create an overlay: Super + Click on the layout indicator.
