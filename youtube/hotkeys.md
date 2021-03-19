@@ -11,6 +11,7 @@ You can access this list by pressing Super + F1
 | ---------------------------- | ------------------------------------------------- |
 | Super + Space                | Open text based application launcher              |
 | Super + Ctrl + Space         | Open super lightweight command launcher           |
+| Super + Shift + Space        | Toggle window between floating and tiling         |
 | Super + Q                    | Close Application                                 |
 | Super + C                    | Grid layout                                       |
 | Super + M                    | Monocle layout                                    |
@@ -78,6 +79,14 @@ You can access this list by pressing Super + F1
 | Super + Shift + Esc          | Open system monitor                               | 
 | Super + Ctrl + Print         | Take area screenshot to clipboard                 |
 | Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
+| Super + Ctrl + D             | Distribute applications between tags              |
+| Super + Ctrl + I             | Open instantPACMAN                                |
+| Super + Shift + Up/Down      | ->Don't know what to write here<-                 |
+| Super + Ctrl + F             | Toggle temporaly fullscreen                       |
+| Super + F2                   | ->The prefix thing<-                              |
+| Super + Shift + P            | ->Display thingy<-                                |
+| Super + 0                    | ->Like overview but >:( <-                        |
+| Super + Shift + 0            | Shows all tags                                    |
 
 ## Terminal
 
@@ -95,31 +104,44 @@ You can access this list by pressing Super + F1
 | -------------------------------------- | ------------------ | ------------------------------------ |
 | Scroll                                 | Status text        | Change volume                        |
 | Super + Click                          | Status text        | Open settings                        |
-| Super + Right Click                    | Status text        | Pause/Unpause media                  |
+| Super + Right Click                    | Status text        | Open Spotify                         |
 | Super + Middle Click                   | Status text        | Mute/unmute audio                    |
 | Super + Scroll                         | Status text        | Change brightness (laptop only)      |
 | Super + Shift + Click                  | Status text        | Open audio settings                  |
+| Super + Ctrl + Click                   | Status text        | Notification center                  |
 | Click                                  | Window title       | Focus window                         |
 | Middle Click                           | Window title       | Close window                         |
 | Right Click                            | Window title       | Put window into master               |
 | Drag Right Mouse button                | Window title       | Resize window                        |
 | Drag Left Mouse button                 | Window title       | Move window                          |
+| Ctrl + Scroll                          | Window title       | Resize window and keep aspect ratio  |
 | Super + Drag left mouse button         | Window             | Move window                          |
 | Super + Drag right mouse button        | Window             | Resize window                        |
+| Super + Middle Click                   | Window             | Toggle window between floating and tiling |
 | Super + Shift + drag right mouse button| Window             | Resize window and keep aspect ratio  |
 | Left Click                             | Desktop            | Open app launcher                    |
 | Right Click                            | Desktop            | Open text based app launcher         |
 | Left Click                             | Status text        | Open app launcher                    |
 | Middle Click                           | Status text        | Open Terminal                        |
 | Middle Click                           | Desktop            | Open super lightweight command runner |
-| Right Click                            | Status text        | Open App switcher                    |
+| Right Click                            | Status text        | Open app switcher                    |
 | Scroll                                 | Window bar         | Switch focus                         |
 | Shift + Scroll                         | Window bar         | Move Window through stack            |
-| Super + Click                          | Window bar         | Toggle overlay                       |
-| Super + Click                          | Desktop            | Toggle overlay                       |
-| Left/Right click                       | Layout indicator   | Cycle through layouts                |
+| Super + Left Click                     | Window bar         | Toggle overlay                       |
+| Super + Right Click                    | Window bar         | Notification center                  |
+| Super + Left Click                     | Desktop            | Toggle overlay                       |
+| Super + Right Click                    | Desktop            | Notification center                  |
+| Scroll Up                              | Desktop            | Open overlay                         |
+| Scroll Down                            | Desktop            | Close overlay                        |
+| Left/Right Click                       | Layout indicator   | Cycle through layouts                |
+| Super + Left Click                     | Layout indicator   | Define overlay                       |
+| Middle Click                           | Layout indicator   | Switch to default layout             |
 | Left Click                             | Shutdown button    | Open Shutdown menu                   |
 | Right Click                            | Shutdown button    | Lock screen                          |
+| Middle Click                           | Shutdown button    | Lock screen without password         |
+| Left Click                             | Start menu         | Open start menu                      |
+| Right Click                            | Start menu         | Open quick menu                      |
+| Shift + Click                          | Start menu         | ->What<-                             |
 
 ## Desktop
 
@@ -128,11 +150,21 @@ These are only active when there is no window on the current tag
 | Binding    | Functionality         |
 | ---------- | ---------------------|
 | Return     | Open terminal        |
+| A          | Open instantASSIST   |
 | F          | Open browser         |
 | E          | Open text editor     |
 | R          | Open ranger          |
+| M          | Open Spotify         |
 | N          | Open file manager    |
+| V          | Open quickmenu       |
+| Y          | Open text based app launcher |
+| Space      | Open Graphical Launcher|
+| F1         | See all keybindings  |
 | Tag Number | Switch to Tag Number |
+| Tab        | Open app switcher    |
 | C          | Open VS Code         |
 | +/-        | change volume        |
+| H/L        | go to adjacent tag   |
+| J/K        | go to active tag     |
 | left/right | go to adjacent tag   |
+| up/down    | go to active tag     |
