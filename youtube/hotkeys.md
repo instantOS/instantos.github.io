@@ -81,12 +81,12 @@ You can access this list by pressing Super + F1
 | Super + Shift + Print        | Take fullscreen screenshot to clipboard           |
 | Super + Ctrl + D             | Distribute applications between tags              |
 | Super + Ctrl + I             | Open instantPACMAN                                |
-| Super + Shift + Up/Down      | ->Don't know what to write here<-                 |
+| Super + Shift + Up/Down      | Minimize/Restore window                           |
 | Super + Ctrl + F             | Toggle temporaly fullscreen                       |
-| Super + F2                   | ->The prefix thing<-                              |
-| Super + Shift + P            | ->Display thingy<-                                |
-| Super + 0                    | ->Like overview but >:( <-                        |
-| Super + Shift + 0            | Shows all tags                                    |
+| Super + F2                   | Toggle action prefix                              |
+| Super + Shift + P            | Open monitor settings                             |
+| Super + 0                    | Show all tagsew but                               |
+| Super + Shift + 0            | Make current window active on all tags            |
 
 ## Terminal
 
@@ -104,7 +104,7 @@ You can access this list by pressing Super + F1
 | -------------------------------------- | ------------------ | ------------------------------------ |
 | Scroll                                 | Status text        | Change volume                        |
 | Super + Click                          | Status text        | Open settings                        |
-| Super + Right Click                    | Status text        | Open Spotify                         |
+| Super + Right Click                    | Status text        | Pause/unpause media                  |
 | Super + Middle Click                   | Status text        | Mute/unmute audio                    |
 | Super + Scroll                         | Status text        | Change brightness (laptop only)      |
 | Super + Shift + Click                  | Status text        | Open audio settings                  |
@@ -141,7 +141,7 @@ You can access this list by pressing Super + F1
 | Middle Click                           | Shutdown button    | Lock screen without password         |
 | Left Click                             | Start menu         | Open start menu                      |
 | Right Click                            | Start menu         | Open quick menu                      |
-| Shift + Click                          | Start menu         | ->What<-                             |
+| Shift + Click                          | Start menu         | Toggle action prefix                 |
 
 ## Desktop
 
