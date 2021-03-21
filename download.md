@@ -1,19 +1,16 @@
 # Download ISO
 
-beta 5
+beta 6
 
 <ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://osdn.net/dl/instantos/instantos_beta5_1.iso" class="button special icon fa-download">Mirror 1</a></li>
-    <li><a href="https://gum.co/instantos" class="button special icon fa-download">Gumroad Support Download</a></li>
-    <li><a href="https://ipfs.io/ipfs/QmWhaZoxK1y88eGxTfuhHGAK2qmCbR5YyeQpnbQFgpuPgL?filename=instantos_5_1.iso" class="button special icon fa-download">IPFS</a></li>
-    <li><a href="magnet:?xt=urn:btih:d77ada4fa346f873539164ba31067d7842d0d010&dn=instantos%5Fbeta5%5F1.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969" class="button special icon fa-download">magnet</a></li>
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v6-beta/instantos_beta6.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://ipfs.io/ipfs/QmU4mP3VhqSB9R4WGyNAAj7Vg4RZTZpBZgnMWRwm7dC63D?filename=instantos_beta6.iso" class="button special icon fa-download">IPFS</a></li>
 </ul>
 
 md5 hash:
 
 ```txt
-805b4f5d64ccaa29cc495348a642a34a
+ff9b30feb0d829995ac49907662037ad
 ```
 
 ## System requirements
@@ -21,10 +18,6 @@ md5 hash:
 - 5.8 GB storage
 - 64 Bit processor
 - Potato or better
-
-NOTICE: there are two isos of beta 5, instantos_beta5_1.iso is the one that should
-be used. It's the same software but with a different build process for the iso
-that solves multiple issues present in the older iso.
 
 updating to a new build does NOT require reinstalling the OS. a simple
 
@@ -35,7 +28,7 @@ instantupdate
 takes care of that.
 
 instantOS specific packages are hosted on
-[instantos.surge.sh](https://instantos.surge.sh)  
+[packages.instantos.io](packages.instantos.io)  
 For other packages, the default Arch repos are used.
 
 ## CLI installer

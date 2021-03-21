@@ -4,6 +4,21 @@ This page contains download links for older versions of instantOS.  In most
 cases these should not be used and installation should always happen from the
 latest ISO or latest Arch ISO.
 
+beta 5
+
+<ul class="actions">
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v5-beta/instantos_beta5_1.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://osdn.net/dl/instantos/instantos_beta5_1.iso" class="button special icon fa-download">Mirror 1</a></li>
+    <li><a href="https://gum.co/instantos" class="button special icon fa-download">Gumroad Support Download</a></li>
+    <li><a href="https://ipfs.io/ipfs/QmWhaZoxK1y88eGxTfuhHGAK2qmCbR5YyeQpnbQFgpuPgL?filename=instantos_5_1.iso" class="button special icon fa-download">IPFS</a></li>
+    <li><a href="magnet:?xt=urn:btih:d77ada4fa346f873539164ba31067d7842d0d010&dn=instantos%5Fbeta5%5F1.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969" class="button special icon fa-download">magnet</a></li>
+</ul>
+
+md5 hash:
+
+```txt
+805b4f5d64ccaa29cc495348a642a34a
+```
 
 ## beta 4
 
