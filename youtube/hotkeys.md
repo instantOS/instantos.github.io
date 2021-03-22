@@ -39,6 +39,7 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + Shift + Q     | Restart Window Manager                            |
 | Super + A                    | Open instantASSIST                                |
 | Super + Shift + A            | Repeat last instantASSIST action                  |
+| Super + Alt + Space          | Switch keyboard layout                            |
 | Super + G                    | Notification center                               |
 | Super + Left/Right           | Switch to adjacent tag                            |
 | Super + Shift + Left/Right   | Move Window to adjacent tag                       |
