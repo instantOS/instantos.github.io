@@ -5,6 +5,7 @@ beta 6
 <ul class="actions">
     <li><a href="https://github.com/instantOS/instantOS/releases/download/v6-beta/instantos_beta6.iso" class="button special icon fa-download">Download</a></li>
     <li><a href="https://ipfs.io/ipfs/QmU4mP3VhqSB9R4WGyNAAj7Vg4RZTZpBZgnMWRwm7dC63D?filename=instantos_beta6.iso" class="button special icon fa-download">IPFS</a></li>
+    <li><a href="magnet:?xt=urn:btih:345f3e496c8b1db1352f246b78931bd827b89a8a&dn=instantos%5Fbeta6.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969" class="button special icon fa-download">magnet</a></li>
 </ul>
 
 md5 hash:
@@ -28,7 +29,7 @@ instantupdate
 takes care of that.
 
 instantOS specific packages are hosted on
-[packages.instantos.io](packages.instantos.io)  
+[packages.instantos.io](https://packages.instantos.io)  
 For other packages, the default Arch repos are used.
 
 ## CLI installer
