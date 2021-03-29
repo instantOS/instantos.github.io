@@ -5,6 +5,26 @@
 Only instantOS related packages are hosted in the instantOS custom repo, for
 everything else the Arch repos are used.
 
+<!--
+
+Collection of additonal questions often asked on discord:
+
+## Can I install instantos on an encrypted drive
+
+## How do I install instantOS software on a regular Arch
+
+## How do I build an instantOS component from source
+
+## How about instantOS based on other distributions
+
+## How do I change the colors
+
+## What is the weird A100% in the status bar
+
+## Why does the status bar update so slowly
+
+-->
+
 ## Does it support 32 bit
 
 Yes, but the 32 bit version doesn't have a live session yet so you'll have to
@@ -13,7 +33,12 @@ use the CLI installer
 ## Raspberry Pi
 
 There are some people working on an arm community edition.
-Development is happening on [GitHub](https://github.com/instantOS/instantOS-arm)
+Development is happening on [GitHub](https://github.com/instantOS/instantOS-arm).
+
+The [NixOS](https://nixos.org)-based variant, 
+[instantNIX](https://github.com/instantOS/instantNIX),
+has an article about how to
+[Install instantNIX from scratch on a Raspberry Pi 4 Model B](https://github.com/instantOS/instantNIX/wiki/instantNIX-on-a-Raspberry-Pi-4B)
 
 ## Why is this a Distro not a DE
 
@@ -53,7 +78,7 @@ replacement for Xorg that needs to be the case.
 
 Yes, but just know that you shouldn't before learning the default bindings.
 You can clone the git repo of instantWM and edit config.def.h à la dwm.
-After that you can run the ./build.sh script to apply changes.
+After that you can run the `./build.sh` script to apply changes.
 If you have a general suggestion on how to improve bindings, opening an issue on
 GitHub is much appreciated.
 Patching instantWM is also problematic because you'll manually have to apply updates
@@ -137,4 +162,3 @@ It has a GUI control center that is not dependant on any desktop environment, a
 hybrind WM, a noob friendly lightweight installer any many more things that
 offer a desktop experience that is unique. It also ticks the technical boxes
 that make it a distro like having its own repos.
-
