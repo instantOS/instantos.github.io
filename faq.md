@@ -23,6 +23,10 @@ Collection of additonal questions often asked on discord:
 
 ## Why does the status bar update so slowly
 
+## Can I customize the status bar
+
+## How to I put things in the autostart
+
 -->
 
 ## Does it support 32 bit
@@ -84,6 +88,12 @@ GitHub is much appreciated.
 Patching instantWM is also problematic because you'll manually have to apply updates
 and providing support for a copy with modified source code it difficult.
 A more traditional runtime config file for hotkeys is being worked on.
+
+## Is feature X planned
+
+Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/projects/1).
+If it's not there request it by opening a feature-request issie on github
+or talking to people in the [community](https://instantos.io/support).
 
 ## Calamares
 
