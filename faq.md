@@ -42,8 +42,9 @@ time.
 
 Depends on what colors you want to change.
 Some are available through the various theming options in the settings menu.
-For the window manager colors, you create or copy and existing `~/.Xresources` file, 
+For the window manager and instantMENU colors, you create or copy an existing `~/.Xresources` file, 
 then run `xrdb ~/.Xresources` ([example](https://github.com/instantOS/instantNIX/blob/dev/utils/Xresources)).
+You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
 
 ## What is the weird A100% or "i" in the status bar
 
@@ -70,7 +71,9 @@ For inspiration have a look at `/usr/bin/instantstatus`.
 ## My keyboard layout doesn't work with instantOS and language support sucks!
 
 Okay, technically not a question, but we know what you're getting at.
-Internationalization is not our first priority. 
+You can always change your keybinds by cloning instantWM, going though `config.def.h`, recompiling and restarting the window manager.
+Customizable keybinds in runtime are planned.
+Internationalization is not our first priority.
 Keep in mind that we are doing this in our free time for little to no compensation.
 Internationalization is one of those things that eats a lot of time and
 the majority of the world's computer users, knows standard English, so
