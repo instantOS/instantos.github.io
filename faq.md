@@ -1,5 +1,9 @@
 # Frequently asked questions
 
+If you don't find your answer here, please have a look at the [Documentation](https://instantos.io/documentation) section and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
+
+If you still don't get an answer or need additional information and clarification, we have an active and friendly [community](https://instantos.io/support) to support you. The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
+
 ## Does it use its own repos
 
 Only instantOS related packages are hosted in the instantOS custom repo, for
