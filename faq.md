@@ -63,6 +63,16 @@ You can completely disable the built-in status bar in the settings menu and then
 run our own status bar (or status script peridocically).
 For inspiration have a look at `/usr/bin/instantstatus`.
 
+## My keyboard layout doesn't work with instantOS and language support sucks!
+
+Okay, technically not a question, but we know what you're getting at.
+Internationalization is not our first priority. 
+Keep in mind that we are doing this in our free time for little to no compensation.
+Internationalization is one of those things that eats a lot of time and
+the majority of the world's computer users, knows standard English, so
+there's not much reward for the work put into internationalization.
+We're sorry, but we have to prioritize other things for now.
+
 ## How to I put things in the autostart
 
 InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
