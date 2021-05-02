@@ -5,29 +5,69 @@
 Only instantOS related packages are hosted in the instantOS custom repo, for
 everything else the Arch repos are used.
 
-<!--
-
-Collection of additonal questions often asked on discord:
-
 ## Can I install instantos on an encrypted drive
+
+Yes, you can, but it will be a bit of work. 
+The installer does not currently support setting up encryption for you.
+So you will have to select the manual partitioning and set it up yourself including bootloader setup.
 
 ## How do I install instantOS software on a regular Arch
 
-## How do I build an instantOS component from source
+The instantOS tools are on the [AUR](https://aur.archlinux.org/). 
+You can use your regular package manager to install them.
+In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/extra).
+
+## How do I build an instantOS component from the source repos
+
+On instantOS:  
+ - instantSETTINGS:  instantOS → instantOS development tools → yes
+ - wait for the installation to finish
+ - Use `ibuild` from the command line
 
 ## How about instantOS based on other distributions
 
+Officially, we only support instantOS tools on Archlinux and NixOS ([instantNIX](https://github.com/instantOS/instantNIX).
+Technically, you can install the [Nix universal package manager](https://nixos.org) on almost
+any distribution and use it like that, but that is a little more work.
+Or you can try to compile the tools yourself for your favourite distribution.
+We hope you understand that maintaining and testing packages for a distribution
+is a lot of work and we as the maintainers are only working on it in our free
+time.
+
 ## How do I change the colors
 
-## What is the weird A100% in the status bar
+Depends on what colors you want to change.
+Some are available through the various theming options in the settings menu.
+For the window manager colors, you create or copy and existing `~/.Xresources` file, 
+then run `xrdb ~/.Xresources` ([example](https://github.com/instantOS/instantNIX/blob/dev/utils/Xresources)).
+
+## What is the weird A100% or "i" in the status bar
+
+The "A" and "B" stand for "audio volume" and "battery".
+These indicate the charging percentages for your (laptop) battery
+and your master audio volume.
+The battery indicator is not always present.
+The small "i" on green and sometimes red background is an indicator
+of wether your have internet connectivity.
 
 ## Why does the status bar update so slowly
 
+The status bar is currently updated every few seconds as opposed to
+when things like the audio volume change.
+That is owed to the way the status bar and window manager work.
+A major rework of the status bar is planned, that will make for immediate update
+
 ## Can I customize the status bar
+
+You can completely disable the built-in status bar in the settings menu and then
+run our own status bar (or status script peridocically).
+For inspiration have a look at `/usr/bin/instantstatus`.
 
 ## How to I put things in the autostart
 
--->
+InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
+You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
+graphica tool that does this.
 
 ## Does it support 32 bit
 
@@ -55,7 +95,6 @@ accessible to anyone with as little upfront effort as possible.  It also gets
 you a near Arch experience under the hood, more so than Manjaro or Endeavour as
 the installer is compliant with the official install guide. This is ideal as a
 base system and previously not accessible to non-technical people.
-
 
 ## Wayland
 
