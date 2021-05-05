@@ -86,8 +86,8 @@ You can access this list by pressing Super + F1
 | Super + Ctrl + F             | Toggle temporaly fullscreen                       |
 | Super + Shift + F            | Toggle fake fullscreen                            |
 | Super + F2                   | Toggle action prefix                              |
-| Super + Shift + P            | Open monitor settings                             |
-| Super + 0                    | Show all tagsew but                               |
+| Super + Shift + P            | Open external screen settings                     |
+| Super + 0                    | Show all tags but                                 |
 | Super + Shift + 0            | Make current window active on all tags            |
 | Super + Shift + I            | Open Snapdrop                                     |
 | Super + Alt + F              | Open instantSearch                                |
