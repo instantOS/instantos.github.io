@@ -1,6 +1,6 @@
 # Frequently asked questions
 
-If you don't find your answer here, please have a look at the [Documentation](https://instantos.io/documentation) section and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
+If you don't find your answer here, please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
 
 If you still don't get an answer or need additional information and clarification, we have an active and friendly [community](https://instantos.io/support) to support you. The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
 
@@ -13,7 +13,7 @@ everything else the Arch repos are used.
 
 Yes, you can, but it will be a bit of work. 
 The installer does not currently support setting up encryption for you.
-So you will have to select the manual partitioning and set it up yourself including bootloader setup.
+So you will have to select the manual partitioning option and set it up yourself including bootloader setup.
 
 ## How do I install instantOS software on a regular Arch
 
@@ -36,7 +36,7 @@ any distribution and use it like that, but that is a little more work.
 Or you can try to compile the tools yourself for your favourite distribution.
 We hope you understand that maintaining and testing packages for a distribution
 is a lot of work and we as the maintainers are only working on it in our free
-time.
+time in addition to full-time work/study.
 
 ## How do I change the colors
 
