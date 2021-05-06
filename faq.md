@@ -23,10 +23,11 @@ In case you wondered, the corresponding PKGBUILD have their own [repository](htt
 
 ## How do I build an instantOS component from the source repos
 
-On instantOS:  
- - instantSETTINGS:  instantOS → instantOS development tools → yes
- - wait for the installation to finish
- - Use `ibuild` from the command line
+On instantOS:
+
+- instantSETTINGS: instantOS → instantOS development tools → yes
+- wait for the installation to finish
+- Use `ibuild` from the command line
 
 ## How about instantOS based on other distributions
 
@@ -68,7 +69,7 @@ You can completely disable the built-in status bar in the settings menu and then
 run our own status bar (or status script peridocically).
 For inspiration have a look at `/usr/bin/instantstatus`.
 
-## My keyboard layout doesn't work with instantOS and language support sucks!
+## My keyboard layout doesn't work with instantOS and language support sucks
 
 Okay, technically not a question, but we know what you're getting at.
 You can always change your keybinds by cloning instantWM, going though `config.def.h`, recompiling and restarting the window manager.
