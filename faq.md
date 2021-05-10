@@ -75,7 +75,7 @@ These indicate the charging percentages for your (laptop) battery
 and your master audio volume.
 The battery indicator is not always present.
 The small "i" on green and sometimes red background is an indicator
-of wether your have internet connectivity.
+of whether you have internet connectivity.
 
 ## Why does the status bar update so slowly
 
@@ -87,13 +87,13 @@ A major rework of the status bar is planned, that will make for immediate update
 ## Can I customize the status bar
 
 You can completely disable the built-in status bar in the settings menu and then
-run our own status bar (or status script peridocically).
+run our own status bar (or status script periodically).
 For inspiration have a look at `/usr/bin/instantstatus`.
 
 ## My keyboard layout doesn't work with instantOS and language support sucks
 
 Okay, technically not a question, but we know what you're getting at.
-You can always change your keybinds by cloning instantWM, going though `config.def.h`, recompiling and restarting the window manager.
+You can always change your keybinds by cloning instantWM, going through `config.def.h`, recompiling and restarting the window manager.
 Customizable keybinds in runtime are planned.
 Internationalization is not our first priority.
 Keep in mind that we are doing this in our free time for little to no compensation.
@@ -164,13 +164,13 @@ After that you can run the `./build.sh` script to apply changes.
 If you have a general suggestion on how to improve bindings, opening an issue on
 GitHub is much appreciated.
 Patching instantWM is also problematic because you'll manually have to apply updates
-and providing support for a copy with modified source code it difficult.
+and providing support for a copy with modified source code is difficult.
 A more traditional runtime config file for hotkeys is being worked on.
 
 ## Is feature X planned
 
 Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/projects/1).
-If it's not there request it by opening a feature-request issie on github
+If it's not there request it by opening a feature-request issue on github
 or talking to people in the [community](https://instantos.io/support).
 
 ## Calamares
@@ -244,9 +244,9 @@ no substance is staggering. And no, I also think that we do not need yet
 another debian iso with kde or xfce preinstalled and a changed wallpaper.
 The reason why I created instantOS is that it **didn't** exist before. It is
 unique and its experience is not offered by any other Distro and I suspect that
-won't change. It's amining to be lightweight, feature rich, power user friendly
+won't change. It's aiming to be lightweight, feature rich, power user friendly
 and still usable for people who are not experienced with standalone WMs.
 It has a GUI control center that is not dependant on any desktop environment, a
-hybrind WM, a noob friendly lightweight installer any many more things that
+hybrid WM, a noob friendly lightweight installer any many more things that
 offer a desktop experience that is unique. It also ticks the technical boxes
-that make it a distro like having its own repos.
+that makes it a distro like having its own repos.
