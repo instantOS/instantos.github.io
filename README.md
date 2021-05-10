@@ -9,8 +9,8 @@
 still aimed at power users.  Everything is lightning fast, flexible and just
 works.
 
-Packages for the [Nix](https://nixos.org/explore.html) universal package
-manager and [NixOS](https://nixos.org) are provided by
+In addition to the usual [Arch packages](https://github.com/instantOS/extra), we also package for the 
+[Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via
 **[instantNIX](https://github.com/instantOS/instantNIX/)**.
 
 <div align="center">
