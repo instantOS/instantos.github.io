@@ -1,8 +1,27 @@
 # Frequently asked questions
 
-If you don't find your answer here, please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
+Here are answers to questions about instantOS, we get asked all the time.
+Chances are, you will find a quick answer for your lingering inquires here.
+Please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki), if not.
+If you still don't get an answer or need additional information or clarification, 
+we have an active and friendly [community](https://instantos.io/support) to support you. 
+The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
 
-If you still don't get an answer or need additional information and clarification, we have an active and friendly [community](https://instantos.io/support) to support you. The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
+<script type="text/javascript">
+    window.onload = function() {
+        // hacky TOC, replace by something better
+        u = document.createElement("ul");
+        $("h2").each(function(){
+            l = document.createElement("li");
+            a = document.createElement("a");
+            a.textContent = this.textContent;
+            a.href = '#' + this.id;
+            l.append(a);
+            u.append(l);
+        });
+        $("h2")[0].before(u);
+    };
+</script>
 
 ## Does it use its own repos
 
