@@ -17,9 +17,11 @@ So you will have to select the manual partitioning option and set it up yourself
 
 ## How do I install instantOS software on a regular Arch
 
-The instantOS tools are on the [AUR](https://aur.archlinux.org/). 
-You can use your regular package manager to install them.
+The instantOS tools are on the [AUR](https://aur.archlinux.org/).
+If not, you can add the custom repo, e.g. by running [repo.sh](https://raw.githubusercontent.com/instantOS/instantOS/master/repo.sh).
+Use your regular package manager to install any instant packages you like.
 In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/extra).
+This works on most Archlinux variants, too.
 
 ## How do I build an instantOS component from the source repos
 
