@@ -66,6 +66,7 @@ Depends on what colors you want to change.
 Some are available through the various theming options in the settings menu.
 For the window manager and instantMENU colors, you create or copy an existing `~/.Xresources` file, 
 then run `xrdb ~/.Xresources` ([example](https://github.com/instantOS/instantNIX/blob/dev/utils/Xresources)).
+Look at the ricing section of the [community wiki](https://github.com/instantOS/instantOS/wiki/Ricing) for more information.
 You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
 
 ## What is the weird A100% or "i" in the status bar
