@@ -1,8 +1,27 @@
 # Frequently asked questions
 
-If you don't find your answer here, please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
+Here are answers to questions about instantOS, we get asked all the time.
+Chances are, you will find a quick answer for your lingering inquires here.
+Please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki), if not.
+If you still don't get an answer or need additional information or clarification, 
+we have an active and friendly [community](https://instantos.io/support) to support you. 
+The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
 
-If you still don't get an answer or need additional information and clarification, we have an active and friendly [community](https://instantos.io/support) to support you. The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
+<script type="text/javascript">
+    window.onload = function() {
+        // hacky TOC, replace by something better
+        u = document.createElement("ul");
+        $("h2").each(function(){
+            l = document.createElement("li");
+            a = document.createElement("a");
+            a.textContent = this.textContent;
+            a.href = '#' + this.id;
+            l.append(a);
+            u.append(l);
+        });
+        $("h2")[0].before(u);
+    };
+</script>
 
 ## Does it use its own repos
 
@@ -17,9 +36,11 @@ So you will have to select the manual partitioning option and set it up yourself
 
 ## How do I install instantOS software on a regular Arch
 
-The instantOS tools are on the [AUR](https://aur.archlinux.org/). 
-You can use your regular package manager to install them.
+The instantOS tools are on the [AUR](https://aur.archlinux.org/).
+If not, you can add the custom repo, e.g. by running [repo.sh](https://raw.githubusercontent.com/instantOS/instantOS/master/repo.sh).
+Use your regular package manager to install any instant packages you like.
 In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/extra).
+This works on most Archlinux variants, too.
 
 ## How do I build an instantOS component from the source repos
 
@@ -45,6 +66,7 @@ Depends on what colors you want to change.
 Some are available through the various theming options in the settings menu.
 For the window manager and instantMENU colors, you create or copy an existing `~/.Xresources` file, 
 then run `xrdb ~/.Xresources` ([example](https://github.com/instantOS/instantNIX/blob/dev/utils/Xresources)).
+Look at the ricing section of the [community wiki](https://github.com/instantOS/instantOS/wiki/Ricing) for more information.
 You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
 
 ## What is the weird A100% or "i" in the status bar
@@ -54,7 +76,7 @@ These indicate the charging percentages for your (laptop) battery
 and your master audio volume.
 The battery indicator is not always present.
 The small "i" on green and sometimes red background is an indicator
-of wether your have internet connectivity.
+of whether you have internet connectivity.
 
 ## Why does the status bar update so slowly
 
@@ -66,13 +88,13 @@ A major rework of the status bar is planned, that will make for immediate update
 ## Can I customize the status bar
 
 You can completely disable the built-in status bar in the settings menu and then
-run our own status bar (or status script peridocically).
+run our own status bar (or status script periodically).
 For inspiration have a look at `/usr/bin/instantstatus`.
 
 ## My keyboard layout doesn't work with instantOS and language support sucks
 
 Okay, technically not a question, but we know what you're getting at.
-You can always change your keybinds by cloning instantWM, going though `config.def.h`, recompiling and restarting the window manager.
+You can always change your keybinds by cloning instantWM, going through `config.def.h`, recompiling and restarting the window manager.
 Customizable keybinds in runtime are planned.
 Internationalization is not our first priority.
 Keep in mind that we are doing this in our free time for little to no compensation.
@@ -143,13 +165,13 @@ After that you can run the `./build.sh` script to apply changes.
 If you have a general suggestion on how to improve bindings, opening an issue on
 GitHub is much appreciated.
 Patching instantWM is also problematic because you'll manually have to apply updates
-and providing support for a copy with modified source code it difficult.
+and providing support for a copy with modified source code is difficult.
 A more traditional runtime config file for hotkeys is being worked on.
 
 ## Is feature X planned
 
 Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/projects/1).
-If it's not there request it by opening a feature-request issie on github
+If it's not there request it by opening a feature-request issue on github
 or talking to people in the [community](https://instantos.io/support).
 
 ## Calamares
@@ -223,9 +245,9 @@ no substance is staggering. And no, I also think that we do not need yet
 another debian iso with kde or xfce preinstalled and a changed wallpaper.
 The reason why I created instantOS is that it **didn't** exist before. It is
 unique and its experience is not offered by any other Distro and I suspect that
-won't change. It's amining to be lightweight, feature rich, power user friendly
+won't change. It's aiming to be lightweight, feature rich, power user friendly
 and still usable for people who are not experienced with standalone WMs.
 It has a GUI control center that is not dependant on any desktop environment, a
-hybrind WM, a noob friendly lightweight installer any many more things that
+hybrid WM, a noob friendly lightweight installer any many more things that
 offer a desktop experience that is unique. It also ticks the technical boxes
-that make it a distro like having its own repos.
+that makes it a distro like having its own repos.
