@@ -11,4 +11,5 @@ You can request assistance in the following places.
     <li><a href="https://t.me/instantos" class="button special icon fa-telegram">Telegram</a></li>
     <li><a href="https://gitter.im/instantOS/community?source=orgpage" class="button special icon fa-gitter">Gitter</a></li>
     <li><a href="https://matrix.to/#/!oegFDcozfbMAMKyeIE:matrix.org?via=matrix.org&via=t2bot.io&via=tchncs.de" class="button special icon fa-comments">Matrix</a></li>    
+    <li><a href="https://matrix.to/#/!smJyjPsHsYizSKvvaE:matrix.org?via=matrix.org" class="button special icon fa-comments">Matrix Spaces (beta)</a></li>    
 </ul>
