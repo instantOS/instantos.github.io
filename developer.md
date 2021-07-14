@@ -36,7 +36,7 @@ I also do a bit of design and motion graphics using Blender
 gpg public key id
 
 ```txt
-7B2C12EE2291F05577CBF4F36ACE05299ECFE179
+380DFB57A7A140CEEFABC4CF81355D5FEFCC4619
 ```
 
 gpg public key
