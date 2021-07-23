@@ -69,10 +69,12 @@ fi
 updaterepos() {
     pacman -Sy --noconfirm || return 1
     if pacman -Si bash 2>&1 | grep -iq 'unrecognized archive'; then
-        curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' >/etc/pacman.d/mirrorlist
+        echo 'getting new mirrorlist'
+        curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' | sed 's/^#//g' >/etc/pacman.d/mirrorlist
         pacman -Sy --noconfirm || return 1
         if pacman -Si bash 2>&1 | grep -iq 'unrecognized archive'; then
-            curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' | shuf >/etc/pacman.d/mirrorlist
+            echo 'still problems, shuffling mirrorlist'
+            curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' | sed 's/^#//g' | shuf >/etc/pacman.d/mirrorlist
         fi
         pacman -Sy --noconfirm || return 1
     fi
@@ -192,7 +194,7 @@ chmod +x ./**/*.sh
 echo "local install"
 ./localinstall.sh 2>&1 | tee /opt/localinstall &&
     echo "system install" &&
-    ./systeminstall.sh 2>&1 | tee /opt/systeminstall
+    ./systeminstall.sh 2>&1 | tee /opt/systeminstall # install rest of the system
 
 pkill imenu
 pkill instantmenu
