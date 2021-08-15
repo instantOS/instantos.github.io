@@ -9,7 +9,8 @@ beta 6
     <li><a href="https://instantosmirror.app.craftcat.dev/iso/beta6/instantos_beta6.iso" class="button special icon fa-download">Mirror 1</a></li>
     <li><a href="https://instantos.file.coffee/iso/instantos_beta6.iso" class="button special icon fa-download">File.coffee</a></li>
     <li><a href="https://master.dl.sourceforge.net/project/instantos/beta6/instantos_beta6.iso" class="button special icon fa-download">Mirror 2</a></li>
-    <li><a href="magnet:?xt=urn:btih:345f3e496c8b1db1352f246b78931bd827b89a8a&dn=instantos%5Fbeta6.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969" class="button special icon fa-download">magnet</a></li>
+    <li><a href="https://eu-fin-6.siasky.net/BADGqRs_c_LDIKe5I0pHa5yAFCiN5Si3hdc5xB2sIsgBtQ" class="button special icon fa-download">Mirror 3</a></li>
+    <li><a href="magnet:?xt=urn:btih:345f3e496c8b1db1352f246b78931bd827b89a8a&dn=instantos%5Fbeta6.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969" class="button special icon fa-download">Magnet</a></li>
 </ul>
 
 md5 hash:
