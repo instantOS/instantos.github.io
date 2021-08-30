@@ -48,7 +48,14 @@ On instantOS:
 
 - instantSETTINGS: instantOS → instantOS development tools → yes
 - wait for the installation to finish
-- Use `ibuild` from the command line
+- Use `ibuild` from the command line, `ibuld help` for available commands and some help
+
+For instance, if you want to build the latest instantWM from the github source repository:
+
+```
+ibuild install instantwm
+cd ~/.config/instantos/ibuild/extra/instantwm/src/instantwm-git  # where the files are
+```
 
 ## How about instantOS based on other distributions
 
