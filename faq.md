@@ -48,7 +48,14 @@ On instantOS:
 
 - instantSETTINGS: instantOS → instantOS development tools → yes
 - wait for the installation to finish
-- Use `ibuild` from the command line
+- Use `ibuild` from the command line, `ibuld help` for available commands and some help
+
+For instance, if you want to build the latest instantWM from the github source repository:
+
+```
+ibuild install instantwm
+cd ~/.config/instantos/ibuild/extra/instantwm/src/instantwm-git  # where the files are
+```
 
 ## How about instantOS based on other distributions
 
@@ -94,7 +101,11 @@ For inspiration have a look at `/usr/bin/instantstatus`.
 ## My keyboard layout doesn't work with instantOS and language support sucks
 
 Okay, technically not a question, but we know what you're getting at.
-You can always change your keybinds by cloning instantWM, going through `config.def.h`, recompiling and restarting the window manager.
+You can always change your keybinds by cloning instantWM, going through `config.def.h`, 
+recompiling and restarting the window manager
+(see [ibuild](#how-do-i-build-an-instantos-component-from-the-source-repos)).
+As an example see the changeset for [French AZERTY](https://github.com/instantOS/instantNIX/blob/dev/pkgs/instantWm/french-keybindings.patch).
+
 Customizable keybinds in runtime are planned.
 Internationalization is not our first priority.
 Keep in mind that we are doing this in our free time for little to no compensation.
@@ -103,7 +114,7 @@ the majority of the world's computer users, knows standard English, so
 there's not much reward for the work put into internationalization.
 We're sorry, but we have to prioritize other things for now.
 
-## How to I put things in the autostart
+## How do I put things in the autostart
 
 InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
 You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
