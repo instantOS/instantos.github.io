@@ -114,7 +114,7 @@ the majority of the world's computer users, knows standard English, so
 there's not much reward for the work put into internationalization.
 We're sorry, but we have to prioritize other things for now.
 
-## How to I put things in the autostart
+## How do I put things in the autostart
 
 InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
 You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
