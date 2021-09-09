@@ -6,6 +6,8 @@
 
 # Main startup script
 
+source /root/instantARCH/moduleutils.sh
+
 if ! whoami | grep -iq '^root'; then
     echo "not running as root, switching"
     curl -Lg git.io/instantarch | sudo bash
@@ -29,6 +31,7 @@ if [ -e /tmp/instantarchpid ]; then
     echo "pidfile found"
     if kill -0 "$(cat /tmp/instantarchpid)"; then
         notify-send "installer already running, please do not start multiple instances"
+        exit 1
     fi
 else
     echo "$$" >/tmp/instantarchpid
@@ -65,22 +68,6 @@ if command -v python; then
     sleep 2
     pkill python3
 fi
-
-updaterepos() {
-    pacman -Sy --noconfirm || return 1
-    if pacman -Si bash 2>&1 | grep -iq 'unrecognized archive'; then
-        echo 'getting new mirrorlist'
-        curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' | sed 's/^#//g' >/etc/pacman.d/mirrorlist
-        rm /var/lib/pacman/sync/*
-        pacman -Sy --noconfirm || return 1
-        if pacman -Si bash 2>&1 | grep -iq 'unrecognized archive'; then
-            echo 'still problems, shuffling mirrorlist'
-            curl -s 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&use_mirror_status=on' | sed 's/^#//g' | shuf >/etc/pacman.d/mirrorlist
-            rm /var/lib/pacman/sync/*
-        fi
-        pacman -Sy --noconfirm || return 1
-    fi
-}
 
 if ! command -v git; then
     while [ -z "$CONTINUEINSTALLATION" ]; do
@@ -157,6 +144,25 @@ fi
 chmod +x ./*.sh
 chmod +x ./*/*.sh
 
+isdebug() {
+    if {
+        [ -n "$INSTALLDEBUG" ] || [ -e /tmp/installdebug ]
+    }; then
+        echo 'debugging mode is enabled'
+        return 0
+    else
+        return 1
+    fi
+}
+
+if isdebug; then
+    echo 'debugging mode enabled'
+    if [ -e /tmp/debugname ]; then
+        echo "debugging name: $(cat /tmp/installdebug)"
+
+    fi
+fi
+
 ./depend/depend.sh
 ./artix/preinstall.sh
 
@@ -175,7 +181,9 @@ cd /root/instantARCH || exit
         echo "ask failed" && exit
     else
         rm /opt/instantos/installcanceled
+        instantwallpaper set /usr/share/instantwallpaper/defaultphoto.png
         # clear up installation data
+
         rm -rf /root/instantARCH
         pkill instantosinstall
         sleep 1
@@ -224,8 +232,12 @@ uploadlogs() {
 
 }
 
+if isdebug && [ -e /tmp/debugname ]; then
+    echo "debug name: $(cat /tmp/debugname)"
+fi
+
 # ask to reboot, upload error data if install failed
-if [ -z "$INSTANTARCHTESTING" ]; then
+if [ -z "$INSTANTARCHTESTING" ] && ! isdebug; then
     if ! [ -e /opt/installfailed ] || ! [ -e /opt/installsuccess ]; then
         if command -v installapplet; then
             notify-send "rebooting"
@@ -253,3 +265,11 @@ if [ -e /tmp/removeimenu ]; then
 fi
 
 echo "installation finished"
+
+echo ""
+echo ""
+curl -s 'https://raw.githubusercontent.com/instantOS/instantLOGO/master/ascii.txt' | sed 's/^/    /g'
+echo ""
+echo ""
+
+echo "the system can now be safely rebooted"
