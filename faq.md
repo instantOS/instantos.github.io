@@ -120,6 +120,11 @@ InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on start
 You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
 graphica tool that does this.
 
+## Is there Swap? I don't see any
+
+There is! swap is automatically allocated as needed via systemd-swap.
+Instead of a whole disk partition, it's a dynamic file.
+
 ## Does it support 32 bit
 
 Yes, but the 32 bit version doesn't have a live session yet so you'll have to
