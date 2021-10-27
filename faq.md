@@ -185,6 +185,11 @@ Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/proje
 If it's not there request it by opening a feature-request issue on github
 or talking to people in the [community](https://instantos.io/support).
 
+## Is there a swap? I don't see any
+
+Yes, there is! Swap is automatically allocated as needed via
+systemd-swap. 
+
 ## Calamares
 
 instantOS used to use Calamares but switched to a custom installer called
