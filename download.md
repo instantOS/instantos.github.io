@@ -63,7 +63,7 @@ can use the CLI installer (see instructions above) It works identically to the
 
 ## Nix Packages
 
-Nix packages are available form the Nix User Repository (NUR) - completely 
+Nix packages are available from the Nix User Repository (NUR) - completely 
 cached by cachix binary cache.
 Quick instructions on how to install using Nix and NixOS can be found here:
 
