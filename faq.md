@@ -117,8 +117,6 @@ We're sorry, but we have to prioritize other things for now.
 ## How do I put things in the autostart
 
 InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
-You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
-graphica tool that does this.
 
 ## Does it support 32 bit
 
