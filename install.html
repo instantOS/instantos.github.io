@@ -204,6 +204,19 @@ fi
 ./depend/depend.sh
 ./artix/preinstall.sh
 
+# ensure instantmenu is working
+if ! instantmenu -v; then
+    if git -v 2>&1 | grep -i glibc; then
+        echo "upgrading glibc"
+        pacman -Sy glibc --noconfirm || exit 1
+    fi
+    if ! instantmenu -v; then
+        echo "instantmenu is not working on your system."
+        echo "installing instantOS requires git to be installed and working"
+        exit 1
+    fi
+fi
+
 if [ -n "$INSTANTARCHTESTING" ]; then
     echo "install config"
     iroot installtest 1
@@ -287,9 +300,9 @@ if [ -z "$INSTANTARCHTESTING" ] && ! isdebug; then
             reboot
         fi
     else
-        dialog --msgbox "installation failed
+        echo "installation failed
 please go to https://instantos.github.io/instantos.github.io/support
-for assistance or error reporting" 1000 1000
+for assistance or error reporting" | imenu -M
         echo "uploading error data"
         echo "installaion failed"
         uploadlogs
