@@ -84,6 +84,8 @@ or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
 
 A list of repos, todo and some guidelines can be found [here](https://instantos.io/links).
 
+<a href="https://https://mastodon.cloud/@paperbenni" rel="me">Follow me on Mastodon!</a>
+
 -------------------
 
 ## instantOS is still in early beta, contributions always welcome
