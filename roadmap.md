@@ -21,5 +21,5 @@ focused on the Raspberry Pi first.
 
 The arm project has been picked up by the community
 and is developed over at [github.com/instantOS/instantOS-arm](https://github.com/instantOS/instantOS-arm)
-you can discuss development on [Discord](https://discord.io/instantos) in the
+you can discuss development on [Discord](https://dsc.gg/instantos) in the
 arm-development channel.
