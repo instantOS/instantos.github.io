@@ -11,15 +11,3 @@ a single feature at a time. Learn the basics and add one more feature a day to
 your workflow to build your muscle memory and you'll be taking full advantage of
 all features in no time.
 
-## 32bit and ARM support
-
-instantOS is more than capable of running on very low end hardware, even more so
-than lubuntu or other lightweight distros.
-Unfortunately, a lot of this older/cheaper hardware is running on different cpu
-architectures. There is a 32 bit build planned and for ARM efforts will be
-focused on the Raspberry Pi first.
-
-The arm project has been picked up by the community
-and is developed over at [github.com/instantOS/instantOS-arm](https://github.com/instantOS/instantOS-arm)
-you can discuss development on [Discord](https://dsc.gg/instantos) in the
-arm-development channel.
