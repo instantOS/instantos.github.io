@@ -59,7 +59,7 @@ the mouse. That's why the interface can be fully navigated using only the mouse.
 
 Until the user base outgrows this, any questions will be answered immediately
 by the devs. You can open issues on [GitHub](https://github.com/instantOS),
-ask for help on the [Discord server](https://discord.io/instantos), on the [Subreddit](https://reddit.com/r/instantos)
+ask for help on the [Discord server](https://dsc.gg/instantos), on the [Subreddit](https://reddit.com/r/instantos)
 or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
 
 <ul class="actions">

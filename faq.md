@@ -5,7 +5,7 @@ Chances are, you will find a quick answer for your lingering inquires here.
 Please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki), if not.
 If you still don't get an answer or need additional information or clarification, 
 we have an active and friendly [community](https://instantos.io/support) to support you. 
-The [Discord channel](https://discord.io/instantos) is usually the quickest and most active way to get information.
+The [Discord channel](https://dsc.gg/instantos) is usually the quickest and most active way to get information.
 
 <script type="text/javascript">
     window.onload = function() {
