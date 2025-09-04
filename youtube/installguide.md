@@ -42,9 +42,15 @@ You need
   - 64Bit processor
 - An internet connection
 
+<!-- ### 1. Download ISO -->
+<!---->
+<!-- Head over to [https://instantos.io/download](https://instantos.io/download) and -->
+<!-- download the latest ISO to your computer (can be any computer, does not have to -->
+<!-- be the one you plan on installing to). -->
+
 ### 1. Download ISO
 
-Head over to [https://instantos.io/download](https://instantos.io/download) and
+Head over to [https://archlinux.org](https://archlinux.org) and
 download the latest ISO to your computer (can be any computer, does not have to
 be the one you plan on installing to).
 
@@ -92,11 +98,13 @@ can differ depending on the manufacturer.
 
 ### 5. Installation
 
-After booting the ISO, confirm the first option in the instantOS splash screen
+After booting the ISO, confirm the first option in the splash screen
 using the enter key to enter the live session.
-Inside the live session you should have a welcome app with an install entry.
-Click on that or the applet in the top right to start the installation. This
-requires a constant internet access, ethernet is recommended. The installer
+enter the command `bash <(curl -L instantos.io/install)`
+
+<!-- Inside the live session you should have a welcome app with an install entry. -->
+<!-- Click on that or the applet in the top right to start the installation. -->
+This requires a constant internet access, ethernet is recommended. The installer
 asks a few questions and should be fairly self explanatory. You can select things
 using either the arrow keys, by searching for items or using the mouse. Confirm options
 by using the enter key or left clicking. After you input all the information the
