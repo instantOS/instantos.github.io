@@ -2,8 +2,8 @@
 layout: home
 hero:
   name: instantOS
-  text: Arch Linux based distro that works out of the box
-  tagline: Lightning fast, flexible and just works for power users
+  text: it works. fast. powerful.
+  tagline: An Arch-based distro for power users that just works
   image:
     src: /docs/assets/instantos.png
     alt: instantOS
@@ -16,19 +16,25 @@ hero:
       link: /download
     - theme: alt
       text: Documentation
-      link: /docs
+      link: /docs/
 features:
   - title: Just works
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
     details: The user does not have to worry about everything from wifi to volume and brightness, theming and notification-management. A graphical settings menu ensures accessibility for anyone just like with a desktop environment.
   - title: Power-user friendly
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
     details: instantOS has lots of functionality that goes beyond that of a normal desktop environment like tiling and instantASSIST that ensure a high skill ceiling.
   - title: Ultra lightweight
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
     details: The RAM usage on idle is about 150-160Mb (tested on a fresh install on Virtualbox). That is less than half of what the lightest Ubuntu flavor uses.
   - title: Feature rich
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
     details: The small footprint is not achieved through measures like slimming down the kernel or compromising on features and visuals.
   - title: Hybrid window manager
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
     details: instantWM can do both tiling and floating windows with none of them being a second class citizen.
   - title: Keyboard and Mouse support
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/></svg>
     details: A keyboard centered workflow can make you much more productive but getting rid of the mouse is not the best thing for everyone.
 ---
 
