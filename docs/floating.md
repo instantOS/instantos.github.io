@@ -6,7 +6,7 @@
 
 ### Basic explanation
 
-Each window has two modes: Floating and tiling. Tiling is explained [here](/floating)
+Each window has two modes: Floating and tiling. Tiling is explained [here](/docs/layouts)
 Floating mode allows you to freely move and resize any window.
 
 ### Activating floating mode

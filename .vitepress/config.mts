@@ -30,48 +30,126 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Download', link: '/download' },
-      { text: 'Documentation', link: '/docs' },
+      { text: 'Documentation', link: '/docs/' },
+      { text: 'Development', link: '/development/development' },
       { text: 'FAQ', link: '/faq' },
       { text: 'Support', link: '/support' }
     ],
 
-    sidebar: [
-      {
-        text: 'Getting Started',
-        items: [
-          { text: 'Installation Guide', link: '/docs/installguide' },
-          { text: 'Getting Started', link: '/docs/getting started' }
-        ]
-      },
-      {
-        text: 'Features',
-        items: [
-          { text: 'Apps', link: '/docs/apps' },
-          { text: 'Terminal', link: '/docs/terminal' },
-          { text: 'Hotkeys', link: '/docs/hotkeys' },
-          { text: 'Layouts', link: '/docs/layouts' },
-          { text: 'Quick Menu', link: '/docs/quickmenu' },
-          { text: 'Themes', link: '/docs/instantthemes' }
-        ]
-      },
-      {
-        text: 'Customization',
-        items: [
-          { text: 'Customize', link: '/docs/customize' },
-          { text: 'WM Settings', link: '/docs/wmsettings' },
-          { text: 'Menu Settings', link: '/docs/menusettings' }
-        ]
-      },
-      {
-        text: 'Development',
-        items: [
-          { text: 'Development', link: '/development/development' },
-          { text: 'Colors', link: '/docs/development/colors' },
-          { text: 'iBuild', link: '/docs/development/ibuild' },
-          { text: 'iConf', link: '/docs/development/iconf' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/development/': [
+        {
+          text: 'Development',
+          items: [
+            { text: 'Overview', link: '/development/development' },
+            { text: 'Developer Guide', link: '/developer' },
+            { text: 'Roadmap', link: '/roadmap' },
+            { text: 'Todo', link: '/todo' },
+            { text: 'Manjaro Dev', link: '/comments/manjarodevelopment' }
+          ]
+        }
+      ],
+      '/docs/development/': [
+        {
+          text: 'Development Docs',
+          items: [
+            { text: 'Colors', link: '/docs/development/colors' },
+            { text: 'iBuild', link: '/docs/development/ibuild' },
+            { text: 'iConf', link: '/docs/development/iconf' },
+            { text: 'imosid', link: '/docs/development/imosid' },
+            { text: 'instantARCH', link: '/docs/development/instantARCH' },
+            { text: 'instantMENU', link: '/docs/development/instantMENU' },
+            { text: 'Status', link: '/docs/development/status' }
+          ]
+        }
+      ],
+      '/docs/': [
+        {
+          text: 'Getting Started',
+          items: [
+            { text: 'Welcome', link: '/docs/' },
+            { text: 'Installation Guide', link: '/docs/installguide' },
+            { text: 'Getting Started', link: '/docs/getting started' },
+            { text: 'Update', link: '/docs/update' },
+            { text: 'Donate', link: '/docs/donate' }
+          ]
+        },
+        {
+          text: 'Core Features',
+          items: [
+            { text: 'Apps', link: '/docs/apps' },
+            { text: 'Terminal', link: '/docs/terminal' },
+            { text: 'Hotkeys', link: '/docs/hotkeys' },
+            { text: 'Layouts', link: '/docs/layouts' },
+            { text: 'Quick Menu', link: '/docs/quickmenu' },
+            { text: 'Themes', link: '/docs/instantthemes' },
+            { text: 'Instant Assist', link: '/docs/instantassist' },
+            { text: 'Instant Lock', link: '/docs/instantlock' }
+          ]
+        },
+        {
+          text: 'Window Management',
+          items: [
+            { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'Floating Windows', link: '/docs/floating' },
+            { text: 'Sticky Windows', link: '/docs/sticky' },
+            { text: 'Scratchpad', link: '/docs/scratchpad' },
+            { text: 'Fullscreen', link: '/docs/fullscreen' },
+            { text: 'Tags', link: '/docs/tags' },
+            { text: 'Alt-Tab', link: '/docs/alttab' },
+            { text: 'Close', link: '/docs/close' },
+            { text: 'Shutdown', link: '/docs/shutdown' },
+            { text: 'Visibility', link: '/docs/visibility' }
+          ]
+        },
+        {
+          text: 'Customization',
+          items: [
+            { text: 'Customize', link: '/docs/customize' },
+            { text: 'Menu Settings', link: '/docs/menusettings' },
+            { text: 'Terminal Theme', link: '/docs/terminaltheme' },
+            { text: 'Shortcuts', link: '/docs/shortcuts' }
+          ]
+        },
+        {
+          text: 'Tools & Utilities',
+          items: [
+            { text: 'Audio', link: '/docs/audio' },
+            { text: 'Screenshots', link: '/docs/screenshots' },
+            { text: 'File Search', link: '/docs/filesearch' },
+            { text: 'Notifications', link: '/docs/notify' },
+            { text: 'Overlays', link: '/docs/overlays' },
+            { text: 'Programs', link: '/docs/programs' },
+            { text: 'Vim', link: '/docs/vim' },
+            { text: 'Drawing', link: '/docs/drawing' },
+            { text: 'Video', link: '/docs/insvideo' }
+          ]
+        },
+        {
+          text: 'Gaming',
+          items: [
+            { text: 'Gaming', link: '/docs/gaming/gaming' },
+            { text: 'Game Begin', link: '/docs/gaming/gamebegin' }
+          ]
+        }
+      ],
+      '/': [
+        {
+          text: 'General',
+          items: [
+            { text: 'About', link: '/about' },
+            { text: 'Download', link: '/download' },
+            { text: 'FAQ', link: '/faq' },
+            { text: 'Support', link: '/support' },
+            { text: 'Discord', link: '/discord' },
+            { text: 'Links', link: '/links' },
+            { text: 'Releases', link: '/releases/beta6' },
+            { text: 'Archive', link: '/archive' },
+            { text: 'Thanks', link: '/thanks' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/instantOS/instantOS' },

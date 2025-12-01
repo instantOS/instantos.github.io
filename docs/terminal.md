@@ -50,6 +50,6 @@ This is a list of changes made to the vanilla st source
 :::
 
 Colors can be changed from Xresources, but
-please read [this](/customize) before doing any
+please read [this](/docs/customize) before doing any
 theming.
 
