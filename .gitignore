@@ -2,3 +2,4 @@ _site
 **/*.png~
 **.bak
 .nvimlog
+node_modules
