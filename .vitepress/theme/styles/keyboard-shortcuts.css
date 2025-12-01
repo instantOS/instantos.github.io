@@ -1,29 +1,41 @@
-/* Keyboard shortcuts styling */
+/* Keyboard shortcuts styling with Catppuccin colors */
 kbd {
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 0 #ccc, 0 3px 0 #bbb;
-  color: #333;
+  /* Light theme - using Catppuccin Latte colors */
+  background-color: #eff1f5; /* base */
+  border: 1px solid #ccd0da; /* surface0 */
+  border-radius: 6px;
+  box-shadow: 0 2px 0 #bcc0cc, 0 3px 0 #acb0be; /* surface1, surface2 */
+  color: #4c4f69; /* text */
   display: inline-block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
-  font-weight: bold;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.75em;
+  font-weight: 600;
   line-height: 1;
-  padding: 0.2em 0.4em;
-  margin: 0 0.1em;
+  padding: 0.25em 0.5em;
+  margin: 0 0.15em;
   position: relative;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
-/* Dark theme support */
+/* Dark theme - using Catppuccin Mocha colors */
 html.dark kbd {
-  background-color: #2d2d2d;
-  border-color: #555;
-  box-shadow: 0 2px 0 #555, 0 3px 0 #444;
-  color: #f4f4f4;
+  background-color: #313244; /* surface0 */
+  border-color: #45475a; /* surface1 */
+  box-shadow: 0 2px 0 #585b70, 0 3px 0 #6c7086; /* surface2, overlay0 */
+  color: #cdd6f4; /* text */
+}
+
+/* Hover effects */
+kbd:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 #bcc0cc, 0 4px 0 #acb0be;
+}
+
+html.dark kbd:hover {
+  box-shadow: 0 3px 0 #585b70, 0 4px 0 #6c7086;
 }
 
 /* Make kbd elements look more like keyboard keys */
@@ -34,11 +46,33 @@ kbd::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
-  border-radius: 3px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+  border-radius: 5px;
   pointer-events: none;
 }
 
 html.dark kbd::before {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 100%);
+}
+
+/* Blue accent variant for special keys */
+kbd[data-accent="blue"] {
+  background-color: #89b4fa; /* blue */
+  border-color: #74c7ec; /* sky */
+  color: #1e1e2e; /* base */
+  box-shadow: 0 2px 0 #74c7ec, 0 3px 0 #89dceb;
+}
+
+html.dark kbd[data-accent="blue"] {
+  background-color: #89b4fa; /* blue */
+  border-color: #74c7ec; /* sky */
+  color: #1e1e2e; /* base */
+  box-shadow: 0 2px 0 #74c7ec, 0 3px 0 #89dceb;
+}
+
+/* Smaller variant for inline text */
+kbd.small {
+  font-size: 0.7em;
+  padding: 0.15em 0.3em;
+  margin: 0 0.1em;
 }
