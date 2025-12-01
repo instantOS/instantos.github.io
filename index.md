@@ -41,7 +41,7 @@ features:
 
 **instantOS** is an Arch Linux based distro that works out of the box but is still aimed at power users. Everything is lightning fast, flexible and just works.
 
-In addition to the usual [Arch packages](https://github.com/instantOS/extra), we also package for the [Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via **[instantNIX](https://github.com/instantOS/instantNIX/)**.
+In addition to the usual [Arch packages](https://github.com/instantOS/packages), we also package for the [Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via **[instantNIX](https://github.com/instantOS/instantNIX/)**.
 
 ## instantOS beta 7 released
 

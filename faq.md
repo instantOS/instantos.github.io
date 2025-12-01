@@ -25,7 +25,7 @@ So you will have to select the manual partitioning option and set it up yourself
 The instantOS tools are on the [AUR](https://aur.archlinux.org/).
 If not, you can add the custom repo, e.g. by running [repo.sh](https://raw.githubusercontent.com/instantOS/instantOS/main/repo.sh).
 Use your regular package manager to install any instant packages you like.
-In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/extra).
+In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/packages).
 This works on most Archlinux variants, too.
 
 ## How do I build an instantOS component from the source repos

@@ -36,7 +36,7 @@ used to build the instantmenu package
 Dotfiles shipped with instantOS
 used to build the instantdotfiles package
 
-### [extra](https://github.com/instantOS/extra)
+### [packages](https://github.com/instantOS/packages)
 
 Contains all PKGBUILD files for instantOS packages and a list of AUR packages to
 be precompiled and hosted on the instantOS repos
