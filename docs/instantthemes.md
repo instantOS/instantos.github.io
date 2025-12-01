@@ -1,8 +1,9 @@
 # instantTHEMES
 
 
-!!! warning
-    this page is WIP
+::: warning
+this page is WIP
+:::
 
 
 ## Features

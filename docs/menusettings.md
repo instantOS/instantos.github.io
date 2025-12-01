@@ -53,13 +53,15 @@ instantmenu.font: FiraCode:size=14
 
 ```
 
-!!! tip "Applying settings"
-    You need to run the command `xrdb ~/.Xresources` after modifying the file
-    to apply the settings. New settings will not apply to running instances of
-    instantMENU
-    
-!!! todo
-    change example xresources to default theme
+::: tip Applying settings
+You need to run the command `xrdb ~/.Xresources` after modifying the file
+to apply the settings. New settings will not apply to running instances of
+instantMENU
+:::
+
+::: tip
+change example xresources to default theme
+:::
     
 ### Explanation
 
@@ -70,5 +72,6 @@ text and fontawesome icons on the entry. Bg is the background color. Detail is
 the shadow detail that appears below the item when selected. 
 
 
-!!! todo
-    explain out
+::: tip
+explain out
+:::

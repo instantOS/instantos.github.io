@@ -35,5 +35,6 @@ that are in frequent use.  As an example, you close a file you're using either
 to save restores or by accident and need it again, you can just open
 instantSEARCH and hit enter three times to open it back up.
 
-!!! todo
-    video/gif demonstration
+::: tip
+video/gif demonstration
+:::

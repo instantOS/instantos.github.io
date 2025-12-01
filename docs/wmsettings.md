@@ -195,9 +195,10 @@ This is the config syntax for instantWM versions of beta 6 and earlier.  Newer
 versions introduced an updated config that is not compatible with the old one
 anymore.
 
-!!! warning
-    The names in the old list are deprecated, Xresources written in this syntax
-    will not affect instantWM installations newer than beta 6
+::: warning
+The names in the old list are deprecated, Xresources written in this syntax
+will not affect instantWM installations newer than beta 6
+:::
 
 ### Example
 

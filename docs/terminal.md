@@ -20,9 +20,10 @@ By default, all terminals open in a tmux session. This allows for features
 like tabs, split windows and detaching from the session. Tmux is very well
 documented so this manual won't go into detail about it.
 
-!!! summary "Tmux resources"
-    - [Cheatsheet](https://tmuxcheatsheet.com/)
-    - [Guide](https://github.com/tmux/tmux/wiki/Getting-Started)
+::: details Tmux resources
+- [Cheatsheet](https://tmuxcheatsheet.com/)
+- [Guide](https://github.com/tmux/tmux/wiki/Getting-Started)
+:::
 
 ## Configuration
 

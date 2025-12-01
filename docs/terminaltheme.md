@@ -53,14 +53,18 @@ The lines with the exclamation marks are comments and are not required.
 
 ```
 
-!!! info
-    Be sure to run `xrdb ~/.Xresources` to apply any changes
-    
-    
-!!! note
-    instantOS Beta 7 and after will automatically stop updating Xresources
-    after it has been modified to prevent overwriting any customisations.
-    running `imosid compile ~/.Xresources` will resume updates.
+::: info
+Be sure to run `xrdb ~/.Xresources` to apply any changes
+:::
+
+
+
+
+::: info
+instantOS Beta 7 and after will automatically stop updating Xresources
+after it has been modified to prevent overwriting any customisations.
+running `imosid compile ~/.Xresources` will resume updates.
+:::
 
 ## Font
 

@@ -1,8 +1,9 @@
 # Colors
 
 
-!!! warning
-    this page is WIP
+::: warning
+this page is WIP
+:::
 
 this is a reference for the default color scheme of instantOS
 

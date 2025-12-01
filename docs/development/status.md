@@ -92,6 +92,7 @@ argument.
 
 // TODO
 
-!!! note
-    This feature is not just lacking documentation
-    There is just a very early implementation of this in the window manager that at the moment is not remotely ready for use
+::: info
+This feature is not just lacking documentation
+There is just a very early implementation of this in the window manager that at the moment is not remotely ready for use
+:::

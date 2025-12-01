@@ -336,10 +336,11 @@ worse and less reliable. Make sure that Graphics API is set to Vulkan in
 options->general settings->Graphics
 
 
-!!! info
-    The Cemu team has published plans to make Cemu open-source and to create a
-    Linux Port. This page was written in February 2022 and might be outdated
-    once the Cemu team (hopefully) follows through on their plans
+::: info
+The Cemu team has published plans to make Cemu open-source and to create a
+Linux Port. This page was written in February 2022 and might be outdated
+once the Cemu team (hopefully) follows through on their plans
+:::
 
 #### Caveats
 
