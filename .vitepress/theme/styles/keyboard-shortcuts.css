@@ -1,0 +1,44 @@
+/* Keyboard shortcuts styling */
+kbd {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #ccc, 0 3px 0 #bbb;
+  color: #333;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.2em 0.4em;
+  margin: 0 0.1em;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Dark theme support */
+html.dark kbd {
+  background-color: #2d2d2d;
+  border-color: #555;
+  box-shadow: 0 2px 0 #555, 0 3px 0 #444;
+  color: #f4f4f4;
+}
+
+/* Make kbd elements look more like keyboard keys */
+kbd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+html.dark kbd::before {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0));
+}

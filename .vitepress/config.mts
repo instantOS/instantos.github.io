@@ -1,9 +1,19 @@
 import { defineConfig } from 'vitepress'
+import { keyboardShortcutsPlugin } from './plugins/keyboard-shortcuts.js'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "instantOS",
   description: "instantOS website and docs",
+  markdown: {
+    theme: {
+      light: 'catppuccin-latte',
+      dark: 'catppuccin-mocha',
+    },
+    config: (md) => {
+      md.use(keyboardShortcutsPlugin)
+    }
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {
