@@ -1,6 +1,7 @@
 import DefaultTheme from "vitepress/theme";
 import "@catppuccin/vitepress/theme/mocha/blue.css";
 import './styles/keyboard-shortcuts.css'
+import './styles/custom.css'
 import { h } from "vue";
 import AnnouncementBanner from './components/AnnouncementBanner.vue'
 
