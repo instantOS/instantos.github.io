@@ -49,106 +49,107 @@ You can change this to any font you like with any size, granted that you put in 
 ## Colors
 
 
-??? "Full Color list"
-    ```txt
-    instantwm.hover.normal.win.fg
-    instantwm.hover.minimized.win.fg
-    instantwm.hover.sticky.win.fg
-    instantwm.hover.focus.win.fg
-    instantwm.hover.stickyfocus.win.fg
-    instantwm.hover.overlay.win.fg
-    instantwm.hover.overlayfocus.win.fg
-    instantwm.hover.inactive.tag.fg
-    instantwm.hover.filled.tag.fg
-    instantwm.hover.focus.tag.fg
-    instantwm.hover.nofocus.tag.fg
-    instantwm.hover.empty.tag.fg
-    instantwm.hover.normal.close.fg
-    instantwm.hover.locked.close.fg
-    instantwm.hover.fullscreen.close.fg
-    instantwm.hover.normal.win.bg
-    instantwm.hover.minimized.win.bg
-    instantwm.hover.sticky.win.bg
-    instantwm.hover.focus.win.bg
-    instantwm.hover.stickyfocus.win.bg
-    instantwm.hover.overlay.win.bg
-    instantwm.hover.overlayfocus.win.bg
-    instantwm.hover.inactive.tag.bg
-    instantwm.hover.filled.tag.bg
-    instantwm.hover.focus.tag.bg
-    instantwm.hover.nofocus.tag.bg
-    instantwm.hover.empty.tag.bg
-    instantwm.hover.normal.close.bg
-    instantwm.hover.locked.close.bg
-    instantwm.hover.fullscreen.close.bg
-    instantwm.hover.normal.win.detail
-    instantwm.hover.minimized.win.detail
-    instantwm.hover.sticky.win.detail
-    instantwm.hover.focus.win.detail
-    instantwm.hover.stickyfocus.win.detail
-    instantwm.hover.overlay.win.detail
-    instantwm.hover.overlayfocus.win.detail
-    instantwm.hover.inactive.tag.detail
-    instantwm.hover.filled.tag.detail
-    instantwm.hover.focus.tag.detail
-    instantwm.hover.nofocus.tag.detail
-    instantwm.hover.empty.tag.detail
-    instantwm.hover.normal.close.detail
-    instantwm.hover.locked.close.detail
-    instantwm.hover.fullscreen.close.detail
-    instantwm.nohover.normal.win.fg
-    instantwm.nohover.minimized.win.fg
-    instantwm.nohover.sticky.win.fg
-    instantwm.nohover.focus.win.fg
-    instantwm.nohover.stickyfocus.win.fg
-    instantwm.nohover.overlay.win.fg
-    instantwm.nohover.overlayfocus.win.fg
-    instantwm.nohover.inactive.tag.fg
-    instantwm.nohover.filled.tag.fg
-    instantwm.nohover.focus.tag.fg
-    instantwm.nohover.nofocus.tag.fg
-    instantwm.nohover.empty.tag.fg
-    instantwm.nohover.normal.close.fg
-    instantwm.nohover.locked.close.fg
-    instantwm.nohover.fullscreen.close.fg
-    instantwm.nohover.normal.win.bg
-    instantwm.nohover.minimized.win.bg
-    instantwm.nohover.sticky.win.bg
-    instantwm.nohover.focus.win.bg
-    instantwm.nohover.stickyfocus.win.bg
-    instantwm.nohover.overlay.win.bg
-    instantwm.nohover.overlayfocus.win.bg
-    instantwm.nohover.inactive.tag.bg
-    instantwm.nohover.filled.tag.bg
-    instantwm.nohover.focus.tag.bg
-    instantwm.nohover.nofocus.tag.bg
-    instantwm.nohover.empty.tag.bg
-    instantwm.nohover.normal.close.bg
-    instantwm.nohover.locked.close.bg
-    instantwm.nohover.fullscreen.close.bg
-    instantwm.nohover.normal.win.detail
-    instantwm.nohover.minimized.win.detail
-    instantwm.nohover.sticky.win.detail
-    instantwm.nohover.focus.win.detail
-    instantwm.nohover.stickyfocus.win.detail
-    instantwm.nohover.overlay.win.detail
-    instantwm.nohover.overlayfocus.win.detail
-    instantwm.nohover.inactive.tag.detail
-    instantwm.nohover.filled.tag.detail
-    instantwm.nohover.focus.tag.detail
-    instantwm.nohover.nofocus.tag.detail
-    instantwm.nohover.empty.tag.detail
-    instantwm.nohover.normal.close.detail
-    instantwm.nohover.locked.close.detail
-    instantwm.nohover.fullscreen.close.detail
-    normal.border
-    focus.tile.border
-    focus.float.border
-    snap.border
-    status.fg
-    status.bg
-    status.detail
-    ```
+::: details Full Color list
+```txt
+instantwm.hover.normal.win.fg
+instantwm.hover.minimized.win.fg
+instantwm.hover.sticky.win.fg
+instantwm.hover.focus.win.fg
+instantwm.hover.stickyfocus.win.fg
+instantwm.hover.overlay.win.fg
+instantwm.hover.overlayfocus.win.fg
+instantwm.hover.inactive.tag.fg
+instantwm.hover.filled.tag.fg
+instantwm.hover.focus.tag.fg
+instantwm.hover.nofocus.tag.fg
+instantwm.hover.empty.tag.fg
+instantwm.hover.normal.close.fg
+instantwm.hover.locked.close.fg
+instantwm.hover.fullscreen.close.fg
+instantwm.hover.normal.win.bg
+instantwm.hover.minimized.win.bg
+instantwm.hover.sticky.win.bg
+instantwm.hover.focus.win.bg
+instantwm.hover.stickyfocus.win.bg
+instantwm.hover.overlay.win.bg
+instantwm.hover.overlayfocus.win.bg
+instantwm.hover.inactive.tag.bg
+instantwm.hover.filled.tag.bg
+instantwm.hover.focus.tag.bg
+instantwm.hover.nofocus.tag.bg
+instantwm.hover.empty.tag.bg
+instantwm.hover.normal.close.bg
+instantwm.hover.locked.close.bg
+instantwm.hover.fullscreen.close.bg
+instantwm.hover.normal.win.detail
+instantwm.hover.minimized.win.detail
+instantwm.hover.sticky.win.detail
+instantwm.hover.focus.win.detail
+instantwm.hover.stickyfocus.win.detail
+instantwm.hover.overlay.win.detail
+instantwm.hover.overlayfocus.win.detail
+instantwm.hover.inactive.tag.detail
+instantwm.hover.filled.tag.detail
+instantwm.hover.focus.tag.detail
+instantwm.hover.nofocus.tag.detail
+instantwm.hover.empty.tag.detail
+instantwm.hover.normal.close.detail
+instantwm.hover.locked.close.detail
+instantwm.hover.fullscreen.close.detail
+instantwm.nohover.normal.win.fg
+instantwm.nohover.minimized.win.fg
+instantwm.nohover.sticky.win.fg
+instantwm.nohover.focus.win.fg
+instantwm.nohover.stickyfocus.win.fg
+instantwm.nohover.overlay.win.fg
+instantwm.nohover.overlayfocus.win.fg
+instantwm.nohover.inactive.tag.fg
+instantwm.nohover.filled.tag.fg
+instantwm.nohover.focus.tag.fg
+instantwm.nohover.nofocus.tag.fg
+instantwm.nohover.empty.tag.fg
+instantwm.nohover.normal.close.fg
+instantwm.nohover.locked.close.fg
+instantwm.nohover.fullscreen.close.fg
+instantwm.nohover.normal.win.bg
+instantwm.nohover.minimized.win.bg
+instantwm.nohover.sticky.win.bg
+instantwm.nohover.focus.win.bg
+instantwm.nohover.stickyfocus.win.bg
+instantwm.nohover.overlay.win.bg
+instantwm.nohover.overlayfocus.win.bg
+instantwm.nohover.inactive.tag.bg
+instantwm.nohover.filled.tag.bg
+instantwm.nohover.focus.tag.bg
+instantwm.nohover.nofocus.tag.bg
+instantwm.nohover.empty.tag.bg
+instantwm.nohover.normal.close.bg
+instantwm.nohover.locked.close.bg
+instantwm.nohover.fullscreen.close.bg
+instantwm.nohover.normal.win.detail
+instantwm.nohover.minimized.win.detail
+instantwm.nohover.sticky.win.detail
+instantwm.nohover.focus.win.detail
+instantwm.nohover.stickyfocus.win.detail
+instantwm.nohover.overlay.win.detail
+instantwm.nohover.overlayfocus.win.detail
+instantwm.nohover.inactive.tag.detail
+instantwm.nohover.filled.tag.detail
+instantwm.nohover.focus.tag.detail
+instantwm.nohover.nofocus.tag.detail
+instantwm.nohover.empty.tag.detail
+instantwm.nohover.normal.close.detail
+instantwm.nohover.locked.close.detail
+instantwm.nohover.fullscreen.close.detail
+normal.border
+focus.tile.border
+focus.float.border
+snap.border
+status.fg
+status.bg
+status.detail
+```
+:::
 
 ### General
 
