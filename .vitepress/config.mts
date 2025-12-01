@@ -33,8 +33,7 @@ export default defineConfig({
         text: 'Getting Started',
         items: [
           { text: 'Installation Guide', link: '/docs/installguide' },
-          { text: 'Getting Started', link: '/docs/getting started' },
-          { text: 'Quick Menu', link: '/docs/quickmenu' }
+          { text: 'Getting Started', link: '/docs/getting started' }
         ]
       },
       {
@@ -44,6 +43,7 @@ export default defineConfig({
           { text: 'Terminal', link: '/docs/terminal' },
           { text: 'Hotkeys', link: '/docs/hotkeys' },
           { text: 'Layouts', link: '/docs/layouts' },
+          { text: 'Quick Menu', link: '/docs/quickmenu' },
           { text: 'Themes', link: '/docs/instantthemes' }
         ]
       },

@@ -5,8 +5,9 @@
 </div>
 
 
-???+ tip "Required skills"
-     [:material-arrow-right:Shortcuts](shortcuts.md)
+::: details Required skills {open}
+- [Shortcuts](shortcuts.md)
+:::
 
 instantOS comes with instantASSIST, a collection of small little programs that
 can be accessed using only a few keystrokes.

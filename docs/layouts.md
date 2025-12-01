@@ -4,9 +4,10 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/NMs8b2mBCTA" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-???+ tip "Required skills"
-    [:material-arrow-right:shortcuts](shortcuts.md)  
-    [:material-arrow-right:Opening applications](apps.md)
+::: details Required skills {open}
+- [shortcuts](shortcuts.md)  
+- [Opening applications](apps.md)
+:::
 
 ## Basics
 

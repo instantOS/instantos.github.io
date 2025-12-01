@@ -12,12 +12,10 @@ instantOS ships with its own status text generator. If you want to set your own
 status text you first need to disable the built in solution. This can be done
 in Settings->instantOS->Status bar
 
-??? note
-    ## Planned status bar program
-    
-    It is planned to create a statusbar similar to dwmblocks that can run
-    different status scripts at different intervals and then generates a
-    complete status text that can be used by the window manager. It will
+::: details Planned status bar program
+It is planned to create a statusbar similar to dwmblocks that can run
+different status scripts at different intervals and then generates a
+complete status text that can be used by the window manager. It will
     however not be based on dwmblocks and will have a lot more features.
     dwmblocks is not used because it lacks some crucial features to make it
     work with the featureset of instantWM

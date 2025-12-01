@@ -4,9 +4,10 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/5_PIWl_iI-s" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-???+ tip "Required skills"
-     [:material-arrow-right:Shortcuts](shortcuts.md)  
-     [:material-arrow-right:Tags](tags.md)
+::: details Required skills {open}
+- [Shortcuts](shortcuts.md)  
+- [Tags](tags.md)
+:::
 
 You can toggle several visual elements of instantOS You can toggle the top bar
 with ++super+b++

@@ -4,8 +4,9 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/t5XjpeJdgk0" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-???+ tip "Required skills"
-     [:material-arrow-right:Shortcuts](shortcuts.md)
+::: details Required skills {open}
+- [Shortcuts](shortcuts.md)
+:::
 
 ### Basic explanation
 

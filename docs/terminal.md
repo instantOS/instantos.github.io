@@ -33,20 +33,21 @@ suckless terminal. It is nothing special and deliberately kept barebones
 because most of the things you could add into a terminal emulator can be done
 much better and reliable using tmux.
 
-??? info "st-instantos patches and changes"
-    This is a list of changes made to the vanilla st source
-    - xresources support
-    - colored emoji
-    - font zooming with ctrl +/-
-    - vertcenter
-    - fira code default font
-    - ligatures
-    - boxdraw
-    - hide cursor
-    - blinking cursor
-    - clipboard fix
-    - w3m support
-    - transparency
+::: details st-instantos patches and changes
+This is a list of changes made to the vanilla st source
+- xresources support
+- colored emoji
+- font zooming with ctrl +/-
+- vertcenter
+- fira code default font
+- ligatures
+- boxdraw
+- hide cursor
+- blinking cursor
+- clipboard fix
+- w3m support
+- transparency
+:::
 
 Colors can be changed from Xresources, but
 please read [this](/customize) before doing any

@@ -4,8 +4,9 @@
     <iframe width="100%" height="700px" src="https://www.youtube.com/embed/AKjD6k9yZWA" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-???+ tip "Required skills"
-     [:material-arrow-right:instantASSIST](instantassist.md)
+::: details Required skills {open}
+- [instantASSIST](instantassist.md)
+:::
 
 The most simple way to change volume is to hover over the status text and
 scroll with the mouse wheel.  To only use the keyboard you can either use the
