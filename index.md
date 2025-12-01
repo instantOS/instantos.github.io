@@ -10,10 +10,11 @@ hero:
   actions:
     - theme: brand
       text: Download
-      link: https://github.com/instantOS/instantOS/releases/download/v7-beta/instantos_beta7.iso
-    - theme: alt
-      text: Other Downloads
       link: /download
+      # link: https://github.com/instantOS/instantOS/releases/download/v7-beta/instantos_beta7.iso
+    # - theme: alt
+    #   text: Other Downloads
+    #   link: /download
     - theme: alt
       text: Documentation
       link: /docs/
