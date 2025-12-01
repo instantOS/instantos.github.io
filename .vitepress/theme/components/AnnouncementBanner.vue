@@ -4,9 +4,11 @@ import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
 
 const { frontmatter } = useData()
 const banner = ref(null)
+const isMenuOpen = ref(false)
+let observer = null
 
 const updateHeight = () => {
-  if (banner.value) {
+  if (banner.value && !isMenuOpen.value) {
     const height = banner.value.offsetHeight
     if (window.innerWidth >= 960) {
       document.documentElement.style.setProperty('--vp-layout-top-height', height + 'px')
@@ -23,19 +25,46 @@ watch(frontmatter, async () => {
   updateHeight()
 })
 
+const setupObserver = () => {
+  const navbar = document.querySelector('.VPNavBar')
+  if (navbar) {
+    observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          isMenuOpen.value = navbar.classList.contains('screen-open')
+          updateHeight()
+        }
+      })
+    })
+    observer.observe(navbar, { attributes: true, attributeFilter: ['class'] })
+    isMenuOpen.value = navbar.classList.contains('screen-open')
+    updateHeight()
+    return true
+  }
+  return false
+}
+
 onMounted(() => {
   updateHeight()
   window.addEventListener('resize', updateHeight)
+  
+  if (!setupObserver()) {
+    const interval = setInterval(() => {
+      if (setupObserver()) clearInterval(interval)
+    }, 100)
+    setTimeout(() => clearInterval(interval), 5000)
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', updateHeight)
+  if (observer) observer.disconnect()
   document.documentElement.style.removeProperty('--vp-layout-top-height')
 })
 </script>
 
 <template>
-  <div v-if="frontmatter.layout === 'home'" ref="banner" class="announcement-banner">
+  <div v-if="frontmatter.layout === 'home' && !isMenuOpen" ref="banner" class="announcement-banner">
     This website has been completely redone! Check out the new design and features.
   </div>
 </template>
