@@ -15,7 +15,7 @@ You can clone an existing repo with
 ins dot clone <repo url>
 ```
 
-Or create a new on with 
+Or create a new one with 
 
 ```
 ins dot init
@@ -67,6 +67,16 @@ priority in `~/.config/instant/dots.toml` will be used. This can be used to
 install both third party base dotfiles as well as keeping your personal
 configuration tracked and synchronized between machines. 
 
+The `ins repo` command can be used to manage repositories, but they can also be
+configured directly in `~/.config/instant/dots.toml`.
+
+## Automatic usage
+
+`ins dot` is used to automatically install and update the default instantOS
+dotfiles (https://github.com/instantOS/dotfiles). That way you can enjoy an up
+to date preconfigured setup while still being able to customize any part of it
+without investing any extra effort. Putting `ins dot update` in a startup script
+is a well supported and intended use case. 
 
 
 
