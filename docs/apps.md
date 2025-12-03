@@ -74,7 +74,7 @@ application.
 
 You likely installed instantWM on an existing system. instantWM is just a
 window manager does not include any other programs. These have to be installed
-separately from [http://packages.instantos.io.](http://packages.instantos.io).
+separately from [http://packages.instantos.io](http://packages.instantos.io).
 It is also a lot harder to provide support for these frankensteined systems
 since lots of things can vary depending on what your base system looks like.
 

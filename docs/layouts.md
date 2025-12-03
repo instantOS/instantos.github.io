@@ -66,7 +66,7 @@ itself is tiled vertically.
 
 ### Monocle **`[n]`**
 
-![Place](https://instantos.io/images/layouts/monocle.png)
+![Placeholder](https://instantos.io/images/layouts/monocle.png)
 
 All windows are Fullscreen and layered on top of each other. The window
 currently in focus is always on top.

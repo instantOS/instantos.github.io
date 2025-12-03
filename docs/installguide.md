@@ -26,7 +26,7 @@ Then you can play around with the live version or start the installer program
 to create an installation on your computer.
 
 After the installation is finished you can shut down the computer, unplug the
-live medium and upon booting you be greeted with the freshly installed OS.
+live medium and upon booting you will be greeted with the freshly installed OS.
 
 ## Prerequisites
 
@@ -81,7 +81,7 @@ next instruction. Most computers have a splash screen that
 briefly appears before continuing the booting process. It usually contains the
 Logo of the manufacturer. Somewhere, usually below the logo there should be a
 list of keys that can be pressed while the splash screen is active and a
-description of what they do. Look for "boot medium" or somethings similar, and
+description of what they do. Look for "boot medium" or something similar, and
 if that is not there, go for "BIOS" or "setup". If you missed the key the first
 time around, shut the computer back down and start repeatedly pressing it as soon
 as it turns on. If the "boot medium" option is available you should get a menu that

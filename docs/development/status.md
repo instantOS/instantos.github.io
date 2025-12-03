@@ -44,7 +44,7 @@ complete status text that can be used by the window manager. It will
     ### Progress
     
     At the moment this is **all just plans**, no code for the status bar has
-    been written yet as development is still focussed on making the operating
+    been written yet as development is still focused on making the operating
     system more stable before piling on even more features
 
 ## Styling
@@ -59,7 +59,7 @@ All Markup commands have the following format
 ^commandnamecommandargument^
 ```
 
-They have a "\^" as suffix and prefix. The opening caret is immediatly followed
+They have a "\^" as suffix and prefix. The opening caret is immediately followed
 by the command name which is then (without a separator) followed by the
 argument.
 

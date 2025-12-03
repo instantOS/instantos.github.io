@@ -19,5 +19,5 @@ INSTALLDEBUG or by creating the file /tmp/installdebug. It opens a debug menu
 after each step and allows for pausing, cancelling or continuing the
 installation.
 
-you can put an identifier in /tmp/debugname that is then put in the log file in
+You can put an identifier in /tmp/debugname that is then put in the log file in
 order to be able to later recognize a testing installation

@@ -92,7 +92,7 @@ It is being used in the instantARCH installer.
 
 ### [mirror](https://github.com/instantOS/mirror)
 
-A mirror of all binary packages hosted int the instantOS pacman repo
+A mirror of all binary packages hosted in the instantOS pacman repo
 
 ### [instantTOOLS](https://github.com/instantOS/instantTOOLS)
 

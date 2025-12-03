@@ -34,7 +34,7 @@ On instantOS:
 
 - instantSETTINGS: instantOS → instantOS development tools → yes
 - wait for the installation to finish
-- Use `ibuild` from the command line, `ibuld help` for available commands and some help
+- Use `ibuild` from the command line, `ibuild help` for available commands and some help
 
 For instance, if you want to build the latest instantWM from the github source repository:
 
@@ -81,7 +81,7 @@ A major rework of the status bar is planned, that will make for immediate update
 ## Can I customize the status bar
 
 You can completely disable the built-in status bar in the settings menu and then
-run our own status bar (or status script periodically).
+run your own status bar (or status script periodically).
 For inspiration have a look at `/usr/bin/instantstatus`.
 
 ## My keyboard layout doesn't work with instantOS and language support sucks
@@ -104,7 +104,7 @@ We're sorry, but we have to prioritize other things for now.
 
 InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on startup.
 You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
-graphica tool that does this.
+graphical tool that does this.
 
 ## Does it support 32 bit
 

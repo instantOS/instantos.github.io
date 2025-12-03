@@ -1,6 +1,6 @@
 # Roadmap
 
-A more technical and live updatung list of concrete features can be found [here](https://github.com/instantOS/instantOS/projects/1)
+A more technical and live updating list of concrete features can be found [here](https://github.com/instantOS/instantOS/projects/1)
 
 ## Finish up Documentation
 

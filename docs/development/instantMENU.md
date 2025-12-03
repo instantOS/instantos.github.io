@@ -21,7 +21,7 @@ selectable.
 > this entry will not be selectable but will still display' | instantmenu
 ```
 
-Entries can also be styled with the default color pallete
+Entries can also be styled with the default color palette
 
 ```sh
     echo 'this entry will be selectable
@@ -135,7 +135,7 @@ Imenu is a wrapper around instantmenu that allows fast creation of common types 
    edit list from stdin, adding an item executes <addcommand>
 
 ```
-### Exmaples
+### Examples
 
 ```sh
 imenu -m 'this is a test message'
