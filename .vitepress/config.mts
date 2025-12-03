@@ -33,7 +33,8 @@ export default defineConfig({
       { text: 'Documentation', link: '/docs/' },
       { text: 'Development', link: '/development/development' },
       { text: 'FAQ', link: '/faq' },
-      { text: 'Support', link: '/support' }
+      { text: 'Support', link: '/support' },
+    { text: 'Donate', link: '/docs/donate' }
     ],
 
     sidebar: {
@@ -70,8 +71,8 @@ export default defineConfig({
             { text: 'Welcome', link: '/docs/' },
             { text: 'Installation Guide', link: '/docs/installguide' },
             { text: 'Getting Started', link: '/docs/getting started' },
+            { text: 'Dotfile management', link: '/insdot' },
             { text: 'Update', link: '/docs/update' },
-            { text: 'Donate', link: '/docs/donate' }
           ]
         },
         {
