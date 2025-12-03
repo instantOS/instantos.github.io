@@ -46,21 +46,13 @@ export default defineConfig({
             { text: 'Developer Guide', link: '/developer' },
             { text: 'Roadmap', link: '/roadmap' },
             { text: 'Todo', link: '/todo' },
-            { text: 'Manjaro Dev', link: '/comments/manjarodevelopment' }
-          ]
-        }
-      ],
-      '/docs/development/': [
-        {
-          text: 'Development Docs',
-          items: [
-            { text: 'Colors', link: '/docs/development/colors' },
-            { text: 'iBuild', link: '/docs/development/ibuild' },
-            { text: 'iConf', link: '/docs/development/iconf' },
-            { text: 'imosid', link: '/docs/development/imosid' },
-            { text: 'instantARCH', link: '/docs/development/instantARCH' },
-            { text: 'instantMENU', link: '/docs/development/instantMENU' },
-            { text: 'Status', link: '/docs/development/status' }
+            { text: 'Manjaro Dev', link: '/comments/manjarodevelopment' },
+            { text: 'Colors', link: '/development/colors' },
+            { text: 'iBuild', link: '/development/ibuild' },
+            { text: 'iConf', link: '/development/iconf' },
+            { text: 'instantARCH', link: '/development/instantARCH' },
+            { text: 'instantMENU', link: '/development/instantMENU' },
+            { text: 'Status', link: '/development/status' }
           ]
         }
       ],

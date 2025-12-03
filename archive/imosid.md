@@ -1,5 +1,11 @@
 # imosid
 
+
+::: warning
+Imosid is deprecated, `ins dot` is being used instead. 
+:::
+
+
 imosid stands for "instant manager of sections in dotfiles". 
 
 It aims to solve a core problem when working with dotfiles:
