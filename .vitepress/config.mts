@@ -71,7 +71,7 @@ export default defineConfig({
             { text: 'Welcome', link: '/docs/' },
             { text: 'Installation Guide', link: '/docs/installguide' },
             { text: 'Getting Started', link: '/docs/getting started' },
-            { text: 'Dotfile management', link: '/insdot' },
+            { text: 'Dotfile management', link: '/docs/insdot' },
             { text: 'Update', link: '/docs/update' },
           ]
         },
