@@ -4,7 +4,7 @@ instantMENU is the menu that is used for most of the instantOS specific
 graphical applications. It is a backwards compatible extension of dmenu.
 
 More information about writing scripts with instantMENU can be found
-[here](/docs/development/instantMENU)
+[here](/development/instantMENU)
 
 ## Colors
 

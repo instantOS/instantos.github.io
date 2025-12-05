@@ -94,6 +94,9 @@ will ever get overwritten without them requesting it. To the best of its
 ability, the program will keep working on what it can without risk of doing
 anything the user does not want. 
 
+You are even welcome to use `ins dot` alongside other dotfile managers like
+yadm (which is what I do myself)
+
 ## Comparison with others
 
 ### GNU Stow
