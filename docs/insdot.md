@@ -70,6 +70,23 @@ configuration tracked and synchronized between machines.
 The `ins repo` command can be used to manage repositories, but they can also be
 configured directly in `~/.config/instant/dots.toml`.
 
+This can be used to 'overlay' dotfiles from different repositories. For example,
+you might be using the default instantOS dotfiles as a base, but you need some
+customizations in your `~/.zshrc`, which you also want to keep in a git
+repository. At the same time you want to continue receiving updates to the other
+instantOS dotfiles. `ins dot` supports this without any issues, just add your
+personal dotfile repository with higher priority. 
+
+Other use cases for this would be custom themes, dotfile repositories which just
+contain color schemes for various applications, which can be put inbetween your
+base dotfiles and your personal ones. A good analogy are docker images, where
+the upper layers can introduce new things not present in the lower layers, but
+also override things from the lower layers.
+
+
+![diagram](https://i.imgur.com/UgjIpbB.png)
+
+
 ## Automatic usage
 
 `ins dot` is used to automatically install and update the default instantOS
@@ -87,7 +104,7 @@ is a well supported and intended use case.
 All dotfiles are kept in a Git repository. If you think there is something
 better then you're either wrong or have decades of time to devote to it. 
 
-### Get out of the user's way without breaking
+### Get out of the user's way
 
 The user does not even have to know the dotfiles are managed. Nothing they do
 will ever get overwritten without them requesting it. To the best of its
@@ -101,13 +118,34 @@ yadm (which is what I do myself)
 
 ### GNU Stow
 
-This symlinks
+This symlinks dotfiles from a repository to the home directory. This has a few
+disadvantages:
+Symlinks can be fragile, and some applications do not handle them well. 
+Any modification to a dotfile means that the repo state is now dirty and until
+you sort that out, updates to completely unrelated dotfiles cannot be pulled. 
+As an attempt to fix this, people split their stow dotfiles into multiple
+packages of related dotfiles. That way I can symlink only a subset of my
+dotfiles and can modify dotfiles in my home directory without messing with the
+repo state. This still has a few disadvvantages:
+It adds yet more management overhead because you
+need to apply packages separately, and keep track of which packages contain which
+dotfiles. It also does not fully solve the repo state problem, modifying a
+single dotfile in an applied package still dirties the entire repo across all
+packages, so the only solution is to not install the package with stow. In order
+to keep the blast radius of modifying dotfiles small, you need to split your
+package every time you want machine local modifications. 
+
 
 ### yadm
 
 This is a great tool which I use myself. Its genius lies in how it basically
-doesn't do anything. It just turns your home directory into a git repository. 
-
+doesn't do anything. It just turns your home directory into a git repository. It
+does not fit the use case for instantOS entirely though, because it has some of
+the same problems stow has. Modifying a dotfile dirties the entire repo,
+preventing updates, which means automated usage is out of the question. Being
+written in bash, it is also quite slow. It also does not allow applying
+dotfiles from multiple different repositories, something which stow supports
+very well by accident. 
 
 
 
