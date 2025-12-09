@@ -80,7 +80,7 @@ Here is a basic overview of the ways to play games on linux
       specific games. It also has support for running games with proton which
       in most cases yields better results. 
     - Bottles/PlayOnLinux:
-      PlayOnLinux is a program very similar to lutris, but contrary to what the name may suggest is focussed on running non-gaming software. It probably has its uses but from my testing you have to invest a lot more time into it to get a result that is compa
+      PlayOnLinux is a program very similar to lutris, but contrary to what the name may suggest is focused on running non-gaming software. It probably has its uses but from my testing you have to invest a lot more time into it to get a result that is compatible
       PlayOnLinux almost never works
       Better for non-gaming software
     
@@ -445,18 +445,18 @@ i3wm
     - Game freezes when switching to borderless windowed
     - Cursor gets stuck on frozen game
 - Cinnamon
-    - Fullscreen doesnt fill entire window
+    - Fullscreen doesn't fill entire window
     - Black screen after alttab, no way of restoring with minimizing through taskbar
     
 - Gnome
-    - Fullscreen doesnt fill screen
+    - Fullscreen doesn't fill screen
     - Black screen after switching away more than 3 times
     - Possible to get mouse stuck 
         - Get out by alttabbing, quitting using keyboard
           
 - LXQT
     - Minimizing works
-    - FSR doesnt cover full screen
+    - FSR doesn't cover full screen
     - Switching to windowed works
     - Mouse input works
     - Switching to tty and back freezes entire desktop

@@ -95,7 +95,7 @@ This marks the beginning of the section hello world
 ## Metafiles
 
 Some file formats do not allow for comments either because they have no defined
-comment syntax or because the application using the the file automatically
+comment syntax or because the application using the file automatically
 removes comments (*glances in the direction of flameshot and whatever cfg
 parser it is using*). In order to support imosid management for files without
 comments metadata, imosid records information about them in a separate

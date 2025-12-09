@@ -12,7 +12,7 @@ bash <(curl -L instantos.io/install)
 The Archlinux iso build process changed, which breaks the way instantOS builds
 its isos. Additionally, the package repo config changed upstream which
 requires up to date Arch based isos to install. For that reason, until this
-is fixed, use the the CLI installer from an Arch Linux iso.
+is fixed, use the CLI installer from an Arch Linux iso.
 
 beta 7
 

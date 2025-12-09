@@ -170,7 +170,7 @@ and hover respectively.
 ### State types
 
 Each element can be in one of several states, for example a window title can be
-focussed or minimized. 
+focused or minimized. 
 
 ### Element types
 

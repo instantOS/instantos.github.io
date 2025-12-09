@@ -6,7 +6,7 @@ A terminal can be opened up with ++return++ on an empty tag or ++super+return++
 at any time. You can also use the mouse by middle clicking on the status bar in
 the top right. The ++super+space++ application launcher can also launch any
 application in a terminal. Press ++shift+"left/right"++ arrow key while using the
-launcher to switch ti terminal mode.
+launcher to switch to terminal mode.
 
 ## Copy paste
 
