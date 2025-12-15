@@ -60,6 +60,8 @@ preserved.
 
 ## Multiple repos
 
+![diagram](https://i.imgur.com/UgjIpbB.png)
+
 You can combine dotfiles from multiple repositories. If all repositories
 configure different applications then this is trivial, if two of them contain
 dotfiles for the same application, dotfiles from the repository with the higher
@@ -84,7 +86,6 @@ the upper layers can introduce new things not present in the lower layers, but
 also override things from the lower layers.
 
 
-![diagram](https://i.imgur.com/UgjIpbB.png)
 
 
 ## Automatic usage
@@ -133,7 +134,8 @@ dotfiles. It also does not fully solve the repo state problem, modifying a
 single dotfile in an applied package still dirties the entire repo across all
 packages, so the only solution is to not install the package with stow. In order
 to keep the blast radius of modifying dotfiles small, you need to split your
-package every time you want machine local modifications. 
+package every time you want machine local modifications to a dotfile within a
+package, but want the rest of the package to continue getting updates. 
 
 
 ### yadm
