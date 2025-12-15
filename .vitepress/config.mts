@@ -64,6 +64,7 @@ export default defineConfig({
             { text: 'Installation Guide', link: '/docs/installguide' },
             { text: 'Getting Started', link: '/docs/getting started' },
             { text: 'Dotfile management', link: '/docs/insdot' },
+            { text: 'Game Save Management', link: '/docs/insgame' },
             { text: 'Update', link: '/docs/update' },
           ]
         },
