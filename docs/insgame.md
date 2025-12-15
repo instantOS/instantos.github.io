@@ -1,10 +1,21 @@
-# Cloud Game Save management
+# instant Cloud Game Saves
 
-Game save management you can trust
+::: info
+This tool is distro agnostic, you can take `ins` and the way it manages dotfiles
+anywhere you like. It even works on Android and Steam Deck!
+:::
+
+Game save management you can trust. 
+
+> Like git for game saves. 
 
 ## Feature highlights
 
-Support for arbitrary cloud storage providers
+- Never lose saves again
+- Support for most cloud storage providers via `rclone`
+- Deduplicated save history with rollback feature
+- Smart multi-device features
+- Support for emulators, wine and native games. 
 
 ## Quick start
 
@@ -57,4 +68,9 @@ and will create a folder for your game saves.
 ins game add
 ```
 
+## How does this work
+
+Your game saves are kept in a restic repository whic in turns uses rclone to
+store its repo in the cloud. This means they are deduplicated, their integrity
+can be verifie, and their history is kept. 
 
