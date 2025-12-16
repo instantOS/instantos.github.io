@@ -4,6 +4,18 @@ This page contains download links for older versions of instantOS.  In most
 cases these should not be used and installation should always happen from the
 latest ISO or latest Arch ISO.
 
+## beta 7
+
+<ul class="actions">
+    <li><a href="https://github.com/instantOS/instantOS/releases/download/v7-beta/instantos_beta7.iso" class="button special icon fa-download">Download</a></li>
+    <li><a href="https://osdn.net/projects/instantos/storage/releases/beta7/instantos_beta7.iso" class="button special icon fa-download">Mirror 1</a></li>
+</ul>
+
+md5 hash:
+
+```txt
+7b48258c6e72e3367af9652d8a197f56
+```
 
 ## beta 6
 

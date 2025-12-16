@@ -1,31 +1,24 @@
 # Download
 
-## Notice
+## Installer
 
-TLDR; 
-Run this from an Archlinux live iso
+Run this from an Archlinux live iso to run the instantOS installer
 
 ```sh
 bash <(curl -L instantos.io/install)
 ```
 
-The Archlinux iso build process changed, which breaks the way instantOS builds
-its isos. Additionally, the package repo config changed upstream which
-requires up to date Arch based isos to install. For that reason, until this
-is fixed, use the CLI installer from an Arch Linux iso.
+## InstantOS utilities
 
-beta 7
-
-<ul class="actions">
-    <li><a href="https://github.com/instantOS/instantOS/releases/download/v7-beta/instantos_beta7.iso" class="button special icon fa-download">Download</a></li>
-    <li><a href="https://osdn.net/projects/instantos/storage/releases/beta7/instantos_beta7.iso" class="button special icon fa-download">Mirror 1</a></li>
-</ul>
-
-md5 hash:
-
-```txt
-7b48258c6e72e3367af9652d8a197f56
 ```
+curl -fsSL https://raw.githubusercontent.com/instantOS/instantCLI/main/scripts/install.sh | sh
+```
+
+There is an ongoing effort to make the instantOS utilities available on other
+distros. A large part of them are already working, and at this point vanilla
+arch can be considered fully supported by the new instantOS utilities. 
+
+This also largely works on Ubuntu and Debian. 
 
 ## System requirements
 
@@ -36,7 +29,7 @@ md5 hash:
 updating to a new build does NOT require reinstalling the OS. a simple
 
 ```sh
-instantupdate
+ins update
 ```
 
 takes care of that.
@@ -45,22 +38,12 @@ instantOS specific packages are hosted on
 [packages.instantos.io](https://packages.instantos.io)  
 For other packages, the default Arch repos are used.
 
-## CLI installer
+## What happened to the live iso?
 
-In case the live ISO does not boot or does not fit on your flash drive, there
-is a CLI installer. It can run off any Arch live ISO (with experimental Artix
-support) and doesn't need any graphical interface. You could even use this to
-install instantOS over ssh if you wanted to.
-
-To use it, boot into any recent arch installation ISO.
-Make sure you are connected to the internet and run the following command:
-
-```sh
-bash <(curl -L instantos.io/install)
-```
-
-This will download and start the installer. It works identically to the
-graphical installer and does not require any special knowledge to use.
+The Archlinux iso build process changed, which breaks the way instantOS builds
+its isos. Additionally, the package repo config changed upstream which
+requires up to date Arch based isos to install. For that reason, until this
+is fixed, use the CLI installer from an Arch Linux iso.
 
 ## Nix Packages
 
