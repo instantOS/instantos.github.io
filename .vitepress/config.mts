@@ -63,9 +63,10 @@ export default defineConfig({
             { text: 'Welcome', link: '/docs/' },
             { text: 'Installation Guide', link: '/docs/installguide' },
             { text: 'Getting Started', link: '/docs/getting started' },
+            { text: 'Update', link: '/docs/update' },
             { text: 'Dotfile management', link: '/docs/insdot' },
             { text: 'Game Save Management', link: '/docs/insgame' },
-            { text: 'Update', link: '/docs/update' },
+            { text: 'Video Editing', link: '/docs/insvideo' },
           ]
         },
         {
@@ -116,7 +117,6 @@ export default defineConfig({
             { text: 'Programs', link: '/docs/programs' },
             { text: 'Vim', link: '/docs/vim' },
             { text: 'Drawing', link: '/docs/drawing' },
-            { text: 'Video', link: '/docs/insvideo' }
           ]
         },
         {

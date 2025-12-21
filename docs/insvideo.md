@@ -118,7 +118,8 @@ content. They will stay on screen until the next slide or until a separator line
 
 You can also pause the video entirely by placing slides between two separator lines.
 Multiple slides can be shown while the video is paused by placing separator
-lines between them. 
+lines between them. The amount of time a slide is shown is calculated based on
+the number of words it contains. 
 
 ```markdown
 ---
