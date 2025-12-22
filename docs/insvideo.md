@@ -55,7 +55,6 @@ transcript:
   source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
 generated_at: '2025-12-21T00:37:04.161349597+00:00'
 ---
-```markdown
 `00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
 `00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 `00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
@@ -92,7 +91,6 @@ transcript:
   source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
 generated_at: '2025-12-21T00:37:04.161349597+00:00'
 ---
-```markdown
 `00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
 `00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 Hi, this is the first slide
@@ -131,7 +129,7 @@ transcript:
   source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
 generated_at: '2025-12-21T00:37:04.161349597+00:00'
 ---
-```markdown
+
 `00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
 `00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
