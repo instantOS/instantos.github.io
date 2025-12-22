@@ -62,11 +62,7 @@ generated_at: '2025-12-21T00:37:04.161349597+00:00'
 `00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
 `00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
 `00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
-`00:30.6-00:33.2` error sit voluptatem accusantium doloremque laudantium totam rem aperiam 
-`00:33.6-00:35.0` eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-`00:35.3-00:37.4` dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur 
-`00:38.0-00:39.9` aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione 
-`00:40.3-00:47.0` voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia dolor sit amet 
+...
 ```
 
 ### Cuts
@@ -93,12 +89,16 @@ generated_at: '2025-12-21T00:37:04.161349597+00:00'
 ---
 `00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
 `00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+
 Hi, this is the first slide
+
 `00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
 `00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
 `00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
 `00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+
 Hi, this is the second slide
+
 `00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
 `00:30.6-00:33.2` error sit voluptatem accusantium doloremque laudantium totam rem aperiam 
 `00:33.6-00:35.0` eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
@@ -153,6 +153,40 @@ Slides will be styled differently depending on their content. If they just
 contain a single header (h1, h2 ...) they will act as title cards. If they
 contain lots of content, they wil not be center aligned and the layout is
 adjusted to make the larger amount of content more readable. 
+
+### Background music
+
+
+````markdown
+---
+video:
+  hash: '4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9'
+  name: 'distro.mkv'
+  source: '/home/benjamin/Videos/distrotest/distro.mkv'
+transcript:
+  source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
+generated_at: '2025-12-21T00:37:04.161349597+00:00'
+---
+
+`00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
+`00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+
+```music
+https://www.youtube.com/watch?v=example
+```
+
+`00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
+`00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
+`00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
+`00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+````
+
+
+You can put a file or music url in a code block with the language set to `music`
+to set the music for the video. The music will be looped if it is shorter than
+the video, and will play until the next music block or the end of the video.
+Setting music to `none` or an empty code block will disable music from that point. 
+
 
 ## Limitations
 
