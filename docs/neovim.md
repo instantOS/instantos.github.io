@@ -1,0 +1,111 @@
+# Neovim Setup
+
+instantOS comes preconfigured with my personal Neovim setup. 
+This has a few unique features which I will list here. 
+
+## Install on other Distros
+
+This config should be rougly distro agnostic, as long as you have the required
+packages installed using your respective package manager. MacOS should also
+work, although it has not been tested in a while. 
+
+### Requirements
+
+- Neovim 0.12.0 or higher
+- Git (for plugin management)
+- Npm (for Mason Lsp)
+- Gcc (For Treesitter)
+- `ins`
+
+### Installation
+
+```bash
+rm -rf ~/.config/nvim # remove existing config
+ins dot clone https://github.com/instantOS/dotfiles # clone instantOS dotfiles
+nvim # auto installs everything on first run
+```
+
+
+## Snippets
+
+### General usage
+
+Many snippets are triggered automatically when typing certain keywords.
+Pressiing ++ctrl+x++ will undo a snippet expansion so the trigger word can be
+typed as is without the snippet expanding.
+
+### Anki
+
+This is meant to be used with the ObsidianToAnki plugin for obsidian. 
+These snippets are not that useful outside of anki card creation, so they only
+trigger if your markdown file contains the word `anki` in its name. 
+
+`MQ` generates a Math question, meaning
+
+```
+Q: $...$
+A: This is the answer to the math question
+```
+
+All of the LaTex snipets are also working here, whenever you are inside a math
+environment, meaning `$...$` or `$$...$$`.
+
+### LaTex
+
+This contains a port of the LateX-Suite snippets from Obsidian to LuaSnip.
+Most of the snippets work the same, some have been expanded. 
+
+Integrals for example tend to be a lot of tedious typing, so I added the
+following snippet
+
+```txt
+$$
+Int
+$$
+```
+
+
+Expands to the following
+
+```
+$$
+\int_{}^{}\mathrm{d}
+$$
+```
+
+Pressing tab will move the cursor to the next placeholder, so the following can
+be typed quickly
+
+
+
+```
+$$
+\int_{0}^{1} x\mathrm{d}x $$
+```
+
+
+`Sum` has the same functionality here. 
+
+Typing `dm` will generate a display math environment
+
+These snippets will work in `.tex` files as well as in markdown files within
+math environments.
+
+### Markdown
+
+Typing the name of a programming language at the beginning of a line followed by
+a colon (`:`) creates a code block for that language. (of course ctrl x will
+undo this if you need the name of the language at the beginning of the line)
+
+````markdown
+python:
+````
+
+Expands into
+
+````markdown
+```python 
+```
+````
+
+
