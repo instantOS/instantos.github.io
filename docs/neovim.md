@@ -106,6 +106,7 @@ Expands into
 
 ````markdown
 ```python 
+<cursor here>
 ```
 ````
 
