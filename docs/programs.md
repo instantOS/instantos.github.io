@@ -1,5 +1,9 @@
 # instantOS specific programs and features
 
+## ins
+
+This is a command line tool which manages most of instantOS and unifies most
+utilities in a single portable binary. Many of its features are distro agnostic. 
 
 ## instantWM
 
@@ -14,41 +18,61 @@ The instantOS window manager
 The custom instantOS installer
 
 
-instantPASS
+## instantPASS
 
 An instantMENU GUI for the unix-pass password manager with some extra features
 
-instantMENU
+## instantMENU
 
 A backwards compatible fork of dmenu
 
-instantPACMAN
+## instantPACMAN
 
-instantSETTINGS
+Deprecated, functionality moved to `ins`
 
-imosid
+## instantSETTINGS
 
-instantSHELL
+Deprecated, functionality moved to `ins`
 
-imenu
+## imosid
 
-commandfinder
+Deprecated, approach as changed and dotfile management is now part of `ins`
+
+## instantSHELL
+
+Deprecated, all shell configuration has been moved to the dotfile repo. 
+
+## imenu
+
+A thin wrapper around `instantmenu` to provide some convenience when using it. 
+
+## commandfinder
+
+Find out fast as frick what package you need to install if you type a command
+which is not installed. 
 
 instantsearch
 
-islide
+## islide
 
-instantLOCK
+instantmenu, but a slider instead of a text input
 
-instantNOTIFY
+## instantLOCK
 
-instantSTATUS
+The lock screen in the instantWM session
 
-instantOPEN
+## instantNOTIFY
 
+A notification center for instatWM, recording past notifications and providing a
+way to browse them. Currently unmaintained. 
 
-## TODO
+## instantSTATUS
 
-- add screenshots
-- add gifs
-- add small descriptions
+Not happening, I don't have time to create yet another status bar, we have
+enough already
+
+## instantOPEN
+
+Open AppImages and flatpak files, somehow this is was not a thing when I made
+this 
+
