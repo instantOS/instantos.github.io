@@ -78,7 +78,7 @@ export default defineConfig({
           text: 'Basic Features',
           items: [
             { text: 'Start Apps', link: '/docs/apps' },
-            { text: 'Hotkeys', link: '/docs/hotkeys' },
+            { text: 'Shortcuts', link: '/docs/shortcuts' },
             { text: 'Terminal', link: '/docs/terminal' },
             { text: 'Themes', link: '/docs/instantthemes' },
             { text: 'Instant Assist', link: '/docs/instantassist' },
@@ -91,7 +91,6 @@ export default defineConfig({
           items: [
             { text: 'Customize', link: '/docs/customize' },
             { text: 'instantMENU', link: '/docs/menusettings' },
-            { text: 'Shortcuts', link: '/docs/shortcuts' }
           ]
         },
         {
@@ -111,6 +110,7 @@ export default defineConfig({
         {
           text: 'Window Management',
           items: [
+            { text: 'Hotkeys', link: '/docs/hotkeys' },
             { text: 'WM Settings', link: '/docs/wmsettings' },
             { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Layouts', link: '/docs/layouts' },

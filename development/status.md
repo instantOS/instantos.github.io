@@ -16,36 +16,38 @@ in Settings->instantOS->Status bar
 It is planned to create a statusbar similar to dwmblocks that can run
 different status scripts at different intervals and then generates a
 complete status text that can be used by the window manager. It will
-    however not be based on dwmblocks and will have a lot more features.
-    dwmblocks is not used because it lacks some crucial features to make it
-    work with the featureset of instantWM
-    
-    ### Runtime configuration
-    
-    Customizing the status bar will not require recompiling it. Instead it will have a config file using the toml format
-    
-    ### Markup
-    
-    The status bar will automatically add markup to status widgets to separate
-    them from each other. Widgets can however also communicate with the bar to
-    for example change their color on runtime.
-    
-    ### Validation
-    
-    The markup parser currently in use in instantWM will crash the entire window
-    manager if there is an error in the markup syntax. The planned status bar will
-    perform validation on all config and status text so it is impossible to
-    configure it in a way that will crash the window manager.
-    
-    ### Rust
-    
-    Following [imosid](https://github.com/instantOS/imosid) this will be the second instantOS project written in rust
-    
-    ### Progress
-    
-    At the moment this is **all just plans**, no code for the status bar has
-    been written yet as development is still focused on making the operating
-    system more stable before piling on even more features
+however not be based on dwmblocks and will have a lot more features.
+dwmblocks is not used because it lacks some crucial features to make it
+work with the featureset of instantWM
+
+### Runtime configuration
+
+Customizing the status bar will not require recompiling it. Instead it will have a config file using the toml format
+
+### Markup
+
+The status bar will automatically add markup to status widgets to separate
+them from each other. Widgets can however also communicate with the bar to
+for example change their color on runtime.
+
+### Validation
+
+The markup parser currently in use in instantWM will crash the entire window
+manager if there is an error in the markup syntax. The planned status bar will
+perform validation on all config and status text so it is impossible to
+configure it in a way that will crash the window manager.
+
+### Rust
+
+Following [imosid](https://github.com/instantOS/imosid) this will be the second instantOS project written in rust
+
+### Progress
+
+At the moment this is **all just plans**, no code for the status bar has
+been written yet as development is still focused on making the operating
+system more stable before piling on even more features
+
+:::
 
 ## Styling
 
