@@ -38,11 +38,38 @@ you do not want to run a background job.
 
 ## Theming
 
+### Overall
+
+Most applications on instantOS have built in theming support which is documented
+elsewhere. 
+This includes but is not limited to the following
+
+- instantMENU
+- instantWM
+- Kitty
+- Sway
+- Hyprland
+- Dunst
+- Fuzzel
+- Rofi
+
+Theme away, instantOS will stop updating the dotfiles for any file you change. 
+`ins dot reset <filename>` can be used to reset any dotfile to the default. 
+
+
 ### Gtk
 
 There is a GTK theme section in the Appearnce tab of the settings panel. 
 On X11, changing this might require restarting Gtk applciations fo this to take
 effect. 
+
+:::info
+Keep in mind that modern GTK does not like to be themed, developers do not
+intend their applications to be themed. Modern GTK theming is pretty much a
+hacky workaround, and any distro shipping with that out of the box either has
+the resources of Ubuntu or is willing to break things. Theming GTK3 and 2 is
+mostly fine however. 
+:::
 
 ### Qt
 
