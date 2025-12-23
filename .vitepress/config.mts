@@ -62,39 +62,37 @@ export default defineConfig({
           items: [
             { text: 'Welcome', link: '/docs/' },
             { text: 'Installation Guide', link: '/docs/installguide' },
-            { text: 'Getting Started', link: '/docs/getting started' },
+            { text: 'Quick Start', link: '/docs/getting started' },
             { text: 'Update', link: '/docs/update' },
             { text: 'Dotfile management', link: '/docs/insdot' },
-            { text: 'Game Save Management', link: '/docs/insgame' },
-            { text: 'Video Editing', link: '/docs/insvideo' },
           ]
         },
         {
-          text: 'Core Features',
+          text: 'Basic Features',
           items: [
-            { text: 'Apps', link: '/docs/apps' },
-            { text: 'Terminal', link: '/docs/terminal' },
+            { text: 'Start Apps', link: '/docs/apps' },
             { text: 'Hotkeys', link: '/docs/hotkeys' },
-            { text: 'Layouts', link: '/docs/layouts' },
-            { text: 'Quick Menu', link: '/docs/quickmenu' },
+            { text: 'Terminal', link: '/docs/terminal' },
             { text: 'Themes', link: '/docs/instantthemes' },
             { text: 'Instant Assist', link: '/docs/instantassist' },
-            { text: 'Instant Lock', link: '/docs/instantlock' }
+            { text: 'Screen Lock', link: '/docs/instantlock' }
           ]
         },
         {
           text: 'Window Management',
           items: [
             { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'Layouts', link: '/docs/layouts' },
             { text: 'Floating Windows', link: '/docs/floating' },
             { text: 'Sticky Windows', link: '/docs/sticky' },
             { text: 'Scratchpad', link: '/docs/scratchpad' },
             { text: 'Fullscreen', link: '/docs/fullscreen' },
             { text: 'Tags', link: '/docs/tags' },
             { text: 'Alt-Tab', link: '/docs/alttab' },
-            { text: 'Close', link: '/docs/close' },
+            { text: 'Close Apps', link: '/docs/close' },
             { text: 'Shutdown', link: '/docs/shutdown' },
-            { text: 'Visibility', link: '/docs/visibility' }
+            { text: 'Visibility', link: '/docs/visibility' },
+            { text: 'Drawing', link: '/docs/drawing' },
           ]
         },
         {
@@ -109,6 +107,9 @@ export default defineConfig({
         {
           text: 'Tools & Utilities',
           items: [
+            { text: 'Game Save Management', link: '/docs/insgame' },
+            { text: 'Video Editing', link: '/docs/insvideo' },
+            { text: 'Neovim', link: '/docs/neovim' },
             { text: 'Audio', link: '/docs/audio' },
             { text: 'Screenshots', link: '/docs/screenshots' },
             { text: 'File Search', link: '/docs/filesearch' },
@@ -116,7 +117,7 @@ export default defineConfig({
             { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Programs', link: '/docs/programs' },
             { text: 'Vim', link: '/docs/vim' },
-            { text: 'Drawing', link: '/docs/drawing' },
+            { text: 'Quick Menu', link: '/docs/quickmenu' },
           ]
         },
         {
