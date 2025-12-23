@@ -20,7 +20,7 @@ know if anyone has been tampering with your computer.
 
 instantLOCK can be configured to display a message on the lock screen. To do
 this, run ilock with your message as the first argument. This is purely
-cosmetical and will not change the actual prompting behaviour
+cosmetic and will not change the actual prompting behavior
 
 ```bash
 ilock "this is a message"

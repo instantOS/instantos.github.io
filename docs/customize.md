@@ -40,7 +40,7 @@ you do not want to run a background job.
 
 ### Overall
 
-Most applications on instantOS have built in theming support which is documented
+Most applications on instantOS have built-in theming support which is documented
 elsewhere. 
 This includes but is not limited to the following
 
@@ -59,8 +59,8 @@ Theme away, instantOS will stop updating the dotfiles for any file you change.
 
 ### Gtk
 
-There is a GTK theme section in the Appearnce tab of the settings panel. 
-On X11, changing this might require restarting Gtk applciations fo this to take
+There is a GTK theme section in the Appearance tab of the settings panel. 
+On X11, changing this might require restarting GTK applications for this to take
 effect. 
 
 :::info
@@ -73,7 +73,7 @@ mostly fine however.
 
 ### Qt
 
-There be dragons with customizing Qt. It is really easy to break QT and end up
+There be dragons with customizing Qt. It is really easy to break Qt and end up
 with light theme icons on a dark theme or vice versa. The way to unbreak it is
 incredibly poorly documented, which is why currently the only option for Qt is
 to undo whatever you did to it, should you inevitably break it. 

@@ -1,6 +1,6 @@
 # Sway
 
-Wether you like it or not, Wayland is the future, and instantOS is getting a
+Whether you like it or not, Wayland is the future, and instantOS is getting a
 Wayland session. I aim to preserve what I can which makes instantOS special, and
 use some of the nice things Wayland can do to introduce features which were not
 possible before. 

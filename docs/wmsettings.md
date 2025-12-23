@@ -1,6 +1,6 @@
 # Customizing instantWM
 
-instantWM is customized through ~/. Xresources
+instantWM is customized through ~/.Xresources
 
 The syntax for changing a parameter value is the following
 
@@ -8,7 +8,7 @@ The syntax for changing a parameter value is the following
 instantwm.parameter: value
 ```
 
-After editing ~/. Xresources, run xrdb ~/. Xresources and then restart instantWM
+After editing ~/.Xresources, run xrdb ~/.Xresources and then restart instantWM
 
 ## Bar height
 
