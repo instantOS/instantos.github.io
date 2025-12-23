@@ -80,7 +80,8 @@ be typed quickly
 
 ```
 $$
-\int_{0}^{1} x\mathrm{d}x $$
+\int_{0}^{1} x\mathrm{d}x
+$$
 ```
 
 
@@ -108,4 +109,19 @@ Expands into
 ```
 ````
 
+### Typst
+
+The syntax of typst is already very concise, and in most cases is what the latex
+snippets are before expanding. I have found typst very pleasant to write even
+without snippets, so there are not a whole lot of snippets for typst present.
+
+### Video
+
+Any markdown file with `video` in its name will be treated as an `ins video`
+file, which comes with some extra snipets for quicker video editing. 
+
+`music:` expands to a music block
+
+`ps  ` expands to a pausing slide block (this is `ps` at the beginning of a line
+followed by two spaces)
 
