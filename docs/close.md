@@ -6,7 +6,7 @@
 
 ## Closing windows
 
-Closing applications can be done in several ways. ++super+q++ and ++alt+f4++
+Closing applications can be done in several ways. ++super+q++ and ++Alt+F4++
 both work. There also is a close button on the left side of the blue window
 title.  A window can be directly closed from the window bar by middle clicking
 on its name. When a window is floating it can additionally be closed by middle

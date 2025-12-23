@@ -1,5 +1,4 @@
 # instantOS specific programs and features
-
 ## ins
 
 This is a command line tool which manages most of instantOS and unifies most
@@ -10,7 +9,6 @@ utilities in a single portable binary. Many of its features are distro agnostic.
 The instantOS window manager
 
 ## instantASSIST
-
 
 
 ## instantARCH
@@ -36,7 +34,7 @@ Deprecated, functionality moved to `ins`
 
 ## imosid
 
-Deprecated, approach as changed and dotfile management is now part of `ins`
+Deprecated, approach has changed and dotfile management is now part of `ins`
 
 ## instantSHELL
 
@@ -63,7 +61,7 @@ The lock screen in the instantWM session
 
 ## instantNOTIFY
 
-A notification center for instatWM, recording past notifications and providing a
+A notification center for instantWM, recording past notifications and providing a
 way to browse them. Currently unmaintained. 
 
 ## instantSTATUS
@@ -73,6 +71,6 @@ enough already
 
 ## instantOPEN
 
-Open AppImages and flatpak files, somehow this is was not a thing when I made
-this 
+Open AppImages and flatpak files, somehow this was not a thing when I made
+this
 

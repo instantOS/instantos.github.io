@@ -52,15 +52,15 @@ clicking on the desktop.
 
 ### My program doesn't appear
 
-some programs, mostly proprietary ones install to locations outside of $PATH
-and Windows programs installed using wine. As an example, Davinci Resolve
+Some programs, mostly proprietary ones install to locations outside of $PATH
+and Windows programs installed using Wine. As an example, Davinci Resolve
 installs to /opt which is not part of $PATH and does not appear in the text
 based launcher. It does however provide a desktop file meaning that it is
 accessible from the graphical menu. Some applications do not provide desktop
 files at all *and* are installed into directories not included in $PATH. In
 that case you can either add that directory to PATH or execute the program
 using its absolute path. In the case of Davinci resolve that would be
-/opt/resolve/bin/resolve. Wine programs can directly be invoked using wine
+/opt/resolve/bin/resolve. Wine programs can directly be invoked using Wine
 /path/to/program.exe
 
 ### dafuq is $PATH ?!
@@ -73,7 +73,7 @@ application.
 ### None of the launchers are present on my system
 
 You likely installed instantWM on an existing system. instantWM is just a
-window manager does not include any other programs. These have to be installed
+window manager and does not include any other programs. These have to be installed
 separately from [http://packages.instantos.io](http://packages.instantos.io).
 It is also a lot harder to provide support for these frankensteined systems
 since lots of things can vary depending on what your base system looks like.

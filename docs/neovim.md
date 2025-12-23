@@ -5,7 +5,7 @@ This has a few unique features which I will list here.
 
 ## Install on other Distros
 
-This config should be rougly distro agnostic, as long as you have the required
+This config should be roughly distro agnostic, as long as you have the required
 packages installed using your respective package manager. MacOS should also
 work, although it has not been tested in a while. 
 
@@ -31,7 +31,7 @@ nvim # auto installs everything on first run
 ### General usage
 
 Many snippets are triggered automatically when typing certain keywords.
-Pressiing ++ctrl+x++ will undo a snippet expansion so the trigger word can be
+Pressing ++ctrl+x++ will undo a snippet expansion so the trigger word can be
 typed as is without the snippet expanding.
 
 ### Anki

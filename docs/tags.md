@@ -25,7 +25,7 @@ You can activate a single tag by clicking its indicator or using Super + the
 corresponding number key. To move a window to another tag, use Super + Shift + Tag-number.
 To move a window to a tag and follow it there, use Super + Alt + Tag-number.
 You can also drag the green indicator to another tag using the mouse. Holding
-down shift while doing so, follows the window to the corresponding tag.
+down Shift while doing so, follows the window to the corresponding tag.
 Drag a floating window over a tag indicator to move it there and activate the tag.
 
 ### Activating multiple tags

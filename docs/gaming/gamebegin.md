@@ -148,7 +148,7 @@ if it were running on Windows gets written to the prefix folder instead. This
 opens up interesting possibilities as each prefix acts as a separate
 installation of Windows. In contrast to a real Windows installation however a
 wine prefix is only in the hundreds of megabytes and can be created and deleted
-quickly and cheaply. 
+quickly and cheaply.
 
 ##### Versions
 
@@ -170,7 +170,7 @@ not have to mess with winetricks to get a game working.
 
 Titles verified to be working with SteamPlay are listed on the Steam store and
 can be launched from the library as if they were native. Any hacks and extra
-steps will automatically be applied. 
+steps will automatically be applied.
 
 ##### Unverified titles
 
@@ -217,10 +217,10 @@ they are unique to your installation.
 
 The solution is a tool called protontricks. It can be installed from the AUR
 and running it from a terminal brings up a window which lists all games along
-with their name, icon and ID. inside the ID folder there is a folder called pfx
+with their name, icon and ID. Inside the ID folder there is a folder called pfx
 which is a normal wine prefix and contains the savegame at the same path where
 it would be on Windows. You can also add the pfx folder as a wine prefix to
-ludusavi to keep track of your save files. 
+ludusavi to keep track of your save files.
 
 
 #### Proton
@@ -255,7 +255,7 @@ versions are more up to date than their Lutris and Valve counterparts and
 contain game specific fixes and optimisations. They also have support for AMD
 FSR which allows running any game at a lower resolution and then upscaling it
 to the native monitor resolution. This allows for more performance while only
-losing a small amount of detail. 
+losing a small amount of detail.
 
 
 
@@ -279,22 +279,22 @@ Bulletpoints
 ## Emulation
 
 Console emulators allow you to play console games on your PC. This practice
-isn't unique to Linux. There are emulators available for linux, windows, macos,
-android and even for newer consoles. There are lots of resources on emulation
-in general so this wiki will only cover linux specific things to keep in mind
+isn't unique to Linux. There are emulators available for Linux, Windows, macOS,
+Android and even for newer consoles. There are lots of resources on emulation
+in general so this wiki will only cover Linux specific things to keep in mind
 when doing emulation on Linux.
 
 ### Dolphin
 
 Dolphin is a Wii and GameCube emulator. It is one of the most polished and
-maintained emulators available and the native linux version runs great. 
+maintained emulators available and the native Linux version runs great. 
 
-### Retroarch
+### RetroArch
 
-Retroarch is a multi-system emulator. It can emulate a wide range of different
+RetroArch is a multi-system emulator. It can emulate a wide range of different
 consoles through a single application. It is available for tons of different
 platforms and works basically the same everywhere. Yet, there are a few mention
-worthy differences to the linux version.
+worthy differences to the Linux version.
 
 #### No Core-Updater
 
@@ -302,7 +302,7 @@ The Windows and Android version of RetroArch have a Menu entry that allows
 downloading new cores (Cores are basically the runtimes for consoles). This
 option is not present on Linux which can frequently trip up new users.
 Installing new cores is done through the package manager. Cores typically have
-the name libretro-corename. 
+the name libretro-corename.
 
 #### Missing icons and fonts
 
