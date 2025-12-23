@@ -8,7 +8,7 @@ latest ISO or latest Arch ISO.
 
 instantOS used to use a lot more X11 and suckless specific programs. `st` in
 particular is not supported anymore, but in case you are still using those, they
-are documented under [oldstuff](/oldstuff).
+are documented under [oldstuff](/oldstuff/terminaltheme.md).
 
 ## beta 7
 

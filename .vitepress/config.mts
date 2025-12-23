@@ -47,7 +47,6 @@ export default defineConfig({
             { text: 'Roadmap', link: '/roadmap' },
             { text: 'Todo', link: '/todo' },
             { text: 'Colors', link: '/development/colors' },
-            { text: 'iBuild', link: '/development/ibuild' },
             { text: 'iConf', link: '/development/iconf' },
             { text: 'instantARCH', link: '/development/instantARCH' },
             { text: 'instantMENU', link: '/development/instantMENU' },
@@ -57,9 +56,10 @@ export default defineConfig({
       ],
       '/oldstuff/': [
         {
-          text: 'Development',
+          text: 'Old stuff',
           items: [
-            { text: 'Terminal Theme', link: '/docs/terminaltheme' },
+            { text: 'Terminal Theme', link: '/oldstuff/terminaltheme' },
+            { text: 'iBuild', link: '/oldstuff/ibuild' },
           ]
         }
       ],
@@ -82,7 +82,8 @@ export default defineConfig({
             { text: 'Terminal', link: '/docs/terminal' },
             { text: 'Themes', link: '/docs/instantthemes' },
             { text: 'Instant Assist', link: '/docs/instantassist' },
-            { text: 'Screen Lock', link: '/docs/instantlock' }
+            { text: 'Screen Lock', link: '/docs/instantlock' },
+            { text: 'Audio', link: '/docs/audio' },
           ]
         },
         {
@@ -100,10 +101,8 @@ export default defineConfig({
             { text: 'Game Save Management', link: '/docs/insgame' },
             { text: 'Video Editing', link: '/docs/insvideo' },
             { text: 'Neovim', link: '/docs/neovim' },
-            { text: 'Audio', link: '/docs/audio' },
             { text: 'File Search', link: '/docs/filesearch' },
             { text: 'Notifications', link: '/docs/notify' },
-            { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Programs', link: '/docs/programs' },
             { text: 'Vim', link: '/docs/vim' },
             { text: 'Quick Menu', link: '/docs/quickmenu' },
@@ -113,6 +112,7 @@ export default defineConfig({
           text: 'Window Management',
           items: [
             { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Layouts', link: '/docs/layouts' },
             { text: 'Floating Windows', link: '/docs/floating' },
             { text: 'Sticky Windows', link: '/docs/sticky' },
@@ -156,6 +156,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/instantOS/instantOS' },
       { icon: 'discord', link: 'https://discord.gg/instantos' },
       { icon: 'youtube', link: 'https://youtube.com/paperbenni' },
+      { icon: 'web', link: 'https://paperbenni.xyz' },
       {
         icon: {
           svg: '<svg role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M512 194.8c0 101.3-82.4 183.8-183.8 183.8-101.7 0-184.4-82.4-184.4-183.8 0-101.6 82.7-184.3 184.4-184.3C429.6 10.5 512 93.2 512 194.8zM0 501.5h90v-491H0v491z"/></svg>'
