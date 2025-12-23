@@ -86,6 +86,30 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Customization',
+          items: [
+            { text: 'Customize', link: '/docs/customize' },
+            { text: 'instantMENU', link: '/docs/menusettings' },
+            { text: 'Shortcuts', link: '/docs/shortcuts' }
+          ]
+        },
+        {
+          text: 'Tools & Utilities',
+          items: [
+            { text: 'Screenshots', link: '/docs/screenshots' },
+            { text: 'Game Save Management', link: '/docs/insgame' },
+            { text: 'Video Editing', link: '/docs/insvideo' },
+            { text: 'Neovim', link: '/docs/neovim' },
+            { text: 'Audio', link: '/docs/audio' },
+            { text: 'File Search', link: '/docs/filesearch' },
+            { text: 'Notifications', link: '/docs/notify' },
+            { text: 'Overlays', link: '/docs/overlays' },
+            { text: 'Programs', link: '/docs/programs' },
+            { text: 'Vim', link: '/docs/vim' },
+            { text: 'Quick Menu', link: '/docs/quickmenu' },
+          ]
+        },
+        {
           text: 'Window Management',
           items: [
             { text: 'WM Settings', link: '/docs/wmsettings' },
@@ -100,30 +124,6 @@ export default defineConfig({
             { text: 'Shutdown', link: '/docs/shutdown' },
             { text: 'Visibility', link: '/docs/visibility' },
             { text: 'Drawing', link: '/docs/drawing' },
-          ]
-        },
-        {
-          text: 'Customization',
-          items: [
-            { text: 'Customize', link: '/docs/customize' },
-            { text: 'instantMENU', link: '/docs/menusettings' },
-            { text: 'Shortcuts', link: '/docs/shortcuts' }
-          ]
-        },
-        {
-          text: 'Tools & Utilities',
-          items: [
-            { text: 'Game Save Management', link: '/docs/insgame' },
-            { text: 'Video Editing', link: '/docs/insvideo' },
-            { text: 'Neovim', link: '/docs/neovim' },
-            { text: 'Audio', link: '/docs/audio' },
-            { text: 'Screenshots', link: '/docs/screenshots' },
-            { text: 'File Search', link: '/docs/filesearch' },
-            { text: 'Notifications', link: '/docs/notify' },
-            { text: 'Overlays', link: '/docs/overlays' },
-            { text: 'Programs', link: '/docs/programs' },
-            { text: 'Vim', link: '/docs/vim' },
-            { text: 'Quick Menu', link: '/docs/quickmenu' },
           ]
         },
         {
