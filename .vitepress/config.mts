@@ -43,7 +43,7 @@ export default defineConfig({
           text: 'Development',
           items: [
             { text: 'Overview', link: '/development/development' },
-            { text: 'Developer Guide', link: '/developer' },
+            { text: 'About me', link: '/developer' },
             { text: 'Roadmap', link: '/roadmap' },
             { text: 'Todo', link: '/todo' },
             { text: 'Colors', link: '/development/colors' },
