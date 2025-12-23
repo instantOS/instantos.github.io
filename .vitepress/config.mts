@@ -50,6 +50,7 @@ export default defineConfig({
             { text: 'iConf', link: '/development/iconf' },
             { text: 'instantARCH', link: '/development/instantARCH' },
             { text: 'instantMENU', link: '/development/instantMENU' },
+            { text: 'instantMENU customization', link: '/development/menusettings' },
             { text: 'Status', link: '/development/status' }
           ]
         }
@@ -84,13 +85,14 @@ export default defineConfig({
             { text: 'Instant Assist', link: '/docs/instantassist' },
             { text: 'Screen Lock', link: '/docs/instantlock' },
             { text: 'Audio', link: '/docs/audio' },
+            { text: 'Customize', link: '/docs/customize' },
           ]
         },
         {
-          text: 'Customization',
+          text: 'Wayland',
           items: [
-            { text: 'Customize', link: '/docs/customize' },
-            { text: 'instantMENU', link: '/docs/menusettings' },
+            { text: 'Sway', link: '/docs/sway' },
+            { text: 'Hyprland', link: '/docs/hyprland' },
           ]
         },
         {
