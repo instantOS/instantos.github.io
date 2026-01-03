@@ -5,6 +5,17 @@ This tool is distro agnostic, you can take `ins` and the way it manages dotfiles
 anywhere you like. It even works on Android and Steam Deck!
 :::
 
+## Installation
+
+This just requires the [instant CLI](https://github.com/instantOS/instantCLI) utilities, available via cargo, AUR or instrall script. 
+
+```
+curl -fsSL https://raw.githubusercontent.com/instantOS/instantCLI/main/scripts/install.sh | sh
+```
+
+On instantOS, everything needed is already preinstalled and no further setup is
+necessary
+
 ## Quick start
 
 To get started you need a git repository with dotfiles in it.
