@@ -188,6 +188,13 @@ the video, and will play until the next music block or the end of the video.
 Setting music to `none` or an empty code block will disable music from that point. 
 
 
+## Audio processing
+
+`ins video` is meant for editing screencast videos and podcasts. By default, it
+processes the audio to improve speech clarity and reduce background noise using
+ffmpeg-normalize and DeepFilternet. For other kinds of videos this might be less
+desirable, 
+
 ## Limitations
 
 You can not edit the content of the words being said. The only AI being used is
