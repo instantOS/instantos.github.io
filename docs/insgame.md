@@ -79,14 +79,37 @@ all you need.
 ### `ins game init`
 
 This allows selecting which location to back up your game saves to and
-configures all `ins game` commands to use that location. 
+configures all `ins game` commands to use that location.
+
+```bash
+# Interactive (prompts for rclone remote and password)
+ins game init
+
+# Non-interactive
+ins game init --repo "rclone:pcloud:instant-games" --password "mypassword"
+``` 
 
 ### `ins game add`
 
-Add a new game to by synced. This will ask you for a name and the location of
+Add a new game to be synced. This will ask you for a name and the location of
 the game save on your device. The game save can either be a file or a directory.
 When selecting a directory, all of its contents will be synced. Adding a new
-file in that directory will also make it part of your game save. 
+file in that directory will also make it part of your game save.
+
+```bash
+# Non-interactive mode
+ins game add --name "MyGame" --save-path "~/.local/share/mygame/saves"
+ins game add --name "MyGame" --save-path "~/save.dat" --description "RPG save file"
+
+# With launch command
+ins game add --name "SteamGame" \
+    --save-path "~/.steam/steam/compatdata/123456/pfx/drive_c/users/steamuser/SavedGames" \
+    --launch-command "steam -applaunch 123456" \
+    --description "My Steam RPG"
+
+# Create save path automatically
+ins game add --name "NewGame" --save-path "~/games/newgame/saves" --create-save-path
+``` 
 
 ### `ins game setup`
 
@@ -96,17 +119,128 @@ to put the save files, but you can also select a different path. You can keep
 the same game in different directories on different devices and they will still
 maintain connection. Games are identified by their name only. 
 
-### `ins game sync`
+### `ins game sync [gamename]`
 
-Synchronize all your games with the cloud. This feature smartly adjust its
+Synchronize all your games with the cloud (or a specific game). This feature smartly adjusts its
 behavior. If a game has no new saves, and the cloud already contains the most
 recent save, then the game will be skipped. If a game has a new save which is
 not yet backed up into the cloud, then it will upload the new save. If the cloud
-has a newer save then your local save will be overwritten by the newer save. 
+has a newer save then your local save will be overwritten by the newer save.
 
-### `ins game backup <gamename>`
+```bash
+# Sync all games
+ins game sync
 
-This uploads the save for the selecte game to the cloud. 
+# Sync a specific game
+ins game sync "MyGame"
+
+# Force sync even if checkpoint matches
+ins game sync --force
+``` 
+
+### `ins game backup [gamename]`
+
+Uploads a save snapshot for a game to the cloud. If no game is specified, prompts for selection.
+
+### `ins game restore [gamename] [snapshot_id]`
+
+Restore game saves from a backup snapshot. Interactive selection if snapshot_id is omitted. Warns if local saves are newer than the backup.
+
+### `ins game launch [gamename]`
+
+Launch a game with automatic save sync. Syncs before launching, runs the launch command, waits 5 seconds after exit, then syncs again. Requires a launch command to be configured.
+
+```bash
+# Set launch command when adding or via edit
+ins game add --launch-command "steam -applaunch 123456"
+ins game launch
+```
+
+### `ins game exec <command...>`
+
+Execute an arbitrary command with pre/post-sync when internet is available. Useful for Steam launch options:
+
+```bash
+# In Steam launch options:
+ins game exec %command%
+
+# Or with a wrapper:
+ins game exec steam -applaunch 123456
+```
+
+### `ins game menu`
+
+Interactive TUI menu for managing games. Provides options to:
+- Launch games
+- Edit game configuration
+- Move save locations
+- Browse and restore checkpoints
+- Set up uninstalled games
+
+```bash
+ins game menu              # Show all games
+ins game menu "MyGame"      # Jump directly to game actions
+```
+
+### `ins game list`
+
+List all configured games with descriptions and launch commands.
+
+### `ins game info [gamename]`
+
+Show detailed information about a game including:
+- Save path with file count, size, and last modified time
+- Dependencies and their installation status
+- Launch command configuration
+
+### `ins game move [gamename] [--game <name>] [--path <path>]`
+
+Update a game's save location to a new path in the configuration. **This does not move files** — you must manually move the saves first, then run this command to update `installations.toml` to point to the new location.
+
+### `ins game remove [gamename] [--force]`
+
+Remove a game from tracking. Prompts for confirmation unless `--force` is specified.
+
+### `ins game prune [gamename] [--zero-changes]`
+
+Remove old snapshots based on retention policy:
+
+- **Retention policy** (default): Keeps last N, daily, weekly, monthly, and yearly snapshots
+- **`--zero-changes`**: Removes snapshots with no file changes (deduplicates "no change" backups)
+
+Prunes a specific game or all games if none specified.
+
+### `ins game restic <args...>`
+
+Run raw restic commands with the instant games repository configuration. Advanced usage for direct restic operations.
+
+```bash
+ins game restic snapshots
+ins game restic forget --keep-last 5
+```
+
+### `ins game deps`
+
+Manage game dependencies — files or directories that are backed up and can be installed on other devices.
+
+#### `ins game deps add [gamename]`
+
+Add a dependency for a game. Snapshots the source file/directory into restic. Useful for:
+- Game configuration files
+- Mods or custom content
+- Wine prefixes or registry files
+
+#### `ins game deps install [gamename]`
+
+Install a dependency onto this device. Restores from the backed-up snapshot.
+
+#### `ins game deps uninstall [gamename]`
+
+Remove a dependency installation record from this device.
+
+#### `ins game deps list [gamename]`
+
+List all dependencies for a game with their installation status.
 
 ## Configuration
 
