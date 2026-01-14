@@ -36,6 +36,27 @@ You might also use `ins settings apply` to manually apply the settings, in case
 you do not want to run a background job. 
 
 
+## Wallpapers
+
+```bash
+# Set wallpaper from a local file
+ins wallpaper set ~/Pictures/wallpaper.png
+
+# Re-apply the configured wallpaper (useful after boot)
+ins wallpaper apply
+
+# Fetch a random wallpaper from Wallhaven
+ins wallpaper random
+
+# Generate a colored wallpaper with instantOS logo
+ins wallpaper colored --bg "#1a1a2e" --fg "#ffffff"
+```
+
+Colors are remembered for future use. The `random` command fetches from Wallhaven
+and applies the instantOS logo overlay unless `--no-logo` is passed.
+
+Supported compositors: Sway, i3, dwm, InstantWM, GNOME, Hyprland.
+
 ## Theming
 
 ### Overall
