@@ -82,12 +82,35 @@ This allows selecting which location to back up your game saves to and
 configures all `ins game` commands to use that location.
 
 ```bash
-# Interactive (prompts for rclone remote and password)
+# Interactive (prompts for repository path and password)
 ins game init
 
-# Non-interactive
+# Non-interactive with local path
+ins game init --repo "~/games/backups" --password "mypassword"
+
+# Non-interactive with rclone remote (cloud storage)
 ins game init --repo "rclone:pcloud:instant-games" --password "mypassword"
-``` 
+
+# Non-interactive with SFTP
+ins game init --repo "sftp:user@example.com:/backup/games" --password "mypassword"
+
+# Non-interactive with S3
+ins game init --repo "s3:my-bucket/instant-games" --password "accesskey"
+```
+
+#### Repository path formats
+
+The `--repo` argument accepts any restic backend:
+
+- **Local path**: `/path/to/repo` or `~/games/repo`
+- **Rclone remote**: `rclone:remote:name` (uses rclone config)
+- **SFTP**: `sftp:user@host:/path`
+- **S3**: `s3:bucketname/path`
+- **B2**: `b2:bucketname/path`
+- **Azure**: `azure:containername/path`
+- **Other**: See [restic documentation](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html) for all supported backends
+
+For cloud storage, set up rclone first with `rclone config` to add your cloud provider (pCloud, Google Drive, Dropbox, etc.). 
 
 ### `ins game add`
 
