@@ -53,5 +53,5 @@ replacement for the documentation
 
 ## Information for contributors
 
-- [Repository overview](https://instantos.io/repoinfo)
+- [Repository overview](https://instantos.io/links)
 

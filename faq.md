@@ -238,7 +238,7 @@ based on pure Arch for a few reasons.
   unmaintained and the other versions are a mess. instantOS being a lightweight
   distro has a target audience on ARM and 32 bit, both of which can be served
   better on Arch. You can read more about the experience with Manjaro tools
-  [here](https://instantos.io/todo)  
+  [here](https://github.com/instantOS/instantOS/projects/1)  
 - It does things differently than Manjaro which led to development basically
 fighting its bloated base.
 - Most users want it to be based on Arch after beta 1  

@@ -45,12 +45,13 @@ export default defineConfig({
             { text: 'Overview', link: '/development/development' },
             { text: 'About me', link: '/developer' },
             { text: 'Roadmap', link: '/roadmap' },
-            { text: 'Todo', link: '/todo' },
+            { text: 'Links', link: '/links' },
             { text: 'Colors', link: '/development/colors' },
             { text: 'iConf', link: '/development/iconf' },
             { text: 'instantARCH', link: '/development/instantARCH' },
             { text: 'instantMENU', link: '/development/instantMENU' },
             { text: 'instantMENU customization', link: '/development/menusettings' },
+            { text: 'Menu API', link: '/development/menu' },
             { text: 'Status', link: '/development/status' }
           ]
         }
