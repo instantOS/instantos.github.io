@@ -209,8 +209,8 @@ As of now, only editing a single video file is supported.
 
 ## Current notes
 
-As of now (Tue Oct 7 03:28:14 PM CEST 2025) there is an issue with whisperx
-which needs a workaround for it to run on arch linux. Locate the libtranslate
+As of now (Tue Oct 7 03:28:14 PM CEST 2025) there is an issue with WhisperX
+which needs a workaround for it to run on Arch Linux. Locate the libtranslate
 4.4.so. It's in the uv cache and might not be called exactly that. Once you
 found it, run the `patchelf --clear-execstack` command on it.
 

@@ -9,7 +9,7 @@
 - [Tags](tags.md)
 :::
 
-You can toggle several visual elements of instantOS You can toggle the top bar
+You can toggle several visual elements of instantOS. You can toggle the top bar
 with ++super+b++
 
 ++super+shift+s++ hides all tags without a window on them

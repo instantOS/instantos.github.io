@@ -28,7 +28,7 @@ documented so this manual won't go into detail about it.
 ## Configuration
 
 The terminal emulator in use is
-[st-instantos](https://github.com/instantOS/st-instantos/) which a build of the
+[st-instantos](https://github.com/instantOS/st-instantos/) which is a build of the
 suckless terminal. It is nothing special and deliberately kept barebones
 because most of the things you could add into a terminal emulator can be done
 much better and reliable using tmux.

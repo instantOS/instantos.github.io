@@ -11,14 +11,14 @@ developers first to make sure it is actually wanted and does not already exist.
 
 ## Repo info
 
-Here's a rundown of what is contained in repositories and what each of them do
+Here's a rundown of what is contained in repositories and what each of them does
 
 ### [instantOS](https://github.com/instantOS/instantOS)
 
 This repo is used to build the instantutils package.
 It contains basic utilities used all around instantOS like the autostart script,
 notification center, some configuration files and some more specific utilities.
-For example the instantmouse utility for changing mouse sensitivity or the appmenu
+For example, the instantmouse utility for changing mouse sensitivity or the appmenu
 wrapper for the graphical application menu are found here.
 
 ### [instantWM](https://github.com/instantOS/instantWM)
@@ -148,7 +148,7 @@ some patches and fixes.
 
 ### [grub-instantos](https://github.com/instantOS/grub-instantos)
 
-The grub theme for instantOS. This only contains the theme, nothing else.
+The GRUB theme for instantOS. This only contains the theme, nothing else.
 
 ### [rox-filer](https://github.com/instantOS/rox-filer)
 
@@ -156,9 +156,9 @@ A basic fork of rox-filer to be used for optional desktop icons.
 
 ### [instantDEB](https://github.com/instantOS/instantDEB)
 
-A way to create Debian packages from arch PKGBUILD files.
+A way to create Debian packages from Arch PKGBUILD files.
 Originally created to enable a Debian edition of instantOS.
-Not much work has been done here as of recently.
+Not much work has been done here as of late.
 
 ## [Arch wiki mirror](https://packages.instantos.io/archwiki)
 

@@ -1,7 +1,8 @@
 # About me
 
 <span class="image right"><img src="https://github.com/paperbenni.png" alt="image missing" height="100" /></span>
-Hi, I am paperbenni, the creator and pretty much main developer of the Linux-Distro
+
+Hi, I am paperbenni, the creator and pretty much main developer of the Linux Distro
 instantOS and its desktop. instantOS is a passion project but I am motivated
 and could very well imagine this becoming a part time job if it continues to
 grow.
@@ -11,9 +12,11 @@ grow.
 I am comfortable with but not limited to
 
 - Linux (who would've thought)
+- Rust
 - Bash
 - Docker
 - C
+- TypeScript
 - Python
 
 I also do a bit of design and motion graphics using Blender

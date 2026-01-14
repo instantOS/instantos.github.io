@@ -23,7 +23,7 @@ them. This opens up the notification menu where the content can be read or manag
 Notifications can either be deleted individually by selecting them and choosing
 the delete option or by pressing ++shift+"left/right"++ in the
 notification center where you can delete notifications that contain a certain
-keyword, come from a specific application or you van just clear all of them.
+keyword, come from a specific application or you can just clear all of them.
 
 ## Paging
 
@@ -32,5 +32,5 @@ means that over a long period of usage the list can get quite long. In order to
 keep good performance the notification center only displays up to 700
 notifications at a time. If the total number of notifications exceeds 700 then
 notifications will be divided into pages with 700 notifications each. At the
-bottom of each page (which can be reachoed by scrolling down) is a next button
+bottom of each page (which can be reached by scrolling down) is a next button
 to load and view the next page.

@@ -2,46 +2,83 @@
 
 instantOS has an "it just works" philosophy so it shouldn't be necessary to
 change large parts of it. It is recommended to learn the default
-[keybindings](/docs/hotkeys) and how to use the OS with
-the default setup before changing it.
+[keybindings](/docs/hotkeys) and how to use the OS with the default setup before
+changing it.
+
+The dotfiles and thus most aspects of customization are managed by `ins dot`
+(see [dotfiles management](/docs/insdot) for more information). 
+The beauty of `ins dot` is that you do not have to think about it, and you can
+just edit any dotfile you like or bring your own, and `ins dot` will take care
+not to overwrite your changes, while continuing to update dotfiles which have
+not been customized by the user.
 
 ## Settings manager
 
+There is a TUI settings managerm, which allows changing most of the standard
+settings similar to how Gnome, MacOS or Windows do it. 
+These should be pretty self explanatory, they include thins like wifi,
+wallpaper, audio, keyboard layout, mouse sensitivity and more. 
+
 The control panel can be opened by ++super+left++ clicking on the status text,
-with ++super+ctrl+c++, from the start menu or by typing instantsettings in the
+with ++super+ctrl+c++, from the start menu or by typing `ins settings` in the
 terminal.
 
-## Dotfiles
+## Use it in your own setup
 
-You might prefer not using the included settings manager and would rather hack
-together your own setup. The dotfiles setting opens up a config file in vim.
-Here you can manage which dotfiles are managed and updated by instantOS and
-which can be manually edited. The instantOS section also allows disabling the
-management for all dotfiles and disabling the built in theming.
+Put the following in your window manager or wayland compositor autostart, and
+`ins settings` will work on your setup too.
+
+```
+ins autostart
+```
+
+You might also use `ins settings apply` to manually apply the settings, in case
+you do not want to run a background job. 
+
 
 ## Theming
 
-Lots of themes are managed by instantOS. This includes Gtk, Qt, Terminal
-colors, rofi (application launcher) and dunst (notification daemon).
-This enables things like automatically switching to a dark mode at night.
-You can disable all theme management in the appearance section of the settings panel.
-After doing that, you can set up your own themes for all of the above applications
+### Overall
 
-### Terminal
+Most applications on instantOS have built-in theming support which is documented
+elsewhere. 
+This includes but is not limited to the following
 
-instantOS uses st as its terminal emulator. The colors are customized using
-the ~/.Xresources file. You can also roll your own st build if you want to and
-instantOS will use it instead of the default one as long as it's installed in /usr/local/bin
+- instantMENU
+- instantWM
+- Kitty
+- Sway
+- Hyprland
+- Dunst
+- Fuzzel
+- Rofi
+
+Theme away, instantOS will stop updating the dotfiles for any file you change. 
+`ins dot reset <filename>` can be used to reset any dotfile to the default. 
+
 
 ### Gtk
 
-The appearance section of the control panel allows changing the Gtk theme,
-font, icon set and cursor.
+There is a GTK theme section in the Appearance tab of the settings panel. 
+On X11, changing this might require restarting GTK applications for this to take
+effect. 
 
-### Rework notice
+:::info
+Keep in mind that modern GTK does not like to be themed, developers do not
+intend their applications to be themed. Modern GTK theming is pretty much a
+hacky workaround, and any distro shipping with that out of the box either has
+the resources of Ubuntu or is willing to break things. Theming GTK3 and 2 is
+mostly fine however. 
+:::
 
-The theming system is planned to get a rework basing it around
-[imosid](https://github.com/instantos/imosid) once it is stable enough. This
-will prevent it from ever accidentally overwriting any user customisations
-while not requiring to be completely disabled if the user wants to customize on
-a file level.
+### Qt
+
+There be dragons with customizing Qt. It is really easy to break Qt and end up
+with light theme icons on a dark theme or vice versa. The way to unbreak it is
+incredibly poorly documented, which is why currently the only option for Qt is
+to undo whatever you did to it, should you inevitably break it. 
+
+Do it manually, and tell me if you found a good way to theme it without breaking
+any applications. 
+
+

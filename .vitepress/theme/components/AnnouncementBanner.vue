@@ -64,9 +64,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="frontmatter.layout === 'home' && !isMenuOpen" ref="banner" class="announcement-banner">
-    This website has been completely redone! Check out the new design and features.
-  </div>
+  <!-- To re-enable banner, uncomment the div below and add your content -->
+  <!-- <div v-if="frontmatter.layout === 'home' && !isMenuOpen" ref="banner" class="announcement-banner"> -->
+    <!-- Your announcement text goes here -->
+  <!-- </div> -->
 </template>
 
 <style scoped>

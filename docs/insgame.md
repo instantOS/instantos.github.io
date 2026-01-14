@@ -119,7 +119,7 @@ This uploads the save for the selecte game to the cloud.
 
 This contains a list of all games and their names and other metadata. This can
 be synchronized between different machines using tools like `ins dot`, `yadm`,
-`chezmoi`, `git` or anything else you like. This file is intende to be identical
+`chezmoi`, `git` or anything else you like. This file is intended to be identical
 across all your machines. 
 
 ### installations.toml

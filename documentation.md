@@ -11,7 +11,7 @@ it if you prefer that.
     <li><a href="https://www.youtube.com/playlist?list=PLczWCikHiuy_2fBZ_ttJuybBXVERrJDAu" class="button special icon fa-youtube">Get started</a></li>
 </ul>
 
-## list of features
+## List of features
 
 ### Basics
 
@@ -46,7 +46,7 @@ it if you prefer that.
 
 ## [List of keybindings](https://instantos.io/youtube/hotkeys)
 
-- [all keybindings](https://instantos.io/youtube/hotkeys)
+- [All keybindings](https://instantos.io/youtube/hotkeys)
 
 This list is meant for reference after learning how to use features, NOT as a
 replacement for the documentation

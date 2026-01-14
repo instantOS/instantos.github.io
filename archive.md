@@ -4,6 +4,12 @@ This page contains download links for older versions of instantOS.  In most
 cases these should not be used and installation should always happen from the
 latest ISO or latest Arch ISO.
 
+## Old programs
+
+instantOS used to use a lot more X11 and suckless specific programs. `st` in
+particular is not supported anymore, but in case you are still using those, they
+are documented under [oldstuff](/oldstuff/terminaltheme.md).
+
 ## beta 7
 
 <ul class="actions">

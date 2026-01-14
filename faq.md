@@ -1,7 +1,7 @@
 # Frequently asked questions
 
 Here are answers to questions about instantOS, we get asked all the time.
-Chances are, you will find a quick answer for your lingering inquires here.
+Chances are, you will find a quick answer for your lingering inquiries here.
 Please have a look at the [Documentation](https://instantos.io/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki), if not.
 If you still don't get an answer or need additional information or clarification, 
 we have an active and friendly [community](https://instantos.io/support) to support you. 
@@ -25,7 +25,7 @@ So you will have to select the manual partitioning option and set it up yourself
 The instantOS tools are on the [AUR](https://aur.archlinux.org/).
 If not, you can add the custom repo, e.g. by running [repo.sh](https://raw.githubusercontent.com/instantOS/instantOS/main/repo.sh).
 Use your regular package manager to install any instant packages you like.
-In case you wondered, the corresponding PKGBUILD have their own [repository](https://github.com/instantOS/packages).
+In case you wondered, the corresponding PKGBUILDs have their own [repository](https://github.com/instantOS/packages).
 This works on most Archlinux variants, too.
 
 ## How do I build an instantOS component from the source repos
@@ -45,7 +45,7 @@ cd ~/.config/instantos/ibuild/extra/instantwm/src/instantwm-git  # where the fil
 
 ## How about instantOS based on other distributions
 
-Officially, we only support instantOS tools on Archlinux and NixOS ([instantNIX](https://github.com/instantOS/instantNIX).
+Officially, we only support instantOS tools on Arch Linux and NixOS ([instantNIX](https://github.com/instantOS/instantNIX)).
 Technically, you can install the [Nix universal package manager](https://nixos.org) on almost
 any distribution and use it like that, but that is a little more work.
 Or you can try to compile the tools yourself for your favourite distribution.
@@ -96,7 +96,7 @@ Customizable keybinds in runtime are planned.
 Internationalization is not our first priority.
 Keep in mind that we are doing this in our free time for little to no compensation.
 Internationalization is one of those things that eats a lot of time and
-the majority of the world's computer users, knows standard English, so
+the majority of the world's computer users know standard English, so
 there's not much reward for the work put into internationalization.
 We're sorry, but we have to prioritize other things for now.
 
@@ -108,7 +108,7 @@ graphical tool that does this.
 
 ## Does it support 32 bit
 
-Yes, but the 32 bit version doesn't have a live session yet so you'll have to
+Yes, but the 32-bit version doesn't have a live session yet so you'll have to
 use the CLI installer
 
 ## Raspberry Pi
@@ -216,9 +216,9 @@ based on pure Arch for a few reasons.
   distro has a target audience on ARM and 32 bit, both of which can be served
   better on Arch. You can read more about the experience with Manjaro tools
   [here](https://instantos.io/todo)  
-- It does things different than Manjaro which lead to development basically
-  fighting its bloaty base.  
-- Most users want it to be based of Arch after beta 1  
+- It does things differently than Manjaro which led to development basically
+fighting its bloated base.
+- Most users want it to be based on Arch after beta 1  
 - Arch can be trusted to be always there and maintained, Manjaro can't as the
   recent drama, forums being set to read only and so on shows  
 
