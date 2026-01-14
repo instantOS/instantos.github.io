@@ -55,6 +55,26 @@ ins menu slide --preset brightness # Brightness control
 ins menu slide --min 0 --max 100 --label "Brightness" --step 1
 ```
 
+### Custom commands on change
+
+The `--command` flag runs a command whenever the slider value changes. The current value is appended as the final argument.
+
+```bash
+# Set brightness using brightnessctl
+ins menu slide --min 0 --max 100 --label "Brightness" \
+    --command brightnessctl set
+
+# Log values to a file
+ins menu slide --min 0 --max 255 \
+    --command sh -c 'echo "Value: $1" >> /tmp/slider.log'
+
+# RGB color control
+ins menu slide --min 0 --max 255 --step 1 --big-step 16 \
+    --label "Red" --command mycolorsetter --red
+```
+
+Commands run asynchronously with output suppressed to avoid UI interference. The command only executes when the value actually changes.
+
 ## Chord navigator
 
 Interactive tree-based selector where you type characters to navigate. Format: `sequence:description`.
