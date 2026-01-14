@@ -93,6 +93,31 @@ ins menu chord "a:A Group" "aa:Action 1" "ab:Action 2" "b:Direct B"
 
 The sequence you type is printed to stdout on selection. Use `--stdin` to read chord definitions from stdin (one per line).
 
+## Menu Server
+
+The menu server provides persistent GUI dialogs through a client-server architecture:
+
+- **Server runs in a scratchpad terminal** — Launched once, stays available for all menu requests
+- **Unix socket communication** — Client commands connect to `$XDG_RUNTIME_DIR/insmenu.sock`
+- **Process lifecycle management** — Active menus are cancelled when the scratchpad is hidden
+- **Compositor integration** — Automatic visibility tracking for KWin, Hyprland, and others
+- **Graceful fallback** — If the server isn't running, menus use transient terminal windows
+
+### Server commands
+
+```bash
+# Launch server (runs in current terminal, usually from scratchpad)
+ins menu server launch --inside
+
+# Check server status
+ins menu status
+
+# Stop running server
+ins menu server stop
+```
+
+The server auto-spawns on first `--gui` use if launched manually.
+
 ## Common options
 
 All commands support `--gui` to use the menu server instead of local fzf:
