@@ -66,7 +66,19 @@ After resetting a dotfile, it will get updates again. Tracking user
 modifications works even when skipping or rolling back updates. Updates will
 only stop if the file is in a state which has never been in the repository, in
 which case it is assumed to contain user modifications which should be
-preserved. 
+preserved.
+
+
+## Interactive menu
+
+For a visual interface to all dotfile operations:
+
+```bash
+ins dot menu
+```
+
+Launches an interactive menu for browsing repositories, viewing file status,
+selecting alternative sources, and more. Self-explanatory once opened.
 
 
 ## Multiple repos
