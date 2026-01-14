@@ -97,6 +97,54 @@ the upper layers can introduce new things not present in the lower layers, but
 also override things from the lower layers.
 
 
+## Alternative sources
+
+When multiple repositories contain the same file, `ins` uses the highest-priority
+repository by default. You can override this on a per-file basis to choose exactly
+which repository should provide a specific dotfile.
+
+### When to use
+
+- Switch between theme variants stored in different repo subdirectories
+- Use machine-specific configs from different repositories
+- Test alternative configurations without changing repository priority
+
+### Usage
+
+```bash
+# Interactively choose which repository sources a file
+ins dot alternative ~/.config/kitty/kitty.conf
+
+# List all available sources without selecting
+ins dot alternative ~/.config/kitty/kitty.conf --list
+
+# Remove an override and return to default priority
+ins dot alternative ~/.config/kitty/kitty.conf --reset
+
+# Create the file in a new repository/subdirectory
+ins dot alternative ~/.config/kitty/kitty.conf --create
+```
+
+### Directory mode
+
+Pass a directory to browse all files that have alternatives within it:
+
+```bash
+# Browse all config files with alternative sources
+ins dot alternative ~/.config
+
+# List all alternatives in a directory
+ins dot alternative ~/.config --list
+```
+
+### How it works
+
+- Overrides are stored in `~/.config/instant/dot_overrides.toml`
+- The feature checks if your local file has been modified before switching
+- Modified files won't be switched (use `ins dot reset <file>` first to discard changes)
+
+This gives you per-file control over dotfile sources without needing to adjust
+repository priorities globally.
 
 
 ## Automatic usage
