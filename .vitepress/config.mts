@@ -50,7 +50,6 @@ export default defineConfig({
             { text: 'iConf', link: '/development/iconf' },
             { text: 'instantARCH', link: '/development/instantARCH' },
             { text: 'instantMENU', link: '/development/instantMENU' },
-            { text: 'instantMENU customization', link: '/development/menusettings' },
             { text: 'Menu API', link: '/development/menu' },
             { text: 'Status', link: '/development/status' }
           ]
