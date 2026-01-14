@@ -95,28 +95,65 @@ The sequence you type is printed to stdout on selection. Use `--stdin` to read c
 
 ## Menu Server
 
-The menu server provides persistent GUI dialogs through a client-server architecture:
+The menu server provides persistent GUI dialogs through a client-server architecture.
 
-- **Server runs in a scratchpad terminal** — Launched once, stays available for all menu requests
-- **Unix socket communication** — Client commands connect to `$XDG_RUNTIME_DIR/insmenu.sock`
-- **Process lifecycle management** — Active menus are cancelled when the scratchpad is hidden
-- **Compositor integration** — Automatic visibility tracking for KWin, Hyprland, and others
-- **Graceful fallback** — If the server isn't running, menus use transient terminal windows
+### How it works
+
+When you run `ins menu server launch`, the system:
+
+1. **Creates a scratchpad configuration** — A floating terminal (50% width, 60% height) named "insmenu"
+2. **Launches the server in the scratchpad** — The server process runs inside this terminal
+3. **Listens on a Unix socket** — Located at `$XDG_RUNTIME_DIR/insmenu.sock` (or `/tmp/insmenu.sock`)
+4. **Waits for menu requests** — Displays a status screen showing uptime and request count
+
+When you run a GUI menu command (`ins menu confirm --gui ...`):
+
+1. **Client connects to the socket** — Sends the menu request as JSON
+2. **Server shows the scratchpad** — Makes the floating terminal visible
+3. **Menu appears in the scratchpad** — fzf, yazi, or other tools run there
+4. **User interacts** — Makes their selection/cancellation
+5. **Server hides the scratchpad** — Immediately hides after user completes interaction
+6. **Response sent via socket** — Result returned to client
+
+### Process lifecycle
+
+- **Visibility monitoring** — While a menu is active, the server monitors scratchpad visibility
+- **Auto-cancellation** — If the scratchpad becomes hidden, active menu processes receive SIGINT (like pressing ESC)
+- **Compositor integration** — Works with i3, Sway, Hyprland, KWin, and others
+- **Grace periods** — KWin gets a 250ms grace period for race conditions
+
+### Fallback mode
+
+If your compositor doesn't support scratchpad functionality (GNOME, generic X11/Wayland):
+
+- **No persistent server** — Each `--gui` request launches a transient kitty terminal
+- **File-based communication** — Request/response use temporary JSON files
+- **Same interface** — All menu commands work identically from the user's perspective
+- **Status shows fallback** — `ins menu status` indicates "Fallback mode"
 
 ### Server commands
 
 ```bash
-# Launch server (runs in current terminal, usually from scratchpad)
+# Launch server (starts scratchpad with server inside)
+ins menu server launch
+
+# Launch server in current terminal (for debugging/manual setup)
 ins menu server launch --inside
+
+# Launch without scratchpad (runs in current terminal only)
+ins menu server launch --no-scratchpad
 
 # Check server status
 ins menu status
 
 # Stop running server
 ins menu server stop
+
+# Show the scratchpad without any menu
+ins menu show
 ```
 
-The server auto-spawns on first `--gui` use if launched manually.
+The server auto-spawns on first `--gui` use on supported compositors.
 
 ## Common options
 
