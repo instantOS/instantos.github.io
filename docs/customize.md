@@ -33,7 +33,23 @@ ins autostart
 ```
 
 You might also use `ins settings apply` to manually apply the settings, in case
-you do not want to run a background job. 
+you do not want to run a background job.
+
+### Settings CLI options
+
+```bash
+# Open settings at a specific setting (by ID)
+ins settings --setting "appearance.animations"
+
+# Open settings to a specific category
+ins settings --category "appearance"
+
+# Open in search mode
+ins settings --search
+
+# Open in GUI terminal (uses kitty)
+ins settings --gui
+``` 
 
 
 ## Wallpapers
