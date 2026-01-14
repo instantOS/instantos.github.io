@@ -41,6 +41,7 @@ ins video render input.video.md
 
 Converts the markdown file back into a video
 
+
 ## Editing
 
 Here is an example of how a markdown file generated from a video looks like:
@@ -194,6 +195,122 @@ Setting music to `none` or an empty code block will disable music from that poin
 processes the audio to improve speech clarity and reduce background noise using
 ffmpeg-normalize and DeepFilternet. For other kinds of videos this might be less
 desirable, 
+
+## Command reference
+
+### `ins video convert <video> [options]`
+
+Convert a video to editable markdown format.
+
+```bash
+# Basic usage
+ins video convert input.mp4
+
+# With custom output path
+ins video convert input.mp4 --out-file ~/Videos/myedit.md
+
+# Skip audio preprocessing
+ins video convert input.mp4 --no-preprocess
+
+# Use specific preprocessor (local, auphonic, none)
+ins video convert input.mp4 --preprocessor auphonic
+
+# Use existing transcript
+ins video convert input.mp4 --transcript subtitles.srt
+
+# Overwrite existing markdown
+ins video convert input.mp4 --force
+```
+
+### `ins video transcribe <video> [options]`
+
+Generate a transcript using WhisperX (without creating markdown).
+
+```bash
+# Basic transcription
+ins video transcribe input.mp4
+
+# Use GPU
+ins video transcribe input.mp4 --device cuda
+
+# Float16 precision
+ins video transcribe input.mp4 --compute-type float16
+
+# Use specific model
+ins video transcribe input.mp4 --model large-v3
+
+# Different VAD method
+ins video transcribe input.mp4 --vad-method pyannote
+```
+
+### `ins video render <markdown> [options]`
+
+Render a markdown file back to video.
+
+```bash
+# Basic render
+ins video render input.video.md
+
+# Custom output path
+ins video render input.video.md --out-file final.mp4
+
+# Overwrite existing output
+ins video render input.video.md --force
+
+# Pre-cache slides without rendering
+ins video render input.video.md --precache-slides
+
+# Show ffmpeg command without running
+ins video render input.video.md --dry-run
+
+# Render in vertical format (9:16 for Reels/TikTok)
+ins video render input.video.md --reels
+
+# Burn subtitles into video (reels mode only)
+ins video render input.video.md --reels --subtitles
+```
+
+### `ins video slide <markdown> [options]`
+
+Generate a single slide image from markdown.
+
+```bash
+# Generate slide from markdown
+ins video slide slide.md
+
+# Custom output path
+ins video slide slide.md --out-file slide.jpg
+
+# Vertical format (9:16)
+ins video slide slide.md --reels
+```
+
+### `ins video check <markdown>`
+
+Validate a video markdown file and summarize the planned output without rendering.
+
+### `ins video stats <markdown>`
+
+Display detailed statistics about how a markdown file will be rendered (timing, segments, slides, etc.).
+
+### `ins video preprocess <input> [options]`
+
+Process audio with the configured preprocessor.
+
+```bash
+# Local preprocessing (DeepFilterNet)
+ins video preprocess input.mp4 --backend local
+
+# Auphonic processing
+ins video preprocess input.mp4 --backend auphonic --preset UUID --api-key KEY
+
+# Skip preprocessing
+ins video preprocess input.mp4 --backend none
+```
+
+### `ins video setup [--force]`
+
+Download and configure video tools (WhisperX, local preprocessor, Auphonic). Use `--force` to reconfigure.
 
 ## Limitations
 
