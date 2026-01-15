@@ -153,12 +153,20 @@ author = "Your Name"           # optional
 description = "My configs"     # optional
 read_only = true               # optional, prevents modifications to this repo
 dots_dirs = ["dots", "themes"] # optional, defaults to ["dots"]
+default_active_subdirs = ["dots"] # optional, specifies which dirs are active by default
 ```
 
 The `dots_dirs` field defines which subdirectories contain dotfiles. This enables:
 - Multiple themes/variants in one repo
 - Layered configurations (base + custom)
 - Machine-specific configs
+
+The `default_active_subdirs` field specifies which subdirectories should be **active by default** when users clone your repository. This allows repository authors to provide sensible defaults without requiring users to manually configure `active_subdirectories` in their global `dots.toml`.
+
+**Resolution priority:**
+1. If `active_subdirectories` is set in `~/.config/instant/dots.toml`, that takes precedence
+2. Otherwise, `default_active_subdirs` from `instantdots.toml` is used
+3. If neither is set, all directories in `dots_dirs` become active (in the order defined)
 
 ### dot_overrides.toml
 
