@@ -109,6 +109,83 @@ the upper layers can introduce new things not present in the lower layers, but
 also override things from the lower layers.
 
 
+## Configuration files
+
+### dots.toml
+
+Main configuration file at `~/.config/instant/dots.toml`:
+
+```toml
+# Repositories listed in priority order (first = highest)
+[[repos]]
+url = "https://github.com/user/dotfiles"
+name = "my-dots"
+branch = "main"                     # optional
+active_subdirectories = ["dots"]    # optional, defaults to ["dots"]
+enabled = true                      # optional
+read_only = false                   # optional
+
+[[repos]]
+url = "https://github.com/instantOS/dotfiles"
+name = "instantos"
+active_subdirectories = ["dots", "themes"]
+
+# Optional settings
+clone_depth = 1                     # git clone depth (default: 1)
+hash_cleanup_days = 30              # cleanup old hashes after N days (default: 30)
+repos_dir = "~/.local/share/instant/dots"
+database_dir = "~/.local/share/instant/instant.db"
+
+# Paths to never manage (e.g., sensitive configs)
+ignored_paths = [
+    "~/.ssh",
+    "~/.gnupg"
+]
+```
+
+### instantdots.toml
+
+Repository metadata file in the root of each dotfile repository:
+
+```toml
+name = "my-dotfiles"           # required
+author = "Your Name"           # optional
+description = "My configs"     # optional
+read_only = true               # optional, prevents modifications to this repo
+dots_dirs = ["dots", "themes"] # optional, defaults to ["dots"]
+```
+
+The `dots_dirs` field defines which subdirectories contain dotfiles. This enables:
+- Multiple themes/variants in one repo
+- Layered configurations (base + custom)
+- Machine-specific configs
+
+### dot_overrides.toml
+
+Per-file source overrides at `~/.config/instant/dot_overrides.toml`:
+
+```toml
+[[overrides]]
+target_path = "~/.config/kitty/kitty.conf"
+source_repo = "my-dots"
+source_subdir = "themes"
+
+[[overrides]]
+target_path = "~/.zshrc"
+source_repo = "personal-configs"
+source_subdir = "dots"
+```
+
+### File locations
+
+| File | Location |
+|------|----------|
+| Main config | `~/.config/instant/dots.toml` |
+| Overrides | `~/.config/instant/dot_overrides.toml` |
+| Repositories | `~/.local/share/instant/dots/<repo-name>/` |
+| Database | `~/.local/share/instant/instant.db` |
+
+
 ## Alternative sources
 
 When multiple repositories contain the same file, `ins` uses the highest-priority
