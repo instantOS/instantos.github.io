@@ -186,6 +186,27 @@ source_subdir = "dots"
 | Database | `~/.local/share/instant/instant.db` |
 
 
+## Units
+
+Treat directories as atomic groups. If any file in a unit is modified, all files in that unit are excluded from updates.
+
+**In `~/.config/instant/dots.toml`:**
+```toml
+units = [
+    ".config/nvim",
+    ".config/helix",
+    ".emacs.d"
+]
+```
+
+**Or in a repository's `instantdots.toml`:**
+```toml
+units = [".config/nvim"]
+```
+
+Global and per-repo units are combined. Useful for interdependent configs where partial updates would break things (editor plugins, theme suites, etc.).
+
+
 ## Alternative sources
 
 When multiple repositories contain the same file, `ins` uses the highest-priority
