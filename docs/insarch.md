@@ -9,7 +9,7 @@ There are two installers in circulation right now:
 Both are documented below so you can match what you see on your system.
 :::
 
-## `ins arch` (Rust, instantCLI)
+## `ins arch` (instantCLI)
 
 `ins arch` is the Rust-based installer built into instantCLI. It follows the
 Arch install flow (partitioning, pacstrap, fstab, bootloader) while layering
@@ -29,18 +29,17 @@ relaunch itself. You can still run `sudo ins arch install` if you prefer.
 ### Features and advantages
 
 - Guided wizard for disks, partitioning, locale, user, and system basics
-- Automatic or manual partitioning (manual uses `cfdisk` when selected)
+- Automatic or manual partitioning
 - Dual boot feasibility checks with resize guidance
-- Optional disk encryption and kernel selection
-- Minimal Mode for a near-vanilla Arch install
-- Post-install menu plus optional log upload for troubleshooting
+- Disk encryption
+- Minimal-mode for a vanilla Arch install
+- Asks questions first, then runs all install steps in one go
 
 ### Requirements
 
-- Arch or instantOS environment (installer refuses other distros)
+- Arch or instantOS environment
 - x86_64 architecture
 - Working internet connection
-- Root access for install steps (sudo prompts automatically)
 
 ### Common commands
 
