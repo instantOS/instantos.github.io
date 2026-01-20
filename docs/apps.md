@@ -50,8 +50,7 @@ clicking on the desktop.
 
 ## Troubleshooting
 
-### My program doesn't appear
-
+::: My program doesn't appear
 Some programs, mostly proprietary ones install to locations outside of $PATH
 and Windows programs installed using Wine. As an example, Davinci Resolve
 installs to /opt which is not part of $PATH and does not appear in the text
@@ -62,19 +61,20 @@ that case you can either add that directory to PATH or execute the program
 using its absolute path. In the case of Davinci resolve that would be
 /opt/resolve/bin/resolve. Wine programs can directly be invoked using Wine
 /path/to/program.exe
+:::
 
-### dafuq is $PATH ?!
 
+::: dafuq is $PATH ?!
 $PATH is an environment variable containing a list of directories. If you
 execute a command then Linux goes through all those directories and checks if
 any of them contain an executable with that name. It then stops and executes that
 application.
+:::
 
-### None of the launchers are present on my system
-
+::: None of the launchers are present on my system
 You likely installed instantWM on an existing system. instantWM is just a
 window manager and does not include any other programs. These have to be installed
 separately from [http://packages.instantos.io](http://packages.instantos.io).
 It is also a lot harder to provide support for these frankensteined systems
 since lots of things can vary depending on what your base system looks like.
-
+:::
