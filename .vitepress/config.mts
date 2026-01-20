@@ -70,6 +70,7 @@ export default defineConfig({
           items: [
             { text: 'Welcome', link: '/docs/' },
             { text: 'Installation Guide', link: '/docs/installguide' },
+            { text: 'Arch Installer (ins arch)', link: '/docs/insarch' },
             { text: 'Quick Start', link: '/docs/getting started' },
             { text: 'Update', link: '/docs/update' },
             { text: 'Dotfile management', link: '/docs/insdot' },
