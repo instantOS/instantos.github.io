@@ -11,56 +11,42 @@ Both are documented below so you can match what you see on your system.
 
 ## `ins arch` (Rust, instantCLI)
 
-`ins arch` is the Rust-based installer being built into instantCLI. It is meant
-to replace the old bash installer and can be used on Arch/instantOS environments
-(including the live ISO).
+`ins arch` is the Rust-based installer built into instantCLI. It follows the
+Arch install flow (partitioning, pacstrap, fstab, bootloader) while layering
+instantOS defaults and options on top. If you want a clean Arch system, you can
+enable Minimal Mode to keep things close to vanilla Arch.
 
 ### Quick start
 
 ```bash
-sudo ins arch install
+ins arch install
 ```
 
-This runs the full flow: asks all questions, writes
-`/etc/instant/questions.toml`, executes the install steps, then shows the
-finished menu.
+This runs the full wizard: asks all questions, executes the install steps, and
+shows the finished menu. If you are not root, it will prompt for sudo and
+relaunch itself. You can still run `sudo ins arch install` if you prefer.
+
+### Features and advantages
+
+- Guided wizard for disks, partitioning, locale, user, and system basics
+- Automatic or manual partitioning (manual uses `cfdisk` when selected)
+- Dual boot feasibility checks with resize guidance
+- Optional disk encryption and kernel selection
+- Minimal Mode for a near-vanilla Arch install
+- Post-install menu plus optional log upload for troubleshooting
 
 ### Requirements
 
 - Arch or instantOS environment (installer refuses other distros)
 - x86_64 architecture
 - Working internet connection
-- Root privileges for `install`, `ask` (full questionnaire), and `exec`
+- Root access for install steps (sudo prompts automatically)
 
-### Command reference
+### Common commands
 
 #### `ins arch install`
 
-Runs the full wizard: `ask` -> `exec` -> `finished`.
-
-#### `ins arch list`
-
-Lists all available question IDs for `ins arch ask`.
-
-#### `ins arch ask [question-id]`
-
-Interactive questionnaire. Without an ID it asks all questions and writes a
-TOML config file.
-
-```bash
-ins arch ask
-ins arch ask <question-id>
-ins arch ask --output-config /tmp/instantos-questions.toml
-```
-
-#### `ins arch exec [--step <step-id>]`
-
-Executes installation steps based on a questions file.
-
-```bash
-ins arch exec --questions-file /etc/instant/questions.toml
-ins arch exec --dry-run
-```
+Run the full installation wizard.
 
 #### `ins arch setup`
 
@@ -73,20 +59,47 @@ sudo ins arch setup --dry-run
 
 #### `ins arch info`
 
-Prints detected system information (boot mode, architecture, GPU, etc.). Safe
-to run on any distro.
+Show detected system information (boot mode, architecture, GPU). Safe to run on
+any distro.
 
 #### `ins arch dualboot info`
 
-Analyzes disks for dual boot feasibility and shows partition details.
+Analyze disks for dual boot feasibility and show partition details. Root access
+may be needed for full disk info.
 
 #### `ins arch upload-logs`
 
-Uploads `/var/log/instantos/install.log` to snips.sh for troubleshooting.
+Upload `/var/log/instantos/install.log` to snips.sh for troubleshooting.
+
+### Automation and scripting
+
+#### `ins arch list`
+
+List all available question IDs. Useful for scripts that call `ins arch ask`.
+
+#### `ins arch ask [question-id]`
+
+Run the interactive questionnaire. Without an ID it asks all questions and
+writes a TOML config file.
+
+```bash
+ins arch ask
+ins arch ask <question-id>
+ins arch ask --output-config /tmp/instantos-questions.toml
+```
+
+#### `ins arch exec [--step <step-id>]`
+
+Execute installation steps based on a questions file.
+
+```bash
+ins arch exec --questions-file /etc/instant/questions.toml
+ins arch exec --dry-run
+```
 
 #### `ins arch finished`
 
-Shows the post-install menu (reboot, shutdown, or continue in live session).
+Show the post-install menu (reboot, shutdown, or continue in live session).
 
 ### Files and logs
 
