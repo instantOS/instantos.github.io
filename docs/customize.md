@@ -14,9 +14,9 @@ not been customized by the user.
 
 ## Settings manager
 
-There is a TUI settings managerm, which allows changing most of the standard
-settings similar to how Gnome, MacOS or Windows do it. 
-These should be pretty self explanatory, they include thins like wifi,
+There is a TUI settings manager, which allows changing most of the standard
+settings similar to how GNOME, macOS or Windows do it. 
+These should be pretty self-explanatory, they include things like Wi-Fi,
 wallpaper, audio, keyboard layout, mouse sensitivity and more. 
 
 The control panel can be opened by ++super+left++ clicking on the status text,
@@ -94,7 +94,7 @@ Theme away, instantOS will stop updating the dotfiles for any file you change.
 `ins dot reset <filename>` can be used to reset any dotfile to the default. 
 
 
-### Gtk
+### GTK
 
 There is a GTK theme section in the Appearance tab of the settings panel. 
 On X11, changing this might require restarting GTK applications for this to take

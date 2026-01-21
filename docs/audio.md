@@ -16,7 +16,7 @@ slider. You can use the arrow keys, the j/k keys or +/- to change volume now.
 You can also use the mouse to drag or click on the slider.  To set it to a
 specific value, type in the number and confirm with the return key.  To close
 the slider, press any button that is not in use by the slider already or right
-click on it.  Middle click on it to reset it to the value that is was at when
+click on it.  Middle click on it to reset it to the value that it was at when
 opening it up.
 
 You can also set the volume of individual applications. To do this,

@@ -1,23 +1,23 @@
 # Installation guide
 
-This is a noob friendly installation guide intended for people who are new to
+This is a noob-friendly installation guide intended for people who are new to
 Linux or installing operating systems. If you have already installed any other
-Linux Distro you can likely skip this guide, but if you're having problems installing,
+Linux distro you can likely skip this guide, but if you're having problems installing,
 it may still help you.  
 
 ## General information
 
-Here is some general information on installing Linux Distros that may help you
+Here is some general information on installing Linux distros that may help you
 understand what's about to happen. You can skip this section and just follow the
 "click on xy, download xyz" instructions but it may help to understand how
 things work and what you're doing.
 
 To install an operating system you need a live medium. That's a fancy term for
 saying that you create a copy of that OS on a removable medium like a USB stick
-or a DVD (although those have fallen out of fashion in recent years)
-This copy of the OS is a special version that's non-persistent meaning that any changes
+or a DVD (although those have fallen out of fashion in recent years).
+This copy of the OS is a special version that's non-persistent, meaning that any changes
 you make while using it are wiped upon rebooting. It also contains an installer program
-that can copy the operating system to your computers disk, meaning it will be
+that can copy the operating system to your computer's disk, meaning it will be
 what the computer is normally running.
 
 You then insert the live medium into the computer and boot from it, meaning that
@@ -52,11 +52,11 @@ be the one you plan on installing to).
 
 ### 2. Download etcher.io
 
-Next you'll need a piece of software called etcher. it can be downloaded from [https://etcher.io](https://etcher.io)
+Next you'll need a piece of software called Etcher. It can be downloaded from [https://etcher.io](https://etcher.io)
 and like instantOS is completely free and open source. On Linux the AppImage
 version is recommended. Other USB burning programs may work as well, although
 dd has been proven to be problematic, so for the best results it is recommended to
-use etcher.
+use Etcher.
 
 ### 3. Burn the USB
 
@@ -66,7 +66,7 @@ files again. Begin by inserting the USB stick. Start up Etcher and choose
 the ISO you downloaded in step 1. Next choose the USB drive. Be sure you choose
 the right one because again, all data on it will be wiped.
 Then click "Flash" and wait until the process has finished.
-On windows you will need administrator rights and on Linux you will need to enter
+On Windows you will need administrator rights and on Linux you will need to enter
 your root password. If the password prompt does not work you might be missing a
 polkit GUI.
 
@@ -87,21 +87,21 @@ time around, shut the computer back down and start repeatedly pressing it as soo
 as it turns on. If the "boot medium" option is available you should get a menu that
 lists all storage devices that are plugged in. The installation medium is usually
 called USB flash drive or something similar. Choose that, usually using the arrow
-keys, newer computers might support a mouse here, and confirm using the enter key.
-If you don't have the boot device menu and instead have to use the bios, try looking
+keys, newer computers might support a mouse here, and confirm using the Enter key.
+If you don't have the boot device menu and instead have to use the BIOS, try looking
 for "boot order" and put the live medium as the first item in this list. This process
 can differ depending on the manufacturer.
 
 ### 5. Installation
 
 After booting the ISO, confirm the first option in the instantOS splash screen
-using the enter key to enter the live session.
+using the Enter key to enter the live session.
 Inside the live session you should have a welcome app with an install entry.
 Click on that or the applet in the top right to start the installation. This
-requires a constant internet access, ethernet is recommended. The installer
-asks a few questions and should be fairly self explanatory. You can select things
+requires constant internet access; Ethernet is recommended. The installer
+asks a few questions and should be fairly self-explanatory. You can select things
 using either the arrow keys, by searching for items or using the mouse. Confirm options
-by using the enter key or left clicking. After you input all the information the
+by using the Enter key or left clicking. After you input all the information the
 installation process will begin and the computer will automatically reboot.
 In case it boots into the live session again, choose "boot existing OS" and you
 should be ready to use instantOS. If you have any questions or need help with

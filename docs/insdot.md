@@ -7,14 +7,14 @@ anywhere you like. It even works on Android and Steam Deck!
 
 ## Installation
 
-This just requires the [instant CLI](https://github.com/instantOS/instantCLI) utilities, available via cargo, AUR or instrall script. 
+This just requires the [instant CLI](https://github.com/instantOS/instantCLI) utilities, available via cargo, AUR or install script. 
 
 ```
 curl -fsSL https://raw.githubusercontent.com/instantOS/instantCLI/main/scripts/install.sh | sh
 ```
 
 On instantOS, everything needed is already preinstalled and no further setup is
-necessary
+necessary.
 
 ## Quick start
 
@@ -38,7 +38,7 @@ ins dot add <file>
 ```
 This will copy them to the repository. By default, dotfile repositories are
 located in `~/.local/share/instant/dots/<repo name>`. You can commit, push and
-pull like with normal git repositories because that is hat they are. 
+pull like with normal git repositories because that is what they are. 
 
 Once you push new updates to your dotfiles, 
 ```
@@ -104,7 +104,7 @@ personal dotfile repository with higher priority.
 
 Other use cases for this would be custom themes, dotfile repositories which just
 contain color schemes for various applications, which can be put inbetween your
-base dotfiles and your personal ones. A good analogy are docker images, where
+base dotfiles and your personal ones. A good analogy are Docker images, where
 the upper layers can introduce new things not present in the lower layers, but
 also override things from the lower layers.
 
@@ -268,12 +268,10 @@ repository priorities globally.
 ## Automatic usage
 
 `ins dot` is used to automatically install and update the default instantOS
-dotfiles (https://github.com/instantOS/dotfiles). That way you can enjoy an up
-to date preconfigured setup while still being able to customize any part of it
+dotfiles (https://github.com/instantOS/dotfiles). That way you can enjoy an up-to-date
+preconfigured setup while still being able to customize any part of it
 without investing any extra effort. Putting `ins dot update` in a startup script
 is a well supported and intended use case. 
-
-
 
 ## Philosophy
 
@@ -290,7 +288,7 @@ ability, the program will keep working on what it can without risk of doing
 anything the user does not want. 
 
 You are even welcome to use `ins dot` alongside other dotfile managers like
-yadm (which is what I do myself)
+yadm (which is what I do myself).
 
 ## Comparison with others
 
@@ -304,7 +302,7 @@ you sort that out, updates to completely unrelated dotfiles cannot be pulled.
 As an attempt to fix this, people split their stow dotfiles into multiple
 packages of related dotfiles. That way I can symlink only a subset of my
 dotfiles and can modify dotfiles in my home directory without messing with the
-repo state. This still has a few disadvvantages:
+repo state. This still has a few disadvantages:
 It adds yet more management overhead because you
 need to apply packages separately, and keep track of which packages contain which
 dotfiles. It also does not fully solve the repo state problem, modifying a
@@ -314,16 +312,15 @@ to keep the blast radius of modifying dotfiles small, you need to split your
 package every time you want machine local modifications to a dotfile within a
 package, but want the rest of the package to continue getting updates. 
 
-
 ### yadm
 
 This is a great tool which I use myself. Its genius lies in how it basically
-doesn't do anything. It just turns your home directory into a git repository. It
+doesn't do anything. It just turns your home directory into a Git repository. It
 does not fit the use case for instantOS entirely though, because it has some of
-the same problems stow has. Modifying a dotfile dirties the entire repo,
+the same problems Stow has. Modifying a dotfile dirties the entire repo,
 preventing updates, which means automated usage is out of the question. Being
-written in bash, it is also quite slow. It also does not allow applying
-dotfiles from multiple different repositories, something which stow supports
+written in Bash, it is also quite slow. It also does not allow applying
+dotfiles from multiple different repositories, something which Stow supports
 very well by accident. 
 
 

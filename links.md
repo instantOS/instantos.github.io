@@ -70,97 +70,97 @@ used to build the instantsettings package
 
 ### [iso](https://github.com/instantOS/iso)
 
-Everything needed to build an instantOS live iso
-
+Everything needed to build an instantOS live ISO
+ 
 ### [liveutils](https://github.com/instantOS/liveutils)
-
+ 
 Everything that is contained on the live installation disk but not on the
 installed version
-
+ 
 ### [sent](https://github.com/instantOS/sent)
-
-Just regular sent with instantOS color scheme and font. Not really relevant to
+ 
+Just regular `sent` with instantOS color scheme and font. Not really relevant to
 the rest of the system.
-
+ 
 ### [imenu](https://github.com/instantOS/imenu)
-
-A wrapper script for instantMENU, fzf and dialog. With it you're able to create
+ 
+A wrapper script for instantMENU, `fzf` and `dialog`. With it you're able to create
 prompts that will work in a graphical environment and in a terminal.
 It will use the different programs depending on the mode but will always accept
 the same options and generate the same output.
 It is being used in the instantARCH installer.
-
+ 
 ### [mirror](https://github.com/instantOS/mirror)
-
+ 
 A mirror of all binary packages hosted in the instantOS pacman repo
-
+ 
 ### [instantTOOLS](https://github.com/instantOS/instantTOOLS)
-
+ 
 A set of scripts used for instantOS development
-
+ 
 ### [instantWELCOME](https://github.com/instantOS/instantWELCOME)
-
+ 
 The welcome prompt coming up on the installation medium and on a fresh system
-
+ 
 ### [instantLOCK](https://github.com/instantOS/instantLOCK)
-
-The lock screen. This is a very basic slock fork
-
+ 
+The lock screen. This is a very basic `slock` fork
+ 
 ### [instantOS-arm](https://github.com/instantOS/instantOS-arm)
-
-A community maintained ARM edition of instantOS in early stages of development.
-
+ 
+A community-maintained ARM edition of instantOS in early stages of development.
+ 
 ### [islide](https://github.com/instantOS/islide)
-
-Basically dmenu but for sliders instead of text selection.
+ 
+Basically `dmenu` but for sliders instead of text selection.
 Used for volume and brightness sliders
-
+ 
 ### [wallpapers](https://github.com/instantOS/wallpapers)
-
+ 
 Just a collection of pictures included as a category in instantWALLPAPER
-
+ 
 ### [instantMETA](https://github.com/instantOS/instantMETA)
-
-A completely empty package used as a placeholder for git links
-
+ 
+A completely empty package used as a placeholder for Git links
+ 
 ### [snap-dummy](https://github.com/instantOS/snap-dummy)
-
-instantOS doesn't ship with pre-enabled snap support.
+ 
+instantOS doesn't ship with pre-enabled Snap support.
 This tells you not to use them because they're resource heavy,
 unstable and unsafe
-(loads of proprietary low quality applications with no review process
+(loads of proprietary low-quality applications with no review process
 and access to your home directory)
-and basically proprietary. It then offers to enable snap support
+and basically proprietary. It then offers to enable Snap support
 if you still really want/have to.
-
+ 
 ### [instantSUPPORT](https://github.com/instantOS/instantSUPPORT)
-
-Like teamviewer but for ssh and really small and for instantOS support
-
+ 
+Like TeamViewer but for SSH and really small and for instantOS support
+ 
 ### [instantWIDGETS](https://github.com/instantOS/instantWIDGETS)
-
+ 
 Conky widget configuration for instantOS
-
+ 
 ### [st-instantos](https://github.com/instantOS/st-instantos)
-
-The default terminal emulator for instantOS, a very simple st fork with
+ 
+The default terminal emulator for instantOS, a very simple `st` fork with
 some patches and fixes.
-
+ 
 ### [grub-instantos](https://github.com/instantOS/grub-instantos)
-
+ 
 The GRUB theme for instantOS. This only contains the theme, nothing else.
-
+ 
 ### [rox-filer](https://github.com/instantOS/rox-filer)
-
-A basic fork of rox-filer to be used for optional desktop icons.
-
+ 
+A basic fork of `rox-filer` to be used for optional desktop icons.
+ 
 ### [instantDEB](https://github.com/instantOS/instantDEB)
-
+ 
 A way to create Debian packages from Arch PKGBUILD files.
 Originally created to enable a Debian edition of instantOS.
 Not much work has been done here as of late.
-
-## [Arch wiki mirror](https://packages.instantos.io/archwiki)
-
-A mirror of the Arch wiki
+ 
+## [Arch Wiki mirror](https://packages.instantos.io/archwiki)
+ 
+A mirror of the Arch Wiki
 

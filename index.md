@@ -21,13 +21,13 @@ hero:
 features:
   - title: Just works
     icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-    details: The user does not have to worry about everything from wifi to volume and brightness, theming and notification-management. A graphical settings menu ensures accessibility for anyone just like with a desktop environment.
+    details: The user does not have to worry about everything from Wi-Fi to volume and brightness, theming and notification-management. A graphical settings menu ensures accessibility for anyone just like with a desktop environment.
   - title: Power-user friendly
     icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
     details: instantOS has lots of functionality that goes beyond that of a normal desktop environment like tiling and instantASSIST that ensure a high skill ceiling.
   - title: Ultra lightweight
     icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
-    details: The RAM usage on idle is about 150-160Mb (tested on a fresh install on Virtualbox). That is less than half of what the lightest Ubuntu flavor uses.
+    details: The RAM usage on idle is about 150-160MB (tested on a fresh install on VirtualBox). That is less than half of what the lightest Ubuntu flavor uses.
   - title: Feature rich
     icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
     details: The small footprint is not achieved through measures like slimming down the kernel or compromising on features and visuals.
@@ -39,7 +39,7 @@ features:
     details: A keyboard centered workflow can make you much more productive but getting rid of the mouse is not the best thing for everyone.
 ---
 
-**instantOS** is an Arch Linux based distro that works out of the box but is still aimed at power users. Everything is lightning fast, flexible and just works.
+**instantOS** is an Arch Linux-based distro that works out of the box but is still aimed at power users. Everything is lightning fast, flexible and just works.
 
 In addition to the usual [Arch packages](https://github.com/instantOS/packages), we also package for the [Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via **[instantNIX](https://github.com/instantOS/instantNIX/)**.
 

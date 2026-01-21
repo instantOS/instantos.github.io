@@ -2,13 +2,13 @@
 
 
 ::: warning
-this page is WIP
+This page is a work in progress (WIP).
 :::
 
 
 ## Features
 
-instantOS uses a program called instantTHEMES to theme the system. the goal of
+instantOS uses a program called instantTHEMES to theme the system. The goal of
 instantTHEMES is to provide a simple way to create themes that look coherent
 across the entire system. 
 
@@ -23,30 +23,30 @@ A theme can declaratively theme the following system components
 
 ### Extensible
 
-instantTHEMES integrates with imosid which allows to include theming
+instantTHEMES integrates with `imosid` which allows including theming
 configuration for arbitrary programs, all without messing with user
-configuration
+configuration.
 
 ### Simple workflow
 
 Themes are special packages that can be shared easily and installed with a
 single command. They include everything instantTHEMES needs to install and
-apply all parts %% of the theme. 
+apply all parts of the theme. 
 
 ## Apply/switch themes
 
-```
+```bash
 instantthemes apply themename
 ```
 
-you can list all available themes with
+You can list all available themes with:
 
-```
+```bash
 instantthemes list
 ```
 
 
-## Dark/Light mode
+## Dark/light mode
 
 ## Creating themes
 
@@ -56,13 +56,13 @@ TODO
 
 ### Querying
 
-```
+```bash
 instantthemes query query_expression
 ```
 
-This executes a dasel query on the current theme and puts the results in
-stdout. you can read more about dasel at
-https://daseldocs.tomwright.me/selectors/introduction. The dasel query
+This executes a `dasel` query on the current theme and puts the results in
+stdout. You can read more about `dasel` at
+https://daseldocs.tomwright.me/selectors/introduction. The `dasel` query
 expression is optional. If no expression is passed, the whole theme config file
 is output instead. 
 
@@ -104,19 +104,19 @@ version = 0
 
   [qt.dark]
     kvantum = "Materia"
-    theme = "kvanum-dark"
+    theme = "kvantum-dark"
 
   [qt.light]
     theme = "kvantum"
 ~ 
 ```
 
-And example query executed on the same theme
+An example query executed on the same theme:
 
 ```
 ~  instantthemes query qt.dark
 kvantum = "Materia"
-theme = "kvanum-dark"
+theme = "kvantum-dark"
 ~ 
 ```
 

@@ -3,18 +3,18 @@
 instantOS comes preconfigured with my personal Neovim setup. 
 This has a few unique features which I will list here. 
 
-## Install on other Distros
+## Install on other distros
 
-This config should be roughly distro agnostic, as long as you have the required
-packages installed using your respective package manager. MacOS should also
+This config should be roughly distro-agnostic, as long as you have the required
+packages installed using your respective package manager. macOS should also
 work, although it has not been tested in a while. 
 
 ### Requirements
 
 - Neovim 0.12.0 or higher
 - Git (for plugin management)
-- Npm (for Mason Lsp)
-- Gcc (For Treesitter)
+- npm (for Mason LSP)
+- GCC (for Tree-sitter)
 - `ins`
 
 ### Installation
@@ -22,7 +22,7 @@ work, although it has not been tested in a while.
 ```bash
 rm -rf ~/.config/nvim # remove existing config
 ins dot clone https://github.com/instantOS/dotfiles # clone instantOS dotfiles
-nvim # auto installs everything on first run
+nvim # auto-installs everything on first run
 ```
 
 
@@ -36,9 +36,9 @@ typed as is without the snippet expanding.
 
 ### Anki
 
-This is meant to be used with the ObsidianToAnki plugin for obsidian. 
-These snippets are not that useful outside of anki card creation, so they only
-trigger if your markdown file contains the word `anki` in its name. 
+This is meant to be used with the ObsidianToAnki plugin for Obsidian. 
+These snippets are not that useful outside of Anki card creation, so they only
+trigger if your Markdown file contains the word `anki` in its name. 
 
 `MQ` generates a Math question, meaning
 
@@ -47,16 +47,16 @@ Q: $...$
 A: This is the answer to the math question
 ```
 
-All of the LaTex snipets are also working here, whenever you are inside a math
+All of the LaTeX snippets are also working here, whenever you are inside a math
 environment, meaning `$...$` or `$$...$$`.
 
-### LaTex
+### LaTeX
 
-This contains a port of the LateX-Suite snippets from Obsidian to LuaSnip.
+This contains a port of the LaTeX-Suite snippets from Obsidian to LuaSnip.
 Most of the snippets work the same, some have been expanded. 
 
 Integrals for example tend to be a lot of tedious typing, so I added the
-following snippet
+following snippet:
 
 ```txt
 $$
@@ -65,7 +65,7 @@ $$
 ```
 
 
-Expands to the following
+Expands to the following:
 
 ```
 $$
@@ -73,8 +73,8 @@ $$
 $$
 ```
 
-Pressing tab will move the cursor to the next placeholder, so the following can
-be typed quickly
+Pressing Tab will move the cursor to the next placeholder, so the following can
+be typed quickly:
 
 
 
@@ -87,9 +87,9 @@ $$
 
 `Sum` has the same functionality here. 
 
-Typing `dm` will generate a display math environment
+Typing `dm` will generate a display math environment.
 
-These snippets will work in `.tex` files as well as in markdown files within
+These snippets will work in `.tex` files as well as in Markdown files within
 math environments.
 
 ### Markdown
@@ -102,7 +102,7 @@ undo this if you need the name of the language at the beginning of the line)
 python:
 ````
 
-Expands into
+Expands into:
 
 ````markdown
 ```python 

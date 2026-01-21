@@ -59,7 +59,7 @@ On instantOS:
 - wait for the installation to finish
 - Use `ibuild` from the command line, `ibuild help` for available commands and some help
 
-For instance, if you want to build the latest instantWM from the github source repository:
+For instance, if you want to build the latest instantWM from the GitHub source repository:
 
 ```
 ibuild install instantwm
@@ -129,7 +129,7 @@ InstantOS executes a shell script at `~/.config/instantos/autostart.sh` on start
 You can also link or copy a `.desktop` file to `~/.config/autostart` or use a
 graphical tool that does this.
 
-## Does it support 32 bit
+## Does it support 32-bit
 
 Yes, but the 32-bit version doesn't have a live session yet so you'll have to
 use the CLI installer
@@ -191,7 +191,7 @@ A more traditional runtime config file for hotkeys is being worked on.
 ## Is feature X planned
 
 Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/projects/1).
-If it's not there request it by opening a feature-request issue on github
+If it's not there request it by opening a feature-request issue on GitHub
 or talking to people in the [community](https://instantos.io/support).
 
 ## Is there a swap? I don't see any
@@ -204,7 +204,7 @@ systemd-swap.
 instantOS used to use Calamares but switched to a custom installer called
 instantARCH for several reasons.
 
-- calamares has higher system
+- Calamares has higher system
 requirements than the OS itself which would lock out a potential userbase.
 - Calamares only has official support for amd64 while instantARCH can easily
 be ported to any architecture.
@@ -212,16 +212,16 @@ be ported to any architecture.
 complicated and is still quite limiting in that regard. instantARCH already
 lets you do things like choose kernel or extra packages, both of which would be
 difficult to do with Calamares.
-- instantARCH fits the system aesthetic a lot better while qt looks quite out
+- instantARCH fits the system aesthetic a lot better while QT looks quite out
   of place
-- instantARCH can run as a cli off any up to date Arch iso
+- instantARCH can run as a CLI off any up-to-date Arch ISO
 
 In the current state of development it is also important to be able to adjust
-the installation process without releasing a new iso every time.  That is why
+the installation process without releasing a new ISO every time.  That is why
 instantARCH is netinstall only at the moment. An option to install without
 internet access will be added in the future.
 
-## Why is this not a Manjaro flavour
+## Why is this not a Manjaro flavor
 
 instantOS used to be based on Manjaro in the beginning, but switched to being
 based on pure Arch for a few reasons.
@@ -234,18 +234,18 @@ based on pure Arch for a few reasons.
   messy Manjaro development tools are it was hard to tell where the issues came
   from and at some point it was just becoming easier to switch to Arch which is
   what most people wanted anyway.  
-- Arch is available for more architectures than manjaro. Manjaro 32 bit is
+- Arch is available for more architectures than Manjaro. Manjaro 32-bit is
   unmaintained and the other versions are a mess. instantOS being a lightweight
-  distro has a target audience on ARM and 32 bit, both of which can be served
+  distro has a target audience on ARM and 32-bit, both of which can be served
   better on Arch. You can read more about the experience with Manjaro tools
   [here](https://github.com/instantOS/instantOS/projects/1)  
 - It does things differently than Manjaro which led to development basically
 fighting its bloated base.
 - Most users want it to be based on Arch after beta 1  
 - Arch can be trusted to be always there and maintained, Manjaro can't as the
-  recent drama, forums being set to read only and so on shows  
+  recent drama, forums being set to read-only and so on shows  
 
-## is instantOS just Arch with instantWM
+## Is instantOS just Arch with instantWM
 
 No it isn't. Just take a look at the [GitHub](https://github.com/instantOS) and
 tell me if you just see a window manager. Installing instantWM on Arch will
