@@ -95,8 +95,8 @@ math environments.
 ### Markdown
 
 Typing the name of a programming language at the beginning of a line followed by
-a colon (`:`) creates a code block for that language. (of course ctrl x will
-undo this if you need the name of the language at the beginning of the line)
+a colon (`:`) creates a code block for that language (of course ++ctrl+x++ will
+undo this if you need the name of the language at the beginning of the line).
 
 ````markdown
 python:
@@ -112,17 +112,17 @@ Expands into:
 
 ### Typst
 
-The syntax of typst is already very concise, and in most cases is what the latex
-snippets are before expanding. I have found typst very pleasant to write even
-without snippets, so there are not a whole lot of snippets for typst present.
+The syntax of Typst is already very concise, and in most cases is what the LaTeX
+snippets are before expanding. I have found Typst very pleasant to write even
+without snippets, so there are not a whole lot of snippets for Typst present.
 
 ### Video
 
-Any markdown file with `video` in its name will be treated as an `ins video`
-file, which comes with some extra snipets for quicker video editing. 
+Any Markdown file with `video` in its name will be treated as an `ins video`
+file, which comes with some extra snippets for quicker video editing. 
 
-`music:` expands to a music block
+`music:` expands to a music block.
 
 `ps  ` expands to a pausing slide block (this is `ps` at the beginning of a line
-followed by two spaces)
+followed by two spaces).
 

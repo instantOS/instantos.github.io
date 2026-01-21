@@ -8,19 +8,19 @@ the top right. The ++super+space++ application launcher can also launch any
 application in a terminal. Press ++shift+"left/right"++ arrow key while using the
 launcher to switch to terminal mode.
 
-## Copy paste
+## Copy-paste
 
-To highlight text, hold down the shift key and drag out the selection using
+To highlight text, hold down the ++shift++ key and drag out the selection using
 your mouse. You can then press ++ctrl+shift+c++ to copy the selected text and
 ++ctrl+shift+v++ to paste it.
 
 ## tmux
 
-By default, all terminals open in a tmux session. This allows for features
-like tabs, split windows and detaching from the session. Tmux is very well
+By default, all terminals open in a `tmux` session. This allows for features
+like tabs, split windows and detaching from the session. `tmux` is very well
 documented so this manual won't go into detail about it.
 
-::: details Tmux resources
+::: details tmux resources
 - [Cheatsheet](https://tmuxcheatsheet.com/)
 - [Guide](https://github.com/tmux/tmux/wiki/Getting-Started)
 :::
