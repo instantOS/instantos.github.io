@@ -1,6 +1,6 @@
-# Welcome to instantOS
+# Get Started
 
-You can learn how to use instantOS by adding one feature at a time to your
+Welcome to instantOS! You can learn how to use instantOS by adding one feature at a time to your
 workflow. Each feature lists what you need to know to understand it and links
 to documentation pages where you can learn those things.
 
@@ -10,9 +10,8 @@ it if you prefer that.
 ## Useful links
 
 - [Keybindings](hotkeys.md)
-- [instantOS Website](http://instantos.io)
-- [YouTube](http://youtube.com/paperbenni)
+- [instantOS Website](https://instantos.io)
+- [YouTube](https://youtube.com/paperbenni)
 - [Discord](https://dsc.gg/instantos)
 - [Donate](donate.md)
 - [Documentation source code](https://github.com/instantOS/docs)
-
