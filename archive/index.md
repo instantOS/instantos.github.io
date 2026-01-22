@@ -12,6 +12,7 @@ particular is not supported anymore.
 - [st-terminal](/archive/terminal.md)
 - [st theming](/archive/terminaltheme.md)
 - [iBuild](/archive/ibuild.md)
+- [instantTHEMES](/archive/instantthemes.md)
 
 ## imosid
 

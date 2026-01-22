@@ -1,10 +1,9 @@
 # instantTHEMES
 
-
-::: warning
-This page is a work in progress (WIP).
+::: danger
+**DEPRECATED**  
+`instantTHEMES` is no longer supported and has been replaced by `ins dot` and `ins settings`. This documentation is kept for archival purposes only.
 :::
-
 
 ## Features
 

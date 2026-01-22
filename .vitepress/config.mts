@@ -62,6 +62,7 @@ export default defineConfig({
             { text: 'Overview', link: '/archive' },
             { text: 'st terminal', link: '/archive/terminal' },
             { text: 'imosid', link: '/archive/imosid' },
+            { text: 'instantTHEMES', link: '/archive/instantthemes' },
             { text: 'Terminal Theme', link: '/archive/terminaltheme' },
             { text: 'iBuild', link: '/archive/ibuild' },
           ]
@@ -83,7 +84,6 @@ export default defineConfig({
           items: [
             { text: 'Start Apps', link: '/docs/apps' },
             { text: 'Shortcuts', link: '/docs/shortcuts' },
-            { text: 'Themes', link: '/docs/instantthemes' },
             { text: 'Instant Assist', link: '/docs/instantassist' },
             { text: 'Screen Lock', link: '/docs/instantlock' },
             { text: 'Audio', link: '/docs/audio' },
