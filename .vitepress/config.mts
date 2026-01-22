@@ -55,12 +55,15 @@ export default defineConfig({
           ]
         }
       ],
-      '/oldstuff/': [
+      '/archive/': [
         {
-          text: 'Old stuff',
+          text: 'Archive',
           items: [
-            { text: 'Terminal Theme', link: '/oldstuff/terminaltheme' },
-            { text: 'iBuild', link: '/oldstuff/ibuild' },
+            { text: 'Overview', link: '/archive' },
+            { text: 'st terminal', link: '/archive/terminal' },
+            { text: 'imosid', link: '/archive/imosid' },
+            { text: 'Terminal Theme', link: '/archive/terminaltheme' },
+            { text: 'iBuild', link: '/archive/ibuild' },
           ]
         }
       ],
@@ -81,7 +84,6 @@ export default defineConfig({
           items: [
             { text: 'Start Apps', link: '/docs/apps' },
             { text: 'Shortcuts', link: '/docs/shortcuts' },
-            { text: 'Terminal', link: '/docs/terminal' },
             { text: 'Themes', link: '/docs/instantthemes' },
             { text: 'Instant Assist', link: '/docs/instantassist' },
             { text: 'Screen Lock', link: '/docs/instantlock' },

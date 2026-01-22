@@ -1,5 +1,10 @@
 # Terminal
 
+::: danger
+**DEPRECATED**  
+The `st-terminal` is no longer supported and has been replaced by Wayland-native alternatives. This documentation is kept for archival purposes only.
+:::
+
 ## Opening a terminal
 
 A terminal can be opened up with ++return++ on an empty tag or ++super+return++
@@ -31,22 +36,22 @@ The terminal emulator in use is
 [st-instantos](https://github.com/instantOS/st-instantos/) which is a build of the
 suckless terminal. It is nothing special and deliberately kept barebones
 because most of the things you could add into a terminal emulator can be done
-much better and reliable using tmux.
+much better and reliably using `tmux`.
 
 ::: details st-instantos patches and changes
-This is a list of changes made to the vanilla st source
-- xresources support
-- colored emoji
-- font zooming with ctrl +/-
-- vertcenter
-- fira code default font
-- ligatures
-- boxdraw
-- hide cursor
-- blinking cursor
-- clipboard fix
-- w3m support
-- transparency
+This is a list of changes made to the vanilla `st` source:
+- `xresources` support
+- Colored emoji
+- Font zooming with ++ctrl++ +/-
+- `vertcenter`
+- Fira Code default font
+- Ligatures
+- `boxdraw`
+- Hide cursor
+- Blinking cursor
+- Clipboard fix
+- `w3m` support
+- Transparency
 :::
 
 Colors can be changed from Xresources, but

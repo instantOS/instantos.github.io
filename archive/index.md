@@ -7,8 +7,15 @@ latest ISO or latest Arch ISO.
 ## Old programs
 
 instantOS used to use a lot more X11 and suckless specific programs. `st` in
-particular is not supported anymore, but in case you are still using those, they
-are documented under [oldstuff](/oldstuff/terminaltheme.md).
+particular is not supported anymore.
+
+- [st-terminal](/archive/terminal.md)
+- [st theming](/archive/terminaltheme.md)
+- [iBuild](/archive/ibuild.md)
+
+## imosid
+
+[imosid](/archive/imosid.md) is a deprecated dotfile manager that was replaced by `ins dot`.
 
 ## beta 7
 
