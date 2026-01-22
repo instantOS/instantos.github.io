@@ -73,10 +73,16 @@ export default defineConfig({
           text: 'Getting Started',
           items: [
             { text: 'Get Started', link: '/docs/' },
-            { text: 'Installation Guide', link: '/docs/installguide' },
             { text: 'Arch Installer (ins arch)', link: '/docs/insarch' },
             { text: 'Update', link: '/docs/update' },
             { text: 'Dotfile management', link: '/docs/insdot' },
+          ]
+        },
+        {
+          text: "Beginner's Guide",
+          items: [
+            { text: 'Installation Guide', link: '/docs/beginner/installguide' },
+            { text: 'Vim hotkeys', link: '/docs/beginner/vim' },
           ]
         },
         {
@@ -107,7 +113,6 @@ export default defineConfig({
             { text: 'File Search', link: '/docs/filesearch' },
             { text: 'Notifications', link: '/docs/notify' },
             { text: 'Programs', link: '/docs/programs' },
-            { text: 'Vim', link: '/docs/vim' },
             { text: 'Quick Menu', link: '/docs/quickmenu' },
           ]
         },
