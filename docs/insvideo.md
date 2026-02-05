@@ -284,8 +284,8 @@ https://www.youtube.com/watch?v=example
 `a@00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
 `a@00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
 `a@00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
-`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
-```
+`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
+````
 
 
 You can put a file or music url in a code block with the language set to `music`
