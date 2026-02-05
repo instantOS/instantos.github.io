@@ -154,7 +154,7 @@ export default defineConfig({
             { text: 'Discord', link: '/discord' },
             { text: 'Links', link: '/links' },
             { text: 'Releases', link: '/releases/beta6' },
-            { text: 'Archive', link: '/archive' },
+            { text: 'Archive', link: '/archive/' },
             { text: 'Thanks', link: '/thanks' }
           ]
         }

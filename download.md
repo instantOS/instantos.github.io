@@ -59,7 +59,7 @@ Quick instructions on how to install using Nix and NixOS can be found here:
 
 The default user and password are `instantos` and `instantos` with no root password.
 
-## [Archive](/archive)
+## [Archive](/archive/)
 
 This contains an archive of older installation ISOs. It is usually recommended
 not to use these and go for the latest build instead.
