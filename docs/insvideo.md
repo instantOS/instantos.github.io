@@ -4,7 +4,7 @@
 It works by transcribing your video to a markdown file, which you can edit using
 any text editor, and then render the edited markdown back to a video.
 
-You can cut out parts of the video, add title cards, text overlays and more
+You can cut out parts of the video, add title cards, text overlays, B-roll footage and more
 using simple markdown syntax. 
 
 
@@ -44,27 +44,57 @@ Converts the markdown file back into a video
 
 ## Editing
 
-Here is an example of how a markdown file generated from a video looks like:
+Video markdown files are **auto-generated** by `ins video convert` - you should not create them from scratch. The following shows what a generated file looks like and how to edit it.
+
+Here is an example of a generated markdown file:
 
 ```markdown
 ---
-video:
+default_source: 'a'
+sources:
+- id: 'a'
   hash: '4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9'
   name: 'distro.mkv'
   source: '/home/benjamin/Videos/distrotest/distro.mkv'
-transcript:
-  source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
+  transcript: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
 generated_at: '2025-12-21T00:37:04.161349597+00:00'
 ---
-`00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
-`00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-`00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
-`00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
-`00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
-`00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
-`00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
+`a@00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
+`a@00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+`a@00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
+`a@00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
+`a@00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
+`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+`a@00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
 ...
 ```
+
+### Understanding the Frontmatter
+
+The YAML frontmatter declares video sources. When using `ins video convert`, this is auto-generated:
+
+```yaml
+---
+default_source: 'a'
+sources:
+- id: 'a'
+  hash: '...'
+  name: 'main.mp4'
+  source: '/path/to/main.mp4'
+  transcript: './insvideodata/....json'
+- id: 'b'
+  hash: '...'
+  name: 'broll.mp4'
+  source: '/path/to/broll.mp4'
+  transcript: './insvideodata/....json'
+generated_at: '2025-12-21T00:37:04.161349597+00:00'
+---
+```
+
+- **`sources`** - Array of video sources with unique IDs
+- **`default_source`** - Default source for segments without a prefix
+- **`hash`** - Content hash for caching
+- **`name`**, **`source`**, **`transcript`** - File paths
 
 ### Cuts
 
@@ -73,6 +103,52 @@ You can comment out or delete lines to cut those segments from the video. You
 can also rearrange lines. You can not edit the text itself, edits will be
 ignored, and you cannot cut within a line. 
 
+### Source Prefixes (Multi-Video Projects)
+
+When using multiple video sources (e.g., via `ins video append`), segments are prefixed with their source ID:
+
+```markdown
+---
+default_source: 'a'
+sources:
+- id: 'a'
+  source: '/path/to/main.mp4'
+  transcript: './main.json'
+- id: 'b'
+  source: '/path/to/intro.mp4'
+  transcript: './intro.json'
+---
+
+`b@00:00.0-00:05.0` intro clip from source b
+`a@00:00.0-00:10.0` main content from source a
+```
+
+### HTML Comments
+
+You can use HTML comments to temporarily disable segments without deleting them:
+
+```markdown
+`00:00.0-00:10.0` this segment will be included
+
+<!-- 
+`00:10.0-00:20.0` this segment is commented out and will be skipped
+-->
+
+`00:20.0-00:30.0` this segment will be included
+```
+
+Multi-line comments work too - everything between `<!--` and `-->` is ignored.
+
+### Silence Segments
+
+Gaps longer than 1 second are automatically marked as SILENCE:
+
+```markdown
+`a@00:00.0-00:05.0` dialogue here
+`a@00:05.0-00:10.0` SILENCE
+`a@00:10.0-00:15.0` more dialogue
+```
+
 ### Slides
 
 You can put arbitrary markdown between the transcript lines to create slides.
@@ -80,35 +156,33 @@ This can contain text, images, code blocks, latex and more.
 
 ```markdown
 ---
-video:
-  hash: '4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9'
-  name: 'distro.mkv'
-  source: '/home/benjamin/Videos/distrotest/distro.mkv'
-transcript:
-  source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
-generated_at: '2025-12-21T00:37:04.161349597+00:00'
+default_source: 'a'
+sources:
+- id: 'a'
+  source: '/path/to/video.mp4'
+  transcript: './video.json'
 ---
-`00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
-`00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+`a@00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
+`a@00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 Hi, this is the first slide
 
-`00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
-`00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
-`00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
-`00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+`a@00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
+`a@00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
+`a@00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
+`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
 
 Hi, this is the second slide
 
-`00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
-`00:30.6-00:33.2` error sit voluptatem accusantium doloremque laudantium totam rem aperiam 
-`00:33.6-00:35.0` eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
+`a@00:28.9-00:30.1` mollit anim id est laborum sed ut perspiciatis unde omnis iste natus 
+`a@00:30.6-00:33.2` error sit voluptatem accusantium doloremque laudantium totam rem aperiam 
+`a@00:33.6-00:35.0` eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
 
 ---
 
-`00:35.3-00:37.4` dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur 
-`00:38.0-00:39.9` aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione 
-`00:40.3-00:47.0` voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia dolor sit amet 
+`a@00:35.3-00:37.4` dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur 
+`a@00:38.0-00:39.9` aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione 
+`a@00:40.3-00:47.0` voluptatem sequi nesciunt neque porro quisquam est qui dolorem ipsum quia dolor sit amet 
 ```
 
 Slides will start being shown during the segment immediately before their
@@ -118,69 +192,100 @@ content. They will stay on screen until the next slide or until a separator line
 You can also pause the video entirely by placing slides between two separator lines.
 Multiple slides can be shown while the video is paused by placing separator
 lines between them. The amount of time a slide is shown is calculated based on
-the number of words it contains. 
+the number of words it contains (180 WPM reading speed, min 5s, max 20s).
 
 ```markdown
 ---
-video:
-  hash: '4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9'
-  name: 'distro.mkv'
-  source: '/home/benjamin/Videos/distrotest/distro.mkv'
-transcript:
-  source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
-generated_at: '2025-12-21T00:37:04.161349597+00:00'
+default_source: 'a'
+sources:
+- id: 'a'
+  source: '/path/to/video.mp4'
+  transcript: './video.json'
 ---
 
-`00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
-`00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+`a@00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
+`a@00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ---
 
-Hi, this is the first slide, source the video is paused 
+Hi, this is the first slide, the video is paused 
 
 ---
 
 Hi, this is the second slide, after this the video will continue
 
 ---
-`00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
-`00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
-`00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
-`00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+`a@00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
+`a@00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
+`a@00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
+`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
 ```
 
 
 Slides will be styled differently depending on their content. If they just
 contain a single header (h1, h2 ...) they will act as title cards. If they
-contain lots of content, they wil not be center aligned and the layout is
+contain lots of content, they will not be center aligned and the layout is
 adjusted to make the larger amount of content more readable. 
+
+### B-Roll Footage
+
+Use blockquotes with timestamps to insert B-roll footage:
+
+```markdown
+`a@00:00.0-00:10.0` talking about something
+
+> `b@00:05.0-00:08.0` B-roll clip from source b
+
+`a@00:10.0-00:20.0` continue talking
+```
+
+Multiple B-roll clips can be chained:
+
+```markdown
+> `b@00:00.0-00:05.0` first B-roll
+> `c@00:02.0-00:07.0` second B-roll
+```
+
+**B-roll persists across segments** until stopped with a separator:
+
+```markdown
+`a@00:00.0-00:10.0` has B-roll
+
+> `b@00:00.0-00:05.0` B-roll footage
+
+`a@00:10.0-00:20.0` also has B-roll
+`a@00:20.0-00:30.0` also has B-roll
+
+---
+
+`a@00:30.0-00:40.0` no B-roll (after separator)
+```
 
 ### Background music
 
+Add music with a `music` code block. The music plays from that point until the next music block or the end of the video:
 
 ````markdown
 ---
-video:
-  hash: '4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9'
-  name: 'distro.mkv'
-  source: '/home/benjamin/Videos/distrotest/distro.mkv'
-transcript:
-  source: './insvideodata/4b59412a676f5994b916dd983e3315cb8ebfed8f99cf1b609310d6dda39db3d9.srt'
-generated_at: '2025-12-21T00:37:04.161349597+00:00'
+default_source: 'a'
+sources:
+- id: 'a'
+  source: '/path/to/video.mp4'
+  transcript: './video.json'
 ---
 
-`00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
-`00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+`a@00:00.0-00:03.4` quick brown fox jumps over the lazy dog consectetur adipiscing elit 
+`a@00:03.4-00:13.8` elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
 
 ```music
 https://www.youtube.com/watch?v=example
 ```
 
-`00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
-`00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
-`00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
-`00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
-````
+`a@00:14.6-00:19.3` ut enim ad minim veniam quis nostrud exercitation ullamco laboris 
+`a@00:24.9-00:26.2` nisi ut aliquip ex ea commodo consequat duis aute irure dolor
+`a@00:26.4-00:27.0` in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur 
+`a@00:27.2-00:28.7` excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt 
+```
 
 
 You can put a file or music url in a code block with the language set to `music`
@@ -220,6 +325,24 @@ ins video convert input.mp4 --transcript subtitles.srt
 
 # Overwrite existing markdown
 ins video convert input.mp4 --force
+```
+
+### `ins video append <markdown> <video> [options]`
+
+Append another recording to an existing video markdown file. This is useful for combining multiple recordings into one project.
+
+```bash
+# Append a new video to existing markdown
+ins video append existing.video.md new_recording.mp4
+
+# With transcript
+ins video append existing.video.md new_recording.mp4 --transcript recording.json
+
+# Skip preprocessing
+ins video append existing.video.md new.mp4 --no-preprocess
+
+# Use auphonic for the appended video
+ins video append existing.video.md new.mp4 --preprocessor auphonic
 ```
 
 ### `ins video transcribe <video> [options]`
@@ -266,8 +389,8 @@ ins video render input.video.md --dry-run
 # Render in vertical format (9:16 for Reels/TikTok)
 ins video render input.video.md --reels
 
-# Burn subtitles into video (reels mode only)
-ins video render input.video.md --reels --subtitles
+# Burn subtitles into video (works in both normal and reels mode)
+ins video render input.video.md --subtitles
 ```
 
 ### `ins video slide <markdown> [options]`
@@ -312,6 +435,17 @@ ins video preprocess input.mp4 --backend none
 
 Download and configure video tools (WhisperX, local preprocessor, Auphonic). Use `--force` to reconfigure.
 
+### `ins video menu`
+
+Launch an interactive menu for guided video editing workflows. This provides a user-friendly interface for:
+
+- Creating new projects
+- Transcribing videos
+- Managing existing projects
+- Generating slides
+- Preprocessing audio
+- Setting up video tools
+
 ## Limitations
 
 You can not edit the content of the words being said. The only AI being used is
@@ -322,7 +456,7 @@ never said.
 I sincerely believe there is no value in AI image, video and audio generation
 outside of moodboards, so this will not be supported anytime soon. 
 
-As of now, only editing a single video file is supported. 
+Multiple video sources are supported, but each source video is treated independently.
 
 ## Current notes
 
