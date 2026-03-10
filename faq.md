@@ -80,9 +80,8 @@ time in addition to full-time work/study.
 
 Depends on what colors you want to change.
 Some are available through the various theming options in the settings menu.
-For the window manager and instantMENU colors, you create or copy an existing `~/.Xresources` file, 
-then run `xrdb ~/.Xresources` ([example](https://github.com/instantOS/instantNIX/blob/dev/utils/Xresources)).
-Look at the ricing section of the [community wiki](https://github.com/instantOS/instantOS/wiki/Ricing) for more information.
+For the window manager and instantMENU colors, edit `~/.config/instantwm/config.toml`.
+Look at the [wmsettings documentation](/docs/wmsettings) for the full configuration reference.
 You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
 
 ## What is the weird A100% or "i" in the status bar
@@ -109,19 +108,22 @@ For inspiration have a look at `/usr/bin/instantstatus`.
 
 ## My keyboard layout doesn't work with instantOS and language support sucks
 
-Okay, technically not a question, but we know what you're getting at.
-You can always change your keybinds by cloning instantWM, going through `config.def.h`, 
-recompiling and restarting the window manager
-(see [ibuild](#how-do-i-build-an-instantos-component-from-the-source-repos)).
-As an example see the changeset for [French AZERTY](https://github.com/instantOS/instantNIX/blob/dev/pkgs/instantWm/french-keybindings.patch).
+You can configure keyboard layouts in `~/.config/instantwm/config.toml`:
 
-Customizable keybinds in runtime are planned.
-Internationalization is not our first priority.
+```toml
+[keyboard]
+layouts = ["us", "de", "fr"]
+variant = ["", "nodeadkeys", ""]
+options = "compose:ralt"
+```
+
+Use `instantwmctl` to switch layouts at runtime:
+```bash
+instantwmctl next-keyboard-layout
+instantwmctl list-keyboard-layouts
+```
+
 Keep in mind that we are doing this in our free time for little to no compensation.
-Internationalization is one of those things that eats a lot of time and
-the majority of the world's computer users know standard English, so
-there's not much reward for the work put into internationalization.
-We're sorry, but we have to prioritize other things for now.
 
 ## How do I put things in the autostart
 
@@ -158,35 +160,35 @@ base system and previously not accessible to non-technical people.
 
 ## Wayland
 
-instantOS will eventually transition to Wayland but this will only happen once
-certain conditions are met.  First off, hardware support needs to be on part or
-better than Xorg, namely nvidia needs to be working reliably and fast. There
-also needs to be feature parity between wayland and x11. Screen recording and
-screenshots must be stable and working. No OBS features or anything like that
-should be missing.  It also won't be among the first applications to adapt
-wayland. As long as 90% of GUIs still run in xwayland switching doesn't make
-sense.  Lastly, things need to be as stable as Xorg, instantOS won't be an
-experimental example of what wayland can do, it's meant as an actual operating
-system people can use, not a tech demo.  I know that this sounds like a lot to
-ask but under no circumstances will the jump to wayland come with a worse user
-experience. Who cares if under the hood things are theoretically clean and
-modern if they don't work?
+instantWM now supports both X11 and Wayland! The Rust rewrite includes native Wayland support.
+You can choose which session to use:
 
-"But I have been using wayland for years and it's fine"
+- **X11**: instantwm-x11 (traditional X11 session)
+- **Wayland**: instantwm-wayland (native Wayland compositor)
 
-It might work for you but it's far from working for everyone. To be a suitable
-replacement for Xorg that needs to be the case.
+Wayland support includes most features from the X11 version, with continued development to maintain feature parity.
+Both sessions share the same configuration file at `~/.config/instantwm/config.toml`.
 
 ## Can I change keybindings
 
-Yes, but just know that you shouldn't before learning the default bindings.
-You can clone the git repo of instantWM and edit config.def.h à la dwm.
-After that you can run the `./build.sh` script to apply changes.
-If you have a general suggestion on how to improve bindings, opening an issue on
-GitHub is much appreciated.
-Patching instantWM is also problematic because you'll manually have to apply updates
-and providing support for a copy with modified source code is difficult.
-A more traditional runtime config file for hotkeys is being worked on.
+Yes! instantWM uses a TOML configuration file at `~/.config/instantwm/config.toml`.
+You can add or override keybindings in the `[[keybinds]]` section.
+
+Example:
+```toml
+[[keybinds]]
+modifiers = ["Super"]
+key = "Return"
+action = { spawn = ["alacritty"] }
+
+[[keybinds]]
+modifiers = ["Super", "Shift"]
+key = "q"
+action = "kill"
+```
+
+See the [wmsettings documentation](/docs/wmsettings) for the full list of available actions and modifiers.
+You can also use `instantwmctl` to control many settings at runtime without restarting.
 
 ## Is feature X planned
 

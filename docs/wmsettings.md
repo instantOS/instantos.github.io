@@ -1,254 +1,334 @@
-# Customizing instantWM
+# instantWM Configuration
 
-instantWM is customized through ~/.Xresources
+instantWM is customized through a TOML configuration file at `~/.config/instantwm/config.toml`.
 
-The syntax for changing a parameter value is the following
+After editing the config file, you can either restart instantWM or use `instantwmctl` to apply changes dynamically for certain settings.
 
-``` 
-instantwm.parameter: value
-```
-
-After editing ~/.Xresources, run xrdb ~/.Xresources and then restart instantWM
-
-## Bar height
-
-### Example
-
-``` 
-instantwm.barheight: 2
-```
-
-This parameter sets the amount extra rows of pixels that get added to the top and bottom of the title bar. 
-Putting 0 here would mean the text would touch the bars boundaries. 
-
-Example of a top bar with the height 2
-
-![2px](https://instantos.io/images/topbar/2px.png)
-
-Example of a top bar with the height 24
-
-![24px](https://instantos.io/images/topbar/24px.png)
-
-## Fonts
-
-This is the default font.
-
-``` 
-instantwm.font: Cantarell-Regular:size=12
-```
-
-To change font size, simply change the number at the end. 
-
-``` 
-instantwm.font: Cantarell-Regular:size=22
-```
-
-You can change this to any font you like with any size, granted that you put in the right font name. 
-
-
-## Colors
-
-
-::: details Full Color list
-```txt
-instantwm.hover.normal.win.fg
-instantwm.hover.minimized.win.fg
-instantwm.hover.sticky.win.fg
-instantwm.hover.focus.win.fg
-instantwm.hover.stickyfocus.win.fg
-instantwm.hover.overlay.win.fg
-instantwm.hover.overlayfocus.win.fg
-instantwm.hover.inactive.tag.fg
-instantwm.hover.filled.tag.fg
-instantwm.hover.focus.tag.fg
-instantwm.hover.nofocus.tag.fg
-instantwm.hover.empty.tag.fg
-instantwm.hover.normal.close.fg
-instantwm.hover.locked.close.fg
-instantwm.hover.fullscreen.close.fg
-instantwm.hover.normal.win.bg
-instantwm.hover.minimized.win.bg
-instantwm.hover.sticky.win.bg
-instantwm.hover.focus.win.bg
-instantwm.hover.stickyfocus.win.bg
-instantwm.hover.overlay.win.bg
-instantwm.hover.overlayfocus.win.bg
-instantwm.hover.inactive.tag.bg
-instantwm.hover.filled.tag.bg
-instantwm.hover.focus.tag.bg
-instantwm.hover.nofocus.tag.bg
-instantwm.hover.empty.tag.bg
-instantwm.hover.normal.close.bg
-instantwm.hover.locked.close.bg
-instantwm.hover.fullscreen.close.bg
-instantwm.hover.normal.win.detail
-instantwm.hover.minimized.win.detail
-instantwm.hover.sticky.win.detail
-instantwm.hover.focus.win.detail
-instantwm.hover.stickyfocus.win.detail
-instantwm.hover.overlay.win.detail
-instantwm.hover.overlayfocus.win.detail
-instantwm.hover.inactive.tag.detail
-instantwm.hover.filled.tag.detail
-instantwm.hover.focus.tag.detail
-instantwm.hover.nofocus.tag.detail
-instantwm.hover.empty.tag.detail
-instantwm.hover.normal.close.detail
-instantwm.hover.locked.close.detail
-instantwm.hover.fullscreen.close.detail
-instantwm.nohover.normal.win.fg
-instantwm.nohover.minimized.win.fg
-instantwm.nohover.sticky.win.fg
-instantwm.nohover.focus.win.fg
-instantwm.nohover.stickyfocus.win.fg
-instantwm.nohover.overlay.win.fg
-instantwm.nohover.overlayfocus.win.fg
-instantwm.nohover.inactive.tag.fg
-instantwm.nohover.filled.tag.fg
-instantwm.nohover.focus.tag.fg
-instantwm.nohover.nofocus.tag.fg
-instantwm.nohover.empty.tag.fg
-instantwm.nohover.normal.close.fg
-instantwm.nohover.locked.close.fg
-instantwm.nohover.fullscreen.close.fg
-instantwm.nohover.normal.win.bg
-instantwm.nohover.minimized.win.bg
-instantwm.nohover.sticky.win.bg
-instantwm.nohover.focus.win.bg
-instantwm.nohover.stickyfocus.win.bg
-instantwm.nohover.overlay.win.bg
-instantwm.nohover.overlayfocus.win.bg
-instantwm.nohover.inactive.tag.bg
-instantwm.nohover.filled.tag.bg
-instantwm.nohover.focus.tag.bg
-instantwm.nohover.nofocus.tag.bg
-instantwm.nohover.empty.tag.bg
-instantwm.nohover.normal.close.bg
-instantwm.nohover.locked.close.bg
-instantwm.nohover.fullscreen.close.bg
-instantwm.nohover.normal.win.detail
-instantwm.nohover.minimized.win.detail
-instantwm.nohover.sticky.win.detail
-instantwm.nohover.focus.win.detail
-instantwm.nohover.stickyfocus.win.detail
-instantwm.nohover.overlay.win.detail
-instantwm.nohover.overlayfocus.win.detail
-instantwm.nohover.inactive.tag.detail
-instantwm.nohover.filled.tag.detail
-instantwm.nohover.focus.tag.detail
-instantwm.nohover.nofocus.tag.detail
-instantwm.nohover.empty.tag.detail
-instantwm.nohover.normal.close.detail
-instantwm.nohover.locked.close.detail
-instantwm.nohover.fullscreen.close.detail
-normal.border
-focus.tile.border
-focus.float.border
-snap.border
-status.fg
-status.bg
-status.detail
-```
-:::
-
-### General
-
-#### Color types
-
-![color_image](https://imgur.com/CUyaBe7.jpg)
-
-Most elements have three colors, bg is mostly used for text, bg is behind the
-text and should provide good contrast when paired with fg. Additionally detail
-is used for shading details below the element.
-
-#### Hover types
-
-Each color property has a variant that is switched to when hovered over with
-the mouse cursor.  The normal color and the hover variant are called nohover
-and hover respectively.
-
-### State types
-
-Each element can be in one of several states, for example a window title can be
-focused or minimized. 
-
-### Element types
-
-
-| name  | description                         |
-|-------|-------------------------------------|
-| tag   | tag number indicator                |
-| win   | window title                        |
-| close | close button on active window title |
-
-### Examples
-
-Explicit color declaration
-
-```txt
-instantwm.nohover.focus.tag.bg: #00ff00
-instantwm.hov.tag.bg: #00ff00
-```
-
-## Colors - Old
-
-This is the config syntax for instantWM versions of beta 6 and earlier.  Newer
-versions introduced an updated config that is not compatible with the old one
-anymore.
-
-::: warning
-The names in the old list are deprecated, Xresources written in this syntax
-will not affect instantWM installations newer than beta 6
-:::
-
-### Example
+## Configuration File Location
 
 ```
-instantwm.minimizedColor : #747c90
-instantwm.bgColor : #292f3a
-instantwm.hoverShadowColor : #475166
-instantwm.hoverBgColor : #596377
-instantwm.minimize : #b77ca7
-instantwm.darkMinimize : #8b3b93
-instantwm.darkActiveTag : #b7416e
-instantwm.activeTag : #e16a98
-instantwm.hoverFocus : #82ceaa
-instantwm.darkHoverFocus : #5ea584
-instantwm.darkFocus : #447a61
-instantwm.focus : #5ea584
-instantwm.border : #912e54
-instantwm.activeBorder : #5ea584
-instantwm.close : #e16a98
-instantwm.darkClose : #b7416e
-instantwm.hoverClose : #d37492
-instantwm.darkHoverClose : #ce577c
-instantmenu.norm.fg : #dddddd
-instantmenu.norm.bg : #292f3a
-instantmenu.norm.detail : #3e485b
-instantmenu.fade.fg : #575e70
-instantmenu.fade.bg : #292f3a
-instantmenu.fade.detail : #3e485b
-instantmenu.highlight.fg : #dddddd
-instantmenu.highlight.bg : #353d4b
-instantmenu.highlight.detail : 3e485b
-instantmenu.hover.fg : #dddddd
-instantmenu.hover.bg : #353d4b
-instantmenu.hover.detail : #3e485b
-instantmenu.sel.fg : #dddddd
-instantmenu.sel.bg : #5ea584
-instantmenu.sel.detail : #3e485b
-instantmenu.out.fg : #dddddd
-instantmenu.out.bg : #5ea584
-instantmenu.out.detail : #5ea584
-instantmenu.green.fg : #dddddd
-instantmenu.green.bg : #bde077
-instantmenu.green.detail : #b7ce42
-instantmenu.red.fg : #dddddd
-instantmenu.red.bg : #e16a98
-instantmenu.red.detail : #b7416e
-instantmenu.yellow.fg : #dddddd
-instantmenu.yellow.bg : #fea63c
-instantmenu.yellow.detail : #cb8735
+~/.config/instantwm/config.toml
 ```
 
-This example is taken from the dotfiles of https://github.com/XeroOl
+If the file doesn't exist, instantWM will use sensible defaults.
+
+## Full Configuration Example
+
+```toml
+# Fonts - first font is primary, others are fallbacks
+fonts = ["Cantarell-Regular:size=12", "JetBrains Mono:size=11"]
+
+# Color configuration
+[colors.tag.normal]
+inactive = { fg = "#DFDFDF", bg = "#121212", detail = "#121212" }
+filled = { fg = "#DFDFDF", bg = "#384252", detail = "#89B3F7" }
+focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
+nofocus = { fg = "#DFDFDF", bg = "#292F3A", detail = "#3E485B" }
+empty = { fg = "#5E6572", bg = "#121212", detail = "#121212" }
+
+[colors.tag.hover]
+inactive = { fg = "#DFDFDF", bg = "#1E2229", detail = "#1E2229" }
+filled = { fg = "#DFDFDF", bg = "#4A5568", detail = "#A7BDD9" }
+focus = { fg = "#121212", bg = "#A7BDD9", detail = "#A7BDD9" }
+nofocus = { fg = "#DFDFDF", bg = "#353D4B", detail = "#475166" }
+empty = { fg = "#6E7889", bg = "#1E2229", detail = "#1E2229" }
+
+[colors.window.normal]
+focus = { fg = "#DFDFDF", bg = "#292F3A", detail = "#3E485B" }
+normal = { fg = "#6E7889", bg = "#292F3A", detail = "#3E485B" }
+minimized = { fg = "#6E7889", bg = "#121212", detail = "#121212" }
+sticky = { fg = "#F9D71C", bg = "#292F3A", detail = "#3E485B" }
+sticky_focus = { fg = "#121212", bg = "#F9D71C", detail = "#F9D71C" }
+overlay = { fg = "#89B3F7", bg = "#292F3A", detail = "#3E485B" }
+overlay_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
+
+[colors.window.hover]
+focus = { fg = "#DFDFDF", bg = "#353D4B", detail = "#475166" }
+normal = { fg = "#7E8899", bg = "#353D4B", detail = "#475166" }
+minimized = { fg = "#7E7889", bg = "#1E2229", detail = "#1E2229" }
+sticky = { fg = "#F9D71C", bg = "#353D4B", detail = "#475166" }
+sticky_focus = { fg = "#121212", bg = "#F9D71C", detail = "#F9D71C" }
+overlay = { fg = "#89B3F7", bg = "#353D4B", detail = "#475166" }
+overlay_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
+
+[colors.close_button.normal]
+normal = { fg = "#6E7889", bg = "#292F3A", detail = "#3E485B" }
+locked = { fg = "#6E7889", bg = "#292F3A", detail = "#3E485B" }
+fullscreen = { fg = "#F9D71C", bg = "#292F3A", detail = "#3E485B" }
+
+[colors.close_button.hover]
+normal = { fg = "#DFDFDF", bg = "#81C995", detail = "#5EA984" }
+locked = { fg = "#DFDFDF", bg = "#E16A98", detail = "#B7416E" }
+fullscreen = { fg = "#121212", bg = "#F9D71C", detail = "#D4A61A" }
+
+[colors.border]
+normal = "#384252"
+tile_focus = "#89B3F7"
+float_focus = "#81C995"
+snap = "#FDD663"
+
+[colors.status]
+fg = "#DFDFDF"
+bg = "#121212"
+detail = "#3E485B"
+
+# Keyboard layout configuration
+[keyboard]
+layouts = ["us", "de"]
+variant = ["", "nodeadkeys"]
+options = "compose:ralt"
+
+# Input configuration (touchpad, mouse, etc.)
+[input]
+# Example: enable tap-to-click on touchpads
+# [input.type:touchpad]
+# tap = "enabled"
+# natural_scroll = "enabled"
+
+# Custom keybinds
+[[keybinds]]
+modifiers = ["Super"]
+key = "Return"
+action = { spawn = ["alacritty"] }
+
+[[keybinds]]
+modifiers = ["Super", "Shift"]
+key = "q"
+action = "kill"
+
+[[keybinds]]
+modifiers = ["Super"]
+key = "F3"
+action = "next_keyboard_layout"
+
+# Desktop keybinds (work without a focused window)
+[[desktop_keybinds]]
+modifiers = ["Super"]
+key = "d"
+action = { spawn = ["instantmenu"] }
+```
+
+## Color Schemes
+
+Each color property has `normal` and `hover` variants that switch when hovered with the mouse.
+
+### Color Types
+
+Each element has three colors:
+- **fg** (foreground): text color
+- **bg** (background): behind the text
+- **detail**: shading details below the element
+
+### Element Types
+
+| Element | Description |
+|---------|-------------|
+| tag | Tag number indicator |
+| window | Window title |
+| close_button | Close button on active window title |
+| border | Window border colors |
+| status | Status bar text |
+
+### Color States
+
+**Tags:**
+- `inactive`: Tag not selected, no windows
+- `filled`: Tag has windows but none focused
+- `focus`: Tag selected and has focused window
+- `nofocus`: Tag not selected but has windows
+- `empty`: Tag selected but no windows
+
+**Windows:**
+- `focus`: Currently focused window
+- `normal`: Regular unfocused window
+- `minimized`: Minimized window
+- `sticky`: Sticky window (visible on all tags)
+- `sticky_focus`: Sticky window that is focused
+- `overlay`: Window on overlay
+- `overlay_focus`: Focused window on overlay
+
+**Close Button:**
+- `normal`: Default close button
+- `locked`: Locked window close button
+- `fullscreen`: Fullscreen window close button
+
+**Border:**
+- `normal`: Unfocused window border
+- `tile_focus`: Focused tiled window border
+- `float_focus`: Focused floating window border
+- `snap`: Snapped window border
+
+## Keyboard Configuration
+
+The `[keyboard]` section configures XKB keyboard layouts:
+
+```toml
+[keyboard]
+layouts = ["us", "de", "fr"]     # Layout names
+variant = ["", "nodeadkeys", ""]  # Per-layout variants
+options = "compose:ralt"          # XKB options
+model = "pc105"                   # Keyboard model (optional)
+```
+
+## Input Configuration
+
+Configure touchpad and mouse settings:
+
+```toml
+# Global settings
+[input]
+[input.type:touchpad]
+tap = "enabled"
+natural_scroll = "enabled"
+accel_profile = "adaptive"
+pointer_accel = 0.5
+
+[input.type:mouse]
+pointer_accel = 0.3
+```
+
+Valid values:
+- `tap`: "enabled" or "disabled"
+- `natural_scroll`: "enabled" or "disabled"  
+- `accel_profile`: "flat" or "adaptive"
+- `pointer_accel`: Floating point number
+
+## Custom Keybinds
+
+Add or override keybindings:
+
+```toml
+# Spawn a command
+[[keybinds]]
+modifiers = ["Super"]
+key = "Return"
+action = { spawn = ["alacritty"] }
+
+# Named actions
+[[keybinds]]
+modifiers = ["Super", "Shift"]
+key = "q"
+action = "kill"
+
+# Remove a default binding
+[[keybinds]]
+modifiers = ["Super"]
+key = "f"
+action = { unbind = true }
+
+# Set layout
+[[keybinds]]
+modifiers = ["Super"]
+key = "t"
+action = { set_layout = "tile" }
+
+# Adjust master window count
+[[keybinds]]
+modifiers = ["Super"]
+key = "i"
+action = { inc_nmaster = 1 }
+
+# Adjust master window factor
+[[keybinds]]
+modifiers = ["Super"]
+key = "h"
+action = { set_mfact = -0.05 }
+```
+
+### Available Modifiers
+
+- `Super` or `Mod4` - Windows/Super key
+- `Shift` - Shift key
+- `Ctrl` or `Control` - Control key
+- `Alt` or `Mod1` - Alt key
+
+### Available Actions
+
+**Window Management:**
+- `zoom` - Focus next window in stack
+- `kill` - Close focused window
+- `shut_kill` - Force close (SIGKILL)
+- `toggle_fullscreen` - Toggle fullscreen
+- `toggle_maximized` - Toggle maximized floating
+- `center_window` - Center floating window
+
+**Focus:**
+- `focus_next` / `focus_prev` - Next/previous window
+- `focus_up` / `focus_down` / `focus_left` / `focus_right` - Directional focus
+- `focus_last` - Focus previously focused window
+
+**Layouts:**
+- `layout_tile` / `layout_float` / `layout_monocle` / `layout_grid` - Set layout
+- `toggle_layout` - Toggle between current and previous layout
+- `cycle_layout_next` / `cycle_layout_prev` - Cycle layouts
+
+**Master Area:**
+- `inc_nmaster` / `dec_nmaster` - Increase/decrease master windows
+- `mfact_grow` / `mfact_shrink` - Adjust master area size
+
+**Tags:**
+- `view_all` - Show all tags
+- `tag_all` - Send window to all tags
+- `scroll_left` / `scroll_right` - Switch tags
+- `shift_tag_left` / `shift_tag_right` - Move window to adjacent tag
+- `shift_view_left` / `shift_view_right` - Move view to adjacent tag
+
+**Monitoring:**
+- `focus_mon_next` / `focus_mon_prev` - Next/previous monitor
+- `follow_mon_next` / `follow_mon_prev` - Move window and follow to next/previous monitor
+
+**Special Features:**
+- `toggle_overview` - Toggle overview mode
+- `toggle_sticky` - Toggle sticky (visible on all tags)
+- `toggle_bar` - Toggle status bar
+- `create_overlay` - Create overlay from selected window
+- `scratchpad_toggle` - Toggle scratchpad
+- `scratchpad_make` - Make window a scratchpad
+- `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
+
+## Control Commands
+
+instantWM provides the `instantwmctl` command-line tool for runtime control:
+
+```bash
+# List all windows
+instantwmctl list
+
+# Switch to tag
+instantwmctl tag 2
+
+# Set layout (0=tile, 1=grid, 2=float, 3=monocle)
+instantwmctl layout 0
+
+# Toggle features
+instantwmctl animated
+instantwmctl focus-follows-mouse
+instantwmctl alt-tab
+instantwmctl alt-tag
+instantwmctl hide-tags
+
+# Window management
+instantwmctl close
+instantwmctl spawn "command"
+
+# Keyboard layouts
+instantwmctl next-keyboard-layout
+instantwmctl list-keyboard-layouts
+
+# Update status bar
+instantwmctl update-status "Hello World"
+```
+
+## Status Bar Integration
+
+instantWM reads status text from the X11 root window name property (X11) or writes to the status bar directly (Wayland). Configure a status command in your config:
+
+```toml
+status_command = "i3status-rs"
+```
+
+Or set status manually:
+
+```bash
+instantwmctl update-status "My Status"
+```
