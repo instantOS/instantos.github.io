@@ -74,8 +74,10 @@ detail = "#3E485B"
 
 # Keyboard layout configuration
 [keyboard]
-layouts = ["us", "de"]
-variant = ["", "nodeadkeys"]
+layouts = [
+  { name = "us" },
+  { name = "de", variant = "nodeadkeys" }
+]
 options = "compose:ralt"
 
 # Input configuration (touchpad, mouse, etc.)
@@ -164,8 +166,11 @@ The `[keyboard]` section configures XKB keyboard layouts:
 
 ```toml
 [keyboard]
-layouts = ["us", "de", "fr"]     # Layout names
-variant = ["", "nodeadkeys", ""]  # Per-layout variants
+layouts = [
+  { name = "us" },
+  { name = "de", variant = "nodeadkeys" },
+  { name = "fr" }
+]
 options = "compose:ralt"          # XKB options
 model = "pc105"                   # Keyboard model (optional)
 ```
@@ -244,10 +249,15 @@ action = { set_mfact = -0.05 }
 
 ### Available Actions
 
+You can run actions directly using `instantwmctl action <name>` or define them in your config. Use `instantwmctl action --list` to see all available actions.
+
+**Simple Actions** (run with `instantwmctl action <name>`):
+
 **Window Management:**
 - `zoom` - Focus next window in stack
 - `kill` - Close focused window
 - `shut_kill` - Force close (SIGKILL)
+- `quit` - Quit instantWM
 - `toggle_fullscreen` - Toggle fullscreen
 - `toggle_maximized` - Toggle maximized floating
 - `center_window` - Center floating window
@@ -256,6 +266,7 @@ action = { set_mfact = -0.05 }
 - `focus_next` / `focus_prev` - Next/previous window
 - `focus_up` / `focus_down` / `focus_left` / `focus_right` - Directional focus
 - `focus_last` - Focus previously focused window
+- `down_key` / `up_key` - Alt-tab forward/backward
 
 **Layouts:**
 - `layout_tile` / `layout_float` / `layout_monocle` / `layout_grid` - Set layout
@@ -272,6 +283,9 @@ action = { set_mfact = -0.05 }
 - `scroll_left` / `scroll_right` - Switch tags
 - `shift_tag_left` / `shift_tag_right` - Move window to adjacent tag
 - `shift_view_left` / `shift_view_right` - Move view to adjacent tag
+- `last_view` - View previously viewed tags
+- `follow_view` - Follow client to its tags
+- `win_view` - View tags of focused client
 
 **Monitoring:**
 - `focus_mon_next` / `focus_mon_prev` - Next/previous monitor
@@ -279,6 +293,7 @@ action = { set_mfact = -0.05 }
 
 **Special Features:**
 - `toggle_overview` - Toggle overview mode
+- `toggle_fullscreen_overview` - Toggle fullscreen overview
 - `toggle_sticky` - Toggle sticky (visible on all tags)
 - `toggle_bar` - Toggle status bar
 - `create_overlay` - Create overlay from selected window
@@ -286,11 +301,25 @@ action = { set_mfact = -0.05 }
 - `scratchpad_make` - Make window a scratchpad
 - `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
 
+**Structured Actions** (used in config, take arguments):
+
+- `spawn` - Spawn a command: `action = { spawn = ["alacritty"] }`
+- `unbind` - Remove a keybind: `action = { unbind = true }`
+- `set_layout` - Set layout: `action = { set_layout = "tile" }`
+- `focus_stack` - Focus stack direction: `action = { focus_stack = "next" }`
+- `set_mfact` - Set master factor: `action = { set_mfact = 0.5 }`
+- `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = 0 }`
+
 ## Control Commands
 
 instantWM provides the `instantwmctl` command-line tool for runtime control:
 
 ```bash
+# Run a named action (use --list to see available actions)
+instantwmctl action zoom
+instantwmctl action kill
+instantwmctl action --list
+
 # List all windows
 instantwmctl list
 
