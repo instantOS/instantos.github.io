@@ -121,6 +121,7 @@ export default defineConfig({
           items: [
             { text: 'Hotkeys', link: '/docs/hotkeys' },
             { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'Modes', link: '/docs/modes' },
             { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Layouts', link: '/docs/layouts' },
             { text: 'Floating Windows', link: '/docs/floating' },

@@ -12,6 +12,20 @@ After editing the config file, you can either restart instantWM or use `instantw
 
 If the file doesn't exist, instantWM will use sensible defaults.
 
+## Config Includes
+
+You can split your configuration into multiple files using the `includes` directive:
+
+```toml
+# config.toml (main file)
+includes = [
+    { file = "keybinds.toml" },
+    { file = "colors.toml" },
+]
+```
+
+Included files are merged into the main configuration. Paths can be absolute or relative to the main config file. Circular includes are detected and prevented.
+
 ## Full Configuration Example
 
 ```toml
@@ -200,7 +214,7 @@ Valid values:
 
 ## Custom Keybinds
 
-Add or override keybindings:
+Add or override keybinds:
 
 ```toml
 # Spawn a command
@@ -238,6 +252,12 @@ action = { inc_nmaster = 1 }
 modifiers = ["Super"]
 key = "h"
 action = { set_mfact = -0.05 }
+
+# Enter a mode
+[[keybinds]]
+modifiers = ["Super"]
+key = "r"
+action = { set_mode = "resize" }
 ```
 
 ### Available Modifiers
@@ -309,6 +329,9 @@ You can run actions directly using `instantwmctl action <name>` or define them i
 - `focus_stack` - Focus stack direction: `action = { focus_stack = "next" }`
 - `set_mfact` - Set master factor: `action = { set_mfact = 0.5 }`
 - `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = 0 }`
+- `set_mode` - Enter a mode: `action = { set_mode = "resize" }`
+
+See [Modes](./modes.md) for detailed documentation on defining and using modes.
 
 ## Control Commands
 
