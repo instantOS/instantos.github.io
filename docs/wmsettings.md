@@ -286,40 +286,25 @@ action = { set_mfact = -0.05 }
 - `scratchpad_make` - Make window a scratchpad
 - `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
 
-## Control Commands
+### Listing Available Actions
 
-instantWM provides the `instantwmctl` command-line tool for runtime control:
+To see all available actions for keybindings:
 
 ```bash
-# List all windows
-instantwmctl list
-
-# Switch to tag
-instantwmctl tag 2
-
-# Set layout (0=tile, 1=grid, 2=float, 3=monocle)
-instantwmctl layout 0
-
-# Toggle features
-instantwmctl animated
-instantwmctl focus-follows-mouse
-instantwmctl alt-tab
-instantwmctl alt-tag
-instantwmctl hide-tags
-
-# Window management
-instantwmctl close
-instantwmctl spawn "command"
-
-# Keyboard layouts
-instantwmctl next-keyboard-layout
-instantwmctl list-keyboard-layouts
-
-# Update status bar
-instantwmctl update-status "Hello World"
+instantwm --list-actions
 ```
 
-## Status Bar Integration
+This outputs a table of all actions with their descriptions and argument examples.
+
+You can also get JSON output:
+
+```bash
+instantwm --list-actions --json
+```
+
+## Runtime Control
+
+instantWM provides the `instantwmctl` command-line tool for runtime control. See the [instantwmctl](instantwmctl.md) documentation for a complete reference.
 
 instantWM reads status text from the X11 root window name property (X11) or writes to the status bar directly (Wayland). Configure a status command in your config:
 
@@ -332,3 +317,91 @@ Or set status manually:
 ```bash
 instantwmctl update-status "My Status"
 ```
+
+## Custom Modes
+
+Create sway-like modes with their own keybindings:
+
+```toml
+[modes.resize]
+description = "Resize"
+
+[[modes.resize.keybinds]]
+key = "h"
+action = { set_mfact = -0.05 }
+
+[[modes.resize.keybinds]]
+key = "l"
+action = { set_mfact = 0.05 }
+
+[[modes.resize.keybinds]]
+key = "j"
+action = { focus_stack = "next" }
+
+[[modes.resize.keybinds]]
+key = "k"
+action = { focus_stack = "prev" }
+
+[[modes.resize.keybinds]]
+key = "Escape"
+action = { set_mode = "default" }
+
+[[modes.resize.keybinds]]
+key = "Return"
+action = { set_mode = "default" }
+```
+
+Then bind a key to enter the mode:
+
+```toml
+[[keybinds]]
+modifiers = ["Super"]
+key = "r"
+action = { set_mode = "resize" }
+```
+
+## Monitor Configuration
+
+Configure specific monitor settings:
+
+```toml
+[monitors "DP-1"]
+resolution = "1920x1080"
+refresh_rate = 144.0
+position = "0,0"
+scale = 1.0
+enable = true
+
+[monitors "HDMI-A-1"]
+position = "left-of:DP-1"
+```
+
+Position can be specified as:
+- Absolute: `"X,Y"` (e.g., `"1920,0"`)
+- Relative: `"left-of:OUTPUT"`, `"right-of:OUTPUT"`, `"above:OUTPUT"`, `"below:OUTPUT"`
+
+## Configuration Includes
+
+Split your configuration into multiple files:
+
+```toml
+# Main config
+[[includes]]
+file = "keybinds.toml"
+
+[[includes]]
+file = "colors.toml"
+```
+
+The included files will be merged with the main configuration.
+
+## Xresources (Legacy)
+
+For backwards compatibility, instantWM still supports the old Xresources configuration. However, the TOML configuration is recommended for new setups.
+
+The old syntax:
+```
+instantwm.parameter: value
+```
+
+After editing ~/.Xresources, run `xrdb ~/.Xresources` and restart instantWM.
