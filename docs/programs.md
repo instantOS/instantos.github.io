@@ -6,7 +6,7 @@ utilities in a single portable binary. Many of its features are distro agnostic.
 
 ## instantWM
 
-The instantOS window manager
+The instantOS window manager. See [Keybindings](hotkeys.md) for the default keyboard shortcuts.
 
 ## instantASSIST
 

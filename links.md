@@ -41,46 +41,24 @@ used to build the instantdotfiles package
 Contains all PKGBUILD files for instantOS packages and a list of AUR packages to
 be precompiled and hosted on the instantOS repos
 
-### [instantWALLPAPER](https://github.com/instantOS/instantWALLPAPER)
-
-A wallpaper scraper that generates wallpapers with the instantOS logo (or without
-it). It is also used to set and scale the wallpapers. It makes use of nitrogen
-and imagemagick.
-
 ### [instantCONF](https://github.com/instantOS/instantCONF)
 
 A small configuration utility that serves as an easy way to store and retrieve settings.
 Provides the iconf utility
 
-### [instantTHEMES](https://github.com/instantOS/instantTHEMES)
 
-This contains theming files for instantOS that make as much applications as
-possible conform to the overall system look.
-It also provides a way to switch between a light and dark theme.
-
-### [instantSHELL](https://github.com/instantOS/instantSHELL)
-
-The zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
-used to build the instantshell package
 
 ### [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank)
 
 The GUI control panel for configuration of lots of different things
 used to build the instantsettings package
 
-### [iso](https://github.com/instantOS/iso)
-
-Everything needed to build an instantOS live ISO
  
 ### [liveutils](https://github.com/instantOS/liveutils)
  
 Everything that is contained on the live installation disk but not on the
 installed version
  
-### [sent](https://github.com/instantOS/sent)
- 
-Just regular `sent` with instantOS color scheme and font. Not really relevant to
-the rest of the system.
  
 ### [imenu](https://github.com/instantOS/imenu)
  
@@ -106,9 +84,6 @@ The welcome prompt coming up on the installation medium and on a fresh system
  
 The lock screen. This is a very basic `slock` fork
  
-### [instantOS-arm](https://github.com/instantOS/instantOS-arm)
- 
-A community-maintained ARM edition of instantOS in early stages of development.
  
 ### [islide](https://github.com/instantOS/islide)
  
@@ -141,26 +116,71 @@ Like TeamViewer but for SSH and really small and for instantOS support
  
 Conky widget configuration for instantOS
  
-### [st-instantos](https://github.com/instantOS/st-instantos)
- 
-The default terminal emulator for instantOS, a very simple `st` fork with
-some patches and fixes.
  
 ### [grub-instantos](https://github.com/instantOS/grub-instantos)
  
 The GRUB theme for instantOS. This only contains the theme, nothing else.
  
-### [rox-filer](https://github.com/instantOS/rox-filer)
- 
-A basic fork of `rox-filer` to be used for optional desktop icons.
- 
-### [instantDEB](https://github.com/instantOS/instantDEB)
- 
-A way to create Debian packages from Arch PKGBUILD files.
-Originally created to enable a Debian edition of instantOS.
-Not much work has been done here as of late.
  
 ## [Arch Wiki mirror](https://packages.instantos.io/archwiki)
  
 A mirror of the Arch Wiki
 
+## Archived/Deprecated
+
+### [rox-filer](https://github.com/instantOS/rox-filer)
+ 
+A basic fork of `rox-filer` to be used for optional desktop icons.
+Rox was abandoned, I don't care to maintin it
+
+### [instantDEB](https://github.com/instantOS/instantDEB)
+ 
+A way to create Debian packages from Arch PKGBUILD files.
+Originally created to enable a Debian edition of instantOS.
+Not much work has been done here as of late.
+
+### [st-instantos](https://github.com/instantOS/st-instantos)
+ 
+The default terminal emulator for instantOS, a very simple `st` fork with
+some patches and fixes.
+
+Switched to kitty. I want proper rendering and modern features. Plus, kitty is
+GPU accellerated. 
+
+### [instantOS-arm](https://github.com/instantOS/instantOS-arm)
+ 
+A community-maintained ARM edition of instantOS in early stages of development.
+Unmaintained. 
+
+### [iso](https://github.com/instantOS/iso)
+
+Everything needed to build an instantOS live ISO
+Moved to instantOS central repo. 
+
+### [instantTHEMES](https://github.com/instantOS/instantTHEMES)
+
+This contains theming files for instantOS that make as much applications as
+possible conform to the overall system look.
+It also provides a way to switch between a light and dark theme.
+
+Replaced by `ins settings` and `ins dot`
+
+### [sent](https://github.com/instantOS/sent)
+ 
+Just regular `sent` with instantOS color scheme and font. Not really relevant to
+the rest of the system.
+I use Typst or presenterm nowadays, I suggest you do too. 
+
+
+### [instantWALLPAPER](https://github.com/instantOS/instantWALLPAPER)
+
+A wallpaper scraper that generates wallpapers with the instantOS logo (or without
+it). It is also used to set and scale the wallpapers. It makes use of nitrogen
+and imagemagick.
+replaced by `ins wallpaper` and `ins settings`
+
+### [instantSHELL](https://github.com/instantOS/instantSHELL)
+
+The zsh and oh-my-zsh configuration along with a custom oh-my-zsh plugin
+used to build the instantshell package
+replaced by `ins dot`
