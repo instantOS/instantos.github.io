@@ -1,98 +1,109 @@
 # Status bar customisation
 
-## Setting the status
+instantWM displays a status bar at the bottom of each monitor. The status text is configured via the TOML configuration file.
 
-Setting the status in instantWM works the same as for dwm.
+## Configuration
 
-```sh
-xsetroot -name "status text"
+Configure the status bar by setting `status_command` in your config:
+
+```toml
+status_command = "i3status-rs"
 ```
 
-instantOS ships with its own status text generator. If you want to set your own
-status text you first need to disable the built in solution. This can be done
-in Settings->instantOS->Status bar
+This spawns an external command that outputs status text. The command should write to stdout.
 
-::: details Planned status bar program
-It is planned to create a statusbar similar to dwmblocks that can run
-different status scripts at different intervals and then generates a
-complete status text that can be used by the window manager. It will
-however not be based on dwmblocks and will have a lot more features.
-dwmblocks is not used because it lacks some crucial features to make it
-work with the featureset of instantWM
+### Default Status
 
-### Runtime configuration
+If no `status_command` is configured, instantWM displays a default status showing the version and current time:
 
-Customizing the status bar will not require recompiling it. Instead it will have a config file using the toml format
+```
+instantwm-VERSION HH:MM
+```
 
-### Markup
+The status updates every 30 seconds.
 
-The status bar will automatically add markup to status widgets to separate
-them from each other. Widgets can however also communicate with the bar to
-for example change their color on runtime.
+### Manual Status Updates
 
-### Validation
+You can update the status bar programmatically using `instantwmctl`:
 
-The markup parser currently in use in instantWM will crash the entire window
-manager if there is an error in the markup syntax. The planned status bar will
-perform validation on all config and status text so it is impossible to
-configure it in a way that will crash the window manager.
+```bash
+instantwmctl update-status "My custom status"
+```
 
-### Rust
+Or using the socket API directly.
 
-Following [imosid](https://github.com/instantOS/imosid) this will be the second instantOS project written in rust
+## i3bar JSON Protocol
 
-### Progress
+instantWM uses the i3bar JSON protocol for status text. This is compatible with i3status, i3status-rs, and other i3bar-compatible programs.
 
-At the moment this is **all just plans**, no code for the status bar has
-been written yet as development is still focused on making the operating
-system more stable before piling on even more features
+The status command outputs JSON blocks:
 
-:::
+```json
+[{"full_text": "CPU: 12%", "color": "#ffffff"}, {"full_text": "Memory: 4.2GiB", "color": "#ffffff"}]
+```
+
+Each block can include:
+- `full_text` - Main text to display
+- `short_text` - Short version for constrained spaces
+- `color` - Text color (hex format: "#RRGGBB")
+- `background` - Background color
+- `border` - Border color
+- `border_top`, `border_right`, `border_bottom`, `border_left` - Border widths
+- `min_width` - Minimum width (string or number)
+- `align` - Text alignment ("left", "center", "right")
+- `urgent` - Mark block as urgent (swaps colors)
+- `separator` - Show separator after block
+- `separator_block_width` - Width of separator
+- `name` - Block identifier for click events
+- `instance` - Block instance for click events
+- `markup` - Markup format ("pango")
+
+### Example i3status-rs Config
+
+```toml
+# ~/.config/i3status-rs/config.toml
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+interval = 10
+
+[[block]]
+block = "time"
+format = "%H:%M"
+interval = 30
+```
+
+## Clickable Status Bar
+
+You can make status blocks interactive by enabling click events in your status command.
+
+The status command should output this header first:
+
+```json
+{"version": 1, "click_events": true}
+```
+
+instantWM will then send click events to the status command's stdin when blocks are clicked.
 
 ## Styling
 
+Configure status bar colors in your TOML config under `[colors.status]`:
 
-The appearance of text in the status bar can be changed by using special markup
-syntax.  The markup parser of instantWM is based on the
-[status-2d](https://dwm.suckless.org/patches/status2d/) patch for dwm. 
-
-All Markup commands have the following format
-```txt
-^commandnamecommandargument^
+```toml
+[colors.status]
+fg = "#DFDFDF"
+bg = "#121212"
+detail = "#3E485B"
 ```
 
-They have a "\^" as suffix and prefix. The opening caret is immediately followed
-by the command name which is then (without a separator) followed by the
-argument.
+## Troubleshooting
 
+If the status bar is not working:
 
-### Colors
-
-```txt
-^c#ff0000^ this text have a red background ^d^ this text will have the default background color
-^t#ff0000^ this text have a red foreground ^d^ this text will have the default background color
-```
-
-### Offsets
-
-```txt
-^f11^there will be an 11px gap in front of this text
-```
-### Reset
-
-```txt
-^d^text after this is reset to the default styling
-```
-
-## Icons
-
-// TODO
-
-## Clickable applets
-
-// TODO
-
-::: info
-This feature is not just lacking documentation
-There is just a very early implementation of this in the window manager that at the moment is not remotely ready for use
-:::
+1. Check that `status_command` is set in your config
+2. Verify the command runs standalone
+3. Check instantWM logs for errors
+4. Try `instantwmctl update-status "test"` to verify basic functionality
