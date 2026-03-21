@@ -6,7 +6,21 @@ utilities in a single portable binary. Many of its features are distro agnostic.
 
 ## instantWM
 
-The instantOS window manager
+The instantOS window manager. It supports both X11 and Wayland backends and features:
+
+- Tile, grid, monocle, and floating layouts
+- Multi-monitor support with per-monitor configuration
+- Scratchpad and overlay windows
+- Custom keybindings via TOML configuration
+- Custom modes (sway-like)
+
+See [Keybindings](hotkeys.md) for the default keyboard shortcuts and [Configuration](wmsettings.md) for customization options.
+
+## instantwmctl
+
+The command-line control tool for instantWM. Use it to manage windows, tags, layouts, and other settings at runtime.
+
+See [instantwmctl](instantwmctl.md) for the complete command reference.
 
 ## instantASSIST
 
