@@ -75,7 +75,6 @@ export default defineConfig({
             { text: 'Get Started', link: '/docs/' },
             { text: 'Arch Installer (ins arch)', link: '/docs/insarch' },
             { text: 'Update', link: '/docs/update' },
-            { text: 'Dotfile management', link: '/docs/insdot' },
           ]
         },
         {
@@ -86,6 +85,14 @@ export default defineConfig({
           ]
         },
         {
+          text: 'Configuration',
+          items: [
+            { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'Dotfile management', link: '/docs/insdot' },
+            { text: 'Customize', link: '/docs/customize' },
+          ]
+        },
+        {
           text: 'Basic Features',
           items: [
             { text: 'Start Apps', link: '/docs/apps' },
@@ -93,7 +100,6 @@ export default defineConfig({
             { text: 'Instant Assist', link: '/docs/instantassist' },
             { text: 'Screen Lock', link: '/docs/instantlock' },
             { text: 'Audio', link: '/docs/audio' },
-            { text: 'Customize', link: '/docs/customize' },
           ]
         },
         {
@@ -120,7 +126,6 @@ export default defineConfig({
           text: 'Window Management',
           items: [
             { text: 'Hotkeys', link: '/docs/hotkeys' },
-            { text: 'WM Settings', link: '/docs/wmsettings' },
             { text: 'Overlays', link: '/docs/overlays' },
             { text: 'Layouts', link: '/docs/layouts' },
             { text: 'Floating Windows', link: '/docs/floating' },

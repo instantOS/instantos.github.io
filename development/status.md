@@ -1,6 +1,6 @@
 # Status bar customisation
 
-instantWM displays a status bar at the bottom of each monitor. The status text is configured via the TOML configuration file.
+instantWM displays a status bar at the bottom of each monitor. The status text is configured via the TOML configuration file at [`~/.config/instantwm/config.toml`](/docs/wmsettings#configuration-file-location).
 
 ## Configuration
 
