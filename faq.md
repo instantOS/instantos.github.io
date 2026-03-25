@@ -112,8 +112,11 @@ You can configure keyboard layouts in `~/.config/instantwm/config.toml`:
 
 ```toml
 [keyboard]
-layouts = ["us", "de", "fr"]
-variant = ["", "nodeadkeys", ""]
+layouts = [
+  { name = "us" },
+  { name = "de", variant = "nodeadkeys" },
+  { name = "fr" }
+]
 options = "compose:ralt"
 ```
 

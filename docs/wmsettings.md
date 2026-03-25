@@ -12,6 +12,20 @@ After editing the config file, you can either restart instantWM or use `instantw
 
 If the file doesn't exist, instantWM will use sensible defaults.
 
+## Config Includes
+
+You can split your configuration into multiple files using the `includes` directive:
+
+```toml
+# config.toml (main file)
+includes = [
+    { file = "keybinds.toml" },
+    { file = "colors.toml" },
+]
+```
+
+Included files are merged into the main configuration. Paths can be absolute or relative to the main config file. Circular includes are detected and prevented.
+
 ## Full Configuration Example
 
 ```toml
@@ -74,8 +88,10 @@ detail = "#3E485B"
 
 # Keyboard layout configuration
 [keyboard]
-layouts = ["us", "de"]
-variant = ["", "nodeadkeys"]
+layouts = [
+  { name = "us" },
+  { name = "de", variant = "nodeadkeys" }
+]
 options = "compose:ralt"
 
 # Input configuration (touchpad, mouse, etc.)
@@ -164,8 +180,11 @@ The `[keyboard]` section configures XKB keyboard layouts:
 
 ```toml
 [keyboard]
-layouts = ["us", "de", "fr"]     # Layout names
-variant = ["", "nodeadkeys", ""]  # Per-layout variants
+layouts = [
+  { name = "us" },
+  { name = "de", variant = "nodeadkeys" },
+  { name = "fr" }
+]
 options = "compose:ralt"          # XKB options
 model = "pc105"                   # Keyboard model (optional)
 ```
@@ -195,7 +214,7 @@ Valid values:
 
 ## Custom Keybinds
 
-Add or override keybindings:
+Add or override keybinds:
 
 ```toml
 # Spawn a command
@@ -233,6 +252,12 @@ action = { inc_nmaster = 1 }
 modifiers = ["Super"]
 key = "h"
 action = { set_mfact = -0.05 }
+
+# Enter a mode
+[[keybinds]]
+modifiers = ["Super"]
+key = "r"
+action = { set_mode = "resize" }
 ```
 
 ### Available Modifiers
@@ -244,10 +269,15 @@ action = { set_mfact = -0.05 }
 
 ### Available Actions
 
+You can run actions directly using `instantwmctl action <name>` or define them in your config. Use `instantwmctl action --list` to see all available actions.
+
+**Simple Actions** (run with `instantwmctl action <name>`):
+
 **Window Management:**
 - `zoom` - Focus next window in stack
 - `kill` - Close focused window
 - `shut_kill` - Force close (SIGKILL)
+- `quit` - Quit instantWM
 - `toggle_fullscreen` - Toggle fullscreen
 - `toggle_maximized` - Toggle maximized floating
 - `center_window` - Center floating window
@@ -256,6 +286,7 @@ action = { set_mfact = -0.05 }
 - `focus_next` / `focus_prev` - Next/previous window
 - `focus_up` / `focus_down` / `focus_left` / `focus_right` - Directional focus
 - `focus_last` - Focus previously focused window
+- `down_key` / `up_key` - Alt-tab forward/backward
 
 **Layouts:**
 - `layout_tile` / `layout_float` / `layout_monocle` / `layout_grid` - Set layout
@@ -272,6 +303,9 @@ action = { set_mfact = -0.05 }
 - `scroll_left` / `scroll_right` - Switch tags
 - `shift_tag_left` / `shift_tag_right` - Move window to adjacent tag
 - `shift_view_left` / `shift_view_right` - Move view to adjacent tag
+- `last_view` - View previously viewed tags
+- `follow_view` - Follow client to its tags
+- `win_view` - View tags of focused client
 
 **Monitoring:**
 - `focus_mon_next` / `focus_mon_prev` - Next/previous monitor
@@ -279,6 +313,7 @@ action = { set_mfact = -0.05 }
 
 **Special Features:**
 - `toggle_overview` - Toggle overview mode
+- `toggle_fullscreen_overview` - Toggle fullscreen overview
 - `toggle_sticky` - Toggle sticky (visible on all tags)
 - `toggle_bar` - Toggle status bar
 - `create_overlay` - Create overlay from selected window
@@ -286,12 +321,56 @@ action = { set_mfact = -0.05 }
 - `scratchpad_make` - Make window a scratchpad
 - `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
 
-### Listing Available Actions
+**Structured Actions** (used in config, take arguments):
+
+- `spawn` - Spawn a command: `action = { spawn = ["alacritty"] }`
+- `unbind` - Remove a keybind: `action = { unbind = true }`
+- `set_layout` - Set layout: `action = { set_layout = "tile" }`
+- `focus_stack` - Focus stack direction: `action = { focus_stack = "next" }`
+- `set_mfact` - Set master factor: `action = { set_mfact = 0.5 }`
+- `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = 0 }`
+- `set_mode` - Enter a mode: `action = { set_mode = "resize" }`
+
+See [Modes](./modes.md) for detailed documentation on defining and using modes.
+
+## Control Commands
 
 To see all available actions for keybindings:
 
 ```bash
-instantwm --list-actions
+# Run a named action (use --list to see available actions)
+instantwmctl action zoom
+instantwmctl action kill
+instantwmctl --json action --list
+
+# List all windows
+instantwmctl window list
+
+# Switch to tag
+instantwmctl tag 2
+
+# Set layout by name
+instantwmctl layout tile
+instantwmctl layout grid
+instantwmctl layout monocle
+
+# Toggle features
+instantwmctl toggle animated
+instantwmctl toggle focus-follows-mouse
+instantwmctl toggle focus-follows-float-mouse
+instantwmctl toggle alt-tag
+instantwmctl toggle hide-tags
+
+# Window management
+instantwmctl window close
+instantwmctl spawn "command"
+
+# Keyboard layouts
+instantwmctl keyboard next
+instantwmctl keyboard list
+
+# Update status bar
+instantwmctl update-status "Hello World"
 ```
 
 This outputs a table of all actions with their descriptions and argument examples.
@@ -299,7 +378,7 @@ This outputs a table of all actions with their descriptions and argument example
 You can also get JSON output:
 
 ```bash
-instantwm --list-actions --json
+instantwmctl --json action --list
 ```
 
 ## Runtime Control
