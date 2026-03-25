@@ -168,6 +168,9 @@ instantwmctl mode list
 
 # Set a mode (use "default" to exit)
 instantwmctl mode set resize
+
+# Toggle a mode (enter if not active, exit if already active)
+instantwmctl mode toggle resize
 ```
 
 The `mode list` command shows all configured modes with an asterisk (*) next to the currently active mode.

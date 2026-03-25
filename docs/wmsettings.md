@@ -341,31 +341,33 @@ To see all available actions for keybindings:
 # Run a named action (use --list to see available actions)
 instantwmctl action zoom
 instantwmctl action kill
-instantwmctl action --list
+instantwmctl --json action --list
 
 # List all windows
-instantwmctl list
+instantwmctl window list
 
 # Switch to tag
 instantwmctl tag 2
 
-# Set layout (0=tile, 1=grid, 2=float, 3=monocle)
-instantwmctl layout 0
+# Set layout by name
+instantwmctl layout tile
+instantwmctl layout grid
+instantwmctl layout monocle
 
 # Toggle features
-instantwmctl animated
-instantwmctl focus-follows-mouse
-instantwmctl alt-tab
-instantwmctl alt-tag
-instantwmctl hide-tags
+instantwmctl toggle animated
+instantwmctl toggle focus-follows-mouse
+instantwmctl toggle focus-follows-float-mouse
+instantwmctl toggle alt-tag
+instantwmctl toggle hide-tags
 
 # Window management
-instantwmctl close
+instantwmctl window close
 instantwmctl spawn "command"
 
 # Keyboard layouts
-instantwmctl next-keyboard-layout
-instantwmctl list-keyboard-layouts
+instantwmctl keyboard next
+instantwmctl keyboard list
 
 # Update status bar
 instantwmctl update-status "Hello World"
@@ -376,7 +378,7 @@ This outputs a table of all actions with their descriptions and argument example
 You can also get JSON output:
 
 ```bash
-instantwmctl action --list --json
+instantwmctl --json action --list
 ```
 
 ## Runtime Control
