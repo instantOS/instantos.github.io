@@ -31,6 +31,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Download', link: '/download' },
       { text: 'Documentation', link: '/docs/' },
+      { text: 'Tips', link: '/tips/vim' },
       { text: 'Development', link: '/development/development' },
       { text: 'FAQ', link: '/faq' },
       { text: 'Support', link: '/support' },
@@ -68,6 +69,15 @@ export default defineConfig({
           ]
         }
       ],
+      '/tips/': [
+        {
+          text: 'General Linux Tips',
+          items: [
+            { text: 'Vim hotkeys', link: '/tips/vim' },
+            { text: 'Game Begin Guide', link: '/tips/gamebegin' },
+          ]
+        }
+      ],
       '/docs/': [
         {
           text: 'Getting Started',
@@ -82,7 +92,6 @@ export default defineConfig({
           text: "Beginner's Guide",
           items: [
             { text: 'Installation Guide', link: '/docs/beginner/installguide' },
-            { text: 'Vim hotkeys', link: '/docs/beginner/vim' },
           ]
         },
         {
@@ -140,7 +149,6 @@ export default defineConfig({
           text: 'Gaming',
           items: [
             { text: 'Gaming', link: '/docs/gaming/gaming' },
-            { text: 'Game Begin', link: '/docs/gaming/gamebegin' }
           ]
         }
       ],
