@@ -97,7 +97,7 @@ options = "compose:ralt"
 # Input configuration (touchpad, mouse, etc.)
 [input]
 # Example: enable tap-to-click on touchpads
-# [input.type:touchpad]
+# [input."type:touchpad"]
 # tap = "enabled"
 # natural_scroll = "enabled"
 
@@ -196,13 +196,13 @@ Configure touchpad and mouse settings:
 ```toml
 # Global settings
 [input]
-[input.type:touchpad]
+[input."type:touchpad"]
 tap = "enabled"
 natural_scroll = "enabled"
 accel_profile = "adaptive"
 pointer_accel = 0.5
 
-[input.type:mouse]
+[input."type:mouse"]
 pointer_accel = 0.3
 ```
 
@@ -274,13 +274,15 @@ You can run actions directly using `instantwmctl action <name>` or define them i
 **Simple Actions** (run with `instantwmctl action <name>`):
 
 **Window Management:**
-- `zoom` - Focus next window in stack
+- `zoom` - Move the focused window into the master area
 - `kill` - Close focused window
 - `shut_kill` - Force close (SIGKILL)
 - `quit` - Quit instantWM
-- `toggle_fullscreen` - Toggle fullscreen
 - `toggle_maximized` - Toggle maximized floating
 - `center_window` - Center floating window
+- `toggle_floating` - Toggle the focused window between tiled and floating
+- `draw_window` - Start interactive draw/resize mode
+- `begin_keyboard_move` - Move the focused window with the keyboard
 
 **Focus:**
 - `focus_next` / `focus_prev` - Next/previous window
@@ -316,9 +318,13 @@ You can run actions directly using `instantwmctl action <name>` or define them i
 - `toggle_fullscreen_overview` - Toggle fullscreen overview
 - `toggle_sticky` - Toggle sticky (visible on all tags)
 - `toggle_bar` - Toggle status bar
+- `toggle_show_tags` - Show or hide the tag bar
+- `toggle_alt_tag` - Toggle alternative tag display
+- `toggle_animated` - Toggle animations
 - `create_overlay` - Create overlay from selected window
+- `set_overlay` - Turn the focused window into the active overlay
 - `scratchpad_toggle` - Toggle scratchpad
-- `scratchpad_make` - Make window a scratchpad
+- `toggle_fake_fullscreen` - Toggle fake fullscreen on X11
 - `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
 
 **Structured Actions** (used in config, take arguments):
@@ -328,7 +334,8 @@ You can run actions directly using `instantwmctl action <name>` or define them i
 - `set_layout` - Set layout: `action = { set_layout = "tile" }`
 - `focus_stack` - Focus stack direction: `action = { focus_stack = "next" }`
 - `set_mfact` - Set master factor: `action = { set_mfact = 0.5 }`
-- `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = 0 }`
+- `inc_nmaster` - Change master count: `action = { inc_nmaster = 1 }`
+- `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = "us(intl)" }`
 - `set_mode` - Enter a mode: `action = { set_mode = "resize" }`
 
 See [Modes](./modes.md) for detailed documentation on defining and using modes.
@@ -444,14 +451,14 @@ action = { set_mode = "resize" }
 Configure specific monitor settings:
 
 ```toml
-[monitors "DP-1"]
+[monitors."DP-1"]
 resolution = "1920x1080"
 refresh_rate = 144.0
 position = "0,0"
 scale = 1.0
 enable = true
 
-[monitors "HDMI-A-1"]
+[monitors."HDMI-A-1"]
 position = "left-of:DP-1"
 ```
 

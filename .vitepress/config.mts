@@ -96,7 +96,9 @@ export default defineConfig({
         {
           text: 'Configuration',
           items: [
+            { text: 'ins CLI', link: '/docs/ins' },
             { text: 'WM Settings', link: '/docs/wmsettings' },
+            { text: 'instantwmctl', link: '/docs/instantwmctl' },
             { text: 'Dotfile management', link: '/docs/insdot' },
             { text: 'Customize', link: '/docs/customize' },
           ]

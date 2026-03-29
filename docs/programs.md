@@ -2,7 +2,18 @@
 ## ins
 
 This is a command line tool which manages most of instantOS and unifies most
-utilities in a single portable binary. Many of its features are distro agnostic. 
+utilities in a single portable binary. Many of its features are distro agnostic.
+
+It currently includes, among other things:
+
+- desktop settings via `ins settings`
+- wallpaper management via `ins wallpaper`
+- diagnostics via `ins doctor`
+- system updates via `ins update`
+- self-updates via `ins self-update`
+- session startup helpers via `ins autostart`
+
+See [ins](ins.md) for the command reference.
 
 ## instantWM
 
@@ -87,4 +98,3 @@ enough already
 
 Open AppImages and flatpak files, somehow this was not a thing when I made
 this
-

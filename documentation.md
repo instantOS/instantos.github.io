@@ -39,6 +39,9 @@ it if you prefer that.
 - [visibility options](https://instantos.io/youtube/visibility)
 - [customizing](https://instantos.io/youtube/customize)
 - [terminal](https://instantos.io/youtube/terminal)
+- [instantwmctl reference](https://instantos.io/docs/instantwmctl)
+- [instantWM configuration](https://instantos.io/docs/wmsettings)
+- [modes](https://instantos.io/docs/modes)
 
 ### Gaming
 
@@ -54,4 +57,3 @@ replacement for the documentation
 ## Information for contributors
 
 - [Repository overview](https://instantos.io/links)
-

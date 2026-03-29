@@ -10,6 +10,10 @@ it if you prefer that.
 ## Useful links
 
 - [Keybindings](hotkeys.md)
+- [ins CLI reference](ins.md)
+- [WM configuration](wmsettings.md)
+- [instantwmctl reference](instantwmctl.md)
+- [Programs overview](programs.md)
 - [instantOS Website](https://instantos.io)
 - [YouTube](https://youtube.com/paperbenni)
 - [Discord](https://dsc.gg/instantos)

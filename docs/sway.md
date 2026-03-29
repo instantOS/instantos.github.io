@@ -13,6 +13,9 @@ The Wayland session uses Sway, and has some notable differences from instantWM.
 sorts of basics which allow new users to use Sway without having to learn the
 dotfile structure first. 
 
+You can also use `ins settings apply` after startup if you want to restore
+non-persistent settings without running the full autostart helper.
+
 ## instantASSIST
 
 ++super+a++ opens up the newly rewritten instantASSIST. instantASSIST on sway

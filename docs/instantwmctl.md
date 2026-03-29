@@ -1,219 +1,230 @@
 # instantwmctl
 
-`instantwmctl` is the command-line control tool for instantWM. It allows you to manage windows, tags, layouts, and other settings at runtime.
+`instantwmctl` is the runtime control tool for `instantWM`. It talks to the running window manager over IPC, so you can inspect state, switch layouts, manage scratchpads, change monitor settings, and run configured actions without restarting the session.
 
 ## Usage
 
 ```bash
-instantwmctl [command]
-
-# Get JSON output for machine-readable results
-instantwmctl --json [command]
-instantwmctl -j [command]
+instantwmctl [OPTIONS] <COMMAND>
 ```
 
-The `--json` flag can be used with most commands to get machine-readable JSON output instead of human-readable text. Place the flag **before** the subcommand.
+Global options:
 
-## General Commands
+- `-j`, `--json`: print machine-readable JSON where supported
+- `--ignore-version-mismatches`: skip the IPC protocol version check
 
-| Command | Description |
-|---------|-------------|
-| `instantwmctl status` | Show status information about the running instantWM instance |
-| `instantwmctl reload` | Reload configuration from disk |
-| `instantwmctl spawn "command"` | Spawn a command |
-| `instantwmctl warp-focus` | Warp cursor to the focused window |
-| `instantwmctl update-status "text"` | Update status bar text |
-| `instantwmctl wallpaper /path/to/image` | Set wallpaper |
+## Top-level commands
 
-## Window Management
+| Command | Purpose |
+| --- | --- |
+| `action` | Run a named action or list all exported actions |
+| `status` | Show instantWM version, backend, monitor count, and window count |
+| `reload` | Reload configuration from disk |
+| `monitor` | Inspect monitors and change output settings |
+| `window` | List windows, inspect geometry, or close a window |
+| `tag` | Switch tags and rename/reset tag names |
+| `toggle` | Toggle runtime behavior flags |
+| `spawn` | Spawn a command through instantWM |
+| `warp-focus` | Warp the pointer to the focused window |
+| `tag-mon` | Move the focused window to another monitor |
+| `follow-mon` | Move the focused window to another monitor and follow it |
+| `layout` | Set the current layout |
+| `border` | Set the focused window border width |
+| `special-next` | Set the special-next mode |
+| `keyboard` | Manage keyboard layouts |
+| `scratchpad` | Manage scratchpads |
+| `mouse` | Inspect or change input device settings |
+| `mode` | List, enter, or toggle configured modes |
+| `update-status` | Replace the bar status text |
+| `wallpaper` | Set wallpaper using `swaybg` on Wayland or `feh` on X11 |
 
-| Command | Description |
-|---------|-------------|
-| `instantwmctl window list` | List all managed windows |
-| `instantwmctl window geom` | Get geometry of focused window |
-| `instantwmctl window close` | Close focused window |
-| `instantwmctl window close <window-id>` | Close specific window |
-
-## Tag/Workspace Management
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl tag` | Switch to tag 2 (default) |
-| `instantwmctl tag <number>` | Switch to tag number (1-8) |
-| `instantwmctl tag view <number>` | Explicitly switch to tag number |
-| `instantwmctl tag name <name>` | Rename current tag |
-| `instantwmctl tag reset` | Reset all tag names to defaults |
-
-## Layout Management
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl layout` | Switch to tile layout |
-| `instantwmctl layout <name>` | Switch to layout by name |
-
-Layout names:
-- tile = Tile
-- grid = Grid
-- floating = Floating
-- monocle = Monocle
-- vert = Vert
-- deck = Deck
-- overview = Overview
-- bstack = Bstack
-- horiz = Horiz
-
-## Monitor Management
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl monitor list` | List all monitors |
-| `instantwmctl monitor switch <index>` | Switch to monitor by index |
-| `instantwmctl monitor next` | Switch to next monitor |
-| `instantwmctl monitor next <count>` | Switch to monitor N steps ahead |
-| `instantwmctl monitor prev` | Switch to previous monitor |
-| `instantwmctl monitor prev <count>` | Switch to monitor N steps back |
-| `instantwmctl monitor set -r 1920x1080 -f 144` | Configure monitor |
-| `instantwmctl monitor set --enable` | Enable monitor |
-| `instantwmctl monitor set --disable` | Disable monitor |
-
-Monitor set options:
-- `-r, --res` - Resolution (e.g., "1920x1080")
-- `-f, --rate` - Refresh rate in Hz
-- `-p, --pos` - Position (e.g., "1920,0")
-- `-s, --scale` - Scale factor
-- `-t, --transform` - Display transform (Normal, 90, 180, 270, Flipped, flipped-90, flipped-180, flipped-270)
-
-## Window Movement
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl tag-mon next` | Move window to next monitor |
-| `instantwmctl tag-mon prev` | Move window to previous monitor |
-| `instantwmctl follow-mon next` | Move window to next monitor and follow |
-| `instantwmctl follow-mon prev` | Move window to previous monitor and follow |
-
-## Toggle Features
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl toggle animated` | Toggle window animations |
-| `instantwmctl toggle focus-follows-mouse` | Toggle focus follows mouse |
-| `instantwmctl toggle focus-follows-float-mouse` | Toggle focus follows mouse for floating windows |
-| `instantwmctl toggle alt-tag` | Toggle alt-tag mode |
-| `instantwmctl toggle hide-tags` | Toggle hide tags |
-
-Toggle actions can take additional arguments:
-- `instantwmctl toggle animated enable` - Enable
-- `instantwmctl toggle animated disable` - Disable
-- `instantwmctl toggle animated` - Toggle
-
-## Border and Prefix
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl border <width>` | Set border width in pixels |
-| `instantwmctl special-next float` | Enable special next mode for cycling |
-| `instantwmctl special-next none` | Disable special next mode |
-
-## Keyboard Layout
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl keyboard list` | List configured layouts |
-| `instantwmctl keyboard list --all` | List all available XKB layouts |
-| `instantwmctl keyboard status` | Show current keyboard layout |
-| `instantwmctl keyboard next` | Switch to next keyboard layout |
-| `instantwmctl keyboard prev` | Switch to previous keyboard layout |
-| `instantwmctl keyboard set us de fr` | Set keyboard layouts |
-| `instantwmctl keyboard add <layout>` | Add keyboard layout |
-| `instantwmctl keyboard remove <layout>` | Remove keyboard layout |
-
-Layouts can include variants: `de(nodeadkeys)`, `us(intl)`, etc.
-
-## Scratchpad
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl scratchpad list` | List all scratchpads |
-| `instantwmctl scratchpad status` | Show scratchpad visibility |
-| `instantwmctl scratchpad show <name>` | Show scratchpad |
-| `instantwmctl scratchpad hide <name>` | Hide scratchpad |
-| `instantwmctl scratchpad toggle` | Toggle default scratchpad |
-| `instantwmctl scratchpad toggle <name>` | Toggle named scratchpad |
-| `instantwmctl scratchpad create` | Create scratchpad from focused window |
-| `instantwmctl scratchpad create <name>` | Create named scratchpad |
-| `instantwmctl scratchpad delete` | Delete scratchpad from focused window |
-
-## Input Devices (Mouse/Touchpad)
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl mouse list` | List input device configuration |
-| `instantwmctl mouse devices` | List all detected input devices |
-| `instantwmctl mouse list "type:touchpad"` | List touchpad configuration |
-| `instantwmctl mouse pointer-accel "type:touchpad" 0.5` | Set pointer acceleration |
-| `instantwmctl mouse accel-profile "type:touchpad" flat` | Set acceleration profile |
-| `instantwmctl mouse tap "type:touchpad" enabled` | Enable tap-to-click |
-| `instantwmctl mouse natural-scroll "type:touchpad" enabled` | Enable natural scrolling |
-| `instantwmctl mouse scroll-factor "type:touchpad" 2.0` | Set scroll factor |
-
-Valid identifiers: `type:touchpad`, `type:pointer`, `type:keyboard`, or `*` for all devices.
-
-Note: `instantwmctl input` is an alias for `instantwmctl mouse`.
-
-## Modes
-
-| Command | Description |
-|---------|-------------|
-| `instantwmctl mode list` | List all configured modes |
-| `instantwmctl mode set <name>` | Enter a mode |
-| `instantwmctl mode set default` | Exit current mode |
-
-See [Configuration](wmsettings.md#custom-modes) for creating custom modes.
-
-## Actions
-
-You can run any keybinding action directly:
+## Common examples
 
 ```bash
-# List all available actions
-instantwmctl action --list
+# Print high-level WM status
+instantwmctl status
 
-# Run a named action
-instantwmctl action zoom
-instantwmctl action kill
-instantwmctl action toggle_bar
+# List all managed windows
+instantwmctl window list
 
-# Run action with arguments
-instantwmctl action set_layout tile
-instantwmctl action inc_nmaster 2
-instantwmctl action set_mfact 0.1
-```
+# Switch to tag 3
+instantwmctl tag view 3
 
-## Examples
-
-```bash
-# Open a program
-instantwmctl spawn "firefox"
-
-# Switch to workspace 3
-instantwmctl tag 3
-
-# Toggle animations
-instantwmctl toggle animated
-
-# Change layout to grid
+# Change the current layout
 instantwmctl layout grid
 
-# Enable tap-to-click on touchpad
-instantwmctl mouse tap "type:touchpad" enabled
+# List available named actions
+instantwmctl action --list
 
-# Add a keyboard layout
-instantwmctl keyboard add "fr"
+# Run one named action directly
+instantwmctl action toggle_bar
 
-# Make current window a scratchpad
-instantwmctl scratchpad create "myterm"
+# Show current keyboard layout
+instantwmctl keyboard status
 
-# Set wallpaper
-instantwmctl wallpaper ~/Pictures/wallpaper.png
+# Toggle the default scratchpad
+instantwmctl scratchpad toggle
 ```
+
+## Layouts
+
+`instantwmctl layout <name>` accepts the layouts exported by `LayoutKind`:
+
+- `tile`
+- `grid`
+- `floating`
+- `monocle`
+- `vert`
+- `deck`
+- `overview`
+- `bstack`
+- `horiz`
+
+## Window commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl window list` | List windows |
+| `instantwmctl window list <window-id>` | List a specific window by id |
+| `instantwmctl window geom` | Print the focused window geometry |
+| `instantwmctl window geom <window-id>` | Print geometry for a specific window |
+| `instantwmctl window close` | Close the focused window |
+| `instantwmctl window close <window-id>` | Close a specific window |
+
+## Tag commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl tag view` | View tag 2, the built-in default |
+| `instantwmctl tag view <number>` | View a specific tag |
+| `instantwmctl tag name "<name>"` | Rename the current tag |
+| `instantwmctl tag reset` | Reset all tag names |
+
+## Monitor commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl monitor list` | List outputs |
+| `instantwmctl monitor switch <index>` | Focus monitor by index |
+| `instantwmctl monitor next [count]` | Focus the next monitor |
+| `instantwmctl monitor prev [count]` | Focus the previous monitor |
+| `instantwmctl monitor modes [identifier]` | List display modes for an output |
+| `instantwmctl monitor set [identifier] ...` | Change output settings |
+
+`monitor set` supports:
+
+- `-r`, `--res <WIDTHxHEIGHT>`
+- `-f`, `--rate <HZ>`
+- `-p`, `--pos <X,Y>`
+- `-s`, `--scale <FACTOR>`
+- `-t`, `--transform <normal|90|180|270|flipped|flipped-90|flipped-180|flipped-270>`
+- `--vrr <off|auto|on>`
+- `--enable`
+- `--disable`
+
+Examples:
+
+```bash
+instantwmctl monitor list
+instantwmctl monitor modes focused
+instantwmctl monitor set focused -r 2560x1440 -f 144 --vrr on
+instantwmctl monitor set HDMI-A-1 --disable
+```
+
+## Toggle commands
+
+The current IPC surface exposes these toggles:
+
+- `animated`
+- `focus-follows-mouse`
+- `focus-follows-float-mouse`
+- `alt-tag`
+- `hide-tags`
+
+Each toggle accepts `enable`, `disable`, or no argument to invert the current state.
+
+```bash
+instantwmctl toggle animated
+instantwmctl toggle animated enable
+instantwmctl toggle hide-tags disable
+```
+
+## Keyboard commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl keyboard list` | List configured layouts |
+| `instantwmctl keyboard list --all` | List all available layouts |
+| `instantwmctl keyboard status` | Show the active layout |
+| `instantwmctl keyboard next` | Switch to the next configured layout |
+| `instantwmctl keyboard prev` | Switch to the previous configured layout |
+| `instantwmctl keyboard set us de(nodeadkeys)` | Replace the configured layout list |
+| `instantwmctl keyboard add fr` | Add a layout |
+| `instantwmctl keyboard remove fr` | Remove a layout |
+
+## Scratchpad commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl scratchpad list` | List scratchpads |
+| `instantwmctl scratchpad status [name]` | Show scratchpad status |
+| `instantwmctl scratchpad show [name]` | Show one scratchpad |
+| `instantwmctl scratchpad show --all` | Show all scratchpads |
+| `instantwmctl scratchpad hide [name]` | Hide one scratchpad |
+| `instantwmctl scratchpad hide --all` | Hide all scratchpads |
+| `instantwmctl scratchpad toggle [name]` | Toggle a scratchpad |
+| `instantwmctl scratchpad create [name]` | Create a scratchpad from the focused window |
+| `instantwmctl scratchpad create [name] --status shown` | Create it and show it immediately |
+| `instantwmctl scratchpad create [name] --window-id 123` | Create from a specific window |
+| `instantwmctl scratchpad delete` | Remove scratchpad state from the focused window |
+| `instantwmctl scratchpad delete --window-id 123` | Remove scratchpad state from a specific window |
+
+If no name is given, the default scratchpad name is `instantwm_scratchpad`.
+
+## Mouse and input commands
+
+`mouse` is the public command name. `input` is available as an alias.
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl mouse list` | List configured input settings |
+| `instantwmctl mouse list --identifier "type:touchpad"` | Show one device class |
+| `instantwmctl mouse devices` | List detected devices |
+| `instantwmctl mouse speed 0.5 --identifier "type:touchpad"` | Set pointer acceleration |
+| `instantwmctl mouse accel-profile flat --identifier "type:touchpad"` | Set accel profile |
+| `instantwmctl mouse tap enabled --identifier "type:touchpad"` | Enable tap-to-click |
+| `instantwmctl mouse natural-scroll enabled --identifier "type:touchpad"` | Enable natural scrolling |
+| `instantwmctl mouse scroll-factor 2.0 --identifier "type:touchpad"` | Set scroll factor |
+
+Valid identifiers include `type:touchpad`, `type:pointer`, `type:keyboard`, and `*`.
+
+## Mode commands
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl mode list` | List configured modes |
+| `instantwmctl mode set <name>` | Enter a mode |
+| `instantwmctl mode toggle <name>` | Toggle a mode on or off |
+
+See [WM Settings](wmsettings.md) and [Modes](modes.md) for how to define them.
+
+## Named actions
+
+`instantwmctl action --list` prints the actions exported by the current build. This is the most reliable way to inspect what can be called directly, because it comes from the same metadata that the parser uses.
+
+Examples:
+
+```bash
+instantwmctl action --list
+instantwmctl action zoom
+instantwmctl action set_layout tile
+instantwmctl action set_mode resize
+instantwmctl action keyboard_layout us(intl)
+```
+
+## Related pages
+
+- [WM Settings](wmsettings.md)
+- [Modes](modes.md)
+- [Layouts](layouts.md)
+- [Scratchpad](scratchpad.md)

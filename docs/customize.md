@@ -23,6 +23,8 @@ The control panel can be opened by ++super+left++ clicking on the status text,
 with ++super+ctrl+c++, from the start menu or by typing `ins settings` in the
 terminal.
 
+For the command reference, see [ins CLI](ins.md).
+
 ## Use it in your own setup
 
 Put the following in your window manager or wayland compositor autostart, and
@@ -35,9 +37,19 @@ ins autostart
 You might also use `ins settings apply` to manually apply the settings, in case
 you do not want to run a background job.
 
+`ins settings apply` re-applies non-persistent settings from the saved settings
+store and also tries to re-apply the configured wallpaper.
+
 ### Settings CLI options
 
 ```bash
+# Re-apply non-persistent settings manually
+ins settings apply
+
+# List settings and categories
+ins settings list
+ins settings list --categories
+
 # Open settings at a specific setting (by ID)
 ins settings --setting "appearance.animations"
 
@@ -72,6 +84,8 @@ Colors are remembered for future use. The `random` command fetches from Wallhave
 and applies the instantOS logo overlay unless `--no-logo` is passed.
 
 Supported compositors: Sway, i3, dwm, InstantWM, GNOME, Hyprland.
+
+More `ins wallpaper` commands are documented in [ins CLI](ins.md).
 
 ## Theming
 
@@ -117,5 +131,4 @@ to undo whatever you did to it, should you inevitably break it.
 
 Do it manually, and tell me if you found a good way to theme it without breaking
 any applications. 
-
 

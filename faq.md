@@ -120,11 +120,13 @@ layouts = [
 options = "compose:ralt"
 ```
 
-Use `instantwmctl` to switch layouts at runtime:
+Use `instantwmctl` to switch keyboard layouts at runtime:
 ```bash
-instantwmctl next-keyboard-layout
-instantwmctl list-keyboard-layouts
+instantwmctl keyboard next
+instantwmctl keyboard list
 ```
+
+For the full runtime control surface, see the [instantwmctl reference](/docs/instantwmctl).
 
 Keep in mind that we are doing this in our free time for little to no compensation.
 

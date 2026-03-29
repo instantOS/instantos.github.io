@@ -25,6 +25,23 @@ and anything else which is found to be outdated. Most of the work here is being
 done by `topgrade` as a universal updater, with some instantOS specific
 additions.
 
+In the current instantCLI implementation, `ins update` also:
+
+- updates managed dotfiles
+- syncs game saves
+- checks for updates to the `ins` binary itself
+
+Related commands:
+
+```bash
+# Update only the CLI binary
+ins self-update
+
+# Re-apply non-persistent desktop settings after login
+ins settings apply
+```
+
+See [ins CLI](ins.md) for the broader command reference.
 
 
 
