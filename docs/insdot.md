@@ -40,6 +40,12 @@ This will copy them to the repository. By default, dotfile repositories are
 located in `~/.local/share/instant/dots/<repo name>`. You can commit, push and
 pull like with normal git repositories because that is what they are. 
 
+To recursively add a whole directory, including currently untracked files:
+
+```bash
+ins dot add --all .config
+```
+
 Once you push new updates to your dotfiles, 
 ```
 ins dot update
@@ -67,6 +73,82 @@ modifications works even when skipping or rolling back updates. Updates will
 only stop if the file is in a state which has never been in the repository, in
 which case it is assumed to contain user modifications which should be
 preserved.
+
+## `.insignore`
+
+`ins dot add` supports `.insignore` files with the same pattern syntax as
+`.gitignore`.
+
+There are two scopes:
+
+- Home-scoped `.insignore` files in your home directory tree control which local
+  files are eligible to be added.
+- Repo-scoped `.insignore` files in the root of a dotfile repository control
+  which files that repository is willing to accept.
+
+This is mainly useful for files that may exist alongside useful config, but
+should never be committed, such as API keys, tokens, machine-local secrets, or
+other sensitive state.
+
+### Home-scoped `.insignore`
+
+You can place `.insignore` files anywhere under your home directory. They apply
+to that directory and its descendants, and nested `.insignore` files can refine
+or override parent rules in the same way you would expect from `.gitignore`
+patterns.
+
+Example:
+
+```bash
+~/.ssh/.insignore
+```
+
+```gitignore
+id_ed25519
+id_rsa
+```
+
+With that file in place:
+
+- `ins dot add --all .ssh` adds the rest of `.ssh`, but skips
+  `.ssh/id_ed25519` and `.ssh/id_rsa`
+- `ins dot add .ssh/id_ed25519` refuses to add the file
+- every skipped file is reported in the command output
+
+### Repo-scoped `.insignore`
+
+You can also place a `.insignore` file in the root of a dotfile repository to
+prevent that repository from accepting certain files, even if you explicitly try
+to add them there.
+
+Example repository root file:
+
+```gitignore
+.ssh/id_ed25519
+.ssh/id_rsa
+```
+
+If that repository is selected as the destination:
+
+- `ins dot add --all .ssh` adds other files in `.ssh`, but skips
+  `id_ed25519` and `id_rsa`
+- `ins dot add .ssh/id_ed25519` refuses to add the file to that repo
+- the skip is printed in the output so it is obvious why the file was not added
+
+This is a good safety net for public dotfile repositories where certain files
+should never be tracked by accident.
+
+### Forcing an ignored file
+
+Use `--force` to override either kind of `.insignore` rule:
+
+```bash
+ins dot add .ssh/id_ed25519 --force
+ins dot add --all .ssh --force
+```
+
+`--force` only affects the current add operation. It does not change the
+contents of any `.insignore` file.
 
 
 ## Interactive menu
@@ -322,8 +404,6 @@ preventing updates, which means automated usage is out of the question. Being
 written in Bash, it is also quite slow. It also does not allow applying
 dotfiles from multiple different repositories, something which Stow supports
 very well by accident. 
-
-
 
 
 
