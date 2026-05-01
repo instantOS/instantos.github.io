@@ -11,6 +11,7 @@ it if you prefer that.
 
 - [Keybindings](hotkeys.md)
 - [ins CLI reference](ins.md)
+- [resolvething duplicate and Syncthing conflict cleanup](resolvething.md)
 - [WM configuration](wmsettings.md)
 - [instantwmctl reference](instantwmctl.md)
 - [Programs overview](programs.md)
