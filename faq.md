@@ -39,9 +39,14 @@ everything else the Arch repos are used.
 
 ## Can I install instantos on an encrypted drive
 
-Yes, you can, but it will be a bit of work. 
-The installer does not currently support setting up encryption for you.
-So you will have to select the manual partitioning option and set it up yourself including bootloader setup.
+Yes. During an `ins arch install` with automatic partitioning, the installer
+asks whether you want to enable disk encryption. It uses **LUKS on LVM** with
+a dedicated LUKS container, LVM volume group (`instantOS`), and separate
+logical volumes for swap and root. Encryption is handled automatically —
+partitioning, luksFormat, LVM setup, mkinitcpio hooks (`sd-encrypt`), and
+GRUB boot parameters are all configured for you.
+
+If you prefer to set it up manually, select manual partitioning instead.
 
 ## How do I install instantOS software on a regular Arch
 
