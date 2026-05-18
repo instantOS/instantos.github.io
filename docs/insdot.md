@@ -88,6 +88,16 @@ ins dot key init
 
 This creates a local age identity at `~/.config/instant/age/identity`.
 
+Identity discovery checks these sources (in priority order):
+
+1. **`$AGE_IDENTITY`** — colon-separated paths to identity files (highest priority)
+2. **`age_identity_files`** — list of identity file paths in `~/.config/instant/dots.toml`
+3. **`~/.config/instant/age/identity`** — single identity file from `ins dot key init`
+4. **`~/.config/instant/age/identities/*`** — every file in the identities directory
+
+`ins dot key identity` prints the machine's public key(s) from any of the
+above paths.
+
 ### 2. Authorize recipients in the repository
 
 Each repo stores allowed public keys in `instantdots.toml` under
@@ -149,6 +159,9 @@ recipients.
 ### 5. Rotate/inspect key authorization
 
 ```bash
+# Show this machine's local public key(s)
+ins dot key identity
+
 # Show recipient/decryption status
 ins dot key status
 ins dot key status --repo my-dots
@@ -245,6 +258,12 @@ database_dir = "~/.local/share/instant/instant.db"
 ignored_paths = [
     "~/.ssh",
     "~/.gnupg"
+]
+
+# Extra age identity files for decrypting encrypted dotfiles
+# (loaded after $AGE_IDENTITY, before the default paths)
+age_identity_files = [
+    "~/.config/instant/age/work-key"
 ]
 ```
 
