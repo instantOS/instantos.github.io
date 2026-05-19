@@ -165,36 +165,53 @@ target: ~/.config/app/secrets.toml
 ### 1. Initialize a local identity
 
 ```bash
-ins dot key init
+ins dot keys generate
 ```
 
-This creates a local age identity at `~/.config/instant/age/identity`.
+This creates a local age identity at `~/.config/instant/encryption/identity`.
+
+Use `--force` to overwrite an existing key:
+
+```bash
+ins dot keys generate --force
+```
 
 Identity discovery checks these sources (in priority order):
 
 1. **`$AGE_IDENTITY`** — colon-separated paths to identity files (highest priority)
-2. **`age_identity_files`** — list of identity file paths in `~/.config/instant/dots.toml`
-3. **`~/.config/instant/age/identity`** — single identity file from `ins dot key init`
-4. **`~/.config/instant/age/identities/*`** — every file in the identities directory
+2. **`encryption_keys`** — list of identity file paths in `~/.config/instant/dots.toml`
+3. **`~/.config/instant/encryption/identity`** — single identity file from `ins dot keys generate`
+4. **`~/.config/instant/encryption/identities/*`** — every file in the identities directory
+5. **`~/.ssh/id_ed25519`**, **`~/.ssh/id_ecdsa`**, **`~/.ssh/id_rsa`** — conventional
+   unencrypted SSH private keys (fallback)
 
-`ins dot key identity` prints the machine's public key(s) from any of the
-above paths.
+Both native age identities (`AGE-SECRET-KEY-1...`) and SSH private keys (OpenSSH
+PEM format) are accepted in every slot above. Passphrase-protected SSH keys are
+currently not supported.
+
+`ins dot keys show` prints the machine's public key(s) from any of the above
+paths.
 
 ### 2. Authorize recipients in the repository
 
 Each repo stores allowed public keys in `instantdots.toml` under
-`age_recipients`.
+`encryption_recipients`.
 
 ```bash
 # Authorize this machine's local public key in the first writable repo
-ins dot key authorize
+ins dot keys authorize
 
 # Or choose a specific repo
-ins dot key authorize --repo my-dots
+ins dot keys authorize --repo my-dots
 
-# Authorize an explicit key
-ins dot key authorize "age1..."
+# Authorize an explicit key (age1... for native age keys, ssh-ed25519... for SSH keys)
+ins dot keys authorize "age1..."
 ```
+
+Recipients can be either native age X25519 public keys (`age1...`) or SSH
+public keys (`ssh-ed25519 ...`, `ssh-rsa ...`). This means any machine with
+the corresponding private key (age identity or SSH key) can decrypt the
+repository's encrypted files.
 
 ### 3. Encrypt/decrypt tracked sources
 
@@ -242,14 +259,14 @@ recipients.
 
 ```bash
 # Show this machine's local public key(s)
-ins dot key identity
+ins dot keys show
 
 # Show recipient/decryption status
-ins dot key status
-ins dot key status --repo my-dots
+ins dot keys status
+ins dot keys status --repo my-dots
 
 # Replace recipients and re-encrypt all tracked .age files in that repo
-ins dot key rotate --repo my-dots --recipients "age1newrecipient..."
+ins dot keys rotate --repo my-dots --recipients "age1newrecipient..."
 ```
 
 `rotate` and `authorize` both verify you can decrypt existing encrypted files
@@ -342,10 +359,10 @@ ignored_paths = [
     "~/.gnupg"
 ]
 
-# Extra age identity files for decrypting encrypted dotfiles
+# Extra encryption key files for decrypting encrypted dotfiles
 # (loaded after $AGE_IDENTITY, before the default paths)
-age_identity_files = [
-    "~/.config/instant/age/work-key"
+encryption_keys = [
+    "~/.config/instant/encryption/work-key"
 ]
 ```
 
@@ -360,8 +377,9 @@ description = "My configs"     # optional
 read_only = true               # optional, prevents modifications to this repo
 dots_dirs = ["dots", "themes"] # optional, defaults to ["dots"]
 default_active_subdirs = ["dots"] # optional, specifies which dirs are active by default
-age_recipients = [             # optional, recipients for encrypted dotfiles
-    "age1..."
+encryption_recipients = [             # optional, recipients for encrypted dotfiles
+    "age1...",
+    # "ssh-ed25519 AAAAC3..."  # SSH public keys also supported
 ]
 ```
 
@@ -401,6 +419,8 @@ source_subdir = "dots"
 | Overrides | `~/.config/instant/dot_overrides.toml` |
 | Repositories | `~/.local/share/instant/dots/<repo-name>/` |
 | Database | `~/.local/share/instant/instant.db` |
+| Encryption identity | `~/.config/instant/encryption/identity` |
+| Encryption identities | `~/.config/instant/encryption/identities/` |
 
 
 ## Units
