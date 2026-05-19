@@ -35,6 +35,7 @@ it if you prefer that.
 ### Power-User Features
 
 - [instantASSIST](https://instantos.io/youtube/assist)
+- [resolvething duplicate and Syncthing conflict cleanup](https://instantos.io/docs/resolvething)
 - [quickmenu](https://instantos.io/youtube/quickmenu)
 - [visibility options](https://instantos.io/youtube/visibility)
 - [customizing](https://instantos.io/youtube/customize)

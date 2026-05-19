@@ -62,6 +62,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/archive' },
             { text: 'st terminal', link: '/archive/terminal' },
+            { text: 'instantARCH', link: '/archive/instantarch' },
             { text: 'imosid', link: '/archive/imosid' },
             { text: 'instantTHEMES', link: '/archive/instantthemes' },
             { text: 'Terminal Theme', link: '/archive/terminaltheme' },

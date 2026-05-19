@@ -150,6 +150,124 @@ ins dot add --all .ssh --force
 `--force` only affects the current add operation. It does not change the
 contents of any `.insignore` file.
 
+## Encrypted dotfiles (age)
+
+`ins dot` supports storing tracked sources as `*.age` files while applying
+plaintext to the normal target path in your home directory.
+
+Example source/target mapping:
+
+```text
+repo:   dots/.config/app/secrets.toml.age
+target: ~/.config/app/secrets.toml
+```
+
+### 1. Initialize a local identity
+
+```bash
+ins dot key init
+```
+
+This creates a local age identity at `~/.config/instant/age/identity`.
+
+Identity discovery checks these sources (in priority order):
+
+1. **`$AGE_IDENTITY`** — colon-separated paths to identity files (highest priority)
+2. **`age_identity_files`** — list of identity file paths in `~/.config/instant/dots.toml`
+3. **`~/.config/instant/age/identity`** — single identity file from `ins dot key init`
+4. **`~/.config/instant/age/identities/*`** — every file in the identities directory
+
+`ins dot key identity` prints the machine's public key(s) from any of the
+above paths.
+
+### 2. Authorize recipients in the repository
+
+Each repo stores allowed public keys in `instantdots.toml` under
+`age_recipients`.
+
+```bash
+# Authorize this machine's local public key in the first writable repo
+ins dot key authorize
+
+# Or choose a specific repo
+ins dot key authorize --repo my-dots
+
+# Authorize an explicit key
+ins dot key authorize "age1..."
+```
+
+### 3. Encrypt/decrypt tracked sources
+
+```bash
+# Convert tracked plaintext source -> .age source
+ins dot encrypt ~/.config/app/secrets.toml
+
+# Convert tracked .age source -> plaintext source
+ins dot decrypt ~/.config/app/secrets.toml
+
+# Preview either operation
+ins dot encrypt ~/.config/app/secrets.toml --dry-run
+ins dot decrypt ~/.config/app/secrets.toml --dry-run
+```
+
+Use `--repo <name>` and `--subdir <name>` when the target has multiple possible
+sources.
+
+Important behavior:
+
+- `ins dot encrypt` encrypts the **tracked source content** (repository source
+  is the source of truth), not arbitrary unstaged target edits.
+- If the target exists and has local modifications, encrypt/decrypt aborts so
+  changes are not lost.
+- Both commands stage repository file changes (`old` removed, `new` added).
+- Encrypting does **not** erase old plaintext from git history.
+- Decrypting creates plaintext in the repository; committing that exposes
+  secrets.
+
+### 4. Add new files as encrypted sources
+
+```bash
+# Add a new untracked file directly as encrypted source
+ins dot add ~/.config/app/secrets.toml --encrypt
+
+# Add all untracked files under a directory as encrypted sources
+ins dot add ~/.config/app --all --encrypt
+```
+
+For already tracked encrypted files, normal `ins dot add <path>` updates the
+source by re-encrypting the current target content with the repo's configured
+recipients.
+
+### 5. Rotate/inspect key authorization
+
+```bash
+# Show this machine's local public key(s)
+ins dot key identity
+
+# Show recipient/decryption status
+ins dot key status
+ins dot key status --repo my-dots
+
+# Replace recipients and re-encrypt all tracked .age files in that repo
+ins dot key rotate --repo my-dots --recipients "age1newrecipient..."
+```
+
+`rotate` and `authorize` both verify you can decrypt existing encrypted files
+before rewriting them.
+
+### Apply/status/diff behavior with encrypted sources
+
+- `ins dot apply` decrypts encrypted sources to targets when an identity is
+  available.
+- If identity/decryption is unavailable, encrypted files are skipped and shown
+  as `identity_required` in status.
+- Non-identity encrypted failures (e.g. malformed ciphertext) are shown as
+  `encrypted_error` in status.
+- `ins dot reset` also decrypts encrypted sources back to targets.
+- `ins dot diff` decrypts source content to a temp plaintext file for
+  comparison when possible.
+- `ins dot merge` currently does not support encrypted (`.age`) sources.
+
 
 ## Interactive menu
 
@@ -223,6 +341,12 @@ ignored_paths = [
     "~/.ssh",
     "~/.gnupg"
 ]
+
+# Extra age identity files for decrypting encrypted dotfiles
+# (loaded after $AGE_IDENTITY, before the default paths)
+age_identity_files = [
+    "~/.config/instant/age/work-key"
+]
 ```
 
 ### instantdots.toml
@@ -236,6 +360,9 @@ description = "My configs"     # optional
 read_only = true               # optional, prevents modifications to this repo
 dots_dirs = ["dots", "themes"] # optional, defaults to ["dots"]
 default_active_subdirs = ["dots"] # optional, specifies which dirs are active by default
+age_recipients = [             # optional, recipients for encrypted dotfiles
+    "age1..."
+]
 ```
 
 The `dots_dirs` field defines which subdirectories contain dotfiles. This enables:
@@ -404,6 +531,5 @@ preventing updates, which means automated usage is out of the question. Being
 written in Bash, it is also quite slow. It also does not allow applying
 dotfiles from multiple different repositories, something which Stow supports
 very well by accident. 
-
 
 

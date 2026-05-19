@@ -5,6 +5,14 @@ They are just for reference, to properly learn instantOS, refer to the documenta
 
 You can access this list by pressing super+F1
 
+
+::: info
+These apply only to the custom window manager/compositor instantWM, which is in
+an experimental state right now. 
+:::
+
+
+
 ## General
 
 | Binding                      | Functionality                                     |
