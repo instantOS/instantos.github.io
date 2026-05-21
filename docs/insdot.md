@@ -168,9 +168,14 @@ target: ~/.config/app/secrets.toml
 ins dot keys generate
 ```
 
-This creates a local age identity at `~/.config/instant/encryption/identity`.
+This creates a local age identity stored as a file in `~/.config/instant/encryption/identities/`.
+By default, the key is named after your machine's hostname. You can specify a custom name:
 
-Use `--force` to overwrite an existing key:
+```bash
+ins dot keys generate --name work-machine
+```
+
+Use `--force` to overwrite an existing key with the same name:
 
 ```bash
 ins dot keys generate --force
@@ -180,9 +185,8 @@ Identity discovery checks these sources (in priority order):
 
 1. **`$AGE_IDENTITY`** — colon-separated paths to identity files (highest priority)
 2. **`encryption_keys`** — list of identity file paths in `~/.config/instant/dots.toml`
-3. **`~/.config/instant/encryption/identity`** — single identity file from `ins dot keys generate`
-4. **`~/.config/instant/encryption/identities/*`** — every file in the identities directory
-5. **`~/.ssh/id_ed25519`**, **`~/.ssh/id_ecdsa`**, **`~/.ssh/id_rsa`** — conventional
+3. **`~/.config/instant/encryption/identities/*`** — every file in the identities directory
+4. **`~/.ssh/id_ed25519`**, **`~/.ssh/id_ecdsa`**, **`~/.ssh/id_rsa`** — conventional
    unencrypted SSH private keys (fallback)
 
 Both native age identities (`AGE-SECRET-KEY-1...`) and SSH private keys (OpenSSH
@@ -191,6 +195,14 @@ currently not supported.
 
 `ins dot keys show` prints the machine's public key(s) from any of the above
 paths.
+
+Other key management commands:
+
+```bash
+ins dot keys list          # List all local encryption keys with authorization info
+ins dot keys rename <old> <new>   # Rename a local key file
+ins dot keys remove <name> # Remove a local key file
+```
 
 ### 2. Authorize recipients in the repository
 
@@ -265,8 +277,11 @@ ins dot keys show
 ins dot keys status
 ins dot keys status --repo my-dots
 
-# Replace recipients and re-encrypt all tracked .age files in that repo
+# Rotate recipients and re-encrypt all tracked .age files in that repo
 ins dot keys rotate --repo my-dots --recipients "age1newrecipient..."
+
+# Deauthorize a recipient (removes them from the recipient list and re-encrypts)
+ins dot keys deauthorize "age1..." --repo my-dots
 ```
 
 `rotate` and `authorize` both verify you can decrypt existing encrypted files
