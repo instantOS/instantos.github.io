@@ -94,6 +94,19 @@ This is a hybrid of the tiling and monocle layout. The master area is tiled
 normally, but the stack works like the monocle layout with all windows layered
 on top of each other.
 
+## Gaps
+
+Tiling layouts support configurable gaps between windows and the screen edges. Gaps are configured in the `[layout]` section of `config.toml`:
+
+```toml
+[layout]
+inner_gap = 8    # spacing between windows
+outer_gap = 8    # spacing to screen edges
+smart_gaps = true # no gaps for a single window
+```
+
+See [Configuration](./wmsettings.md#layout-gaps) for the full list of settings.
+
 ## Switching layouts
 
 You can toggle through all layouts by left/right clicking on the layout

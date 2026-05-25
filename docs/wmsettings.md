@@ -212,6 +212,29 @@ Valid values:
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
 
+## Layout Gaps
+
+Gaps add spacing between tiled windows and between windows and the screen edges.
+
+```toml
+[layout]
+inner_gap = 8
+outer_gap = 8
+smart_gaps = true
+monocle_gaps = false
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `inner_gap` | integer | `0` | Spacing between tiled windows (logical pixels) |
+| `outer_gap` | integer | `0` | Spacing between tiled windows and the monitor edge (logical pixels) |
+| `smart_gaps` | boolean | `false` | Disable all gaps when only one or zero tiled windows are present |
+| `monocle_gaps` | boolean | `false` | Apply gaps to the monocle layout (gaps are disabled in monocle by default) |
+
+Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0.
+
+Gaps only affect tiling layouts. Floating windows are not affected.
+
 ## Custom Keybinds
 
 Add or override keybinds:
