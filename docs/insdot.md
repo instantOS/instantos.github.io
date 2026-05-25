@@ -152,27 +152,32 @@ contents of any `.insignore` file.
 
 ## Skipping paths
 
-When you delete a tracked dotfile (e.g. `init.vim` after switching to
-`init.lua`), `ins dot update` will restore it because the file is still
-in the repository. To prevent a tracked file from being restored during
-`update`/`apply` without removing it from the repo:
+Exclude paths from all dotfile operations. Tracked files at skipped paths
+will not be created, updated, or applied. Skipping a directory excludes
+everything under it.
 
 ```bash
-# Add a path to the skip list (relative to ~)
-ins dot skip add .config/nvim/init.vim
-
-# List all skipped paths
-ins dot skip list
-
-# Remove a path from the skip list
-ins dot skip remove .config/nvim/init.vim
+ins dot skip add .config/nvim/init.vim   # skip a single file
+ins dot skip add .config/nvim            # skip an entire directory
+ins dot skip list                          # show all skipped paths
+ins dot skip remove .config/nvim           # remove from skip list
 ```
 
 Paths are stored in `~/.config/instant/dots.toml` under `skipped_paths`.
 
+Common use cases:
+
+- **Migrating between configs** — you switched from `init.vim` to `init.lua`
+  and want the old file gone for good instead of restored on every update.
+- **Machine-local exclusions** — a file is useful on other machines but you
+  don't want it on this one (e.g., GPU-specific Xorg config).
+- **Temporary removal** — stop a file from being managed without deleting it
+  from the repo or having to manually modify it to trigger the user-modified
+  skip (which only works while the file still exists).
+
 This is different from `.insignore` files, which only prevent files from
 being *added* to a repository. `ins dot skip` prevents already-tracked
-files from being restored to your home directory.
+files from reaching your home directory.
 
 ## Encrypted dotfiles (age)
 
