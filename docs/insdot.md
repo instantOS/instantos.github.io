@@ -150,6 +150,30 @@ ins dot add --all .ssh --force
 `--force` only affects the current add operation. It does not change the
 contents of any `.insignore` file.
 
+## Skipping paths
+
+When you delete a tracked dotfile (e.g. `init.vim` after switching to
+`init.lua`), `ins dot update` will restore it because the file is still
+in the repository. To prevent a tracked file from being restored during
+`update`/`apply` without removing it from the repo:
+
+```bash
+# Add a path to the skip list (relative to ~)
+ins dot skip add .config/nvim/init.vim
+
+# List all skipped paths
+ins dot skip list
+
+# Remove a path from the skip list
+ins dot skip remove .config/nvim/init.vim
+```
+
+Paths are stored in `~/.config/instant/dots.toml` under `skipped_paths`.
+
+This is different from `.insignore` files, which only prevent files from
+being *added* to a repository. `ins dot skip` prevents already-tracked
+files from being restored to your home directory.
+
 ## Encrypted dotfiles (age)
 
 `ins dot` supports storing tracked sources as `*.age` files while applying
@@ -368,8 +392,8 @@ hash_cleanup_days = 30              # cleanup old hashes after N days (default: 
 repos_dir = "~/.local/share/instant/dots"
 database_dir = "~/.local/share/instant/instant.db"
 
-# Paths to never manage (e.g., sensitive configs)
-ignored_paths = [
+# Paths to skip during apply/update (prevents tracked files from being restored)
+skipped_paths = [
     "~/.ssh",
     "~/.gnupg"
 ]
