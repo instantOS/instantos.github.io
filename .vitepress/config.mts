@@ -119,6 +119,7 @@ export default defineConfig({
           items: [
             { text: 'Sway', link: '/docs/sway' },
             { text: 'Hyprland', link: '/docs/hyprland' },
+            { text: 'Niri', link: '/docs/niri' },
           ]
         },
         {
