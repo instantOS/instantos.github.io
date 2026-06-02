@@ -55,6 +55,49 @@ will pull them and install them to your home directory.
 `ins dot` will detect dotfiles modified by the user and ignore them during
 updates, while continuing to update untouched dotfiles. 
 
+## Root-owned dotfiles
+
+`ins dot` also supports dotfiles that live outside your home directory, such
+as root-owned configs under `/etc`.
+
+Root targets are stored in repository subdirectories whose name ends in
+`_root`. For example, a file like `dots_root/etc/ssh/sshd_config` is treated as
+the source for `/etc/ssh/sshd_config`.
+
+Example workflow:
+
+```bash
+# Add a root-owned config
+ins dot add /etc/ssh/sshd_config
+
+# Inspect it with root paths included
+ins dot status /etc/ssh/sshd_config --include-root
+
+# Apply the normal set plus any root targets
+ins dot apply --include-root
+
+# Reset a root target
+ins dot reset /etc/ssh/sshd_config --include-root
+```
+
+When `ins dot apply` or `ins dot reset` needs to write root-owned targets, it
+relaunches itself through `sudo` so the files can be written to `/` or `/etc`
+as needed.
+
+`--include-root` includes root targets alongside home targets. It does not make
+the command root-only.
+
+The following commands accept `--include-root` to include root targets in their
+normal output and operations:
+
+- `ins dot apply`
+- `ins dot reset`
+- `ins dot update`
+- `ins dot status`
+- `ins dot diff`
+- `ins dot encrypt`
+- `ins dot decrypt`
+
 ```
 ins dot status
 ```
@@ -595,5 +638,3 @@ preventing updates, which means automated usage is out of the question. Being
 written in Bash, it is also quite slow. It also does not allow applying
 dotfiles from multiple different repositories, something which Stow supports
 very well by accident. 
-
-
