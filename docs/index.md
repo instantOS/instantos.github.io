@@ -7,6 +7,15 @@ to documentation pages where you can learn those things.
 Each feature has a short video explaining it or a text based description below
 it if you prefer that.
 
+If you are using an AI assistant, there is also an Agent Skill for instantOS
+that keeps the assistant aligned with the current docs and command behavior.
+
+Install it with:
+
+```bash
+npx skills add instantOS/instantos.github.io
+```
+
 ## Useful links
 
 - [Keybindings](hotkeys.md)
