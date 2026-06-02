@@ -609,11 +609,17 @@ External repositories use a fixed `.` layout: the repository root is the
 dotfile directory. For example, `.config/foo/config.toml` in the repo targets
 `~/.config/foo/config.toml`.
 
+If your repository keeps dotfiles under another directory, such as
+`config/.config/nvim/init.lua`, the automatic external mode will not pick that
+up as `~/.config/nvim/init.lua`. Add an `instantdots.toml` file and configure
+`dots_dirs = ["config"]` instead.
+
 There are a few limitations:
 
 - Repository metadata is stored in `~/.config/instant/dots.toml`, not in the
   repository itself.
-- External repositories do not use custom `dots_dirs`.
+- External repositories do not use custom `dots_dirs`; use `instantdots.toml`
+  when you need a custom dotfile root directory.
 - Root-owned `_root` layouts are not supported for external repositories.
 
 This is a compatibility layer for existing dotfile repositories, not a full
