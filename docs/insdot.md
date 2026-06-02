@@ -589,6 +589,36 @@ preconfigured setup while still being able to customize any part of it
 without investing any extra effort. Putting `ins dot update` in a startup script
 is a well supported and intended use case. 
 
+## External repositories
+
+`ins dot` can manage existing dotfile repositories that were not created for
+instantOS. This is useful for yadm- or stow-style repositories where the files
+in the repository map directly to paths in your home directory.
+
+Example:
+
+```bash
+ins dot clone https://github.com/user/dotfiles
+```
+
+If the cloned repository does not contain `instantdots.toml`, `ins dot`
+automatically treats it as an external repository instead of rewriting it into
+the normal instantOS repository format.
+
+External repositories use a fixed `.` layout: the repository root is the
+dotfile directory. For example, `.config/foo/config.toml` in the repo targets
+`~/.config/foo/config.toml`.
+
+There are a few limitations:
+
+- Repository metadata is stored in `~/.config/instant/dots.toml`, not in the
+  repository itself.
+- External repositories do not use custom `dots_dirs`.
+- Root-owned `_root` layouts are not supported for external repositories.
+
+This is a compatibility layer for existing dotfile repositories, not a full
+replacement for yadm or GNU Stow.
+
 ## Philosophy
 
 ### Do not reinvent the wheel
@@ -604,7 +634,9 @@ ability, the program will keep working on what it can without risk of doing
 anything the user does not want. 
 
 You are even welcome to use `ins dot` alongside other dotfile managers like
-yadm (which is what I do myself).
+yadm (which is what I do myself). If you want `ins dot` to manage an existing
+flat dotfile repository directly, clone it as an external repository as
+described above.
 
 ## Comparison with others
 
