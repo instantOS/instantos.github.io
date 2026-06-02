@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "instantOS",
+      "description": "Skills for instantOS, instantCLI, and related user-facing docs.",
+      "skills": ["instantos"]
+    }
+  ]
+}
