@@ -96,7 +96,7 @@ elsewhere.
 This includes but is not limited to the following
 
 - instantMENU
-- instantWM
+- instantWM — see [instantWM themes](/docs/wmsettings#themes)
 - Kitty
 - Sway
 - Hyprland

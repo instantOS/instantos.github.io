@@ -26,6 +26,59 @@ includes = [
 
 Included files are merged into the main configuration. Paths can be absolute or relative to the main config file. Circular includes are detected and prevented.
 
+## Themes
+
+instantWM ships with several built-in colour themes that style the status bar,
+tags, window titles, borders and close buttons together. Set the top-level
+`theme` key to pick one:
+
+```toml
+theme = "nord"
+```
+
+That single line replaces the entire `[colors]` table — every colour is derived
+from the theme's palette. Themes are resolved when the config is read, so run
+`instantwmctl reload` (or restart instantWM) after changing `theme`.
+
+### Built-in themes
+
+| Name | Description |
+|------|-------------|
+| `instantos` | The default theme. Dark background with blue, green, yellow and red accents. |
+| `catppuccin-latte` | Light pastel theme (Catppuccin Latte). |
+| `catppuccin-frappe` | Dark, muted theme (Catppuccin Frappé). |
+| `catppuccin-macchiato` | Dark theme (Catppuccin Macchiato). |
+| `catppuccin-mocha` | Dark theme (Catppuccin Mocha). |
+| `nord` | Dark, cool-blue theme (Nord). |
+| `gruvbox` | Dark, warm earth-tone theme (Gruvbox). |
+
+### Overriding theme colours
+
+A theme is only the base. Anything you set under `[colors]` is merged on top of
+the selected theme, so you can keep a theme and tweak individual colours rather
+than redefining the whole palette:
+
+```toml
+theme = "catppuccin-mocha"
+
+# Keep the whole Mocha palette, but make the focused tiled-window
+# border pink instead of the theme's blue.
+[colors.border]
+tile_focus = "#f5c2e7"
+```
+
+See [Color Schemes](#color-schemes) for every key you can override. Because a
+theme resolves to the same `[colors]` structure, you can also keep a theme
+choice (and any overrides) in its own file and pull it in with
+[includes](#config-includes).
+
+:::warning
+An invalid theme name is a config parse error. instantWM logs a warning and
+falls back to the full default configuration, so the rest of the file is
+ignored until the name is fixed — double-check the spelling against the table
+above.
+:::
+
 ## Full Configuration Example
 
 ```toml
