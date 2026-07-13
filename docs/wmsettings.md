@@ -72,12 +72,24 @@ theme resolves to the same `[colors]` structure, you can also keep a theme
 choice (and any overrides) in its own file and pull it in with
 [includes](#config-includes).
 
-:::warning
-An invalid theme name is a config parse error. instantWM logs a warning and
-falls back to the full default configuration, so the rest of the file is
-ignored until the name is fixed — double-check the spelling against the table
-above.
+:::info
+An unknown theme name is not fatal. instantWM prints a warning and falls back to
+the default theme (`instantos`) — the rest of your config still loads normally.
 :::
+
+### Switching themes at runtime
+
+You can switch themes on the running WM without editing the config:
+
+```bash
+instantwmctl theme           # print the active theme
+instantwmctl theme nord      # switch to a theme
+instantwmctl theme --list    # list available themes
+```
+
+The bar, borders and tags recolour immediately. This is a runtime change only —
+`instantwmctl reload` reverts to whatever `theme` is set to in `config.toml`.
+To make a theme permanent, set `theme = "..."` in the config.
 
 ## Full Configuration Example
 
