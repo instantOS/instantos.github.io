@@ -48,10 +48,9 @@ Provides the iconf utility
 
 
 
-### [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank)
+### [instantSETTINGSfrank](https://github.com/instantOS/instantSETTINGSfrank) (legacy)
 
-The GUI control panel for configuration of lots of different things
-used to build the instantsettings package
+The former GUI control panel. Settings now live in `ins settings`.
 
  
 ### [liveutils](https://github.com/instantOS/liveutils)
@@ -66,7 +65,7 @@ A wrapper script for instantMENU, `fzf` and `dialog`. With it you're able to cre
 prompts that will work in a graphical environment and in a terminal.
 It will use the different programs depending on the mode but will always accept
 the same options and generate the same output.
-It is being used in the instantARCH installer.
+It was used by the legacy instantARCH installer.
  
 ### [mirror](https://github.com/instantOS/mirror)
  
