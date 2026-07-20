@@ -36,9 +36,9 @@ See [instantwmctl](instantwmctl.md) for the complete command reference.
 ## instantASSIST
 
 
-## instantARCH
+## ins arch
 
-The custom instantOS installer
+The custom instantOS installer, built into `ins`. See [the installation guide](insarch.md).
 
 
 ## instantPASS

@@ -17,9 +17,10 @@ desktops work, if Vulkan does not work, then you might have forgotten to restart
 after an update. 
 :::
 
-## instantupdate
+## `ins update`
 
-There is a built-in update tool called `ins update`. Run `ins update` in a
+The legacy `instantupdate` package has been replaced by the update command built
+into instantCLI. Run `ins update` in a
 terminal to update the entire system, including pacman packages, config files
 and anything else which is found to be outdated. Most of the work here is being
 done by `topgrade` as a universal updater, with some instantOS specific
@@ -42,6 +43,5 @@ ins settings apply
 ```
 
 See [ins CLI](ins.md) for the broader command reference.
-
 
 

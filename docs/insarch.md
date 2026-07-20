@@ -1,16 +1,5 @@
 # Arch installation with `ins arch`
 
-::: info
-There are two installers in circulation right now:
-
-- `ins arch` (Rust, instantCLI): the new installer command
-- `instantARCH` (bash): the legacy installer used by older ISOs and the `instantos.io/install` script
-
-Both are documented below so you can match what you see on your system.
-:::
-
-## `ins arch` (instantCLI)
-
 `ins arch` is the Rust-based installer built into instantCLI. It follows the
 Arch install flow (partitioning, pacstrap, fstab, bootloader) while layering
 instantOS defaults and options on top. If you want a clean Arch system, you can
@@ -87,7 +76,7 @@ ins arch ask <question-id>
 ins arch ask --output-config /tmp/instantos-questions.toml
 ```
 
-#### `ins arch exec [--step <step-id>]`
+#### `ins arch exec [step-id]`
 
 Execute installation steps based on a questions file.
 
@@ -104,4 +93,3 @@ Show the post-install menu (reboot, shutdown, or continue in live session).
 
 - `/etc/instant/questions.toml` stores the generated installation answers
 - `/var/log/instantos/install.log` captures the installer logs
-

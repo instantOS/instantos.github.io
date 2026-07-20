@@ -6,7 +6,6 @@ It uses a custom window manager/compositor with a bunch of facilitating custom s
 to provide an experience similar to a desktop environment but as **powerful and
 fast as a window manager**. In fact, all pieces being made for each other
 allows things that wouldn't be possible by just editing dotfiles.
-It also has its own installer **[instantARCH](https://github.com/instantOS/instantARCH)**
+It also has its own installer, **[`ins arch`](/docs/insarch)**,
 and **[instantNIX](https://github.com/instantOS/instantNIX/)** provides packages for
 the [Nix](https://nixos.org/explore.html) universal package manager and [NixOS](https://nixos.org).
-

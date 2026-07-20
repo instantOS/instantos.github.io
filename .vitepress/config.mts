@@ -49,7 +49,6 @@ export default defineConfig({
             { text: 'Links', link: '/links' },
             { text: 'Colors', link: '/development/colors' },
             { text: 'iConf', link: '/development/iconf' },
-            { text: 'instantARCH', link: '/development/instantARCH' },
             { text: 'instantMENU', link: '/development/instantMENU' },
             { text: 'Menu API', link: '/development/menu' },
             { text: 'Status', link: '/development/status' }

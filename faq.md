@@ -58,16 +58,12 @@ This works on most Archlinux variants, too.
 
 ## How do I build an instantOS component from the source repos
 
-On instantOS:
-
-- instantSETTINGS: instantOS → instantOS development tools → yes
-- wait for the installation to finish
-- Use `ibuild` from the command line, `ibuild help` for available commands and some help
+On instantOS, run `ins dev install` and choose the component to build and install.
 
 For instance, if you want to build the latest instantWM from the GitHub source repository:
 
 ```
-ibuild install instantwm
+ins dev install
 cd ~/.config/instantos/ibuild/extra/instantwm/src/instantwm-git  # where the files are
 ```
 
@@ -213,24 +209,23 @@ systemd-swap.
 
 ## Calamares
 
-instantOS used to use Calamares but switched to a custom installer called
-instantARCH for several reasons.
+instantOS uses its own installer, `ins arch`, instead of Calamares. The older
+Bash implementation was called `instantARCH`.
 
 - Calamares has higher system
 requirements than the OS itself which would lock out a potential userbase.
-- Calamares only has official support for amd64 while instantARCH can easily
-be ported to any architecture.
+- The installer can share code and interfaces with the rest of instantCLI.
 - Calamares also makes adding features to it quite
-complicated and is still quite limiting in that regard. instantARCH already
+complicated and is still quite limiting in that regard. `ins arch` already
 lets you do things like choose kernel or extra packages, both of which would be
 difficult to do with Calamares.
-- instantARCH fits the system aesthetic a lot better while QT looks quite out
+- `ins arch` fits the system aesthetic a lot better while Qt looks quite out
   of place
-- instantARCH can run as a CLI off any up-to-date Arch ISO
+- `ins arch` can run as a CLI from any up-to-date Arch ISO
 
 In the current state of development it is also important to be able to adjust
 the installation process without releasing a new ISO every time.  That is why
-instantARCH is netinstall only at the moment. An option to install without
+`ins arch` is netinstall only at the moment. An option to install without
 internet access will be added in the future.
 
 ## Why is this not a Manjaro flavor

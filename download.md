@@ -2,11 +2,13 @@
 
 ## Installer
 
-Run this from an Arch Linux live ISO to run the instantOS installer:
+Run this as root from an up-to-date Arch Linux live ISO:
 
 ```sh
-bash <(curl -L instantos.io/install)
+bash <(curl -fsSL instantos.io/install)
 ```
+
+This installs the latest `ins` release and starts `ins arch install`.
 
 ## instantOS utilities
 
