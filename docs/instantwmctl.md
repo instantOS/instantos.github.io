@@ -21,7 +21,7 @@ Global options:
 | `status` | Show instantWM version, backend, monitor count, and window count |
 | `reload` | Reload configuration from disk |
 | `monitor` | Inspect monitors and change output settings |
-| `window` | List windows, inspect geometry, or close a window |
+| `window` | List or inspect windows, set geometry, or close a window |
 | `tag` | Switch tags and rename/reset tag names |
 | `toggle` | Toggle runtime behavior flags |
 | `spawn` | Spawn a command through instantWM |
@@ -29,6 +29,7 @@ Global options:
 | `tag-mon` | Move the focused window to another monitor |
 | `follow-mon` | Move the focused window to another monitor and follow it |
 | `layout` | Set the current layout |
+| `theme` | Inspect, list, or switch the runtime colour theme |
 | `border` | Set the focused window border width |
 | `special-next` | Set the special-next mode |
 | `keyboard` | Manage keyboard layouts |
@@ -37,6 +38,9 @@ Global options:
 | `mode` | List, enter, or toggle configured modes |
 | `update-status` | Replace the bar status text |
 | `wallpaper` | Set wallpaper using `swaybg` on Wayland or `feh` on X11 |
+| `dpms` | Change display power state |
+| `config` | Print defaults or inspect/change runtime config values |
+| `quit` | Ask instantWM to quit |
 
 ## Common examples
 
@@ -68,17 +72,21 @@ instantwmctl scratchpad toggle
 
 ## Layouts
 
-`instantwmctl layout <name>` accepts the layouts exported by `LayoutKind`:
+`instantwmctl layout <name>` accepts:
 
 - `tile`
 - `grid`
 - `floating`
-- `monocle`
-- `vert`
-- `deck`
-- `overview`
-- `bstack`
-- `horiz`
+- `maximized`
+- `bottom-stack`
+- `horiz-grid`
+- `bstack-horiz`
+
+`tile`, `grid`, `bottom-stack`, `horiz-grid`, and `bstack-horiz` are one-shot
+transformations of the persistent manual tree, not automatic algorithms which
+rerun after every change. `floating` and `maximized` select persistent
+presentation modes. Layout names are canonical rather than maintaining aliases
+for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-layouts).
 
 ## Window commands
 
@@ -86,8 +94,10 @@ instantwmctl scratchpad toggle
 | --- | --- |
 | `instantwmctl window list` | List windows |
 | `instantwmctl window list <window-id>` | List a specific window by id |
-| `instantwmctl window geom` | Print the focused window geometry |
-| `instantwmctl window geom <window-id>` | Print geometry for a specific window |
+| `instantwmctl window info` | Inspect the focused window, including geometry |
+| `instantwmctl window info <window-id>` | Inspect a specific window |
+| `instantwmctl window resize --x X --y Y --width W --height H` | Set focused-window geometry |
+| `instantwmctl window resize <window-id> --monitor <output> --x X --y Y --width W --height H` | Set a specific window's monitor-relative geometry |
 | `instantwmctl window close` | Close the focused window |
 | `instantwmctl window close <window-id>` | Close a specific window |
 
@@ -158,7 +168,7 @@ instantwmctl toggle hide-tags disable
 | `instantwmctl keyboard status` | Show the active layout |
 | `instantwmctl keyboard next` | Switch to the next configured layout |
 | `instantwmctl keyboard prev` | Switch to the previous configured layout |
-| `instantwmctl keyboard set us de(nodeadkeys)` | Replace the configured layout list |
+| `instantwmctl keyboard set us 'de(nodeadkeys)'` | Replace the configured layout list |
 | `instantwmctl keyboard add fr` | Add a layout |
 | `instantwmctl keyboard remove fr` | Remove a layout |
 
@@ -208,6 +218,10 @@ Valid identifiers include `type:touchpad`, `type:pointer`, `type:keyboard`, and 
 
 See [WM Settings](wmsettings.md) and [Modes](modes.md) for how to define them.
 
+The built-in `placement` mode is visible in `mode list`, but `mode set
+placement` is rejected because entering it requires a focused tiled source and
+a validated destination set. Use `instantwmctl action begin_tree_placement`.
+
 ## Named actions
 
 `instantwmctl action --list` prints the actions exported by the current build. This is the most reliable way to inspect what can be called directly, because it comes from the same metadata that the parser uses.
@@ -219,8 +233,24 @@ instantwmctl action --list
 instantwmctl action zoom
 instantwmctl action set_layout tile
 instantwmctl action set_mode resize
-instantwmctl action keyboard_layout us(intl)
+instantwmctl action keyboard_layout 'us(intl)'
 ```
+
+## Themes and runtime configuration
+
+```bash
+instantwmctl theme                 # current theme
+instantwmctl theme --list          # available themes
+instantwmctl theme nord            # switch until config is reloaded
+
+instantwmctl config default        # commented default config
+instantwmctl config list           # runtime-editable keys and values
+instantwmctl config get layout.inner_gap
+instantwmctl config set layout.inner_gap 12
+```
+
+`instantwmctl config set` changes runtime state. Put persistent choices in
+`~/.config/instantwm/config.toml`.
 
 ## Related pages
 
