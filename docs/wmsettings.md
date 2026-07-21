@@ -118,8 +118,8 @@ normal = { fg = "#6E7889", bg = "#292F3A", detail = "#3E485B" }
 minimized = { fg = "#6E7889", bg = "#121212", detail = "#121212" }
 sticky = { fg = "#F9D71C", bg = "#292F3A", detail = "#3E485B" }
 sticky_focus = { fg = "#121212", bg = "#F9D71C", detail = "#F9D71C" }
-overlay = { fg = "#89B3F7", bg = "#292F3A", detail = "#3E485B" }
-overlay_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
+edge_scratchpad = { fg = "#89B3F7", bg = "#292F3A", detail = "#3E485B" }
+edge_scratchpad_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
 
 [colors.window.hover]
 focus = { fg = "#DFDFDF", bg = "#353D4B", detail = "#475166" }
@@ -127,8 +127,8 @@ normal = { fg = "#7E8899", bg = "#353D4B", detail = "#475166" }
 minimized = { fg = "#7E7889", bg = "#1E2229", detail = "#1E2229" }
 sticky = { fg = "#F9D71C", bg = "#353D4B", detail = "#475166" }
 sticky_focus = { fg = "#121212", bg = "#F9D71C", detail = "#F9D71C" }
-overlay = { fg = "#89B3F7", bg = "#353D4B", detail = "#475166" }
-overlay_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
+edge_scratchpad = { fg = "#89B3F7", bg = "#353D4B", detail = "#475166" }
+edge_scratchpad_focus = { fg = "#121212", bg = "#89B3F7", detail = "#89B3F7" }
 
 [colors.close_button.normal]
 normal = { fg = "#6E7889", bg = "#292F3A", detail = "#3E485B" }
@@ -225,8 +225,8 @@ Each element has three colors:
 - `minimized`: Minimized window
 - `sticky`: Sticky window (visible on all tags)
 - `sticky_focus`: Sticky window that is focused
-- `overlay`: Window on overlay
-- `overlay_focus`: Focused window on overlay
+- `edge_scratchpad`: Window assigned to the edge overlay
+- `edge_scratchpad_focus`: Focused edge-overlay window
 
 **Close Button:**
 - `normal`: Default close button
@@ -277,16 +277,20 @@ Valid values:
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
 
-## Layout Gaps
+## Layout tree and gaps
 
-Gaps add spacing between tiled windows and between windows and the screen edges.
+The layout section controls spacing and interaction with instantWM's persistent
+manual tree:
 
 ```toml
 [layout]
 inner_gap = 8
 outer_gap = 8
 smart_gaps = true
-monocle_gaps = false
+maximized_gaps = false
+keyboard_resize_step = 0.05
+minimum_weight = 0.15
+pointer_edge_fraction = 0.34
 ```
 
 | Setting | Type | Default | Description |
@@ -294,11 +298,17 @@ monocle_gaps = false
 | `inner_gap` | integer | `0` | Spacing between tiled windows (logical pixels) |
 | `outer_gap` | integer | `0` | Spacing between tiled windows and the monitor edge (logical pixels) |
 | `smart_gaps` | boolean | `false` | Disable all gaps when only one or zero tiled windows are present |
-| `monocle_gaps` | boolean | `false` | Apply gaps to the monocle layout (gaps are disabled in monocle by default) |
+| `maximized_gaps` | boolean | `false` | Apply configured gaps during maximized presentation |
+| `keyboard_resize_step` | float | `0.05` | Fraction of an axis transferred by one tree resize command |
+| `minimum_weight` | float | `0.15` | Preferred minimum weight of a child in a split run |
+| `pointer_edge_fraction` | float | `0.34` | Fraction of a target occupied by pointer placement edge bands |
 
 Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0.
 
-Gaps only affect tiling layouts. Floating windows are not affected.
+Floating windows are not affected.
+
+Layout presets such as Grid are one-shot tree rewrites. These settings govern
+the manual edits which remain afterward; see [Layouts](layouts.md).
 
 ## Custom Keybinds
 
@@ -323,23 +333,17 @@ modifiers = ["Super"]
 key = "f"
 action = { unbind = true }
 
-# Set layout
+# Apply a tree preset
 [[keybinds]]
 modifiers = ["Super"]
-key = "t"
-action = { set_layout = "tile" }
+key = "g"
+action = { set_layout = "grid" }
 
 # Adjust master window count
 [[keybinds]]
 modifiers = ["Super"]
 key = "i"
-action = { inc_nmaster = 1 }
-
-# Adjust master window factor
-[[keybinds]]
-modifiers = ["Super"]
-key = "h"
-action = { set_mfact = -0.05 }
+action = { inc_master_count = 1 }
 
 # Enter a mode
 [[keybinds]]
@@ -355,78 +359,37 @@ action = { set_mode = "resize" }
 - `Ctrl` or `Control` - Control key
 - `Alt` or `Mod1` - Alt key
 
-### Available Actions
+### Available actions
 
-You can run actions directly using `instantwmctl action <name>` or define them in your config. Use `instantwmctl action --list` to see all available actions.
+Simple actions use a string, for example `action = "begin_tree_placement"` or
+`action = "toggle_tiling_maximized"`. The most relevant tree actions are:
 
-**Simple Actions** (run with `instantwmctl action <name>`):
+- `focus_left/right/up/down`
+- `key_move_left/right/up/down`
+- `key_resize_left/right/up/down`
+- `tree_grow` and `tree_shrink`
+- `begin_tree_placement`
+- `layout_tile`, `layout_grid`, `layout_horiz_grid`,
+  `layout_bottom_stack`, and `layout_bstack_horiz`
+- `layout_float`, `layout_maximized`, and `toggle_tiling_maximized`
+- `edge_scratchpad_create` and `edge_scratchpad_toggle`
 
-**Window Management:**
-- `zoom` - Move the focused window into the master area
-- `kill` - Close focused window
-- `shut_kill` - Force close (SIGKILL)
-- `quit` - Quit instantWM
-- `toggle_maximized` - Toggle maximized floating
-- `center_window` - Center floating window
-- `toggle_floating` - Toggle the focused window between tiled and floating
-- `draw_window` - Start interactive draw/resize mode
-- `begin_keyboard_move` - Move the focused window with the keyboard
+Do not copy a static action catalog from the web and assume it matches a custom
+build. `instantwm --list-actions` or `instantwmctl action --list` prints the
+authoritative, parser-backed list with descriptions and argument examples.
 
-**Focus:**
-- `focus_next` / `focus_prev` - Next/previous window
-- `focus_up` / `focus_down` / `focus_left` / `focus_right` - Directional focus
-- `focus_last` - Focus previously focused window
-- `down_key` / `up_key` - Alt-tab forward/backward
+Structured actions accepted in TOML are:
 
-**Layouts:**
-- `layout_tile` / `layout_float` / `layout_monocle` / `layout_grid` - Set layout
-- `toggle_layout` - Toggle between current and previous layout
-- `cycle_layout_next` / `cycle_layout_prev` - Cycle layouts
+- `spawn`: `action = { spawn = ["alacritty"] }`
+- `unbind`: `action = { unbind = true }`
+- `none`: use `action = "none"` to remove a binding (equivalent to `unbind`)
+- `set_layout`: `action = { set_layout = "tile" }`
+- `focus_stack`: `action = { focus_stack = "next" }`
+- `inc_master_count`: `action = { inc_master_count = 1 }`
+- `keyboard_layout`: `action = { keyboard_layout = "us(intl)" }`
+- `set_mode`: `action = { set_mode = "resize" }`
 
-**Master Area:**
-- `inc_nmaster` / `dec_nmaster` - Increase/decrease master windows
-- `mfact_grow` / `mfact_shrink` - Adjust master area size
-
-**Tags:**
-- `view_all` - Show all tags
-- `tag_all` - Send window to all tags
-- `scroll_left` / `scroll_right` - Switch tags
-- `shift_tag_left` / `shift_tag_right` - Move window to adjacent tag
-- `shift_view_left` / `shift_view_right` - Move view to adjacent tag
-- `last_view` - View previously viewed tags
-- `follow_view` - Follow client to its tags
-- `win_view` - View tags of focused client
-
-**Monitoring:**
-- `focus_mon_next` / `focus_mon_prev` - Next/previous monitor
-- `follow_mon_next` / `follow_mon_prev` - Move window and follow to next/previous monitor
-
-**Special Features:**
-- `toggle_overview` - Toggle overview mode
-- `toggle_fullscreen_overview` - Toggle fullscreen overview
-- `toggle_sticky` - Toggle sticky (visible on all tags)
-- `toggle_bar` - Toggle status bar
-- `toggle_show_tags` - Show or hide the tag bar
-- `toggle_alt_tag` - Toggle alternative tag display
-- `toggle_animated` - Toggle animations
-- `create_overlay` - Create overlay from selected window
-- `set_overlay` - Turn the focused window into the active overlay
-- `scratchpad_toggle` - Toggle scratchpad
-- `toggle_fake_fullscreen` - Toggle fake fullscreen on X11
-- `next_keyboard_layout` / `prev_keyboard_layout` - Switch keyboard layout
-
-**Structured Actions** (used in config, take arguments):
-
-- `spawn` - Spawn a command: `action = { spawn = ["alacritty"] }`
-- `unbind` - Remove a keybind: `action = { unbind = true }`
-- `set_layout` - Set layout: `action = { set_layout = "tile" }`
-- `focus_stack` - Focus stack direction: `action = { focus_stack = "next" }`
-- `set_mfact` - Set master factor: `action = { set_mfact = 0.5 }`
-- `inc_nmaster` - Change master count: `action = { inc_nmaster = 1 }`
-- `keyboard_layout` - Set keyboard layout: `action = { keyboard_layout = "us(intl)" }`
-- `set_mode` - Enter a mode: `action = { set_mode = "resize" }`
-
-See [Modes](./modes.md) for detailed documentation on defining and using modes.
+See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
 ## Control Commands
 
@@ -442,12 +405,12 @@ instantwmctl --json action --list
 instantwmctl window list
 
 # Switch to tag
-instantwmctl tag 2
+instantwmctl tag view 2
 
 # Set layout by name
 instantwmctl layout tile
 instantwmctl layout grid
-instantwmctl layout monocle
+instantwmctl layout maximized
 
 # Toggle features
 instantwmctl toggle animated
@@ -468,9 +431,8 @@ instantwmctl keyboard list
 instantwmctl update-status "Hello World"
 ```
 
-This outputs a table of all actions with their descriptions and argument examples.
-
-You can also get JSON output:
+The action-list command outputs descriptions and argument examples. JSON is
+also available:
 
 ```bash
 instantwmctl --json action --list
@@ -492,47 +454,11 @@ Or set status manually:
 instantwmctl update-status "My Status"
 ```
 
-## Custom Modes
+## Custom modes
 
-Create sway-like modes with their own keybindings:
-
-```toml
-[modes.resize]
-description = "Resize"
-
-[[modes.resize.keybinds]]
-key = "h"
-action = { set_mfact = -0.05 }
-
-[[modes.resize.keybinds]]
-key = "l"
-action = { set_mfact = 0.05 }
-
-[[modes.resize.keybinds]]
-key = "j"
-action = { focus_stack = "next" }
-
-[[modes.resize.keybinds]]
-key = "k"
-action = { focus_stack = "prev" }
-
-[[modes.resize.keybinds]]
-key = "Escape"
-action = { set_mode = "default" }
-
-[[modes.resize.keybinds]]
-key = "Return"
-action = { set_mode = "default" }
-```
-
-Then bind a key to enter the mode:
-
-```toml
-[[keybinds]]
-modifiers = ["Super"]
-key = "r"
-action = { set_mode = "resize" }
-```
+Modes use the same binding format and can invoke the tree actions above. See
+[Modes](modes.md) for a complete, current example and for customizing the
+built-in `placement` mode.
 
 ## Monitor Configuration
 

@@ -15,5 +15,5 @@ clicking while hovering outside the green border.
 ## Locking windows
 
 Right clicking on the close button will lock the window. This will prevent the
-window from getting closed until it is unlocked again. Overlays will by
+window from getting closed until it is unlocked again. Edge overlays are
 default be locked but can be unlocked just like any other window.

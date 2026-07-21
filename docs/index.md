@@ -18,6 +18,7 @@ npx skills add instantOS/instantos.github.io
 
 ## Useful links
 
+- [instantWM documentation](instantwm.md)
 - [Keybindings](hotkeys.md)
 - [ins CLI reference](ins.md)
 - [resolvething duplicate and Syncthing conflict cleanup](resolvething.md)
