@@ -46,7 +46,7 @@ You need
 
 ### 1. Download ISO
 
-Head over to [https://instantos.io/download](https://instantos.io/download) and
+Head over to [https://instantos.io/download](/download) and
 download the latest ISO to your computer (can be any computer, does not have to
 be the one you plan on installing to).
 

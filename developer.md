@@ -29,7 +29,7 @@ I also do a bit of design and motion graphics using Blender
     <li><a href="mumble://FR2.imumble.nl:56778" class="button special icon fa-phone">Mumble</a></li>
     <li><a href="https://github.com/instantOS" class="button special icon fa-github">instantOS GitHub</a></li>
     <li><a href="https://reddit.com/u/paperbenni" class="button special icon fa-reddit">Reddit</a></li>
-    <li><a href="patreon.com/paperbenni" class="button special icon fa-patreon">Patreon</a></li>
+    <li><a href="https://patreon.com/paperbenni" class="button special icon fa-patreon">Patreon</a></li>
 </ul>
 
 ## Plaintext stuff

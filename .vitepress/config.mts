@@ -170,7 +170,7 @@ export default defineConfig({
             { text: 'Download', link: '/download' },
             { text: 'FAQ', link: '/faq' },
             { text: 'Support', link: '/support' },
-            { text: 'Discord', link: '/discord' },
+            { text: 'Discord', link: 'https://dsc.gg/instantos' },
             { text: 'Links', link: '/links' },
             { text: 'Releases', link: '/releases/beta6' },
             { text: 'Archive', link: '/archive/' },
@@ -182,7 +182,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/instantOS/instantOS' },
-      { icon: 'discord', link: 'https://discord.gg/instantos' },
+      { icon: 'discord', link: 'https://dsc.gg/instantos' },
       { icon: 'youtube', link: 'https://youtube.com/paperbenni' },
       { icon: 'web', link: 'https://paperbenni.xyz' },
       {

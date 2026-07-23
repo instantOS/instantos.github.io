@@ -15,46 +15,46 @@ it if you prefer that.
 
 ### Basics
 
-- [opening applications](https://instantos.io/youtube/apps)
-- [closing applications](https://instantos.io/youtube/close)
-- [shut down](https://instantos.io/youtube/shutdown)
-- [audio](https://instantos.io/youtube/audio)
-- [screenshots](https://instantos.io/youtube/screenshots)
-- [layouts](https://instantos.io/youtube/layouts)
-- [tags](https://instantos.io/youtube/tags)
-- [floating windows](https://instantos.io/youtube/floating)
-- [shortcuts](https://instantos.io/youtube/shortcuts)
+- [opening applications](/docs/apps)
+- [closing applications](/docs/close)
+- [shut down](/docs/shutdown)
+- [audio](/docs/audio)
+- [screenshots](/docs/screenshots)
+- [layouts](/docs/layouts)
+- [tags](/docs/tags)
+- [floating windows](/docs/floating)
+- [shortcuts](/docs/shortcuts)
 
 ### Extra features
 
-- [overlays](https://instantos.io/youtube/overlays)
-- [scratchpad](https://instantos.io/youtube/scratchpad)
-- [alt-tab](https://instantos.io/youtube/alttab)
-- [sticky windows](https://instantos.io/youtube/sticky)
+- [overlays](/docs/overlays)
+- [scratchpad](/docs/scratchpad)
+- [alt-tab](/docs/alttab)
+- [sticky windows](/docs/sticky)
 
 ### Power-User Features
 
-- [instantASSIST](https://instantos.io/youtube/assist)
-- [resolvething duplicate and Syncthing conflict cleanup](https://instantos.io/docs/resolvething)
-- [quickmenu](https://instantos.io/youtube/quickmenu)
-- [visibility options](https://instantos.io/youtube/visibility)
-- [customizing](https://instantos.io/youtube/customize)
-- [terminal](https://instantos.io/youtube/terminal)
-- [instantwmctl reference](https://instantos.io/docs/instantwmctl)
-- [instantWM configuration](https://instantos.io/docs/wmsettings)
-- [modes](https://instantos.io/docs/modes)
+- [instantASSIST](/docs/instantassist)
+- [resolvething duplicate and Syncthing conflict cleanup](/docs/resolvething)
+- [quickmenu](/docs/quickmenu)
+- [visibility options](/docs/visibility)
+- [customizing](/docs/customize)
+- [terminal](/archive/terminal)
+- [instantwmctl reference](/docs/instantwmctl)
+- [instantWM configuration](/docs/wmsettings)
+- [modes](/docs/modes)
 
 ### Gaming
 
 - Coming soon
 
-## [List of keybindings](https://instantos.io/youtube/hotkeys)
+## [List of keybindings](/docs/hotkeys)
 
-- [All keybindings](https://instantos.io/youtube/hotkeys)
+- [All keybindings](/docs/hotkeys)
 
 This list is meant for reference after learning how to use features, NOT as a
 replacement for the documentation
 
 ## Information for contributors
 
-- [Repository overview](https://instantos.io/links)
+- [Repository overview](/links)
