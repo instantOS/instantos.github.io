@@ -10,6 +10,7 @@ Some larger `ins` subcommands already have dedicated pages:
 - [ins video](insvideo.md)
 - [ins assist](instantassist.md)
 - [ins resolvething](resolvething.md)
+- [ins notify](notify.md)
 
 This page documents the remaining core commands that were only mentioned indirectly in the site before.
 
@@ -26,6 +27,7 @@ The current instantCLI build exposes these main command groups:
 - `launch`
 - `assist`
 - `menu`
+- `notify`
 - `scratchpad`
 - `setup`
 - `settings`

@@ -1,11 +1,33 @@
 # Scratchpad
 
-The scratchpad is like a tag that sits on top of all your other tags at all times
-Its visibility can be toggled on and off using the shortcut ++super+s++
-To move a window to the scratchpad you can use ++super+shift+s++, moving it out
-of the scratchpad is done by moving the window to a regular tag.
-Its functionality in general works a lot like the Steam overlay, if you're familiar
-with that you'll feel right at home.
+Scratchpads are floating windows which can be shown above any tag, including
+fullscreen windows. Press ++super+s++ to toggle the default scratchpad. If it
+does not exist yet, the focused window becomes the scratchpad; later presses
+show or hide it.
 
-All windows on the scratchpad are floating and will overlay over anything
-that's not on the scratchpad including fullscreen windows.
+
+## Advanced: named scratchpads
+
+instantWM also supports multiple named scratchpads through `instantwmctl`:
+
+```bash
+instantwmctl scratchpad create terminal
+instantwmctl scratchpad toggle terminal
+instantwmctl scratchpad list
+instantwmctl scratchpad delete
+```
+
+::: details Scripting and launcher integration
+
+If no name is supplied, the IPC commands use `instantwm_scratchpad`.
+
+Scratchpad launchers can assign the window class or Wayland app ID
+`scratchpad_<name>`. instantWM recognizes that identity during initial window
+management and makes the window a visible floating scratchpad before the first
+layout pass. This is how `ins scratchpad` avoids briefly inserting its terminal
+into the tiled tree while it waits for IPC registration.
+
+:::
+
+The [edge overlay](overlays.md) is related but separate: it has screen-edge
+show/hide behavior and is toggled by ++super+t++.

@@ -1,21 +1,31 @@
-# Overlays
+# Edge overlay
 
-<div align="center">
-    <iframe width="100%" height="700px" src="https://www.youtube.com/embed/T40cfbBVBQw" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+The edge overlay is a drop-down-style scratchpad built into instantWM. It works
+with any application on both X11 and Wayland.
 
-Overlays work similar to drop-down terminals like Guake, but are integrated
-into the WM and work with any application. To create an overlay, press 
-++super+ctrl+w++ or drag a window to the top right corner. You can now toggle the
-overlay on or off by pressing ++super+w++ or hovering over the corner.
+To turn the focused window into the default edge overlay, press
+++super+ctrl+t++. Press ++super+t++ to show or hide it. You can also create one
+with Super + left-click on the layout indicator, or by dragging a window to the
+configured screen-edge drop zone. Super + left-click on the desktop or window
+bar also toggles it.
 
-The overlay is locked by default which means it can't be closed by accident
-until it is unlocked. Right clicking on it in the title bar resets its
-dimensions. Right click dragging on it in the title bar lets you change the
-size. Positional or horizontal changes will not be permanent until the overlay
-is unlocked by right clicking on the close button.
+Only one default edge overlay exists at a time. Creating another returns the
+old one to normal window management. The window is locked by default to prevent
+accidental closing. Its title-bar and close-button mouse actions can resize,
+reset, or unlock it.
 
-Declaring a new overlay will replace the old one. The old overlay will return
-to being a normal window.
+::: details Advanced customization
 
-Alternative way to create an overlay: ++super+"Click"++ on the layout indicator.
+The exported actions are `edge_scratchpad_create`,
+`edge_scratchpad_toggle`, `edge_scratchpad_show`, and
+`edge_scratchpad_hide`. Its edge can be changed with the
+`edge_scratchpad_direction_left`, `_right`, `_up`, and `_down` actions, which
+are useful in custom bindings or modes.
+
+This feature used to be bound to Super+W and was usually called simply
+“overlay”. Super+W now toggles tiled/maximized presentation; Super+T owns the
+edge overlay controls.
+
+:::
+
+See [Scratchpad](scratchpad.md) for named, non-edge scratchpads.

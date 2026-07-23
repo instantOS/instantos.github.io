@@ -1,122 +1,163 @@
 # Layouts
 
-<div align="center">
-    <iframe width="100%" height="700px" src="https://www.youtube.com/embed/NMs8b2mBCTA" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 ::: details Required skills {open}
 - [shortcuts](shortcuts.md)  
 - [Opening applications](apps.md)
 :::
 
-## Basics
+instantWM supports both tiled and floating windows. Tiled windows are arranged
+for you, but you can move and resize them freely. instantWM remembers the
+arrangement you create instead of continually resetting it.
 
-Windows have two modes: Floating and tiling. The default mode is tiling and is
-the one taking advantage of layouts. The OS automatically assigns a position
-and size to every window in tiling mode. It does so according to a simple set
-of rules called a layout.
+## Moving, swapping, and resizing windows
 
-You can see the currently selected layout to the right of the tag indicators.
+The default bindings operate on the focused tiled window:
 
-## Master and Stack
+| Binding | Action |
+| --- | --- |
+| ++super+"Arrow"++ or ++super+"H/J/K/L"++ | Focus in that direction; Left/Right changes tag at the edge, while Up/Down cycles through bar order when blocked |
+| ++super+shift+"Arrow"++ | Swap with the neighbour in that direction |
+| ++super+shift+"H/J/K/L"++ | Vim-key alternative for swapping |
+| ++super+ctrl+"Arrow"++ | Resize the window at that edge |
+| ++super+alt+"H/J/K/L"++ | Vim-key alternative for resizing |
+| ++super+"+/-"++ | Grow or shrink the window |
+| ++super+m++ | Choose a new position with the keyboard |
 
-Most layouts have two areas, the master and the stack.
-The master usually contains the main Application you're using like a web
-browser or text editor while the stack contains additional applications like
-music players, terminals or file browsers. Some layouts also allow to have
-multiple applications in the master area
+### Keyboard placement
 
-Use ++super+shift+return++ to put a window into the master or into the stack
-if it already is in the master area.
+Press ++super+m++ to move a tiled window. An outline previews the result while
+the real window stays in place.
 
-Some layouts also allow resizing the master and stack area.
-The keybinding for this are ++super+h++ and ++super+l++.
+| Key while placement is active | Action |
+| --- | --- |
+| Arrow or `h/j/k/l` | Choose where to place the window |
+| Shift + Arrow or `h/j/k/l` | Swap with a window in that direction |
+| Ctrl + Arrow or `h/j/k/l` | Resize at that edge |
+| Tab / Shift+Tab | Cycle through the available positions |
+| Space | Swap with the selected window |
+| Enter | Confirm |
+| Escape or any unrelated key | Cancel |
 
-## Reorder windows
+With only one tiled window there is nowhere to place it, so ++super+m++ does
+nothing. Placement is also unavailable for floating windows and while using
+maximized presentation.
 
-++super+ctrl+j++ and ++super+ctrl+k++ makes the current window and the window
-next to it swap places.
+### Pointer placement and resizing
 
-## Rundown of all layouts
+Hold Super and left-drag a tiled window to preview a new position:
 
-### Tile `+`
+- Drop it on the middle of another window to swap them.
+- Drop it near an edge of another window to place it on that side.
+- Release it outside a valid target to cancel.
 
-This layout has a master area on the left and a stack area on the right.
+Hold Super and right-drag near an edge to resize a tiled window. Floating
+windows use the familiar free move and resize gestures instead; see
+[Floating windows](floating.md).
 
-### Grid **```#```**
+## Starting arrangements
 
-![Placeholder](../images/layouts/grid.png)
+Layout presets give you a useful starting arrangement. You can freely move or
+resize windows afterward; instantWM will not keep forcing them back into the
+preset.
 
-Applications get arranged into a grid where each one gets resized to the same
-size. It does not distinguish between master or stack.
+| Preset | Result |
+| --- | --- |
+| `tile` | Main window with a stack beside it |
+| `grid` | Column-first grid |
+| `horiz-grid` | Row-first grid |
+| `bottom-stack` | Master group above a lower stack |
+| `bstack-horiz` | Horizontal bottom stack |
+| `floating` | Freely positioned windows |
+| `maximized` | One tiled window visible at a time |
 
-### Horizontal stack 1 **`===`**
+Use ++super+c++ for the Grid preset, ++super+f++ for floating presentation,
+++super+w++ to toggle between tiled and maximized presentation.
+++super+ctrl+comma++ and ++super+ctrl+period++ cycle the available presets.
+Left/right clicking the layout indicator cycles them; middle-clicking applies
+the Tile preset.
 
-![Placeholder](../images/layouts/horizstack1.png)
+++super+i++ and ++super+d++ reapply the master-stack preset with one more or
+fewer main windows.
 
-This works basically the same as the tiling layout except the tiling is done
-horizontally.
+## Maximized presentation
 
-### Horizontal stack 2 **`TTT`**
+Maximized presentation makes every tiled window fill the work area and stacks
+the focused one above the others. Press ++super+w++ again to restore your
+previous tiled arrangement.
 
-![Placeholder](../images/layouts/horizstack2.png)
+While maximized, ++super+j++ and ++super+k++ cycle through tiled windows in the
+same order as their titles in the bar. Floating windows remain visible above
+them.
 
-This works basically the same as the Horizontal stack 1 layout, but the stack
-itself is tiled vertically.
+This is a tag-wide presentation mode, not per-window fullscreen. See
+[Fullscreen](fullscreen.md) for application fullscreen and fake fullscreen.
 
-### Monocle **`[n]`**
+## Overview card hand
 
-![Placeholder](../images/layouts/monocle.png)
+++super+e++ shows windows from all tags as a two-dimensional field of
+overlapping cards without shrinking every client into a tiny grid cell. The
+rows are staggered like scales. The hovered or keyboard-focused card receives
+the most room on both axes, and cards receive progressively less room the
+farther they are from it. Changes animate continuously as the pointer or focus
+moves; pointer hover changes only the visual emphasis and does not steal
+keyboard focus. Arrow and Vim focus keys navigate the same visual grid.
 
-All windows are fullscreen and layered on top of each other. The window
-currently in focus is always on top.
+The card positions and stacking order advance together, leaving every covered
+card with an exposed, clickable area. Selecting a card does not reshuffle the
+stable underlying order or hide another card's hit area.
 
-### Floating **```_```**
+The order stays stable and is grouped by tag. Fullscreen windows temporarily
+become ordinary cards. Leaving overview restores your windows to their
+previous arrangement.
 
-![Placeholder](../images/layouts/floating.png)
+::: details Advanced layout details
 
-This completely disables window tiling. Use this to get a floating WM like
-experience.
+Tiled arrangements are stored as weighted trees. Each monitor and visible tag
+combination remembers its own tree. Removing a tiled window collapses empty
+branches while preserving the remaining structure and resize ratios. New
+windows are inserted into a balanced branch.
 
-### Overview **`O`**
+Directional focus follows that structure before falling back to the nearest
+window. At the left or right edge it changes to the adjacent tag. When Up or
+Down has no directional neighbour, it cycles through the window-title order in
+the bar.
 
-![Placeholder](../images/layouts/overview.png)
+Keyboard placement keeps focus and the real window in place until you confirm.
+Equivalent results are shown only once, and positions that cannot satisfy
+minimum sizes are omitted. Directional navigation wraps across the available
+targets; Tab and Shift+Tab use a stable list order.
 
-This is the overview layout. It is used by the overview feature. It stacks all
-windows in a way that each of them is visible but without resizing them from
-their previous layout. This can be used to quickly switch between windows.
+Layout presets are one-shot tree transformations rather than automatic layouts
+that rerun after every change. The master-stack preset preserves a compatible
+root split ratio; there is no separate master-factor setting.
 
-### Half stack **`D n`**
+:::
 
-![Placeholder](../images/layouts/halfstack.png)
+## Advanced configuration
 
-This is a hybrid of the tiling and monocle layout. The master area is tiled
-normally, but the stack works like the monocle layout with all windows layered
-on top of each other.
-
-## Gaps
-
-Tiling layouts support configurable gaps between windows and the screen edges. Gaps are configured in the `[layout]` section of `config.toml`:
+Configure layout geometry in `config.toml`:
 
 ```toml
 [layout]
-inner_gap = 8    # spacing between windows
-outer_gap = 8    # spacing to screen edges
-smart_gaps = true # no gaps for a single window
+inner_gap = 8
+outer_gap = 8
+smart_gaps = true
+maximized_gaps = false
+keyboard_resize_step = 0.05
+minimum_weight = 0.15
+pointer_edge_fraction = 0.34
 ```
 
-See [Configuration](./wmsettings.md#layout-gaps) for the full list of settings.
+`keyboard_resize_step` controls how much a resize command transfers,
+`minimum_weight` bounds split children where space permits, and
+`pointer_edge_fraction` controls the depth of pointer placement edge bands.
+See [instantWM configuration](wmsettings.md#layout-tree-and-gaps) for defaults
+and details.
 
-## Switching layouts
+## Related pages
 
-You can toggle through all layouts by left/right clicking on the layout
-indicator or with ++super+ctrl+"Comma/Period"++.
-Middle clicking on the indicator resets to the default tiling layout.
-Some layouts also have a direct Shortcut.
-
-Here is a list of them
-
-- ++super+m++ Monocle
-- ++super+t++ Tiling
-- ++super+c++ Grid
-- ++super+f++ disable layouts
+- [Floating windows](floating.md)
+- [Keybindings](hotkeys.md)
+- [Modes](modes.md)
+- [instantwmctl](instantwmctl.md#layouts)

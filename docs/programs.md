@@ -17,17 +17,16 @@ See [ins](ins.md) for the command reference.
 
 ## instantWM
 
-The instantOS window manager. It supports both X11 and Wayland backends and features:
+The instantOS window manager. It works on X11 and Wayland and features:
 
-- Persistent manual tree tiling, one-shot layout presets, maximized presentation, and floating windows
-- Multi-monitor support with per-monitor configuration
+- Tiled and floating windows with easy keyboard and mouse placement
+- Multiple monitors and tags
 - Scratchpad and overlay windows
-- Custom keybindings via TOML configuration
-- Custom modes (sway-like)
+- Custom keybindings and modes
 
 See the [instantWM documentation hub](instantwm.md) for all instantWM guides,
 including layouts, floating windows, overlays, keybindings, configuration, and
-IPC.
+scripting.
 
 ## instantwmctl
 
@@ -90,10 +89,11 @@ instantmenu, but a slider instead of a text input
 
 The lock screen in the instantWM session
 
-## instantNOTIFY
+## instantNOTIFY / instantnotify
 
-A notification center for instantWM, recording past notifications and providing a
-way to browse them. Currently unmaintained. 
+Deprecated and replaced by [`ins notify`](notify.md). The new implementation is
+part of instantCLI, works with dunst and mako, and provides interactive, GUI,
+and scriptable notification-history management.
 
 ## instantSTATUS
 

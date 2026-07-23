@@ -252,7 +252,11 @@ layouts = [
 ]
 options = "compose:ralt"          # XKB options
 model = "pc105"                   # Keyboard model (optional)
+swapescape = false                # Swap Caps Lock and Escape
 ```
+
+Set `swapescape = true` to swap Caps Lock and Escape without having to spell
+out the XKB option string yourself.
 
 ## Input Configuration
 
@@ -273,9 +277,11 @@ pointer_accel = 0.3
 
 Valid values:
 - `tap`: "enabled" or "disabled"
-- `natural_scroll`: "enabled" or "disabled"  
+- `natural_scroll`: "enabled" or "disabled"
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
+- `scroll_factor`: Floating point multiplier applied to scroll events (defaults to `1.0` when unset)
+- `left_handed`: "enabled" or "disabled" — swaps the primary/secondary buttons for left-handed use
 
 ## Layout tree and gaps
 
@@ -291,6 +297,7 @@ maximized_gaps = false
 keyboard_resize_step = 0.05
 minimum_weight = 0.15
 pointer_edge_fraction = 0.34
+new_window_placement = "auto-resize"
 ```
 
 | Setting | Type | Default | Description |
@@ -302,6 +309,18 @@ pointer_edge_fraction = 0.34
 | `keyboard_resize_step` | float | `0.05` | Fraction of an axis transferred by one tree resize command |
 | `minimum_weight` | float | `0.15` | Preferred minimum weight of a child in a split run |
 | `pointer_edge_fraction` | float | `0.34` | Fraction of a target occupied by pointer placement edge bands |
+| `new_window_placement` | string | `"auto-resize"` | How a new window joins the tiling tree (see below) |
+
+`new_window_placement` controls where a window that is not yet in a tag's
+persistent tiling tree gets inserted:
+
+- `"auto-resize"` (default) — place the newcomer automatically and resize the
+  existing tree to give it room.
+- `"auto"` — split the best existing leaf without deliberately rebalancing the
+  rest of the tree.
+- `"force"` — give the first newcomer a leading half of a new vertical root
+  split; consecutive untouched insertions adapt that region into balanced rows
+  or columns, and any manual tree edit starts a new sequence.
 
 Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0.
 
@@ -309,6 +328,20 @@ Floating windows are not affected.
 
 Layout presets such as Grid are one-shot tree rewrites. These settings govern
 the manual edits which remain afterward; see [Layouts](layouts.md).
+
+## Floating windows and click-to-raise
+
+```toml
+# Raise a floating window to the top of the stack when its client area is
+# left-clicked. Disabled by default so click-to-focus and focus-follows-mouse
+# do not disturb the explicit floating-window stacking order.
+raise_floating_on_click = false
+```
+
+With the default (`false`), clicking inside a floating window focuses it
+without changing the stacking order, which keeps manually arranged floating
+windows where you put them. Set it to `true` if you prefer each click to also
+bring the window to the front.
 
 ## Custom Keybinds
 
@@ -391,6 +424,50 @@ Structured actions accepted in TOML are:
 
 See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
+## Window rules
+
+Window rules apply placement and tag settings automatically when a window
+matching a given class, instance, or title appears. A window matches a rule
+when every criterion you supply matches; criteria you leave out match
+anything. `class`, `instance`, and `title` are case-sensitive substring
+matches.
+
+```toml
+# Centre pavucontrol as a floating window
+[[rules]]
+class = "pavucontrol"
+is_floating = "float_center"
+
+# Open mpv floating on tag 3 (bit 2 → value 4)
+[[rules]]
+class = "mpv"
+is_floating = "float"
+tags = 4
+
+# Match on the window title
+[[rules]]
+class = "steam"
+title = "Friends List"
+is_floating = "float"
+
+# Pin a game to fullscreen on the second monitor
+[[rules]]
+class = "complex-game"
+is_floating = "float_fullscreen"
+monitor = { index = 1 }
+```
+
+| Field | Description |
+|-------|-------------|
+| `class` | Match the window's WM class (substring). |
+| `instance` | Match the window's WM instance (substring). |
+| `title` | Match the window title (substring). |
+| `tags` | Bitmask of tags to assign. Bit 0 (value `1`) is tag 1, bit 1 (value `2`) is tag 2, bit 2 (value `4`) is tag 3, and so on. Combine tags with bitwise OR (tags 1 + 3 = `1 | 4` = `5`). The bits are merged into the window's tags; `0` or unset leaves the tags unchanged. |
+| `is_floating` | Initial mode: `"tiled"`, `"float"`, `"float_center"`, `"float_fullscreen"`, or `"scratchpad"`. |
+| `monitor` | `"any"` (default) or `{ index = N }` for a specific monitor by 0-based index. |
+
+Only the first matching rule is applied to a window.
+
 ## Control Commands
 
 To see all available actions for keybindings:
@@ -460,6 +537,23 @@ Modes use the same binding format and can invoke the tree actions above. See
 [Modes](modes.md) for a complete, current example and for customizing the
 built-in `placement` mode.
 
+## Startup commands
+
+Like sway's `exec` / `exec_once` and Hyprland's `exec-once`, you can run
+commands when instantWM starts:
+
+```toml
+# Run once at startup (not repeated on reload)
+exec_once = ["xmobar", "wal -R"]
+
+# Run at startup and again on every `instantwmctl reload`
+exec = ["killall picom; picom"]
+```
+
+`exec_once` is only fired during the initial startup sequence; `exec` is also
+re-run on each config reload, so it suits commands that need to be kept alive
+or restarted when the config changes.
+
 ## Monitor Configuration
 
 Configure specific monitor settings:
@@ -471,6 +565,8 @@ refresh_rate = 144.0
 position = "0,0"
 scale = 1.0
 enable = true
+transform = "normal"      # rotation / reflection
+vrr = "auto"              # variable refresh rate policy
 
 [monitors."HDMI-A-1"]
 position = "left-of:DP-1"
@@ -479,6 +575,41 @@ position = "left-of:DP-1"
 Position can be specified as:
 - Absolute: `"X,Y"` (e.g., `"1920,0"`)
 - Relative: `"left-of:OUTPUT"`, `"right-of:OUTPUT"`, `"above:OUTPUT"`, `"below:OUTPUT"`
+
+`transform` rotates or mirrors the output. Valid values are `"normal"`,
+`"90"`, `"180"`, `"270"`, `"flipped"`, `"flipped-90"`, `"flipped-180"`, and
+`"flipped-270"`.
+
+`vrr` controls variable refresh rate (FreeSync / G-Sync) and accepts `"off"`,
+`"auto"` (default — let the driver decide), or `"on"`.
+
+## Bar height
+
+```toml
+# Bar height in logical pixels. 0 = derive from the configured fonts.
+bar_height = 0
+```
+
+By default (`0`) the bar height is derived from the font metrics of the
+configured `fonts`. Set a fixed pixel height if you want the bar to stay a
+specific size regardless of font choice.
+
+## Cursor (Wayland)
+
+On the Wayland backend, the cursor theme and size are taken from the `[cursor]`
+section (this has no effect on X11):
+
+```toml
+[cursor]
+theme = "Adwaita"   # xcursor theme name
+size = 24           # cursor size in logical pixels
+```
+
+These mirror the `XCURSOR_THEME` and `XCURSOR_SIZE` environment variables; the
+config values take precedence. Reload the config with `instantwmctl reload` to
+apply a change.
+
+
 
 ## Configuration Includes
 

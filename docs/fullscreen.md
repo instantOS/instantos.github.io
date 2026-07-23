@@ -1,43 +1,39 @@
-# Fullscreen
+# Fullscreen and maximized presentation
 
-## Fullscreen apps
+## Application fullscreen
 
-Applications that are in fullscreen like a YouTube video or game work just like
-on any other DE as in they take the entire screen and cover any UI elements.
-They can however still be moved to other tags or you can switch to another tag
-to still retain multitasking functionality.
+Applications which request fullscreen, such as games and video players, take
+the entire monitor and cover instantWM's UI. You can still move them to another
+tag or monitor and switch away normally.
 
-## Tempfullscreen
+## Maximized presentation
 
-This feature allows you to temporarily put a window into fullscreen mode
-without impacting any of the other windows or its actual position and size. It
-can be activated using ++super+ctrl+f++ and using it a second time restores the
-window to its normal behavior.
+Press ++super+w++ to toggle the current tag between its tiled arrangement and
+maximized presentation. Every tiled window fills the work area; the focused
+one is stacked above the others. ++super+j++ and ++super+k++ cycle them in the
+same stable order shown by the titles in the bar. Press ++super+w++ again to
+restore the previous arrangement.
 
-For example you could be in the grid layout working with lots of windows but
-would like to examine the contents of a window using the entire screen. Instead
-of switching to the monocle layout and resizing all other windows as well the
-tempfullscreen feature can be used to enlarge and then shrink the window back
-down.
+This replaces the old “monocle” workflow and covers the useful part of the
+removed per-window temporary-fullscreen action. There is no default
+Super+Ctrl+F binding for temporary fullscreen.
 
-## Fakefullscreen
+## Fake fullscreen
 
-Fakefullscreen allows you to resize and move fullscreen windows. The
-application will still think it is in full screen.  This can be used to move
-applications that would otherwise be stuck on the monitor they launched on or
-to correct applications that behave incorrectly.
+Fake fullscreen allows instantWM to move, tile, float, and resize a window
+while the application still believes it is fullscreen. It is useful for games
+which choose the wrong monitor and for making a fullscreen video behave like
+picture-in-picture.
 
-To toggle fakefullscreen, press ++super+shift+f++. If the application is not
-already in fullscreen, this will not have any noticeable effect.  But as soon
-as the application goes into fullscreen, it will not cover the entire screen,
-but can still be put into layouts, moved around in floating mode or even
-resized. Some applications will not like being resized while in full screen
-mode, so be careful with that. Fakefullscreen can also be activated for
-applications that are already in fullscreen mode.  Pressing ++super+shift+f++ a
-second time will deactivate fakefullscreen.
+Toggle it with ++super+shift+f++. If the application is not currently
+fullscreen, the visible effect begins when it later requests fullscreen. Some
+applications do not tolerate resizing while fullscreen, so behavior remains
+application-dependent.
 
-Applications for this are forcing games that like to appear in fullscreen and
-on the wrong monitor to behave and make video players or websites that don't
-support picture-in-picture functionality "support" it by entering fullscreen
-mode and then floating them around with fakefullscreen.
+::: details Technical distinction
 
+Maximized presentation is tag-wide and preserves the tiled layout tree. Fake
+fullscreen changes how instantWM handles one application's fullscreen protocol
+state. They solve different problems.
+
+:::
