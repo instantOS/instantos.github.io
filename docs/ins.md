@@ -212,7 +212,7 @@ There are also built-in terminal utility commands that do not currently have the
 - `ins scratchpad`
 - `ins menu`
 - `ins launch`
-- `ins welcome`
+- `ins welcome` (opens itself in a terminal when launched graphically)
 
 These are real supported subcommands, but they are more specialized and are mostly used internally or from desktop integrations.
 

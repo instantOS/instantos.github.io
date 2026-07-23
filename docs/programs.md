@@ -57,6 +57,10 @@ Deprecated, functionality moved to `ins`
 
 Deprecated, functionality moved to `ins`
 
+## instantWELCOME
+
+Deprecated, functionality moved to `ins welcome`
+
 ## imosid
 
 Deprecated, approach has changed and dotfile management is now part of `ins`

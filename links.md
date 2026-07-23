@@ -75,9 +75,9 @@ A mirror of all binary packages hosted in the instantOS pacman repo
  
 A set of scripts used for instantOS development
  
-### [instantWELCOME](https://github.com/instantOS/instantWELCOME)
+### [instantWELCOME](https://github.com/instantOS/instantWELCOME) (legacy)
  
-The welcome prompt coming up on the installation medium and on a fresh system
+The former graphical welcome prompt, replaced by `ins welcome`.
  
 ### [instantLOCK](https://github.com/instantOS/instantLOCK)
  
