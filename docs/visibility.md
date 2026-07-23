@@ -12,8 +12,9 @@
 You can toggle several visual elements of instantOS. You can toggle the top bar
 with ++super+b++
 
-++super+shift+s++ hides all tags without a window on them
+++super+ctrl+shift+s++ hides or shows tags without a window on them.
 
 ++super+alt+s++ changes from tag numbers to symbols. They behave identically
 but might be easier to remember for some people.
 
+++super+shift+alt+s++ toggles window and preview animations.

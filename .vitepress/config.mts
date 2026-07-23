@@ -97,6 +97,7 @@ export default defineConfig({
           text: 'Configuration',
           items: [
             { text: 'ins CLI', link: '/docs/ins' },
+            { text: 'instantWM', link: '/docs/instantwm' },
             { text: 'WM Settings', link: '/docs/wmsettings' },
             { text: 'instantwmctl', link: '/docs/instantwmctl' },
             { text: 'Dotfile management', link: '/docs/insdot' },
@@ -137,6 +138,7 @@ export default defineConfig({
         {
           text: 'Window Management',
           items: [
+            { text: 'instantWM Overview', link: '/docs/instantwm' },
             { text: 'Hotkeys', link: '/docs/hotkeys' },
             { text: 'Modes', link: '/docs/modes' },
             { text: 'Overlays', link: '/docs/overlays' },

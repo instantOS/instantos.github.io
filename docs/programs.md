@@ -19,13 +19,15 @@ See [ins](ins.md) for the command reference.
 
 The instantOS window manager. It supports both X11 and Wayland backends and features:
 
-- Tile, grid, monocle, and floating layouts
+- Persistent manual tree tiling, one-shot layout presets, maximized presentation, and floating windows
 - Multi-monitor support with per-monitor configuration
 - Scratchpad and overlay windows
 - Custom keybindings via TOML configuration
 - Custom modes (sway-like)
 
-See [Keybindings](hotkeys.md) for the default keyboard shortcuts and [Configuration](wmsettings.md) for customization options.
+See the [instantWM documentation hub](instantwm.md) for all instantWM guides,
+including layouts, floating windows, overlays, keybindings, configuration, and
+IPC.
 
 ## instantwmctl
 

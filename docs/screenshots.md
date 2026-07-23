@@ -14,7 +14,8 @@
 | --------------------- | ------------------------------------------------------- |
 | ++super+print++       | take screenshot of selected area to the pictures folder |
 | ++super+ctrl+print++  | take screenshot of selected area to the clipboard       |
-| ++super+shift+print++ | take fullscreen screenshot to the clipboard             |
+| ++super+shift+print++ | take fullscreen screenshot to the pictures folder        |
+| ++super+alt+print++   | take fullscreen screenshot to the clipboard              |
 
 ::: details installation on third party systems
 These bindings require instantassist and instantutils to be installed
