@@ -10,12 +10,8 @@
 
 ## Keybindings
 
-| Binding               | Functionality                                           |
-| --------------------- | ------------------------------------------------------- |
-| ++super+print++       | take screenshot of selected area to the pictures folder |
-| ++super+ctrl+print++  | take screenshot of selected area to the clipboard       |
-| ++super+shift+print++ | take fullscreen screenshot to the pictures folder        |
-| ++super+alt+print++   | take fullscreen screenshot to the clipboard              |
+The default screenshot shortcuts are maintained in the
+[instantWM keybindings reference](hotkeys.md#screenshots).
 
 ::: details installation on third party systems
 These bindings require instantassist and instantutils to be installed
@@ -23,18 +19,6 @@ These bindings require instantassist and instantutils to be installed
 
 ## instantASSIST
 
-instantASSIST contains a lot more options to take screenshots that can all be
-found under the s-assist
-
-| Assist | Functionality                                                  |
-| ------ | -------------------------------------------------------------- |
-| `ss`   | Take screenshot of area into the pictures folder               |
-| `sc`   | Take screenshot of area into the clipboard                     |
-| `sd`   | Wait 5 seconds and take fullscreen screenshot to the clipboard |
-| `sf`   | Take fullscreen screenshot to the pictures folder              |
-| `si`   | Take area screenshot and upload to imgur                       |
-| `su`   | Take area screenshot and upload to file.coffee                 |
-| `sa`   | Take screenshot and annotate using flameshot                   |
-| `sm`   | Take fullscreen screenshot to the clipboard                    |
-| `sm`   | Select and "freeze" part of the screen                         |
-| `sr`   | Select area and detect and copy text in it                     |
+instantASSIST contains additional screenshot tools under the `s` assist. See
+the canonical [screenshot assists catalog](instantassist.md#screenshot-assists-s)
+for the available chords and their current behavior.

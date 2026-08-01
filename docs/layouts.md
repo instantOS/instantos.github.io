@@ -82,16 +82,9 @@ fewer main windows.
 
 ## Maximized presentation
 
-Maximized presentation makes every tiled window fill the work area and stacks
-the focused one above the others. Press ++super+w++ again to restore your
-previous tiled arrangement.
-
-While maximized, ++super+j++ and ++super+k++ cycle through tiled windows in the
-same order as their titles in the bar. Floating windows remain visible above
-them.
-
-This is a tag-wide presentation mode, not per-window fullscreen. See
-[Fullscreen](fullscreen.md) for application fullscreen and fake fullscreen.
+Maximized presentation is a tag-wide presentation mode, not per-window
+fullscreen. See [Fullscreen and maximized presentation](fullscreen.md) for its
+behavior, shortcuts, and distinction from application and fake fullscreen.
 
 ## Overview card hand
 

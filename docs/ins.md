@@ -59,7 +59,7 @@ ins settings --category appearance
 # Start directly in search mode
 ins settings --search
 
-# Launch inside a GUI terminal window
+# Launch inside a GUI terminal window (uses kitty)
 ins settings --gui
 ```
 
@@ -168,19 +168,14 @@ The command also supports `--concurrency <N>` on the top-level `ins doctor` comm
 
 ## Update
 
-`ins update` is the higher-level instantOS update command. In the current implementation it:
-
-1. ensures `topgrade` is available
-2. runs `topgrade`
-3. runs dotfile updates
-4. syncs game saves
-5. checks for instantCLI updates
+`ins update` is the higher-level instantOS update command.
 
 ```bash
 ins update
 ```
 
-See [Update](update.md) for the user-facing update workflow.
+See [Updating instantOS](update.md) for what it updates and the user-facing
+workflow.
 
 ## Self-update
 

@@ -18,10 +18,11 @@ You can split your configuration into multiple files using the `includes` direct
 
 ```toml
 # config.toml (main file)
-includes = [
-    { file = "keybinds.toml" },
-    { file = "colors.toml" },
-]
+[[includes]]
+file = "keybinds.toml"
+
+[[includes]]
+file = "colors.toml"
 ```
 
 Included files are merged into the main configuration. Paths can be absolute or relative to the main config file. Circular includes are detected and prevented.
@@ -499,50 +500,10 @@ Only the first matching rule is applied to a window.
 
 ## Control Commands
 
-To see all available actions for keybindings:
-
-```bash
-# Run a named action (use --list to see available actions)
-instantwmctl action zoom
-instantwmctl action kill
-instantwmctl --json action --list
-
-# List all windows
-instantwmctl window list
-
-# Switch to tag
-instantwmctl tag view 2
-
-# Set layout by name
-instantwmctl layout tile
-instantwmctl layout grid
-instantwmctl layout maximized
-
-# Toggle features
-instantwmctl toggle animated
-instantwmctl toggle focus-follows-mouse
-instantwmctl toggle focus-follows-float-mouse
-instantwmctl toggle alt-tag
-instantwmctl toggle hide-tags
-
-# Window management
-instantwmctl window close
-instantwmctl spawn "command"
-
-# Keyboard layouts
-instantwmctl keyboard next
-instantwmctl keyboard list
-
-# Update status bar
-instantwmctl update-status "Hello World"
-```
-
-The action-list command outputs descriptions and argument examples. JSON is
-also available:
-
-```bash
-instantwmctl --json action --list
-```
+Runtime control is provided by `instantwmctl`. See the canonical
+[instantwmctl command reference](instantwmctl.md) for commands and examples.
+For actions usable in keybindings, `instantwmctl action --list` is the current
+runtime-generated list.
 
 ## Runtime Control
 
@@ -637,20 +598,3 @@ size = 24           # cursor size in logical pixels
 These mirror the `XCURSOR_THEME` and `XCURSOR_SIZE` environment variables; the
 config values take precedence. Reload the config with `instantwmctl reload` to
 apply a change.
-
-
-
-## Configuration Includes
-
-Split your configuration into multiple files:
-
-```toml
-# Main config
-[[includes]]
-file = "keybinds.toml"
-
-[[includes]]
-file = "colors.toml"
-```
-
-The included files will be merged with the main configuration.
