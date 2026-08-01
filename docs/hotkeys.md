@@ -12,8 +12,8 @@ These are the default instantWM shortcuts, grouped by what they do.
 | ++super+y++ | Open the graphical app menu |
 | ++super+n++ | Open the file manager |
 | ++super+r++ | Open the terminal file manager |
-| ++super+v++ | Open quick menu |
-| ++super+shift+v++ | Open clipboard history |
+| ++super+v++ | Open clipboard history |
+| ++super+shift+v++ | Open quick menu |
 | ++super+x++ or ++alt+tab++ | Open the external window switcher |
 | ++super+a++ | Open `ins assist` |
 | ++super+ctrl+l++ | Lock the screen |

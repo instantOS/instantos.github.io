@@ -95,6 +95,12 @@ Deprecated and replaced by [`ins notify`](notify.md). The new implementation is
 part of instantCLI, works with dunst and mako, and provides interactive, GUI,
 and scriptable notification-history management.
 
+## instantclipmenu
+
+Deprecated and replaced by [`ins clip`](clip.md). Existing shortcuts continue
+to work through a compatibility shim, while new integrations get searchable
+previews, service management, stable entry IDs, and scriptable JSON output.
+
 ## instantSTATUS
 
 Not happening, I don't have time to create yet another status bar, we have
