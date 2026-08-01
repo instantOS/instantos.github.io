@@ -343,6 +343,35 @@ without changing the stacking order, which keeps manually arranged floating
 windows where you put them. Set it to `true` if you prefer each click to also
 bring the window to the front.
 
+## Animation speed
+
+```toml
+[animations]
+# 1.0 = designed speed; 0.5 = half speed (durations doubled);
+# 2.0 = twice as fast (durations halved)
+speed = 1.0
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `speed` | float | `1.0` | Global animation speed multiplier; valid range `0.01`–`100.0` |
+
+Below `1.0` slows animations down, above `1.0` speeds them up. Because
+durations are scaled, a factor of `2.0` does not skip frames — it halves every
+animation's duration. Use `instantwmctl toggle animated` (or
+++super+shift+alt+s++) to disable animations entirely; the speed multiplier
+then has no effect until animations are re-enabled.
+
+The speed can also be changed at runtime:
+
+```bash
+instantwmctl config get animations.speed
+instantwmctl config set animations.speed 1.5
+```
+
+`instantwmctl config set` applies immediately but is not persisted — keep the
+value in `config.toml` for a permanent setting.
+
 ## Custom Keybinds
 
 Add or override keybinds:
@@ -625,14 +654,3 @@ file = "colors.toml"
 ```
 
 The included files will be merged with the main configuration.
-
-## Xresources (Legacy)
-
-For backwards compatibility, instantWM still supports the old Xresources configuration. However, the TOML configuration is recommended for new setups.
-
-The old syntax:
-```
-instantwm.parameter: value
-```
-
-After editing ~/.Xresources, run `xrdb ~/.Xresources` and restart instantWM.
