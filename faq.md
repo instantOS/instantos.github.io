@@ -12,24 +12,9 @@ The [Discord channel](https://dsc.gg/instantos) is usually the quickest and most
 
 instantOS includes a diagnostic tool to check and fix common system problems:
 
-```bash
-# Run all health checks
-ins doctor
-
-# List available checks
-ins doctor list
-
-# Run a specific check
-ins doctor run <check-name>
-
-# Fix all fixable issues
-ins doctor fix --all
-
-# Interactively choose which fixes to apply
-ins doctor fix --choose
-```
-
 Checks include: network connectivity, locale, pending updates, disk health, swap status, display configuration, and more.
+See [the `ins doctor` command reference](/docs/ins#doctor) for the current
+commands and options.
 
 
 ## Does it use its own repos

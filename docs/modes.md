@@ -1,94 +1,16 @@
 # Modes
 
+::: info
+This page is for people creating custom keybindings or scripts. To learn how to
+move windows with the built-in placement mode, see
+[Layouts](layouts.md#keyboard-placement).
+:::
+
 Modes in instantWM work similarly to Sway/i3 modes, allowing you to define sets of keybindings that are only active in certain contexts. This is useful for defining specialized keybindings for tasks like resizing windows, navigating scratchpads, or running specific commands.
 
-## Basic Usage
+## Defining a mode
 
-Define modes in your [`config.toml`](wmsettings#configuration-file-location):
-
-```toml
-[modes.resize]
-description = "Resize"
-keybinds = [
-    { modifiers = [], key = "Escape", action = { set_mode = "default" } },
-    { modifiers = [], key = "Return", action = { set_mode = "default" } },
-    { modifiers = ["Shift"], key = "h", action = { set_mfact = -0.05 } },
-    { modifiers = ["Shift"], key = "j", action = "focus_down" },
-    { modifiers = ["Shift"], key = "k", action = "focus_up" },
-    { modifiers = ["Shift"], key = "l", action = { set_mfact = 0.05 } },
-]
-
-[modes.move]
-description = "Move"
-keybinds = [
-    { modifiers = [], key = "Escape", action = { set_mode = "default" } },
-    { modifiers = [], key = "Return", action = { set_mode = "default" } },
-    { modifiers = ["Shift"], key = "h", action = "move_client_left" },
-    { modifiers = ["Shift"], key = "j", action = "move_client_right" },
-    { modifiers = ["Shift"], key = "k", action = "focus_up" },
-    { modifiers = ["Shift"], key = "l", action = "focus_down" },
-]
-```
-
-Then bind a key to enter a mode:
-
-```toml
-[[keybinds]]
-modifiers = ["Super"]
-key = "r"
-action = { set_mode = "resize" }
-```
-
-## Switching Modes
-
-Use the `set_mode` action to enter a mode:
-
-```toml
-action = { set_mode = "mode_name" }
-```
-
-To exit a mode and return to the default mode:
-
-```toml
-action = { set_mode = "default" }
-```
-
-The current mode is displayed in the status bar. If a description is set for the mode, it will be shown instead of the mode name.
-
-## Mode Descriptions
-
-You can add an optional description to each mode that will be displayed in the status bar instead of the mode name:
-
-```toml
-[modes.resize]
-description = "Resize windows"
-
-[[modes.resize.keybinds]]
-key = "h"
-action = { set_mfact = -0.05 }
-```
-
-In this example, when the resize mode is active, the status bar will show "mode: Resize windows" instead of "mode: resize".
-
-## Mode Keybinds
-
-Each mode can have its own keybinds using the same format as regular keybinds:
-
-```toml
-[modes.my_mode]
-description = "My Custom Mode"
-
-[[modes.my_mode.keybinds]]
-modifiers = ["Super"]
-key = "h"
-action = "focus_left"
-```
-
-## Use Cases
-
-### Resize Mode
-
-A common pattern is to have a resize mode for adjusting window sizes:
+Mode bindings use the same key and action syntax as normal bindings:
 
 ```toml
 [modes.resize]
@@ -97,35 +19,35 @@ description = "Resize"
 [[modes.resize.keybinds]]
 modifiers = []
 key = "h"
-action = { set_mfact = -0.05 }
+action = "key_resize_left"
 
 [[modes.resize.keybinds]]
 modifiers = []
 key = "j"
-action = { set_mfact = 0.05 }
+action = "key_resize_down"
 
 [[modes.resize.keybinds]]
 modifiers = []
 key = "k"
-action = "inc_nmaster"
+action = "key_resize_up"
 
 [[modes.resize.keybinds]]
 modifiers = []
 key = "l"
-action = "dec_nmaster"
-
-[[modes.resize.keybinds]]
-modifiers = []
-key = "Return"
-action = { set_mode = "default" }
+action = "key_resize_right"
 
 [[modes.resize.keybinds]]
 modifiers = []
 key = "Escape"
 action = { set_mode = "default" }
+
+[[modes.resize.keybinds]]
+modifiers = []
+key = "Return"
+action = { set_mode = "default" }
 ```
 
-Bind it with:
+Bind another key to enter it:
 
 ```toml
 [[keybinds]]
@@ -134,47 +56,77 @@ key = "r"
 action = { set_mode = "resize" }
 ```
 
-### Move Mode
+The description is displayed in the bar in place of the internal name. Use
+`set_mode = "default"` to leave any custom mode. Mode changes also cancel any
+state owned by the previous mode, such as a layout-placement preview.
 
-Similarly, a move mode for moving windows between tags:
+Named modes fall back to global and desktop bindings when they do not override
+a key. Set `transient = true` on a mode to return to Default after any matched
+mode/global binding executes:
 
 ```toml
-[modes.move]
-description = "Move"
-
-[[modes.move.keybinds]]
-modifiers = []
-key = "1"
-action = { spawn = ["instantwmctl", "action", "tag_all"] }
-
-[[modes.move.keybinds]]
-modifiers = []
-key = "Return"
-action = { set_mode = "default" }
-
-[[modes.move.keybinds]]
-modifiers = []
-key = "Escape"
-action = { set_mode = "default" }
+[modes.launch]
+description = "Launch"
+transient = true
 ```
 
-## Command Line Control
+## Customizing the built-in placement mode
 
-You can also control modes using `instantwmctl`:
+++super+m++ starts instantWM's built-in `placement` mode for a tiled window
+which has another valid destination.
+
+The defaults are arrows or `h/j/k/l` to choose a target, Shift plus a direction
+to swap, Ctrl plus a direction to resize, Tab/Shift+Tab to cycle targets, Space
+for a centre swap, Enter to apply, and Escape to cancel. An unrelated key also
+cancels without being delivered to the focused application.
+
+These are ordinary named actions, so you can replace the built-in bindings:
+
+```toml
+[modes.placement]
+description = "Place window"
+
+[[modes.placement.keybinds]]
+modifiers = []
+key = "a"
+action = "placement_left"
+
+[[modes.placement.keybinds]]
+modifiers = []
+key = "d"
+action = "placement_right"
+```
+
+Useful names include `placement_left`, `placement_right`, `placement_up`,
+`placement_down`, their `placement_swap_*` and `placement_resize_*` variants,
+and `placement_next`, `placement_previous`, `placement_center`,
+`placement_apply`, and `placement_cancel`. Removing a placement binding makes
+that non-modifier key unrelated, so pressing it cancels the mode.
+
+::: details Implementation note
+
+IPC can list the active `placement` mode and can leave it by changing modes.
+It deliberately cannot enter placement with `mode set placement`: entry needs
+a validated source window and candidate set. Invoke the
+`begin_tree_placement` action instead.
+
+Mouse drags are interactions, not artificial move/resize modes. They share the
+same backend-neutral layout operations without pretending to be keyboard mode
+transitions.
+
+:::
+
+## Command-line control
 
 ```bash
-# List all configured modes
 instantwmctl mode list
-
-# Set a mode (use "default" to exit)
 instantwmctl mode set resize
-
-# Toggle a mode (enter if not active, exit if already active)
 instantwmctl mode toggle resize
+instantwmctl mode set default
 ```
 
-The `mode list` command shows all configured modes with an asterisk (*) next to the currently active mode.
+Use `instantwm --list-actions` or `instantwmctl action --list` to see the action
+names supported by the installed build.
 
-## Built-in Modes
-
-instantWM has built-in handling for move and resize modes that are triggered automatically when dragging windows with the mouse. These are separate from the user-defined modes configured via TOML.
+See [Layouts](layouts.md#keyboard-placement) for placement behavior and
+[instantWM configuration](wmsettings.md#custom-keybinds) for binding syntax.

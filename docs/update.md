@@ -1,9 +1,15 @@
 # Updating instantOS
 
-To update instantOS, open a terminal and run ```yay```.  It will prompt
-you for your root password and to confirm installing the updates.  This
-tool will update all programs from the official repositories and the
-[AUR](https://aur.archlinux.org)
+To update the whole instantOS system, open a terminal and run:
+
+```bash
+ins update
+```
+
+This updates system packages and the other instantOS-managed components
+described below. To update only packages from the official repositories and
+the [AUR](https://aur.archlinux.org), run `yay` instead. Both commands may ask
+for your root password and confirmation before installing package updates.
 
 Just like with any other Linux distro, you can continue using your
 computer while installing updates.  Updates to some instantOS components
@@ -24,7 +30,7 @@ into instantCLI. Run `ins update` in a
 terminal to update the entire system, including pacman packages, config files
 and anything else which is found to be outdated. Most of the work here is being
 done by `topgrade` as a universal updater, with some instantOS specific
-additions.
+additions. If `topgrade` is not installed yet, `ins update` installs it first.
 
 In the current instantCLI implementation, `ins update` also:
 
@@ -43,5 +49,3 @@ ins settings apply
 ```
 
 See [ins CLI](ins.md) for the broader command reference.
-
-

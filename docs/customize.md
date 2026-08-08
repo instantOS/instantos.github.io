@@ -40,52 +40,18 @@ you do not want to run a background job.
 `ins settings apply` re-applies non-persistent settings from the saved settings
 store and also tries to re-apply the configured wallpaper.
 
-### Settings CLI options
-
-```bash
-# Re-apply non-persistent settings manually
-ins settings apply
-
-# List settings and categories
-ins settings list
-ins settings list --categories
-
-# Open settings at a specific setting (by ID)
-ins settings --setting "appearance.animations"
-
-# Open settings to a specific category
-ins settings --category "appearance"
-
-# Open in search mode
-ins settings --search
-
-# Open in GUI terminal (uses kitty)
-ins settings --gui
-``` 
+The complete and current settings command reference, including options for
+opening a category or setting and listing available IDs, lives in
+[the `ins settings` documentation](ins.md#settings).
 
 
 ## Wallpapers
 
-```bash
-# Set wallpaper from a local file
-ins wallpaper set ~/Pictures/wallpaper.png
-
-# Re-apply the configured wallpaper (useful after boot)
-ins wallpaper apply
-
-# Fetch a random wallpaper from Wallhaven
-ins wallpaper random
-
-# Generate a colored wallpaper with instantOS logo
-ins wallpaper colored --bg "#1a1a2e" --fg "#ffffff"
-```
-
 Colors are remembered for future use. The `random` command fetches from Wallhaven
 and applies the instantOS logo overlay unless `--no-logo` is passed.
 
-Supported compositors: Sway, i3, dwm, InstantWM, GNOME, Hyprland.
-
-More `ins wallpaper` commands are documented in [ins CLI](ins.md).
+See [the `ins wallpaper` documentation](ins.md#wallpaper) for the current
+commands, options, examples, and supported environments.
 
 ## Theming
 
@@ -131,4 +97,3 @@ to undo whatever you did to it, should you inevitably break it.
 
 Do it manually, and tell me if you found a good way to theme it without breaking
 any applications. 
-

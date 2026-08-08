@@ -54,6 +54,7 @@ will prompt to install it before running the action.
 | `q` | QR Encode Clipboard: generate QR code from clipboard |
 | `e` | Emoji Picker: open emoji picker |
 | `k` | Color Picker: pick color from screen |
+| `o` | Settings: open the instantOS settings manager |
 
 ### Info assists (`i`)
 
@@ -82,14 +83,22 @@ will prompt to install it before running the action.
 | `si` | Screenshot to Imgur: capture area and upload to Imgur |
 | `sm` | Fullscreen to Clipboard: fullscreen screenshot to clipboard |
 | `sp` | Area to Pictures: selected area screenshot to Pictures folder |
+| `sz` | Freeze Area: keep a captured region visible in place (Sway) |
 | `sq` | QR Code Scanner: scan QR code from selected area |
 | `sr` | OCR Text Recognition: extract text from selected area |
+| `sv` | Record Area (MP4): toggle recording of a selected area |
+| `sw` | Record Area (WebM): toggle a smaller, browser-friendly recording |
+| `sg` | Record Fullscreen: toggle full-screen recording |
+| `sk` | Kooha: open the screen recorder |
+| `sx` | Stop Recording: stop the current recording |
 
 ### Tools assists (`t`)
 
 | Key | Action |
 | --- | --- |
 | `tm` | Mouse Speed: adjust mouse sensitivity |
+| `ts` | Theme Settings: reapply non-persistent settings and wallpaper |
+| `tw` | Screen Mirror: mirror a display output |
 
 ### Media navigation assists (`v`)
 
@@ -119,4 +128,3 @@ Use the `instantmenu` frontend instead of the built-in chord UI:
 ```bash
 ins assist --instantmenu
 ```
-

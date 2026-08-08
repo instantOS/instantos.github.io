@@ -8,8 +8,8 @@ IPC command.
 
 ## Start here
 
-- [Layouts](layouts.md) explains the persistent manual tree, one-shot layout
-  presets, maximized presentation, keyboard placement, and tiled mouse resize.
+- [Layouts](layouts.md) explains how to arrange, swap, and resize windows with
+  the keyboard or mouse.
 - [Floating windows](floating.md) covers free movement, resizing, and the
   difference between floating and tiled drag gestures.
 - [Keybindings reference](hotkeys.md) lists the current default keyboard and
@@ -28,7 +28,7 @@ IPC command.
 - [Closing applications](close.md)
 - [Window drawing](drawing.md)
 
-## Customize and automate
+## Customize instantWM
 
 - [instantWM configuration](wmsettings.md) documents `config.toml`, themes,
   inputs, monitors, keybindings, and layout geometry.
@@ -40,6 +40,12 @@ IPC command.
 - [Screenshots](screenshots.md), [notifications](notify.md), and
   [screen locking](instantlock.md) document desktop integrations commonly used
   from instantWM bindings.
+
+## Scripting and development
+
+- [Modes](modes.md) explains how to create contextual groups of keybindings.
+- [instantwmctl](instantwmctl.md) is the command-line and IPC reference for
+  scripts and integrations.
 
 The compiled defaults are always available locally with
 `instantwm --print-config` and `instantwm --list-actions`. Those commands are
