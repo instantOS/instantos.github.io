@@ -261,6 +261,51 @@ Multiple B-roll clips can be chained:
 `a@00:30.0-00:40.0` no B-roll (after separator)
 ```
 
+### B-Roll Transforms
+
+You can control how B-roll clips are sized and positioned using transform
+parameters after a `|` in the timestamp reference. There are two ways to specify
+them: named presets and explicit values.
+
+#### Presets
+
+Presets cover the most common arrangements:
+
+```markdown
+> `b@00:00.0-00:05.0|pip`   picture-in-picture (small, top-right corner)
+> `b@00:00.0-00:05.0|full`  full-screen footage
+> `b@00:00.0-00:05.0|side`  half-size on the right side
+```
+
+| Preset | Scale | Position | Use case |
+|--------|-------|----------|----------|
+| (none) | 90% | center | Default inset with border |
+| `full` | 100% | center | Full-screen B-roll |
+| `pip` | 30% | top-right | Picture-in-picture |
+| `side` | 50% | right | Split-screen |
+
+#### Explicit Values
+
+For fine-grained control, use `key=value` pairs:
+
+```markdown
+> `b@00:00.0-00:05.0|scale=0.6|pos=bottom-right` 60% scale, bottom-right corner
+> `b@00:00.0-00:05.0|pos=top-left`               default scale, top-left
+> `b@00:00.0-00:05.0|scale=0.5`                  50% scale, centered
+```
+
+Available parameters:
+
+- **`scale`** — float multiplier (e.g. `0.5` for 50%, `1.0` for 100%)
+- **`pos`** / **`position`** — one of: `center`, `top-left`, `top`, `top-right`,
+  `left`, `right`, `bottom-left`, `bottom`, `bottom-right`
+
+You can mix a preset with explicit overrides — later parameters take priority:
+
+```markdown
+> `b@00:00.0-00:05.0|pip|scale=0.5`  pip position, but 50% scale instead of 30%
+```
+
 ### Background music
 
 Add music with a `music` code block. The music plays from that point until the next music block or the end of the video:
