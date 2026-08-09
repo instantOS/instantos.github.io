@@ -3,7 +3,7 @@
     "@catppuccin/vitepress": "^0.1.2"
   },
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.15"
+    "vitepress": "^2.0.0-alpha.19"
   },
   "scripts": {
     "dev": "vitepress dev",
