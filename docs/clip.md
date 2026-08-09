@@ -1,5 +1,8 @@
 # Clipboard history (`ins clip`)
 
+
+![screenshot](https://i.imgur.com/MtoxsKn.png)
+
 `ins clip` is the instantOS clipboard-history picker. It replaces the old
 `instantclipmenu` wrapper and automatically selects a small, session-native
 capture backend:
