@@ -3,9 +3,10 @@
 instantMENU is a general purpose menu that is used for most GUIs in instantOS.
 It started as a dmenu fork and was rewritten in Rust; it keeps the dmenu
 workflow (items on stdin, selection on stdout, full keyboard control) while
-adding mouse support, animations, icon prefixes, comments, alt-tab behaviour
-and more. It runs natively on **X11 and Wayland** (auto-detected via
-`WAYLAND_DISPLAY`, or forced with `--backend x11` / `--backend wayland`).
+adding mouse support, animations, icon prefixes, comments, alt-tab behaviour,
+a value slider mode and more. It runs natively on **X11 and Wayland**
+(auto-detected via `WAYLAND_DISPLAY`, or forced with `--backend x11` /
+`--backend wayland`).
 
 ## Command line
 
@@ -29,6 +30,7 @@ A few options worth knowing:
 | `-r, --reject-no-match` | Reject input that results in no matches |
 | `--space-confirm` | Confirm the selection with the space key |
 | `--toast <TENTHS>` | Draw the menu, wait, then exit (toast notifications) |
+| `--slide` | Show a value slider instead of a menu (see [Slider mode](#slider-mode)) |
 | `--password` | Display input as dots |
 | `--input-only` | Only display the input field, without the item list |
 | `--alt-tab` | Alt-tab behaviour |
@@ -227,6 +229,57 @@ gives a grid of 5x5 entries. The grid is filled from left to right and top to bo
 The long option spellings are `--columns 4 --lines 5`.
 
 ![grid screenshot](https://i.imgur.com/oTTTN8e.png)
+
+## Slider mode
+
+With `--slide` instantmenu stops showing a list and displays a value slider
+instead. This brings the functionality of the old `islide` utility (used for
+things like brightness and volume) into instantmenu. The slider is drawn as a
+horizontal bar with the portion up to the current value filled in the
+selection color; the current value is shown next to the prompt (or by itself
+if there is no prompt).
+
+```sh
+instantmenu --slide --min 0 --max 100 --value 40 --step 5 --command 'brightnessctl set'
+```
+
+All slider options require `--slide`:
+
+| Option | Effect |
+|--------|--------|
+| `--slide` | Show a value slider instead of a menu |
+| `--min <N>` | Minimum value (default: `0`, may be negative) |
+| `--max <N>` | Maximum value (default: `100`, may be negative; must be larger than `--min`) |
+| `--value <N>` | Initial value (default: the middle of the range, clamped into it) |
+| `--step <N>` | Small step for left/right (default: `1`, at least 1) |
+| `--big-step <N>` | Large step for up/down (default: a tenth of the range, at least 5) |
+| `--command <CMD>` | Command run on every value change |
+
+**Return** prints the current value to stdout and exits; **Escape** (or `q`)
+exits without printing. Every value change runs `--command` through the shell
+with the current value appended as its last argument — the command also runs
+once with the initial value when the slider opens.
+
+`--slide` cannot be combined with `--toast`, `--commented`, `--input-only`,
+`--password` or `--preselect`.
+
+### Controls
+
+| Key(s) | Effect |
+|--------|--------|
+| `Left` / `h` | Decrease by `--step` |
+| `Right` / `l` | Increase by `--step` |
+| `Down` / `j` | Decrease by `--big-step` |
+| `Up` / `k` | Increase by `--big-step` |
+| `+` / `-` | Change by 1 |
+| `1`–`9`, `0` | Jump to a ninth of the range (`0` = maximum) |
+| `Home` / `End` | Jump to minimum / maximum |
+| `Return` | Print the value and exit |
+| `Escape` / `q` | Exit without printing |
+
+Mouse: click or drag on the bar to set the value, the mouse wheel changes it
+by `--step`, a middle click resets it to the initial value and a right click
+exits without printing.
 
 ## [imenu](https://github.com/instantOS/imenu)
 
