@@ -1,11 +1,51 @@
 # instantMENU
 
 instantMENU is a general purpose menu that is used for most GUIs in instantOS.
-It is a superset of dmenu and can be used as a drop-in replacement.
+It started as a dmenu fork and was rewritten in Rust; it keeps the dmenu
+workflow (items on stdin, selection on stdout, full keyboard control) while
+adding mouse support, animations, icon prefixes, comments, alt-tab behaviour
+and more. It runs natively on **X11 and Wayland** (auto-detected via
+`WAYLAND_DISPLAY`, or forced with `--backend x11` / `--backend wayland`).
+
+## Command line
+
+The command line uses modern long options (`--width`, `--prompt`,
+`--match-mode`, ...) with single-letter shortcuts for the common flags
+(`-i`, `-p`, `-l`, `-g`, `-m`, `-w`, ...). The old multi-character dmenu
+style flags are gone (`-fn` is `--font`, `-nb`/`-nf`/`-sb`/`-sf` are
+`--normal-bg`/`--normal-fg`/`--selected-bg`/`--selected-fg`, `-q` is
+`--placeholder`, `-h` is now `--help`).
+
+A few options worth knowing:
+
+| Option | Effect |
+|--------|--------|
+| `--position top\|left\|center\|...` | Anchor the menu to a corner, edge or the center (default: top) |
+| `--follow-cursor` | Place the menu at the mouse position |
+| `--match-mode fuzzy\|dmenu\|exact` | Item matching algorithm (default: fuzzy) |
+| `-i, --insensitive` | Case-insensitive item matching |
+| `-s, --smart-case` | Case-insensitive unless the query contains uppercase |
+| `-n, --instant` | Instantly select the only match |
+| `-r, --reject-no-match` | Reject input that results in no matches |
+| `--space-confirm` | Confirm the selection with the space key |
+| `--toast <TENTHS>` | Draw the menu, wait, then exit (toast notifications) |
+| `--password` | Display input as dots |
+| `--input-only` | Only display the input field, without the item list |
+| `--alt-tab` | Alt-tab behaviour |
+| `--managed` | Let instantmenu be managed by the window manager as a normal window |
+| `--embed <ID>` | Embed into an X11 window (X11 only) |
+| `-w -1` | Adjust the width to the longest line read from stdin |
+| `--preselect <N>` / `--initial-text <TEXT>` | Start with an item selected / input pre-filled |
+
+Run `instantmenu --help` (or `man instantmenu`) for the complete option and
+keyboard reference.
 
 ## Customization
 
-The colors of instantMENU can be customized through `~/.Xresources`.
+On X11 the colors of instantMENU can be customized through `~/.Xresources`.
+On Wayland there is no resource manager, so use the command line options
+(`--font`, `--normal-bg`, `--normal-fg`, `--selected-bg`, `--selected-fg`)
+there instead — they override the X resources on X11 as well.
 
 ### Example
 
@@ -62,6 +102,10 @@ Most settings have three sub-settings: `fg`, `bg`, and `detail`. `fg` is the col
 text and fontawesome icons on the entry. `bg` is the background color. `detail` is
 the shadow detail that appears below the item when selected.
 
+The font is a single `instantmenu.font` key. It accepts Xft-style font
+descriptions like `Family:size=14` or `Family:pixelsize=20`; family names are
+matched loosely, so `FiraCode` will find `Fira Code`.
+
 ---
 
 ### Markup
@@ -114,6 +158,10 @@ echo ':bHello world' | instantmenu
 | yellow    | y         |
 | blue      | b         |
 
+::: info
+`h` (highlight) is only available for comments (`>>h`). Colored entries
+(`:h`) accept `r`, `g`, `y` and `b` only.
+:::
 
 ### Example
 
@@ -122,7 +170,7 @@ echo ':bThis is blue
 :yThis is yellow
 :rThis is red
 :gThis is green
-This is normal' | instantmenu -l
+This is normal' | instantmenu -l 5
 ```
 
 ![yellow](https://i.imgur.com/Pt7yhes.png)
@@ -134,24 +182,40 @@ This is normal' | instantmenu -l
 
 ## Icon syntax
 
-Icon entries are regular selectable entries that are prefixed with an icon and
-a color. The icon also has a color that shows on hover over. They require the
-argument ```-h 1``` to be present in order to render properly.
+Icon entries are regular selectable entries that are prefixed with a Nerd
+Fonts icon and a color. The entry text is drawn next to the icon, and the icon
+shows the hover color when the entry is hovered over.
+
+The markup is a color code followed by a space, the icon glyph and the entry
+text:
+
 ```txt
-echo ':b Icon' | instantmenu -h -1
-      ↑↑ ↑↑
-      || ||
-      || ||
-      || ||
-      || |Entry text
-      || Nerd fonts icon displayed in front of the entry text
-      |The icon color will be green
-      Colons indicate that an entry will have styling
+echo ':b  Icon' | instantmenu --line-height 32
+```
+(the middle character is a Nerd Fonts icon glyph; any icon from the
+[cheat sheet](https://www.nerdfonts.com/cheat-sheet) works)
+
+| Part            | Meaning |
+|-----------------|---------|
+| `:`             | Marks a styled entry |
+| `b`             | The color of the entry/icon (`r`, `g`, `y` or `b`) |
+| ` ` (space)     | Turns the colored entry into an icon entry |
+| glyph           | The Nerd Fonts icon drawn in front of the entry text |
+| ` Icon`         | The entry text |
+
+```txt
+echo ':g  Icon' | instantmenu --line-height 32
 ```
 
 The iconset in use is [Nerd Fonts](https://www.nerdfonts.com/), a collection of
 icons that includes the [Font Awesome](https://fontawesome.com/) icon set and
 can be [searched through](https://www.nerdfonts.com/cheat-sheet)
+
+The old C version needed the `-h` flag (menu line height) to render icons
+nicely; that flag no longer exists — `-h` prints help now, and line height is
+set with `--line-height`. Negative values are clamped to the minimum of 8
+pixels, so give the icons some room with a positive value such as
+`--line-height 32`, or use `--full-height` for the whole screen.
 
 ## Grid syntax
 
@@ -159,7 +223,8 @@ can be [searched through](https://www.nerdfonts.com/cheat-sheet)
 seq 20 | instantmenu -g 4 -l 5
 ```
 
-gives a grid of 5x5 entries. The grid is filled from left to right and top to bottom with the individual lines from stdin. 
+gives a grid of 5x5 entries. The grid is filled from left to right and top to bottom with the individual lines from stdin.
+The long option spellings are `--columns 4 --lines 5`.
 
 ![grid screenshot](https://i.imgur.com/oTTTN8e.png)
 

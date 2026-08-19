@@ -63,7 +63,7 @@ Most applications on instantOS have built-in theming support which is documented
 elsewhere. 
 This includes but is not limited to the following
 
-- instantMENU
+- instantMENU — see [the instantMENU docs](/development/instantMENU)
 - instantWM — see [instantWM themes](/docs/wmsettings#themes)
 - Kitty
 - Sway

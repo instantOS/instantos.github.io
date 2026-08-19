@@ -28,7 +28,8 @@ The Window Manager
 ### [instantMENU](https://github.com/instantOS/instantMENU)
 
 The menu system. It is responsible for things like the start menu, quick menu,
-shutdown menu and can also be used as a dmenu replacement (of which it is a fork)
+shutdown menu and can also be used as a dmenu replacement. Started as a dmenu
+fork, now rewritten in Rust with native X11 and Wayland support.
 used to build the instantmenu package
 
 ### [instantOS/dotfiles](https://github.com/instantOS/dotfiles)
