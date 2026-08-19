@@ -30,7 +30,7 @@ A few options worth knowing:
 | `-r, --reject-no-match` | Reject input that results in no matches |
 | `--space-confirm` | Confirm the selection with the space key |
 | `--toast <TENTHS>` | Draw the menu, wait, then exit (toast notifications) |
-| `--slide` | Show a value slider instead of a menu (see [Slider mode](#slider-mode)) |
+| `slide` | Value slider subcommand: `instantmenu slide` (see [Slider mode](#slider-mode)) |
 | `--password` | Display input as dots |
 | `--input-only` | Only display the input field, without the item list |
 | `--alt-tab` | Alt-tab behaviour |
@@ -39,8 +39,8 @@ A few options worth knowing:
 | `-w -1` | Adjust the width to the longest line read from stdin |
 | `--preselect <N>` / `--initial-text <TEXT>` | Start with an item selected / input pre-filled |
 
-Run `instantmenu --help` (or `man instantmenu`) for the complete option and
-keyboard reference.
+Run `instantmenu --help`, `instantmenu slide --help` (or `man instantmenu`)
+for the complete option and keyboard reference.
 
 ## Customization
 
@@ -232,36 +232,38 @@ The long option spellings are `--columns 4 --lines 5`.
 
 ## Slider mode
 
-With `--slide` instantmenu stops showing a list and displays a value slider
-instead. This brings the functionality of the old `islide` utility (used for
-things like brightness and volume) into instantmenu. The slider is drawn as a
-horizontal bar with the portion up to the current value filled in the
-selection color; the current value is shown next to the prompt (or by itself
-if there is no prompt).
+The `slide` subcommand shows a value slider instead of a menu. This brings
+the functionality of the old `islide` utility (used for things like
+brightness and volume) into instantmenu. The slider is drawn as a horizontal
+bar with the portion up to the current value filled in the selection color;
+the current value is shown next to the prompt (or by itself if there is no
+prompt).
 
 ```sh
-instantmenu --slide --min 0 --max 100 --value 40 --step 5 --command 'brightnessctl set'
+instantmenu slide 'brightnessctl set' --min 0 --max 100 --value 40 --step 5
 ```
 
-All slider options require `--slide`:
+The command run on every value change can be given as a positional argument
+(`COMMAND` above) or with `--command` — not both.
 
 | Option | Effect |
 |--------|--------|
-| `--slide` | Show a value slider instead of a menu |
 | `--min <N>` | Minimum value (default: `0`, may be negative) |
 | `--max <N>` | Maximum value (default: `100`, may be negative; must be larger than `--min`) |
 | `--value <N>` | Initial value (default: the middle of the range, clamped into it) |
 | `--step <N>` | Small step for left/right (default: `1`, at least 1) |
 | `--big-step <N>` | Large step for up/down (default: a tenth of the range, at least 5) |
-| `--command <CMD>` | Command run on every value change |
+| `COMMAND` / `--command <CMD>` | Command run on every value change |
 
 **Return** prints the current value to stdout and exits; **Escape** (or `q`)
-exits without printing. Every value change runs `--command` through the shell
+exits without printing. Every value change runs the command through the shell
 with the current value appended as its last argument — the command also runs
 once with the initial value when the slider opens.
 
-`--slide` cannot be combined with `--toast`, `--commented`, `--input-only`,
-`--password` or `--preselect`.
+The window options (`--backend`, `--position`, `-p`/`--prompt`, `--font`,
+`--line-height`, the colors, ...) work here as well; menu options like
+`--toast`, `--commented`, `--input-only`, `--password` or `--preselect`
+cannot be used with `slide`.
 
 ### Controls
 
