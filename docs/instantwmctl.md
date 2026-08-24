@@ -31,14 +31,13 @@ Global options:
 | `layout` | Set the current layout |
 | `theme` | Inspect, list, or switch the runtime colour theme |
 | `border` | Set the focused window border width |
-| `special-next` | Set the special-next mode |
+| `pending-tmp-rule` | Add, list, or cancel runtime-added one-shot window rules |
 | `keyboard` | Manage keyboard layouts |
 | `scratchpad` | Manage scratchpads |
 | `mouse` | Inspect or change input device settings |
 | `mode` | List, enter, or toggle configured modes |
 | `update-status` | Replace the bar status text |
 | `wallpaper` | Set wallpaper using `swaybg` on Wayland or `feh` on X11 |
-| `dpms` | Change display power state |
 | `config` | Print defaults or inspect/change runtime config values |
 | `quit` | Ask instantWM to quit |
 
@@ -68,6 +67,12 @@ instantwmctl keyboard status
 
 # Toggle the default scratchpad
 instantwmctl scratchpad toggle
+
+# Make the very next spawned window float, expires after 30s
+instantwmctl pending-tmp-rule add --float
+
+# Open the next mpv window floating on tag 3 with a 5-minute window
+instantwmctl pending-tmp-rule add --class mpv --float --tag 3 --timeout-ms 300000
 ```
 
 ## Layouts
@@ -191,6 +196,76 @@ instantwmctl toggle hide-tags disable
 
 If no name is given, the default scratchpad name is `instantwm_scratchpad`.
 
+## Pending tmp rules
+
+A **pending tmp rule** is a one-shot window rule that the WM consumes the next time a matching window applies its initial rules. After consumption the rule is gone. Each rule has a TTL (default 30 seconds) and is dropped silently when the deadline passes, so a misplaced rule never lingers beyond its lifetime.
+
+Pending tmp rules share the matching fields of config `[[rules]]` (see [Window rules](wmsettings.md#window-rules)): `class`, `instance`, `title`, `is_floating`, `tags`, `monitor`. They apply once. With no `--class`, `--instance`, or `--title` filter the rule matches the next window regardless of identity.
+
+Pending tmp rules are not modes. Modes are persistent modal keybinding contexts (see [Modes](modes.md)). A pending tmp rule is consumed in a single event and does not change keybindings or focus behavior.
+
+| Command | Description |
+| --- | --- |
+| `instantwmctl pending-tmp-rule add --float` | Make the next window float (default TTL 30 s) |
+| `instantwmctl pending-tmp-rule add --class mpv --float` | Float only when the next `mpv` window appears |
+| `instantwmctl pending-tmp-rule add --tile` | Force the next window tiled |
+| `instantwmctl pending-tmp-rule add --tile --tag 3` | Force the next window tiled on tag 3 |
+| `instantwmctl pending-tmp-rule add --float --on-monitor 1` | Float the next window on monitor 1 |
+| `instantwmctl pending-tmp-rule add --timeout-ms 60000` | Set a 60-second TTL |
+| `instantwmctl pending-tmp-rule list` | List current pending rules with id and remaining time |
+| `instantwmctl --json pending-tmp-rule list` | Same listing, JSON for scripts |
+| `instantwmctl pending-tmp-rule cancel <id>` | Remove a pending rule before it matches |
+
+`add` flags:
+
+- `--class <SUBSTRING>`: match against the WM class (substring, case-sensitive)
+- `--instance <SUBSTRING>`: match against the WM instance
+- `--title <SUBSTRING>`: match against the window title
+- `--float`: force the matched window to floating. Mutually exclusive with `--tile`.
+- `--tile`: force the matched window to tiled. Mutually exclusive with `--float`.
+- `--tag <N>`: assign tag `N` (1-indexed)
+- `--on-monitor <INDEX>`: place the matched window on monitor `INDEX`
+- `--timeout-ms <MS>`: TTL in milliseconds. Default 30000. Must be `> 0` and `<= 86400000` (24 h)
+
+`list` shows: id, class, instance, title, `yes`/`no`/`-` for floating, tag number, monitor index, and remaining time. `cancel` removes a rule by id and prints a confirmation.
+
+Output examples:
+
+```bash
+# Add, get an id back
+$ instantwmctl pending-tmp-rule add --class mpv --float
+pending-tmp-rule added: id=1 timeout_ms=30000
+
+# List
+$ instantwmctl pending-tmp-rule list
+ID    CLASS          INSTANCE      TITLE          FLOAT   TAG  MONITOR    REMAINING
+1     mpv             -             -              yes     -    -          28.4s
+
+# Cancel
+$ instantwmctl pending-tmp-rule cancel 1
+pending-tmp-rule 1 cancelled
+```
+
+JSON output (for scripts):
+
+```bash
+$ instantwmctl --json pending-tmp-rule list
+[
+  {
+    "id": 1,
+    "class": "mpv",
+    "instance": null,
+    "title": null,
+    "is_floating": true,
+    "tag": 3,
+    "on_monitor": null,
+    "ms_remaining": 28412
+  }
+]
+```
+
+A pending tmp rule is consumed by the *first* matching window's initial rule application only; later `title_changed` or `app_id_changed` property refreshes do not consume it. If no window matches before the TTL expires, the rule drops silently and nothing happens.
+
 ## Mouse and input commands
 
 `mouse` is the public command name. `input` is available as an alias.
@@ -254,7 +329,8 @@ instantwmctl config set layout.inner_gap 12
 
 ## Related pages
 
-- [WM Settings](wmsettings.md)
+- [WM Settings](wmsettings.md#window-rules)
 - [Modes](modes.md)
 - [Layouts](layouts.md)
 - [Scratchpad](scratchpad.md)
+- [Tags](tags.md)

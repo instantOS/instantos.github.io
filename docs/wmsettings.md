@@ -498,6 +498,8 @@ monitor = { index = 1 }
 
 Only the first matching rule is applied to a window.
 
+> For a one-shot runtime analog (useful when you want a rule to apply to the next matching window and then disappear) see [`instantwmctl pending-tmp-rule`](instantwmctl.md#pending-tmp-rules). Pending tmp rules use the same matching and placement fields but auto-expire and are consumed on first match.
+
 ## Control Commands
 
 Runtime control is provided by `instantwmctl`. See the canonical

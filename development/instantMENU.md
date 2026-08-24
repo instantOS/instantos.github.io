@@ -136,9 +136,9 @@ This is normal' | instantmenu -l
 
 Icon entries are regular selectable entries that are prefixed with an icon and
 a color. The icon also has a color that shows on hover over. They require the
-argument ```-h 1``` to be present in order to render properly.
+argument ```--line-height auto``` to be present in order to render properly.
 ```txt
-echo ':b Icon' | instantmenu -h -1
+echo ':b Icon' | instantmenu --line-height auto
       ↑↑ ↑↑
       || ||
       || ||
