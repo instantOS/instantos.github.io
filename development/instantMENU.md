@@ -35,17 +35,22 @@ A few options worth knowing:
 |--------|--------|
 | `--position top\|left\|center\|...` | Anchor the menu to a corner, edge or the center (default: top) |
 | `--follow-cursor` | Place the menu at the mouse position |
+| `-m N, --monitor N` | Select an output explicitly (`auto` follows keyboard focus) |
 | `--match-mode fuzzy\|dmenu\|exact` | Item matching algorithm (default: fuzzy) |
 | `-i, --insensitive` | Case-insensitive item matching |
 | `-s, --smart-case` | Case-insensitive unless the query contains uppercase |
 | `-n, --auto-confirm` | Confirm automatically when exactly one item matches |
 | `-r, --reject-no-match` | Reject input that results in no matches |
 | `--space-confirm` | Confirm the selection with the space key |
+| `--commented` | instantASSIST-style single-letter launcher mode |
 | `--toast <SECONDS>` | Draw the menu for a number of seconds, then exit |
 | `slide` | Value slider subcommand: `instantmenu slide` (see [Slider mode](#slider-mode)) |
 | `--password` | Display input as dots |
 | `--input-only` | Only display the input field, without the item list |
 | `--alt-tab` | Alt-tab behaviour |
+| `--animation-length <N>` | Enable selection animation for a number of frames |
+| `--left-command <CMD>` / `--right-command <CMD>` | Add launcher mode-switch commands |
+| `--full-height` / `--line-height <N\|auto>` | Control row and window height |
 | `--managed` | Let instantmenu be managed by the window manager as a normal window |
 | `--embed <ID>` | Embed into an X11 window (X11 only) |
 | `-w auto, --width auto` | Size to the widest item and prompt |
@@ -140,7 +145,7 @@ recorded with time decay; password input and slider values are never recorded.
 
 The appearance of entries can be changed by prefixing them with a special
 markup syntax. This syntax will not be rendered (apart from the changes in
-appearance) but will still be present in stdout when selecting an entry
+appearance) but will still be present in stdout when selecting an entry.
 
 ### Comments
 
@@ -229,9 +234,9 @@ echo ':b  Icon' | instantmenu --line-height 32
 | glyph           | The Nerd Fonts icon drawn in front of the entry text |
 | ` Icon`         | The entry text |
 
-The iconset in use is [Nerd Fonts](https://www.nerdfonts.com/), a collection of
+The icon set in use is [Nerd Fonts](https://www.nerdfonts.com/), a collection of
 icons that includes the [Font Awesome](https://fontawesome.com/) icon set and
-can be [searched through](https://www.nerdfonts.com/cheat-sheet)
+can be [searched through](https://www.nerdfonts.com/cheat-sheet).
 
 Give icons enough room with a positive value such as `--line-height 32`, use
 `--line-height auto` to derive it from the font, or use `--full-height` for the

@@ -43,9 +43,11 @@ proprietary programs and Wine programs.
 
 ## dmenu-like menu
 
-This is `instantmenu` and behaves exactly like dmenu: type to filter, press
-Enter to run. It can be accessed with ++super+ctrl+space++ or by middle-clicking on the desktop.
-See [the instantMENU docs](/development/instantMENU) for its markup and options.
+This is `instantmenu` and uses the dmenu workflow: type to filter and press
+Enter to choose. Its modern command-line flags differ from historical dmenu.
+It can be accessed with ++super+ctrl+space++ or by middle-clicking on the
+desktop. See [the instantMENU docs](/development/instantMENU) for its markup,
+themes and options.
 
 ## Troubleshooting
 

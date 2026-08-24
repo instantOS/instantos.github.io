@@ -70,10 +70,13 @@ For the window manager colors, edit `~/.config/instantwm/config.toml`.
 Look at the [wmsettings documentation](/docs/wmsettings) for the full configuration reference.
 You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
 
-instantMENU colors are configured independently of the window manager: through
-`~/.Xresources` (`instantmenu.*` keys, X11 only) or its command line options
-(`--normal-bg`, `--selected-bg`, ...). See the [instantMENU
-documentation](/development/instantMENU) for details.
+instantMENU colors are configured independently of the window manager through
+`~/.config/instantmenu/config.toml` (or
+`$XDG_CONFIG_HOME/instantmenu/config.toml`) on both X11 and Wayland. You can
+select the built-in `catppuccin`, `classic` or `gruvbox` theme and override
+individual named colors. Command-line options such as `--theme`,
+`--normal-bg` and `--selected-bg` take precedence. See the
+[instantMENU documentation](/development/instantMENU) for details.
 
 ## What is the weird A100% or "i" in the status bar
 

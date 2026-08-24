@@ -34,8 +34,12 @@ form of frecency and being quite a bit faster to start than rofi.
 
 ## instantMENU
 
-instantMENU works fine through xWayland, but since xWayland takes some time to
-start, as of now its usage is avoided where possible. 
+instantMENU runs natively on Wayland through layer-shell as well as on X11. Its
+modal Wayland path captures keyboard focus before loading its appearance file
+and fonts, so typing during startup is retained. Fuzzel remains the default
+launcher, but instantMENU no longer requires XWayland. See the
+[instantMENU documentation](/development/instantMENU) for configuration and
+features.
 
 ## Status bar
 
