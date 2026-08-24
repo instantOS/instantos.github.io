@@ -66,9 +66,14 @@ time in addition to full-time work/study.
 
 Depends on what colors you want to change.
 Some are available through the various theming options in the settings menu.
-For the window manager and instantMENU colors, edit `~/.config/instantwm/config.toml`.
+For the window manager colors, edit `~/.config/instantwm/config.toml`.
 Look at the [wmsettings documentation](/docs/wmsettings) for the full configuration reference.
 You can also try some preexisting themes from ([instantRICE](https://uvera.github.io/instantrice/)).
+
+instantMENU colors are configured independently of the window manager: through
+`~/.Xresources` (`instantmenu.*` keys, X11 only) or its command line options
+(`--normal-bg`, `--selected-bg`, ...). See the [instantMENU
+documentation](/development/instantMENU) for details.
 
 ## What is the weird A100% or "i" in the status bar
 

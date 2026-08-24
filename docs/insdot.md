@@ -384,6 +384,7 @@ ins dot menu
 Launches an interactive menu for browsing repositories, viewing file status,
 selecting alternative sources, and more. Self-explanatory once opened.
 
+![screenshot](https://i.imgur.com/SwdpzeG.png)
 
 ## Multiple repos
 

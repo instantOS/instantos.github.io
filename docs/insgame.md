@@ -193,6 +193,8 @@ ins game exec steam -applaunch 123456
 
 ### `ins game menu`
 
+![screenshot](https://i.imgur.com/1HvbtIb.png)
+
 Interactive TUI menu for managing games. Provides options to:
 - Launch games
 - Edit game configuration

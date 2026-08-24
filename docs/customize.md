@@ -14,6 +14,8 @@ not been customized by the user.
 
 ## Settings manager
 
+![screenshot](https://i.imgur.com/IUI2GcZ.png)
+
 There is a TUI settings manager, which allows changing most of the standard
 settings similar to how GNOME, macOS or Windows do it. 
 These should be pretty self-explanatory, they include things like Wi-Fi,
@@ -61,7 +63,7 @@ Most applications on instantOS have built-in theming support which is documented
 elsewhere. 
 This includes but is not limited to the following
 
-- instantMENU
+- instantMENU — see [the instantMENU docs](/development/instantMENU)
 - instantWM — see [instantWM themes](/docs/wmsettings#themes)
 - Kitty
 - Sway

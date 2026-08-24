@@ -44,6 +44,8 @@ The current instantCLI build exposes these main command groups:
 
 ## Settings
 
+![screenshot](https://i.imgur.com/IUI2GcZ.png)
+
 `ins settings` opens the instantOS settings interface. It can also be used non-interactively to reopen a specific section, list all categories, or reapply settings that are not persistent across reboots.
 
 ```bash

@@ -48,7 +48,17 @@ An instantMENU GUI for the unix-pass password manager with some extra features
 
 ## instantMENU
 
-A backwards compatible fork of dmenu
+The general-purpose menu that powers most instantOS GUIs: start menu, quick
+menu, instantASSIST, shutdown menu and more. It started as a dmenu fork and
+was rewritten in Rust, keeping the dmenu workflow (items on stdin, selection
+on stdout, full keyboard control) while adding mouse support, animations,
+icon prefixes, comments, alt-tab behaviour and native support for both X11
+and Wayland. The command line uses modern long options (`--width`,
+`--prompt`, `--match-mode`, ...) with a few single-letter shortcuts (`-i`,
+`-p`, `-l`, ...).
+
+See the [instantMENU development docs](/development/instantMENU) for markup
+syntax (comments, colors, icons, grids), theming and the command line.
 
 ## instantPACMAN
 
