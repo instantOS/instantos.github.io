@@ -3,7 +3,7 @@
 instantMENU is a general purpose menu that is used for most GUIs in instantOS.
 It started as a dmenu fork and was rewritten in Rust; it keeps the dmenu
 workflow (items on stdin, selection on stdout, full keyboard control) while
-adding mouse support, animations, icon prefixes, comments, alt-tab behaviour,
+adding mouse support, animations, item metadata, headings, alt-tab behaviour,
 a value slider mode, streamed input, frecency and more. It runs natively on
 **X11 and Wayland**
 (auto-detected via `WAYLAND_DISPLAY`, or forced with `--backend x11` /
@@ -42,9 +42,10 @@ A few options worth knowing:
 | `-n, --auto-confirm` | Confirm automatically when exactly one item matches |
 | `-r, --reject-no-match` | Reject input that results in no matches |
 | `--space-confirm` | Confirm the selection with the space key |
-| `--commented` | instantASSIST-style single-letter launcher mode |
+| `--single-key` | Select items immediately by their declared `key` metadata |
 | `--toast <SECONDS>` | Draw the menu for a number of seconds, then exit |
 | `slide` | Value slider subcommand: `instantmenu slide` (see [Slider mode](#slider-mode)) |
+| `icons` | Explore accepted icon names with `icons list` or `icons search` |
 | `--password` | Display input as dots |
 | `--input-only` | Only display the input field, without the item list |
 | `--alt-tab` | Alt-tab behaviour |
@@ -58,8 +59,9 @@ A few options worth knowing:
 | `--frecency-cache <ID>` | Rank future menus using past selections |
 | `--theme catppuccin\|classic\|gruvbox` | Select a built-in palette |
 
-Run `instantmenu --help`, `instantmenu slide --help` (or `man instantmenu`)
-for the complete option and keyboard reference.
+Run `instantmenu --help`, `instantmenu slide --help`,
+`instantmenu icons --help` (or `man instantmenu`) for the complete option and
+keyboard reference.
 
 ## Font and color configuration
 
@@ -141,106 +143,131 @@ recorded with time decay; password input and slider values are never recorded.
 
 ---
 
-## Entry markup
+## Item format
 
-The appearance of entries can be changed by prefixing them with a special
-markup syntax. This syntax will not be rendered (apart from the changes in
-appearance) but will still be present in stdout when selecting an entry.
+Each newline-delimited item is normally both its visible label and the value
+written to stdout. Plain input therefore remains plain:
 
-### Comments
-
-Comments are entries that cannot be selected as output of instantmenu. They
-will still render as text and can also be searched and scrolled through. Their
-primary purpose is to display more information about the entries that are
-selectable.
-
-```txt
-echo 'this entry will be selectable
-> this entry will not be selectable but will still display' | instantmenu
+```text
+Display
+Terminal
+Shut down
 ```
 
-Entries can also be styled with the default color palette
+An optional metadata block at the start of a line can change appearance and
+behaviour without becoming part of the label or output:
 
-```sh
-echo 'this entry will be selectable
->>b this entry will not be selectable and will display as blue' | instantmenu
+```text
+{blue icon=display match="monitor screen"} Display
+{green icon=terminal key=t} Terminal
+{heading highlight} System actions
+{red icon=power key=q match="shutdown poweroff"} Shut down
 ```
 
-### Colored entries
+Attributes are separated by whitespace. Do not put whitespace around `=`.
+Single- or double-quote a value containing whitespace; a backslash escapes the
+following character within a quoted value. Attribute names, color names, and
+icon names are case-insensitive.
 
-Colored entries render with the specified color on hover over. Apart from that
-they display and behave just like normal entries. Do not put a space after the
-color specifier unless you are creating an icon entry.
+| Attribute | Effect |
+|-----------|--------|
+| `color=NAME` | Apply a configured color scheme. A bare name such as `{red}` is shorthand for `{color=red}`. |
+| `icon=NAME` | Draw a Nerd Fonts or Unicode icon before the label. |
+| `match=TEXT` | Add hidden search terms without changing the label or output. |
+| `key=CHAR` | Declare the one-character selector used by `--single-key`. |
+| `heading` | Make the item a non-selectable section heading. |
 
+Attribute order is insignificant, so `{red icon=power}` and
+`{icon=power color=red}` are equivalent. Duplicate attributes, unknown
+attributes, invalid values, and incomplete blocks make the complete line a
+literal item. To deliberately start a label with something that looks like
+metadata, prefix its opening brace with one extra opening brace; instantMENU
+removes that first brace and displays the rest literally.
 
-```sh
-echo ':bHello world' | instantmenu
+### Colors
+
+Accepted color schemes are `normal` (or `default`), `fade`, `highlight`,
+`hover`, `selected` (or `blue`), `output`, `green`, `yellow`, and `red`.
+For an ordinary item the configured scheme is used when the item is selected.
+An icon gutter and a heading retain their configured scheme while displayed.
+
+```text
+{red} Destructive action
+{color=green} Safe action
+{highlight icon=star} Featured action
 ```
-
-
-#### Color specifiers
-
-
-| Color     | Code      |
-|-----------|-----------|
-| green     | g         |
-| red       | r         |
-| highlight | h         |
-| yellow    | y         |
-| blue      | b         |
-
-::: info
-`h` (highlight) is only available for comments (`>>h`). Colored entries
-(`:h`) accept `r`, `g`, `y` and `b` only.
-:::
-
-#### Example
-
-```sh
-echo ':bThis is blue
-:yThis is yellow
-:rThis is red
-:gThis is green
-This is normal' | instantmenu -l 5
-```
-
-![yellow](https://i.imgur.com/Pt7yhes.png)
-![blue](https://i.imgur.com/KCv5w8o.png)
-![green](https://i.imgur.com/zYEuU9k.png)
-![normal](https://i.imgur.com/vNcJLEH.png)
-![red]( https://i.imgur.com/vNcJLEH.png)
-
 
 ### Icons
 
-Icon entries are regular selectable entries that are prefixed with a Nerd
-Fonts icon and a color. The entry text is drawn next to the icon, and the icon
-shows the hover color when the entry is hovered over.
+The `icon` value may be a Nerd Fonts name, a literal Nerd Fonts or emoji
+glyph, or a hexadecimal codepoint such as `f011`, `0xf011`, or `U+F011`:
 
-The markup is a color code followed by a space, the icon glyph and the entry
-text:
-
-```txt
-echo ':b  Icon' | instantmenu --line-height 32
+```text
+{red icon=power-off} Shut down
+{green icon=md-restart} Restart
+{icon=U+23FB} Power
 ```
-(the middle character is a Nerd Fonts icon glyph; any icon from the
-[cheat sheet](https://www.nerdfonts.com/cheat-sheet) works)
 
-| Part            | Meaning |
-|-----------------|---------|
-| `:`             | Marks a styled entry |
-| `b`             | The color of the entry/icon (`r`, `g`, `y` or `b`) |
-| ` ` (space)     | Turns the colored entry into an icon entry |
-| glyph           | The Nerd Fonts icon drawn in front of the entry text |
-| ` Icon`         | The entry text |
+Names may include a family qualifier or `nf-` prefix. Spaces, hyphens, and
+underscores are interchangeable. The complete embedded catalog can be
+explored without opening a menu or connecting to a display server; both
+commands print tab-separated icon name, glyph, and Unicode codepoint:
 
-The icon set in use is [Nerd Fonts](https://www.nerdfonts.com/), a collection of
-icons that includes the [Font Awesome](https://fontawesome.com/) icon set and
-can be [searched through](https://www.nerdfonts.com/cheat-sheet).
+```sh
+instantmenu icons list
+instantmenu icons search power-off
+instantmenu icons search folder open
+```
 
-Give icons enough room with a positive value such as `--line-height 32`, use
-`--line-height auto` to derive it from the font, or use `--full-height` for the
-whole screen. `-h` is the help flag, not line height.
+The icon set is [Nerd Fonts](https://www.nerdfonts.com/), which includes
+[Font Awesome](https://fontawesome.com/) and several other icon families.
+
+### Hidden matching terms
+
+Use `match` to add aliases that can find an item without displaying or
+returning them:
+
+```text
+{match="monitor screen output" icon=display} Display
+```
+
+Typing `monitor` can find this item, but selecting it still prints `Display`.
+Hidden terms participate in fuzzy and dmenu matching. Exact mode continues to
+require equality with the visible label.
+
+### Headings
+
+`heading` creates an explicit, structural section label:
+
+```text
+{heading highlight} Applications
+{icon=terminal} Terminal
+{icon=firefox} Web browser
+{heading highlight} Session
+{red icon=power} Shut down
+```
+
+Headings appear while the query is empty. They cannot be selected by keyboard
+or mouse, never produce output, do not count toward auto-confirm, and disappear
+once filtering begins. Frecency reorders selectable items only within their
+heading section, leaving headings and section boundaries fixed.
+
+### Single-key mode
+
+`--single-key` turns declared `key` attributes into immediate selectors:
+
+```sh
+printf '%s\n' \
+  '{green icon=terminal key=t} Terminal' \
+  '{blue icon=display key=d} Display' \
+  '{red icon=power key=q} Shut down' |
+  instantmenu --single-key
+```
+
+Only keyed, selectable items appear. Each cell shows its key and the prompt
+shows the selected item's full label. Keys are exact, case-sensitive Unicode
+characters; if a key is duplicated, the first item wins. Regular query
+matching and hidden `match` terms are not used in this mode.
 
 ## Grid syntax
 
@@ -286,7 +313,7 @@ once with the initial value when the slider opens.
 
 The window options (`--backend`, `--position`, `-p`/`--prompt`, `--font`,
 `--line-height`, the colors, ...) work here as well; menu options like
-`--toast`, `--commented`, `--input-only`, `--password` or `--preselect`
+`--toast`, `--single-key`, `--input-only`, `--password` or `--preselect`
 cannot be used with `slide`.
 
 ### Controls

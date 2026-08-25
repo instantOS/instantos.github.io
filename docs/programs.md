@@ -52,16 +52,16 @@ The general-purpose menu that powers most instantOS GUIs: start menu, quick
 menu, instantASSIST, shutdown menu and more. It started as a dmenu fork and
 was rewritten in Rust, keeping the dmenu workflow (items on stdin, selection
 on stdout, full keyboard control) while adding mouse support, animations,
-icon prefixes, comments, alt-tab behaviour, streamed input, a slider mode,
+item icons, headings, alt-tab behaviour, streamed input, a slider mode,
 frecency and native support for both X11 and Wayland. It includes Catppuccin,
 classic and Gruvbox themes plus a cross-platform TOML appearance file. The
 command line uses modern long options (`--width`,
 `--prompt`, `--match-mode`, ...) with a few single-letter shortcuts (`-i`,
 `-p`, `-l`, ...).
 
-See the [instantMENU development docs](/development/instantMENU) for markup
-syntax (comments, colors, icons, grids), configuration, startup behavior and
-the command line.
+See the [instantMENU development docs](/development/instantMENU) for item
+syntax (headings, colors, icons, matching metadata, grids), configuration,
+startup behavior and the command line.
 
 ## instantPACMAN
 
