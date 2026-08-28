@@ -128,6 +128,9 @@ the terminal remains usable.
 `~/.cache/instantmenu/ID`; an absolute path is used directly. Use a distinct
 ID for each launcher. Selected items and confirmed free-typed text are
 recorded with time decay; password input and slider values are never recorded.
+Frecency keys on the printed output — `value` if present, otherwise the
+visible label — so duplicate labels with distinct values have distinct
+frecency entries.
 
 ## Keyboard essentials
 
@@ -160,8 +163,10 @@ behaviour without becoming part of the label or output:
 ```text
 {blue icon=display match="monitor screen"} Display
 {green icon=terminal key=t} Terminal
+{value="file:/tmp/a b"} My File
 {heading highlight} System actions
 {red icon=power key=q match="shutdown poweroff"} Shut down
+{value=one} same
 ```
 
 Attributes are separated by whitespace. Do not put whitespace around `=`.
@@ -175,14 +180,17 @@ icon names are case-insensitive.
 | `icon=NAME` | Draw a Nerd Fonts or Unicode icon before the label. |
 | `match=TEXT` | Add hidden search terms without changing the label or output. |
 | `key=CHAR` | Declare the one-character selector used by `--single-key`. |
+| `value=TEXT` | Set a hidden output value printed on selection instead of the visible label. |
 | `heading` | Make the item a non-selectable section heading. |
 
 Attribute order is insignificant, so `{red icon=power}` and
-`{icon=power color=red}` are equivalent. Duplicate attributes, unknown
-attributes, invalid values, and incomplete blocks make the complete line a
-literal item. To deliberately start a label with something that looks like
-metadata, prefix its opening brace with one extra opening brace; instantMENU
-removes that first brace and displays the rest literally.
+`{icon=power color=red}` are equivalent. Duplicate attributes (including a
+repeated `value`), unknown attributes, invalid values, and incomplete blocks
+make the complete line a literal item. A `heading` combined with `value`,
+`key`, or `match` is also literal since headings never produce output. To
+deliberately start a label with something that looks like metadata, prefix its
+opening brace with one extra opening brace; instantMENU removes that first
+brace and displays the rest literally.
 
 ### Colors
 
@@ -234,6 +242,48 @@ returning them:
 Typing `monitor` can find this item, but selecting it still prints `Display`.
 Hidden terms participate in fuzzy and dmenu matching. Exact mode continues to
 require equality with the visible label.
+
+### Output value
+
+`value=TEXT` replaces the stdout value without changing what is displayed or
+searched. The visible label stays the same, but `Return` (and frecency) use
+`value` instead:
+
+```text
+{value=one} same
+{value="file:/tmp/a b"} My File
+{value=/tmp/report-2024.pdf icon=pdf} Report
+{color=green value=ok} Confirm
+```
+
+Details:
+
+- Hidden from display and search. Only the label (and `match` terms) are shown
+  and matched; `value` never appears in the list and `Tab` copies the label,
+  not the value. Matching and filtering are identical with or without `value`.
+- Quoted values allow spaces and special characters. Use single or double
+  quotes and backslash escapes as with `match`: `value="a b"`,
+  `value='a b'`, `value="file:/tmp/a \"quoted\""`.
+- Duplicate `value` attributes or `value=""` (empty) make the line literal,
+  just like duplicate or empty `match`. A `heading` with `value` is also
+  literal because headings never produce output.
+- Duplicate labels are now practical. Two items can show the same basename
+  while printing distinct paths:
+
+  ```text
+  {value=/tmp/a/report.pdf} Report
+  {value=/tmp/b/report.pdf} Report
+  ```
+
+  Both rows display `Report`; selecting the first prints `/tmp/a/report.pdf`,
+  the second prints `/tmp/b/report.pdf`.
+- Frecency is keyed on the output. If `value` is present it is the frecency
+  key; otherwise the label is used. Identical labels with different values
+  have independent frecency entries and rank independently within their
+  heading section.
+- `Item{ text, value: Option<String> }` internally. `label()` returns the
+  visible text, `output()` returns `value.unwrap_or(text)` and is what is
+  printed and recorded for frecency.
 
 ### Headings
 

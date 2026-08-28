@@ -305,7 +305,7 @@ new_window_placement = "auto-resize"
 |---------|------|---------|-------------|
 | `inner_gap` | integer | `0` | Spacing between tiled windows (logical pixels) |
 | `outer_gap` | integer | `0` | Spacing between tiled windows and the monitor edge (logical pixels) |
-| `smart_gaps` | boolean | `false` | Disable all gaps when only one or zero tiled windows are present |
+| `smart_gaps` | boolean | `true` | Disable all gaps when only one or zero tiled windows are present. Has no visible effect when both gaps are `0` (the default). |
 | `maximized_gaps` | boolean | `false` | Apply configured gaps during maximized presentation |
 | `keyboard_resize_step` | float | `0.05` | Fraction of an axis transferred by one tree resize command |
 | `minimum_weight` | float | `0.15` | Preferred minimum weight of a child in a split run |
