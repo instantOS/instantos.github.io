@@ -327,9 +327,19 @@ instantwmctl config set layout.inner_gap 12
 `instantwmctl config set` changes runtime state. Put persistent choices in
 `~/.config/instantwm/config.toml`.
 
+## Environment variables
+
+`instantwmctl` discovers the compositor via the IPC socket, and respects:
+
+* `INSTANTWM_SOCKET` — path to the Unix socket. Defaults to `/tmp/instantwm-<uid>.sock` (with `-<n>` suffix if that path is busy). `instantwm` publishes the bound path here for its children, so a terminal inside the session inherits it automatically. Override for a custom location or a nested/test compositor: `INSTANTWM_SOCKET=/tmp/instantwm-1000-1.sock instantwmctl status`.
+* `INSTANTWM_SOCKET_BIND` — **server-side** variable read only by `instantwm` at bind time (not by `instantwmctl`). Forces an exact bind path with no suffix fallback; the compositor removes it from the environment before spawning children. Used by `tests/e2e.sh` (`INSTANTWM_SOCKET_BIND=/tmp/... INSTANTWM_TEST=1 … instantwm`) to avoid silently talking to another compositor.
+
+See [WM Settings — Environment variables](wmsettings.md#environment-variables) for the full list (`INSTANTWM_LOG`, `INSTANTWM_TEST`, `INSTANTWM_AUTOSTART`, `XKB_*`, `XCURSOR_*`, backend selection via `WAYLAND_DISPLAY`/`DISPLAY`/`--backend`).
+
 ## Related pages
 
 - [WM Settings](wmsettings.md#window-rules)
+- [WM Settings — Environment variables](wmsettings.md#environment-variables)
 - [Modes](modes.md)
 - [Layouts](layouts.md)
 - [Scratchpad](scratchpad.md)

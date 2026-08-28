@@ -600,3 +600,62 @@ size = 24           # cursor size in logical pixels
 These mirror the `XCURSOR_THEME` and `XCURSOR_SIZE` environment variables; the
 config values take precedence. Reload the config with `instantwmctl reload` to
 apply a change.
+
+## Environment variables
+
+Most behavior is configured in `config.toml`. The variables below are read at **launch** (restart instantWM to apply) or are set by instantWM for child processes. `config.toml` wins when both are present.
+
+### Backend selection (read at startup)
+
+| Variable | Effect | Default / fallback |
+|---|---|---|
+| `WAYLAND_DISPLAY` | If set, `instantwm` defaults to the nested Wayland backend (`wayland-nested`) instead of inspecting `DISPLAY`. | Unset on a bare tty. |
+| `DISPLAY` | If `WAYLAND_DISPLAY` is unset and `DISPLAY` is set, the X11 backend is selected. Also the X11 client display string (`:0`, `:1`, …). On Wayland, instantWM's XWayland sets `DISPLAY=:N` for children. | Unset on Wayland-only / DRM. |
+| `--backend` (CLI) | `instantwm --backend x11\|nested\|drm` overrides the auto-detection above. | Auto-detect. |
+
+On a bare tty with neither variable set, instantWM selects the standalone DRM/KMS backend.
+
+### Logging
+
+| Variable | Values | Default |
+|---|---|---|
+| `INSTANTWM_LOG` | `off`, `error`, `warn`, `info`, `debug`, `trace` (case-insensitive). Unknown value is ignored. | `warn`. Set before launch, e.g. `INSTANTWM_LOG=debug instantwm`. |
+
+### IPC socket
+
+| Variable | Who reads it | Effect |
+|---|---|---|
+| `INSTANTWM_SOCKET` | `instantwmctl` (and any IPC client) | Path to the compositor socket. Default `/tmp/instantwm-<uid>.sock` with `-<n>` suffix on collision. The compositor publishes the bound path here for its children. |
+| `INSTANTWM_SOCKET_BIND` | `instantwm` server at bind time | Exact path the compositor must bind (no suffix fallback). Stale socket is removed if nothing is listening. Consumed at startup and removed from the environment before spawning children, so tests/nested sessions cannot silently fall back to another compositor's socket. Used by `tests/e2e.sh` and nested runs. |
+
+### Startup
+
+| Variable | Effect |
+|---|---|
+| `INSTANTWM_AUTOSTART` | `0` skips `ins autostart` (the distro autostart hook). `1` (default) runs it once at startup. Also respected by `scripts/startinstantos`. |
+| `INSTANTWM_TEST` | `1` enables the unstable `instantwmctl test …` namespace (`test wait`, `test window …`, `test pointer …`). Without it those commands fail with `test commands are disabled`. Not a stable user API. |
+| `DBUS_SESSION_BUS_ADDRESS` | If already set, instantWM reuses the session bus. If unset on Wayland, instantWM forks `dbus-daemon --session --fork --print-address=1` and sets it, then imports `WAYLAND_DISPLAY`/`XDG_*` into `dbus-update-activation-environment --systemd` for portals. |
+
+### Keyboard and cursor fallbacks (read when `config.toml` omits them)
+
+These are standard freedesktop variables. `config.toml` takes precedence when set.
+
+| Variable | Fallback for | Example |
+|---|---|---|
+| `XKB_DEFAULT_LAYOUT` | `[keyboard].layouts` when the list is empty. Empty string → `us`. | `de` |
+| `XKB_DEFAULT_VARIANT` | Single-layout variant | `nodeadkeys` |
+| `XKB_DEFAULT_OPTIONS` | `[keyboard].options` (`or_else` if unset) | `compose:ralt` |
+| `XKB_DEFAULT_MODEL` | `[keyboard].model` (`or_else` if unset) | `pc105` |
+| `XCURSOR_THEME` | `[cursor].theme` on Wayland DRM | `Adwaita` |
+| `XCURSOR_SIZE` | `[cursor].size` on Wayland DRM (parsed as `u32`) | `24` |
+
+### Variables set by instantWM for children
+
+Do not set these manually; instantWM overwrites them at startup for toolkit and script detection:
+
+* `INSTANTWM=1` — generic "inside instantWM" flag.
+* `INSTANTWM_BACKEND=x11` | `wayland-nested` | `wayland-drm` — selected backend. Checked internally to gate `systemctl --user stop/start` of `xdg-desktop-portal*` and `instantwm-session.target` (DRM only).
+* `INSTANTWM_SOCKET` — published IPC path (see above).
+* On Wayland, `apply_session_env` also exports `WAYLAND_DISPLAY`, `XDG_SESSION_TYPE=wayland`, `XDG_CURRENT_DESKTOP=instantwm`, `XDG_SESSION_DESKTOP=instantwm`, `DESKTOP_SESSION=instantwm`, unsets `DISPLAY` initially, and sets `GDK_BACKEND=wayland`, `QT_QPA_PLATFORM=wayland`, `SDL_VIDEODRIVER=wayland`, `CLUTTER_BACKEND=wayland`. XWayland then sets `DISPLAY=:N`.
+
+Check the current export with `printenv | grep -E '^INSTANTWM|^WAYLAND_DISPLAY|^DISPLAY'` inside a terminal launched from instantWM.
