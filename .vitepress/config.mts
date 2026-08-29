@@ -1,3 +1,5 @@
+import { copyFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import { keyboardShortcutsPlugin } from './plugins/keyboard-shortcuts.js'
 
@@ -12,6 +14,14 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
     ['link', { rel: 'manifest', href: '/manifest.json' }]
   ],
+  async buildEnd(siteConfig) {
+    // Serve the same installer script at /install and /install.sh
+    // without keeping a duplicate copy in the repo.
+    copyFileSync(
+      resolve(siteConfig.outDir, 'install'),
+      resolve(siteConfig.outDir, 'install.sh')
+    )
+  },
   markdown: {
     theme: {
       light: 'catppuccin-latte',
