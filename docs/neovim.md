@@ -116,12 +116,6 @@ The syntax of Typst is already very concise, and in most cases is what the LaTeX
 snippets are before expanding. I have found Typst very pleasant to write even
 without snippets, so there are not a whole lot of snippets for Typst present. Unlike the extensive LaTeX suite in `lua/math_snips.lua` (shared by `luasnippets/tex.lua` and `luasnippets/markdown.lua`), Typst has its own minimal set in `luasnippets/typst.lua` tailored to Typst's `$...$` math syntax and a `prequery` workflow for remote images.
 
-#### Tooling
-
-* **LSP** — `tinymist` via `mason-lspconfig` (`lua/plugins/lsp.lua`, `projectResolution = "lockDatabase"`). Auto-installed by Mason, provides diagnostics, completions and go-to-definition for `.typ` files.
-* **Preview** — `chomosuke/typst-preview.nvim` `1.*` (`lua/plugins/typst.lua`, `ft = typst`) with `:TypstPreview` / `:TypstPreviewUpdate` for live browser preview.
-* **Treesitter** — `nvim-treesitter` with the `typst` parser for highlighting, folding and snippet context detection. Math context is detected via the `markup.math` capture (same helper as Markdown, `luasnippets/typst.lua:10`).
-
 All Typst snippets are `autosnippets` and are only available for `filetype=typst`. As with other snippets, press ++ctrl+x++ to undo an expansion.
 
 #### Snippets
@@ -153,7 +147,7 @@ Sum -> sum_(<1>)^(<2>)              // Typst's \sum_{}^{} equivalent
 Par -> (diff <1>)/(diff <2>)<3>     // partial derivative, e.g. Par + Tab -> (diff x)/(diff y)
 ```
 
-Greek letters — all use `@` prefix inside math, lower/upper case via last letter (mirrors the LaTeX `@a` -> `\alpha` but without `\` — Typst writes `alpha` directly):
+Greek letters
 
 ```txt
 @a / @A -> alpha / Alpha
@@ -177,9 +171,7 @@ Greek letters — all use `@` prefix inside math, lower/upper case via last lett
 
 All expand with a trailing space so you can keep typing, e.g. `$ @a + @b $` -> `$ alpha + beta $`.
 
-> Note: unlike `lua/math_snips.lua`, Typst has no `:a` -> `\varalpha` variants or `\phi` (`@f`) — Typst's syntax is already the short form.
-
-**Anywhere — remote image with `prequery` (`^prq`, regex at line start):**
+**Insert images via links**
 
 Typing `prq` at the beginning of a line expands to:
 
