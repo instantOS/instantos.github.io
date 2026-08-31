@@ -2,19 +2,21 @@
 
 ## Installer
 
-Run this as root from an up-to-date Arch Linux live ISO:
+From an up-to-date Arch Linux live ISO, run:
 
 ```sh
 bash <(curl -fsSL instantos.io/install)
 ```
 
-This installs the latest `ins` release and starts `ins arch install`.
+The script installs the latest `ins` release and starts `ins arch install` when
+it detects an Arch live environment. The installer requests elevated
+permissions when it needs them, so do not run the command itself with `sudo`.
 
 ## instantOS utilities
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/instantOS/instantCLI/main/scripts/install.sh | sh
-```
+The same command also installs the instantOS utilities on supported Linux
+systems. Outside an Arch live environment, it installs `ins` without starting
+the OS installer.
 
 There is an ongoing effort to make the instantOS utilities available on other
 distros. A large part of them are already working, and at this point vanilla

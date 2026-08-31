@@ -45,6 +45,13 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Install dependencies
         run: bun install # or pnpm install / yarn install / bun install
+      - name: Check installer is current
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/instantOS/instantCLI/main/scripts/install.sh -o /tmp/instantcli-install.sh
+          cmp public/install /tmp/instantcli-install.sh || {
+            echo "public/install differs from instantCLI main; run 'just fetchinstall'"
+            exit 1
+          }
       - name: Build with VitePress
         run: bun run build
       - name: Upload artifact

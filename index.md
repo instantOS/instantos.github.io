@@ -39,6 +39,14 @@ features:
     details: A keyboard centered workflow can make you much more productive but getting rid of the mouse is not the best thing for everyone.
 ---
 
+## Install instantOS
+
+Boot an up-to-date Arch Linux live ISO, then run:
+
+```sh
+bash <(curl -fsSL instantos.io/install)
+```
+
 **instantOS** is an Arch Linux-based distro that works out of the box but is still aimed at power users. Everything is lightning fast, flexible and just works.
 
 In addition to the usual [Arch packages](https://github.com/instantOS/packages), we also package for the [Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via **[instantNIX](https://github.com/instantOS/instantNIX/)**.
