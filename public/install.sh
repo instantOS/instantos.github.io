@@ -1093,6 +1093,27 @@ print_summary() {
 # -------------------------------------------------------------
 # Main workflow
 # -------------------------------------------------------------
+# Download the release archive with curl's progress meter only for an interactive
+# terminal, keeping redirected output and CI logs quiet.
+download_release_asset() {
+	archive_path=$1
+
+	if [ -n "$version" ]; then
+		log "Downloading ${BIN_NAME} v${version}..."
+	else
+		log "Downloading ${BIN_NAME}..."
+	fi
+
+	if [ -t 2 ]; then
+		curl --fail --location --progress-bar \
+			-H "User-Agent: instantcli-installer" \
+			"$asset_url" -o "$archive_path" || fatal "failed to download release archive"
+	else
+		curl -fsSL -H "User-Agent: instantcli-installer" \
+			"$asset_url" -o "$archive_path" || fatal "failed to download release archive"
+	fi
+}
+
 # Coordinate validation, artifact installation, cleanup, and optional OS handoff.
 main() {
 	parse_args "$@"
@@ -1133,7 +1154,7 @@ main() {
 	trap 'exit 129' HUP
 
 	archive="$INSTALL_WORK_DIR/$(basename "$asset_url")"
-	curl -fsSL -H "User-Agent: instantcli-installer" "$asset_url" -o "$archive" || fatal "failed to download release archive"
+	download_release_asset "$archive"
 
 	verify_checksum "$archive"
 
