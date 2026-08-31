@@ -114,7 +114,91 @@ Expands into:
 
 The syntax of Typst is already very concise, and in most cases is what the LaTeX
 snippets are before expanding. I have found Typst very pleasant to write even
-without snippets, so there are not a whole lot of snippets for Typst present.
+without snippets, so there are not a whole lot of snippets for Typst present. Unlike the extensive LaTeX suite in `lua/math_snips.lua` (shared by `luasnippets/tex.lua` and `luasnippets/markdown.lua`), Typst has its own minimal set in `luasnippets/typst.lua` tailored to Typst's `$...$` math syntax and a `prequery` workflow for remote images.
+
+All Typst snippets are `autosnippets` and are only available for `filetype=typst`. As with other snippets, press ++ctrl+x++ to undo an expansion.
+
+#### Snippets
+
+Snippets are context-aware: *text* triggers only expand **outside** `$...$`, *math* triggers only **inside**.
+
+**Outside math (text mode):**
+
+```txt
+mk  -> $<cursor>$              // inline math
+dm  -> 
+$ <cursor> $                   // display math on own lines
+```
+
+Example:
+
+```typ
+mk  // expands to $|
+dm  // expands to
+$ 
+  |
+ $
+```
+
+**Inside math:**
+
+```txt
+Sum -> sum_(<1>)^(<2>)              // Typst's \sum_{}^{} equivalent
+Par -> (diff <1>)/(diff <2>)<3>     // partial derivative, e.g. Par + Tab -> (diff x)/(diff y)
+```
+
+Greek letters
+
+```txt
+@a / @A -> alpha / Alpha
+@b / @B -> beta  / Beta
+@g / @G -> gamma / Gamma
+@d / @D -> delta / Delta
+@e / @E -> epsilon / Epsilon
+@z / @Z -> zeta / Zeta
+@h / @H -> eta / Eta
+@t / @T -> theta / Theta
+@i / @I -> iota / Iota
+@k / @K -> kappa / Kappa
+@l / @L -> lambda / Lambda
+@m / @M -> mu / Mu
+@p / @P -> psi / Psi
+@s / @S -> sigma / Sigma
+@u / @U -> upsilon / Upsilon
+@o / @O -> omega / Omega
+@x / @X -> xi / Xi
+```
+
+All expand with a trailing space so you can keep typing, e.g. `$ @a + @b $` -> `$ alpha + beta $`.
+
+**Insert images via links**
+
+Typing `prq` at the beginning of a line expands to:
+
+```typ
+#prequery.image("<url>", "preq/<hash>")
+```
+
+* `<url>` is the first insert — paste the image URL there.
+* `<hash>` is auto-generated from the URL via `hash_url()` (`luasnippets/typst.lua:23` — deterministic hash, hex-encoded) and updates as you type, e.g.
+
+```typ
+prq -> #prequery.image("|", "preq/hash")
+# with URL:
+#prequery.image("https://example.com/image.png", "preq/<generated-hash>")
+```
+
+This pairs with the [`prequery`](https://typst.app/universe/package/prequery) package when configured to cache remote resources (e.g. a `web-resource` job in `typst.toml` that downloads to `preq/`).
+
+General workflow:
+
+```sh
+prequery file.typ   # fetches remote resources into preq/
+typst compile file.typ
+# or typst watch file.typ
+```
+
+Requires `#import "@preview/prequery:0.2.0"` in the document.
 
 ### Video
 
