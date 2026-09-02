@@ -55,13 +55,12 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/development/development' },
             { text: 'About me', link: '/developer' },
+            { text: 'instantMENU', link: '/development/instantMENU' },
             { text: 'Roadmap', link: '/roadmap' },
             { text: 'Links', link: '/links' },
-            { text: 'Colors', link: '/development/colors' },
             { text: 'iConf', link: '/development/iconf' },
-            { text: 'instantMENU', link: '/development/instantMENU' },
             { text: 'Menu API', link: '/development/menu' },
-            { text: 'Status', link: '/development/status' }
+            { text: 'Status Bar', link: '/development/status' }
           ]
         }
       ],
