@@ -31,6 +31,15 @@ fullscreen, the visible effect begins when it later requests fullscreen. Some
 applications do not tolerate resizing while fullscreen, so behavior remains
 application-dependent.
 
+## Shortcut inhibition
+
+On Wayland, a focused application (typically a game or browser) can ask to
+suppress instantWM shortcuts so its own bindings receive keys like
+++super++. While suppression is active, ordinary WM keybindings are withheld
+for that surface. To escape an application-owned grab, hold
+++super+shift+escape++ for two seconds; a progress indicator confirms the
+recovery.
+
 ::: details Technical distinction
 
 Maximized presentation is tag-wide and preserves the tiled layout tree. Fake

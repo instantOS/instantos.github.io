@@ -22,6 +22,7 @@ The current instantCLI build exposes these main command groups:
 - `arch`
 - `dot`
 - `game`
+- `pass`
 - `resolvething`
 - `doctor`
 - `dev`
@@ -206,16 +207,35 @@ Current setup targets:
 - `ins setup sway`
 - `ins setup i3`
 
-## Scratchpad and Menu helpers
+## Scratchpad, Menu, Launch, and Pass helpers
 
 There are also built-in terminal utility commands that do not currently have their own user docs page:
 
 - `ins scratchpad`
-- `ins menu`
+- `ins menu` (script dialogs; see [Menu API for scripts](/development/menu))
 - `ins launch`
+- `ins pass` (password-store picker)
 - `ins welcome` (opens itself in a terminal when launched graphically)
 
-These are real supported subcommands, but they are more specialized and are mostly used internally or from desktop integrations.
+`ins launch` is the interactive application launcher. It ranks entries with a
+built-in `launch` frecency namespace and streams discovery results live:
+
+```bash
+# Open the launcher
+ins launch
+
+# Also include every executable found in PATH
+ins launch --include-path
+
+# List applications instead of launching
+ins launch --list
+
+# Force a specific menu backend
+ins launch -b instantmenu|tui|scratchpad
+```
+
+These are real supported subcommands, but `ins launch` and `ins menu` are
+mostly used internally or from desktop integrations.
 
 ## Related pages
 

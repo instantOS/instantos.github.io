@@ -101,10 +101,14 @@ for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-la
 | `instantwmctl window list <window-id>` | List a specific window by id |
 | `instantwmctl window info` | Inspect the focused window, including geometry |
 | `instantwmctl window info <window-id>` | Inspect a specific window |
+| `instantwmctl window focus [<window-id>]` | Switch to the window's monitor and tags, restore it if minimized, and focus/raise it |
 | `instantwmctl window resize --x X --y Y --width W --height H` | Set focused-window geometry |
 | `instantwmctl window resize <window-id> --monitor <output> --x X --y Y --width W --height H` | Set a specific window's monitor-relative geometry |
 | `instantwmctl window close` | Close the focused window |
 | `instantwmctl window close <window-id>` | Close a specific window |
+
+`window list` marks the focused window with a `*` marker (JSON field
+`is_focused`); `window info` also reports a `focused:` line.
 
 ## Tag commands
 
@@ -145,6 +149,10 @@ instantwmctl monitor modes focused
 instantwmctl monitor set focused -r 2560x1440 -f 144 --vrr on
 instantwmctl monitor set HDMI-A-1 --disable
 ```
+
+Monitors can be plugged and unplugged without restarting: instantWM picks up
+new outputs automatically and keeps windows from a removed monitor reachable by
+moving them to a surviving monitor.
 
 ## Toggle commands
 

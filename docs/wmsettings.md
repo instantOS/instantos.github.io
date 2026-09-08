@@ -572,8 +572,8 @@ Position can be specified as:
 `"90"`, `"180"`, `"270"`, `"flipped"`, `"flipped-90"`, `"flipped-180"`, and
 `"flipped-270"`.
 
-`vrr` controls variable refresh rate (FreeSync / G-Sync) and accepts `"off"`,
-`"auto"` (default — let the driver decide), or `"on"`.
+`vrr` controls variable refresh rate (FreeSync / G-Sync) and accepts `"off"`
+(default), `"auto"` (let the driver decide), or `"on"`.
 
 ## Bar height
 

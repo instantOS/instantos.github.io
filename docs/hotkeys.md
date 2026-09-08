@@ -151,6 +151,15 @@ manager, R for the terminal file manager, E for the editor, F for the browser,
 Tab for the external window switcher, number keys for tags, H/L or Left/Right
 for adjacent tags, J/K or Down/Up for active tag navigation, and +/- for volume.
 
+## Reserved compositor keys
+
+These work even when a game or application suppresses shortcuts or grabs the
+keyboard:
+
+- ++ctrl+alt+f1++ … ++ctrl+alt+f12++ switches virtual terminals (on Wayland).
+- Hold ++super+shift+escape++ for two seconds to escape an
+  application-owned shortcut grab (see [Fullscreen](fullscreen.md#shortcut-inhibition)).
+
 ::: details Custom builds and keybindings
 
 These are the compiled instantOS defaults. TOML configuration can override or

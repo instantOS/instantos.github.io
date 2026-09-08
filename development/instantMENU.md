@@ -48,14 +48,15 @@ A few options worth knowing:
 | `icons` | Explore accepted icon names with `icons list` or `icons search` |
 | `--password` | Display input as dots |
 | `--input-only` | Only display the input field, without the item list |
-| `--alt-tab` | Alt-tab behaviour |
+| `--alt-tab` | Alt-tab behaviour (Alt+Tab / Shift+Tab, release Alt to confirm) |
+| `--bind <KEY:LABEL>` | Custom accept action with a visible hint (repeatable, see [Custom action bindings](#custom-action-bindings)) |
 | `--animation-length <N>` | Enable selection animation for a number of frames |
 | `--left-command <CMD>` / `--right-command <CMD>` | Add launcher mode-switch commands |
 | `--full-height` / `--line-height <N\|auto>` | Control row and window height |
 | `--managed` | Let instantmenu be managed by the window manager as a normal window |
 | `--embed <ID>` | Embed into an X11 window (X11 only) |
 | `-w auto, --width auto` | Size to the widest item and prompt |
-| `--preselect <N>` / `--initial-text <TEXT>` | Start with an item selected / input pre-filled |
+| `--preselect <VALUE>` / `--initial-text <TEXT>` | Start with the item whose value matches selected / input pre-filled |
 | `--frecency-cache <ID>` | Rank future menus using past selections |
 | `--theme catppuccin\|classic\|gruvbox` | Select a built-in palette |
 
@@ -131,6 +132,15 @@ recorded with time decay; password input and slider values are never recorded.
 Frecency keys on the printed output — `value` if present, otherwise the
 visible label — so duplicate labels with distinct values have distinct
 frecency entries.
+
+## Preselection
+
+`--preselect <VALUE>` starts with the first item whose output value matches
+selected. The output is the `value=` markup when present, otherwise the label;
+comparison is exact against the final list after stdin has been read. A leading
+hyphen is a valid value, so `--preselect -- -2` preselects an item printing
+`-2`. Without a match the first item stays selected. `--initial-text <TEXT>`
+instead pre-fills the input field.
 
 ## Keyboard essentials
 

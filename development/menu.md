@@ -15,9 +15,15 @@ ins menu confirm --message "Delete this file?"
 # Text input
 ins menu input --prompt "Enter your name:"
 
-# Password input
-ins menu password --prompt "Enter password:"
+# Text input with a faded hint and pre-filled text
+ins menu input --prompt "Enter your name:" --placeholder "Jane" --initial-text "Ja"
+
+# Password input (never pre-filled; --placeholder is shown while empty)
+ins menu password --prompt "Enter password:" --placeholder "Required"
 ```
+
+Every `ins menu` dialog accepts `-b/--backend auto|instantmenu|tui|scratchpad`
+to override backend auto-detection.
 
 ## Selection menus
 
