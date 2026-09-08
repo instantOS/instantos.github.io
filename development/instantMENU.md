@@ -46,7 +46,8 @@ A few options worth knowing:
 | `--toast <SECONDS>` | Draw the menu for a number of seconds, then exit |
 | `slide` | Value slider subcommand: `instantmenu slide` (see [Slider mode](#slider-mode)) |
 | `icons` | Explore accepted icon names with `icons list` or `icons search` |
-| `--password` | Display input as dots |
+| `--password` | Display input as dots (`--placeholder` is shown while the field is empty) |
+| `--placeholder <TEXT>` | Faded hint shown while the input field is empty, including password mode |
 | `--input-only` | Only display the input field, without the item list |
 | `--alt-tab` | Alt-tab behaviour (Alt+Tab / Shift+Tab, release Alt to confirm) |
 | `--bind <KEY:LABEL>` | Custom accept action with a visible hint (repeatable, see [Custom action bindings](#custom-action-bindings)) |
@@ -329,6 +330,40 @@ shows the selected item's full label. Keys are exact, case-sensitive Unicode
 characters; if a key is duplicated, the first item wins. Regular query
 matching and hidden `match` terms are not used in this mode.
 
+### Custom action bindings
+
+`--bind KEY:LABEL` registers a global accept action with a visible hint.
+Repeat the option for multiple actions:
+
+```sh
+printf '%s\n' '{value=42} Example' 'Another item' |
+  instantmenu --lines 10 --bind 'ctrl-e:Edit' --bind 'alt-s:Save' --bind 'f3:Details'
+```
+
+Hints appear below the menu and wrap to fit its width. Keys use names like
+`ctrl-e`, `alt-s`, `ctrl-alt-r`, `f1`–`f12`, and named keys such as
+`shift-left` or `ctrl-page-down`. Labels may contain spaces and colons.
+
+With bindings enabled, successful output starts with the pressed key on the
+first line, followed by the selected values, one per line. `Enter` (or a mouse
+selection) prints an empty first line; for the example above, Ctrl-E on
+`Example` prints `ctrl-e` then `42`. An action with no matching items prints
+just its key. `Ctrl+Return` accumulates additional selections before the final
+action; `Escape` cancels without output, including accumulated selections.
+Without `--bind`, output keeps its usual format.
+
+Submission, dismissal, and list navigation keys are reserved (`esc`, `enter`,
+`tab`, `shift-tab`, `up`/`down`, `ctrl-p`/`ctrl-n`/`ctrl-k`/`ctrl-j`, ...).
+Duplicate keys and invalid bindings fail before opening a window. Bindings
+cannot be combined with `--toast`, `--single-key`, `--input-only`,
+`--password`, `--auto-confirm`, or `--alt-tab`.
+
+### Alt-tab mode
+
+`--alt-tab` cycles a visible item list: `Alt+Tab` advances, `Shift+Tab` goes
+back, releasing `Alt` confirms the selection, and `Alt+Space` cancels. It
+requires a keyboard grab and cannot be combined with `--input-only`.
+
 ## Grid syntax
 
 ```sh
@@ -373,8 +408,8 @@ once with the initial value when the slider opens.
 
 The window options (`--backend`, `--position`, `-p`/`--prompt`, `--font`,
 `--line-height`, the colors, ...) work here as well; menu options like
-`--toast`, `--single-key`, `--input-only`, `--password` or `--preselect`
-cannot be used with `slide`.
+`--toast`, `--single-key`, `--input-only`, `--password`, `--preselect` or
+`--bind` cannot be used with `slide`.
 
 ### Controls
 

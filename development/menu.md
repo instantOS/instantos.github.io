@@ -32,10 +32,35 @@ to override backend auto-detection.
 ins menu choice --prompt "Choose:" --items "item1 item2 item3"
 
 # Multiple selection
-ins menu choice --prompt "Choose:" --multi --items "a b c d"
+ins menu choice --prompt "Choose:" --allow-multiple --items "a b c d"
+
+# Rank and remember selections within a namespace
+ins menu choice --prompt "Choose:" --frecency-cache myscript --items "a b c"
 ```
 
-Omit `--items` to read choices from stdin (one per line).
+Omit `--items` to read choices from stdin (one per line). Piped input streams:
+the menu opens immediately and new lines are appended live instead of waiting
+for the producer to finish.
+
+```bash
+slow-producer | ins menu choice --prompt "Choose:"
+```
+
+### Custom action bindings
+
+`--bind KEY:LABEL` registers a global action with a visible hint (repeatable).
+It works on all backends, including streamed input, `--allow-multiple`, `--items`, and
+`--frecency-cache`:
+
+```bash
+printf '%s\n' alpha beta | ins menu choice --bind 'ctrl-e:Edit' --bind 'alt-s:Save'
+```
+
+With bindings registered, stdout starts with the pressed key (empty first line
+for normal submission), followed by the selected values. `Esc` exits with
+status 2 without a result. See [instantMENU custom action
+bindings](/development/instantMENU#custom-action-bindings) for key names and the full
+output contract; the native backend requires an up-to-date instantmenu binary.
 
 ## File picker
 
@@ -47,7 +72,7 @@ ins menu pick --start ~/Pictures
 ins menu pick --dirs
 
 # Multiple selection
-ins menu pick --multi
+ins menu pick --allow-multiple
 ```
 
 ## Slider control
