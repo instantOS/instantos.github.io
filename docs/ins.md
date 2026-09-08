@@ -206,6 +206,8 @@ Current setup targets:
 
 - `ins setup sway`
 - `ins setup i3`
+- `ins setup instant-wm`
+- `ins setup niri`
 
 ## Scratchpad, Menu, Launch, and Pass helpers
 

@@ -2,28 +2,43 @@
 
 `ins menu` provides interactive dialogs for shell scripts. All commands print to stdout and use exit codes for status.
 
+## Backends
+
+Every dialog accepts `-b/--backend` to select how it is displayed:
+
+| Value | Display |
+| --- | --- |
+| `auto` (default) | Native overlay for piped/scripted use on a graphical session, terminal UI otherwise |
+| `instantmenu` | Native instantMENU overlay (requires an up-to-date instantmenu binary) |
+| `tui` | In-terminal UI using fzf |
+| `scratchpad` | Hosted terminal through the [menu server](#menu-server), auto-spawned on first use |
+
+With `auto`, `INS_MENU_BACKEND` wins when set; otherwise a graphical session
+(`WAYLAND_DISPLAY`/`DISPLAY` set) with piped input or output uses the native
+overlay — or the hosted terminal where no native dialog exists (`pick` and
+`chord`) — and anything else uses the terminal UI. The global
+`--menu-fallback` flag forces transient kitty terminals instead of the
+persistent server.
+
 ## Confirmation dialog
 
 ```bash
 # Exits: 0=Yes, 1=No, 2=Cancelled
-ins menu confirm --message "Delete this file?"
+ins menu confirm "Delete this file?"
 ```
 
 ## Input dialogs
 
 ```bash
 # Text input
-ins menu input --prompt "Enter your name:"
+ins menu input "Enter your name:"
 
 # Text input with a faded hint and pre-filled text
-ins menu input --prompt "Enter your name:" --placeholder "Jane" --initial-text "Ja"
+ins menu input "Enter your name:" --placeholder "Jane" --initial-text "Ja"
 
 # Password input (never pre-filled; --placeholder is shown while empty)
-ins menu password --prompt "Enter password:" --placeholder "Required"
+ins menu password "Enter password:" --placeholder "Required"
 ```
-
-Every `ins menu` dialog accepts `-b/--backend auto|instantmenu|tui|scratchpad`
-to override backend auto-detection.
 
 ## Selection menus
 
@@ -137,7 +152,7 @@ When you run `ins menu server launch`, the system:
 3. **Listens on a Unix socket** — Located at `$XDG_RUNTIME_DIR/insmenu.sock` (or `/tmp/insmenu.sock`)
 4. **Waits for menu requests** — Displays a status screen showing uptime and request count
 
-When you run a GUI menu command (`ins menu confirm --gui ...`):
+When you run a server-backed menu command (`ins menu confirm -b scratchpad ...`):
 
 1. **Client connects to the socket** — Sends the menu request as JSON
 2. **Server shows the scratchpad** — Makes the floating terminal visible
@@ -157,7 +172,7 @@ When you run a GUI menu command (`ins menu confirm --gui ...`):
 
 If your compositor doesn't support scratchpad functionality (GNOME, generic X11/Wayland):
 
-- **No persistent server** — Each `--gui` request launches a transient kitty terminal
+- **No persistent server** — Each `--menu-fallback` request launches a transient kitty terminal
 - **File-based communication** — Request/response use temporary JSON files
 - **Same interface** — All menu commands work identically from the user's perspective
 - **Status shows fallback** — `ins menu status` indicates "Fallback mode"
@@ -184,15 +199,7 @@ ins menu server stop
 ins menu show
 ```
 
-The server auto-spawns on first `--gui` use on supported compositors.
-
-## Common options
-
-All commands support `--gui` to use the menu server instead of local fzf:
-
-```bash
-ins menu confirm --message "Continue?" --gui
-```
+The server auto-spawns on first `-b scratchpad` use on supported compositors.
 
 ## Exit codes
 
