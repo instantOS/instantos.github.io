@@ -1,11 +1,22 @@
-# Frequently asked questions
+# FAQ & Support
 
-Here are answers to questions about instantOS, we get asked all the time.
-Chances are, you will find a quick answer for your lingering inquiries here.
-Please have a look at the [Documentation](/documentation) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki), if not.
-If you still don't get an answer or need additional information or clarification, 
-we have an active and friendly [community](/support) to support you. 
-The [Discord channel](https://dsc.gg/instantos) is usually the quickest and most active way to get information.
+Here are answers to questions about instantOS we get asked all the time.
+Chances are, you will find a quick answer for your inquiries here.
+Please also have a look at the [Documentation](/docs/) and the [Community Wiki](https://github.com/instantOS/instantOS/wiki).
+If you still need assistance or want to talk to other users, our community is ready to help.
+
+
+## Community & Support {#support}
+
+Any questions or problems you might have will be answered as soon as possible.
+You can request assistance, report bugs, or chat with the community in the following places:
+
+- **[Discord](https://dsc.gg/instantos)**: Quickest and most active way to get help
+- **[GitHub](https://github.com/instantos)**: Bug reports, feature requests, and discussions
+- **[Matrix](https://matrix.to/#/!oegFDcozfbMAMKyeIE:matrix.org?via=matrix.org&via=t2bot.io&via=tchncs.de)** / **[Matrix Spaces](https://matrix.to/#/!smJyjPsHsYizSKvvaE:matrix.org?via=matrix.org)**: Matrix chat rooms
+- **[Reddit](https://reddit.com/r/instantos)**: Subreddit (`r/instantos`)
+- **[Telegram](https://t.me/instantos)**: Telegram community group
+- **[Email](mailto:instantos@paperbenni.xyz)**: Contact the developers directly
 
 
 ## Troubleshooting system issues
@@ -193,7 +204,7 @@ You can also use `instantwmctl` to control many settings at runtime without rest
 
 Maybe. Have a look at our [roadmap](https://github.com/instantOS/instantOS/projects/1).
 If it's not there request it by opening a feature-request issue on GitHub
-or talking to people in the [community](/support).
+or talking to people in the [community](#support).
 
 ## Is there a swap? I don't see any
 

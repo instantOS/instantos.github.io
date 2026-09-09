@@ -39,9 +39,10 @@ features:
     details: A keyboard centered workflow can make you much more productive but getting rid of the mouse is not the best thing for everyone.
 ---
 
-## Install instantOS
+## Install instantOS or instantCLI
 
-Boot an up-to-date Arch Linux live ISO, then run:
+One command installs instantCLI on an existing Linux system. Run it from an
+up-to-date Arch Linux live ISO and it starts the full instantOS installer:
 
 ```sh
 bash <(curl -fsSL instantos.io/install)

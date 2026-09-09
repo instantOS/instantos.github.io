@@ -1,22 +1,23 @@
 # Download
 
-## Installer
+## Install instantOS or instantCLI
 
-From an up-to-date Arch Linux live ISO, run:
+The same installer handles both a fresh instantOS installation and adding the
+instantOS command-line utilities to an existing Linux system:
 
 ```sh
 bash <(curl -fsSL instantos.io/install)
 ```
 
-The script installs the latest `ins` release and starts `ins arch install` when
-it detects an Arch live environment. The installer requests elevated
-permissions when it needs them, so do not run the command itself with `sudo`.
+It detects the environment automatically:
 
-## instantOS utilities
+- **On an up-to-date Arch Linux live ISO**, it installs `ins` and starts the
+  interactive instantOS system installer.
+- **On an existing Linux installation**, it installs instantCLI and its `ins`
+  utilities without starting the system installer.
 
-The same command also installs the instantOS utilities on supported Linux
-systems. Outside an Arch live environment, it installs `ins` without starting
-the OS installer.
+The script requests elevated permissions when needed, so do not run the command
+itself with `sudo`.
 
 There is an ongoing effort to make the instantOS utilities available on other
 distros. A large part of them are already working, and at this point vanilla

@@ -38,14 +38,12 @@ export default defineConfig({
     },
     
     nav: [
-      { text: 'Home', link: '/' },
       { text: 'Download', link: '/download' },
       { text: 'Documentation', link: '/docs/' },
       { text: 'Tips', link: '/tips/vim' },
       { text: 'Development', link: '/development/development' },
-      { text: 'FAQ', link: '/faq' },
-      { text: 'Support', link: '/support' },
-    { text: 'Donate', link: '/docs/donate' }
+      { text: 'FAQ & Support', link: '/faq' },
+      { text: 'Donate', link: '/docs/donate' }
     ],
 
     sidebar: {
@@ -178,8 +176,7 @@ export default defineConfig({
           items: [
             { text: 'About', link: '/about' },
             { text: 'Download', link: '/download' },
-            { text: 'FAQ', link: '/faq' },
-            { text: 'Support', link: '/support' },
+            { text: 'FAQ & Support', link: '/faq' },
             { text: 'Discord', link: 'https://dsc.gg/instantos' },
             { text: 'Links', link: '/links' },
             { text: 'Releases', link: '/releases/beta6' },
