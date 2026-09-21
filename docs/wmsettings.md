@@ -480,11 +480,19 @@ class = "steam"
 title = "Friends List"
 is_floating = "float"
 
-# Pin a game to fullscreen on the second monitor
+# Pin a game to fullscreen on the second monitor (layout position 1)
 [[rules]]
 class = "complex-game"
 is_floating = "float_fullscreen"
-monitor = { index = 1 }
+monitor = 1
+
+# Open a mixer pinned to an exact spot on a specific output, without a border
+[[rules]]
+class = "pavucontrol"
+is_floating = "float"
+monitor = "DP-1"
+geometry = { x = 100, y = 50, width = 800, height = 600 }
+borderless = true
 ```
 
 | Field | Description |
@@ -492,9 +500,11 @@ monitor = { index = 1 }
 | `class` | Match the window's WM class (substring). |
 | `instance` | Match the window's WM instance (substring). |
 | `title` | Match the window title (substring). |
-| `tags` | Bitmask of tags to assign. Bit 0 (value `1`) is tag 1, bit 1 (value `2`) is tag 2, bit 2 (value `4`) is tag 3, and so on. Combine tags with bitwise OR (tags 1 + 3 = `1 | 4` = `5`). The bits are merged into the window's tags; `0` or unset leaves the tags unchanged. |
+| `tags` | Bitmask of tags to assign. Bit 0 (value `1`) is tag 1, bit 1 (value `2`) is tag 2, bit 2 (value `4`) is tag 3, and so on. Combine tags with bitwise OR (tags 1 + 3 = `1 \| 4` = `5`). The bits are merged into the window's tags; `0` or unset leaves the tags unchanged. |
 | `is_floating` | Initial mode: `"tiled"`, `"float"`, `"float_center"`, `"float_fullscreen"`, or `"scratchpad"`. |
-| `monitor` | `"any"` (default) or `{ index = N }` for a specific monitor by 0-based index. |
+| `monitor` | Which monitor the window lands on: an output name (`"DP-1"`), a 0-based layout position (`1`), `"focused"`, `"primary"`, or `"any"` (default). Same grammar as the CLI; see [Monitor selectors](instantwmctl.md#monitor-selectors). |
+| `geometry` | Exact floating placement relative to the target monitor's work area (the usable area below the bar): `{ x = 100, y = 50, width = 800, height = 600 }`. Setting a geometry implies floating placement; the window keeps this exact spot even when monitors are rearranged, because coordinates are relative to the monitor rather than the desktop. |
+| `borderless` | Manage the matched window without the WM border (`true`/`false`, default `false`). |
 
 Only the first matching rule is applied to a window.
 

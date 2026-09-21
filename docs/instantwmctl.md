@@ -73,6 +73,9 @@ instantwmctl pending-tmp-rule add --float
 
 # Open the next mpv window floating on tag 3 with a 5-minute window
 instantwmctl pending-tmp-rule add --class mpv --float --tag 3 --timeout-ms 300000
+
+# Focus a monitor by output name instead of index
+instantwmctl monitor switch DP-1
 ```
 
 ## Layouts
@@ -103,7 +106,7 @@ for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-la
 | `instantwmctl window info <window-id>` | Inspect a specific window |
 | `instantwmctl window focus [<window-id>]` | Switch to the window's monitor and tags, restore it if minimized, and focus/raise it |
 | `instantwmctl window resize --x X --y Y --width W --height H` | Set focused-window geometry |
-| `instantwmctl window resize <window-id> --monitor <output> --x X --y Y --width W --height H` | Set a specific window's monitor-relative geometry |
+| `instantwmctl window resize <window-id> --monitor <monitor> --x X --y Y --width W --height H` | Set a specific window's geometry relative to the chosen monitor (see [Monitor selectors](#monitor-selectors)) |
 | `instantwmctl window close` | Close the focused window |
 | `instantwmctl window close <window-id>` | Close a specific window |
 
@@ -124,7 +127,7 @@ for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-la
 | Command | Description |
 | --- | --- |
 | `instantwmctl monitor list` | List outputs |
-| `instantwmctl monitor switch <index>` | Focus monitor by index |
+| `instantwmctl monitor switch <monitor>` | Focus a monitor by output name, layout position, `focused` or `primary` |
 | `instantwmctl monitor next [count]` | Focus the next monitor |
 | `instantwmctl monitor prev [count]` | Focus the previous monitor |
 | `instantwmctl monitor modes [identifier]` | List display modes for an output |
@@ -146,9 +149,29 @@ Examples:
 ```bash
 instantwmctl monitor list
 instantwmctl monitor modes focused
+instantwmctl monitor switch DP-1
+instantwmctl monitor switch 1
 instantwmctl monitor set focused -r 2560x1440 -f 144 --vrr on
 instantwmctl monitor set HDMI-A-1 --disable
 ```
+
+### Monitor selectors
+
+Every surface that names a monitor — `monitor switch`, `window resize
+--monitor`, `pending-tmp-rule add --on-monitor`, and the `monitor` field of
+config `[[rules]]` — accepts the same selector:
+
+| Selector | Meaning |
+| --- | --- |
+| `DP-1`, `HDMI-A-1`, ... | Exact output name (as shown by `monitor list`) |
+| `0`, `1`, ... | Monitor by 0-based **layout position** (left-to-right in arrangement order) |
+| `focused` | The currently selected monitor |
+| `primary` | The first monitor in layout order |
+| `any` | No preference (rules only) |
+
+Names survive reboots and plug-order changes far better than indices, so
+prefer them in scripts and config files. `monitor list` shows each monitor's
+name, layout position, and backend index.
 
 Monitors can be plugged and unplugged without restarting: instantWM picks up
 new outputs automatically and keeps windows from a removed monitor reachable by
@@ -208,7 +231,7 @@ If no name is given, the default scratchpad name is `instantwm_scratchpad`.
 
 A **pending tmp rule** is a one-shot window rule that the WM consumes the next time a matching window applies its initial rules. After consumption the rule is gone. Each rule has a TTL (default 30 seconds) and is dropped silently when the deadline passes, so a misplaced rule never lingers beyond its lifetime.
 
-Pending tmp rules share the matching fields of config `[[rules]]` (see [Window rules](wmsettings.md#window-rules)): `class`, `instance`, `title`, `is_floating`, `tags`, `monitor`. They apply once. With no `--class`, `--instance`, or `--title` filter the rule matches the next window regardless of identity.
+Pending tmp rules share the fields of config `[[rules]]` (see [Window rules](wmsettings.md#window-rules)): `class`, `instance`, `title`, `is_floating`, `tags`, `monitor`, `geometry`, and `borderless`. They apply once. With no `--class`, `--instance`, or `--title` filter the rule matches the next window regardless of identity.
 
 Pending tmp rules are not modes. Modes are persistent modal keybinding contexts (see [Modes](modes.md)). A pending tmp rule is consumed in a single event and does not change keybindings or focus behavior.
 
@@ -218,7 +241,9 @@ Pending tmp rules are not modes. Modes are persistent modal keybinding contexts 
 | `instantwmctl pending-tmp-rule add --class mpv --float` | Float only when the next `mpv` window appears |
 | `instantwmctl pending-tmp-rule add --tile` | Force the next window tiled |
 | `instantwmctl pending-tmp-rule add --tile --tag 3` | Force the next window tiled on tag 3 |
-| `instantwmctl pending-tmp-rule add --float --on-monitor 1` | Float the next window on monitor 1 |
+| `instantwmctl pending-tmp-rule add --float --on-monitor DP-1` | Float the next window on the `DP-1` output |
+| `instantwmctl pending-tmp-rule add --float --borderless` | Float the next window without a WM border |
+| `instantwmctl pending-tmp-rule add --class mpv --geometry 100,50,1280,720` | Pin the next `mpv` to an exact spot on that monitor's work area |
 | `instantwmctl pending-tmp-rule add --timeout-ms 60000` | Set a 60-second TTL |
 | `instantwmctl pending-tmp-rule list` | List current pending rules with id and remaining time |
 | `instantwmctl --json pending-tmp-rule list` | Same listing, JSON for scripts |
@@ -230,12 +255,14 @@ Pending tmp rules are not modes. Modes are persistent modal keybinding contexts 
 - `--instance <SUBSTRING>`: match against the WM instance
 - `--title <SUBSTRING>`: match against the window title
 - `--float`: force the matched window to floating. Mutually exclusive with `--tile`.
-- `--tile`: force the matched window to tiled. Mutually exclusive with `--float`.
+- `--tile`: force the matched window to tiled. Mutually exclusive with `--float` and `--geometry`.
 - `--tag <N>`: assign tag `N` (1-indexed)
-- `--on-monitor <INDEX>`: place the matched window on monitor `INDEX`
+- `--on-monitor <MONITOR>`: place the matched window on the given monitor (see [Monitor selectors](#monitor-selectors))
+- `--geometry <X,Y,W,H>`: exact floating placement, relative to the target monitor's work area (the usable area below the bar). Implies `--float`.
+- `--borderless`: manage the matched window without a WM border
 - `--timeout-ms <MS>`: TTL in milliseconds. Default 30000. Must be `> 0` and `<= 86400000` (24 h)
 
-`list` shows: id, class, instance, title, `yes`/`no`/`-` for floating, tag number, monitor index, and remaining time. `cancel` removes a rule by id and prints a confirmation.
+`list` shows: id, class, instance, title, `yes`/`no`/`-` for floating, tag number, monitor selector, geometry, borderless state, and remaining time. `cancel` removes a rule by id and prints a confirmation.
 
 Output examples:
 
@@ -246,8 +273,9 @@ pending-tmp-rule added: id=1 timeout_ms=30000
 
 # List
 $ instantwmctl pending-tmp-rule list
-ID    CLASS          INSTANCE      TITLE          FLOAT   TAG  MONITOR    REMAINING
-1     mpv             -             -              yes     -    -          28.4s
+ID    CLASS          INSTANCE      TITLE          FLOAT   TAG  MONITOR    GEOMETRY         BORDER  REMAINING
+1     mpv             -             -              yes     -    -          -                -       28.4s
+2     ins_freeze      -             -              yes     -    DP-1       100,50,800,600   none    12.0s
 
 # Cancel
 $ instantwmctl pending-tmp-rule cancel 1
@@ -260,14 +288,16 @@ JSON output (for scripts):
 $ instantwmctl --json pending-tmp-rule list
 [
   {
-    "id": 1,
-    "class": "mpv",
+    "id": 2,
+    "class": "ins_freeze",
     "instance": null,
     "title": null,
     "is_floating": true,
-    "tag": 3,
-    "on_monitor": null,
-    "ms_remaining": 28412
+    "tag": null,
+    "on_monitor": "DP-1",
+    "geometry": "100,50,800,600",
+    "borderless": true,
+    "ms_remaining": 12004
   }
 ]
 ```
