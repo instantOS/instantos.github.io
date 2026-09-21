@@ -576,6 +576,66 @@ should_launch_os_installer() {
 	[ "$OS_INSTALL" -eq 1 ] || { [ "$CLI_ONLY" -eq 0 ] && is_live_disk; }
 }
 
+# Return success only for numbered Linux virtual-console device paths.
+is_virtual_console_device() {
+	case "$1" in
+	/dev/tty[0-9]*)
+		console_number=${1#/dev/tty}
+		case "$console_number" in
+		*[!0-9]*) return 1 ;;
+		*) return 0 ;;
+		esac
+		;;
+	esac
+	return 1
+}
+
+# Print the Linux virtual-console device backing stdout, including through tmux.
+linux_console_device() {
+	[ -t 1 ] || return 1
+	if [ -n "${TMUX:-}" ] && command -v tmux >/dev/null 2>&1; then
+		outer_term=$(tmux display-message -p '#{client_termname}' 2>/dev/null || true)
+		case "$outer_term" in
+		linux*)
+			client_tty=$(tmux display-message -p '#{client_tty}' 2>/dev/null || true)
+			if is_virtual_console_device "$client_tty"; then
+				printf '%s\n' "$client_tty"
+				return 0
+			fi
+			;;
+		esac
+	fi
+	if command -v tty >/dev/null 2>&1; then
+		console_tty=$(tty 2>/dev/null || true)
+		if is_virtual_console_device "$console_tty"; then
+			printf '%s\n' "$console_tty"
+			return 0
+		fi
+	fi
+	return 1
+}
+
+# Detect if running on a Linux virtual console (TTY) or inside tmux attached to one.
+is_linux_console() {
+	linux_console_device >/dev/null
+}
+
+# Reprogram the Linux virtual console DAC palette to Catppuccin Mocha.
+# The Linux kernel VT supports OSC escape sequences \e]P<index><rrggbb>.
+set_catppuccin_tty() {
+	console_tty=$(linux_console_device) || return 0
+
+	export INS_COLOR_MODE=16
+
+	esc=$(printf '\033')
+	palette="${esc}]P01e1e2e${esc}]P1f38ba8${esc}]P2a6e3a1${esc}]P3f9e2af${esc}]P489b4fa${esc}]P5cba6f7${esc}]P694e2d5${esc}]P7bac2de${esc}]P8585b70${esc}]P9f38ba8${esc}]PAa6e3a1${esc}]PBf9e2af${esc}]PC89b4fa${esc}]PDf5c2e7${esc}]PE89dceb${esc}]PFcdd6f4"
+
+	# Write to the originating VT. /dev/tty0 aliases whichever VT is active and
+	# may therefore modify a different console when this one is in the background.
+	printf '%s' "$palette" >"$console_tty" 2>/dev/null || true
+	printf '%s[0m' "$esc"
+}
+
 # Initialize and refresh the Arch keyring, escalating only these commands when needed.
 # Any failure is fatal because the following OS installation depends on pacman.
 prepare_live_keyring() {
@@ -1117,6 +1177,8 @@ download_release_asset() {
 # Coordinate validation, artifact installation, cleanup, and optional OS handoff.
 main() {
 	parse_args "$@"
+
+	set_catppuccin_tty
 
 	if [ "$ONLY_ANIMATION" -eq 1 ]; then
 		instantos_logo_animation
