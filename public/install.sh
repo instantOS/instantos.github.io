@@ -15,6 +15,8 @@ CLI_ONLY=0
 OS_INSTALL=0
 ONLY_ANIMATION=0
 NO_ANIMATION=0
+UNATTENDED_CONFIG=""
+DRY_RUN=0
 
 log() {
 	printf '%s\n' "$1"
@@ -668,6 +670,8 @@ Options:
   --bin-name <name>                   Override installed binary name (default: ins)
   --cli-only, --no-launch             Install ins CLI only (do not launch OS installer on live disk)
   --os-install, --arch-install        Launch instantOS installer after installing ins
+  --config, --unattended <path|url>   Run unattended OS installation with questions TOML file or URL
+  --dry-run                           Run unattended OS installation in dry-run mode
   --only-animation, --animation-only  Play the logo animation and exit
   --no-animation                      Skip the logo animation
   -h, --help                          Show this help message
@@ -698,6 +702,16 @@ parse_args() {
 		--os-install | --arch-install)
 			OS_INSTALL=1
 			;;
+		--config | --unattended | --questions-file)
+			shift
+			[ $# -gt 0 ] || fatal "--config requires a file path or URL"
+			[ -n "$1" ] || fatal "--config requires a non-empty value"
+			UNATTENDED_CONFIG=$1
+			OS_INSTALL=1
+			;;
+		--dry-run)
+			DRY_RUN=1
+			;;
 		--only-animation | --animation-only)
 			ONLY_ANIMATION=1
 			;;
@@ -717,8 +731,14 @@ parse_args() {
 	if [ "$CLI_ONLY" -eq 1 ] && [ "$OS_INSTALL" -eq 1 ]; then
 		fatal "--cli-only and --os-install cannot be used together"
 	fi
+	if [ "$CLI_ONLY" -eq 1 ] && [ -n "$UNATTENDED_CONFIG" ]; then
+		fatal "--cli-only and --config cannot be used together"
+	fi
 	if [ "$ONLY_ANIMATION" -eq 1 ] && [ "$NO_ANIMATION" -eq 1 ]; then
 		fatal "--only-animation and --no-animation cannot be used together"
+	fi
+	if [ "$DRY_RUN" -eq 1 ] && [ -z "$UNATTENDED_CONFIG" ]; then
+		fatal "--dry-run requires --config"
 	fi
 }
 
@@ -1198,7 +1218,7 @@ main() {
 	instantos_logo_animation
 
 	# If live disk or forced OS install, prepare the keyring before downloading.
-	if should_launch_os_installer; then
+	if should_launch_os_installer && [ "$DRY_RUN" -eq 0 ]; then
 		prepare_live_keyring
 	fi
 
@@ -1246,9 +1266,34 @@ main() {
 
 	# Launch instantOS installer if on live disk or requested
 	if should_launch_os_installer; then
-		log "Starting instantOS installer..."
-		# The CLI configures networking as the desktop user, then escalates itself.
-		exec "$INSTALL_DIR/$BIN_NAME" arch install
+		if [ -n "$UNATTENDED_CONFIG" ]; then
+			case "$UNATTENDED_CONFIG" in
+			http://* | https://*)
+				downloaded_config=$(mktemp /tmp/instant_questions.XXXXXX.toml)
+				log "Downloading installation configuration from $UNATTENDED_CONFIG..."
+				if ! curl -fsSL "$UNATTENDED_CONFIG" -o "$downloaded_config"; then
+					rm -f "$downloaded_config"
+					fatal "failed to download configuration from $UNATTENDED_CONFIG"
+				fi
+				UNATTENDED_CONFIG="$downloaded_config"
+				;;
+			*)
+				[ -f "$UNATTENDED_CONFIG" ] || fatal "configuration file not found: $UNATTENDED_CONFIG"
+				UNATTENDED_CONFIG=$(cd "$(dirname "$UNATTENDED_CONFIG")" && pwd)/$(basename "$UNATTENDED_CONFIG")
+				;;
+			esac
+
+			log "Starting instantOS unattended installer..."
+			if [ "$DRY_RUN" -eq 1 ]; then
+				exec "$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$UNATTENDED_CONFIG"
+			else
+				exec "$INSTALL_DIR/$BIN_NAME" arch exec -f "$UNATTENDED_CONFIG"
+			fi
+		else
+			log "Starting instantOS installer..."
+			# The CLI configures networking as the desktop user, then escalates itself.
+			exec "$INSTALL_DIR/$BIN_NAME" arch install
+		fi
 	fi
 
 	print_summary
