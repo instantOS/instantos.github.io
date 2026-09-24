@@ -599,31 +599,32 @@ If you don't care *what* changed and just want to react to the new setup, use
 `monitors_changed`. Plugging in a dock with two screens runs it once, not
 twice.
 
-You can define any number of hooks. When several events happen together they
-run in this order: all `monitor_disconnected`, then all `monitor_connected`,
-then a single `monitors_changed`. Hooks for the same event run in config order.
+Hooks do not fire for the monitors present at startup; use
+[`exec` / `exec_once`](#startup-commands) for startup work.
 
-### When hooks fire
+::: warning
+A hook that changes the output configuration itself (e.g. by running
+`xrandr`) triggers `monitors_changed` again and can loop forever.
+:::
 
-- instantWM checks the monitor setup once per event-loop iteration, after the
-  layout has been updated, and compares it with the setup it saw last. Changes
-  that happen together (e.g. a dock bringing up several screens) are therefore
-  combined, and an output that disconnects and reconnects within one iteration
-  fires nothing.
-- Hooks only fire for changes **while instantWM is running**. The monitors
-  present at startup do not trigger any hook; use
-  [`exec` / `exec_once`](#startup-commands) for startup work.
-- Changes count regardless of their source: physical hotplug,
-  [`[monitors]`](#monitor-configuration) settings (including `enable = false`)
-  on reload, `instantwmctl`, output-management tools like `wlr-randr`, or
-  `xrandr` on X11. Outputs that are physically mirrored into one monitor count
-  as that single monitor.
-- Only changes that affect the layout count. Refresh rate, VRR, and rotations
-  or flips that keep the output size (e.g. 180°) do not; 90°/270° rotations
-  do, because they change the size. UI-only changes such as a different bar
-  height do not count either.
-- Avoid feedback loops: a `monitors_changed` hook that changes the output
-  configuration itself (e.g. by running `xrandr`) will trigger itself again.
+::: details Technical behavior
+- **Order:** when several events happen together they run as: all
+  `monitor_disconnected`, then all `monitor_connected`, then a single
+  `monitors_changed`. Hooks for the same event run in config order.
+- **Detection:** instantWM compares the monitor setup with the one it saw last,
+  once per event-loop iteration and after the layout has been updated. Changes
+  that happen together are combined, and an output that disconnects and
+  reconnects within one iteration fires nothing.
+- **Sources:** changes count regardless of where they come from: physical
+  hotplug, [`[monitors]`](#monitor-configuration) settings (including
+  `enable = false`) on reload, `instantwmctl`, output-management tools like
+  `wlr-randr`, or `xrandr` on X11. Outputs that are physically mirrored into
+  one monitor count as that single monitor.
+- **What counts:** only changes that affect the layout. Refresh rate, VRR, and
+  rotations or flips that keep the output size (e.g. 180°) do not; 90°/270°
+  rotations do, because they change the size. UI-only changes such as a
+  different bar height do not count either.
+:::
 
 ### Environment for spawned commands
 
@@ -648,13 +649,16 @@ esac
 
 ### Validation
 
-Unlike keybinds, invalid hooks are configuration errors rather than being
-silently skipped. An unknown `event`, a misspelled field, an unknown action,
-`"none"`, a missing argument (such as `spawn = []`), or a `monitor` filter on
-`monitors_changed` makes the config fail to load. On reload the previous
-config stays active; at startup the built-in defaults are used. The error
-names the offending entry, for example
+Unlike keybinds, an invalid hook makes the whole config fail to load, and the
+error names the offending entry, e.g.
 `hooks[1] (monitor_connected): unknown action 'foo'`.
+
+::: details What counts as invalid
+An unknown `event`, a misspelled field, an unknown action, `"none"`, a missing
+argument (such as `spawn = []`), or a `monitor` filter on `monitors_changed`.
+On reload the previous config stays active; at startup the built-in defaults
+are used.
+:::
 
 ## Monitor Configuration
 
