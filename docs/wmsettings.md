@@ -2,7 +2,7 @@
 
 instantWM is customized through a TOML configuration file at `~/.config/instantwm/config.toml`.
 
-After editing the config file, you can either restart instantWM or use `instantwmctl` to apply changes dynamically for certain settings.
+After editing the config file, restart instantWM, or use `instantwmctl` to apply some settings without restarting.
 
 ## Configuration File Location
 
@@ -10,7 +10,7 @@ After editing the config file, you can either restart instantWM or use `instantw
 ~/.config/instantwm/config.toml
 ```
 
-If the file doesn't exist, instantWM will use sensible defaults.
+If the file doesn't exist, instantWM uses its defaults.
 
 ## Config Includes
 
@@ -37,8 +37,8 @@ tags, window titles, borders and close buttons together. Set the top-level
 theme = "nord"
 ```
 
-That single line replaces the entire `[colors]` table — every colour is derived
-from the theme's palette. Themes are resolved when the config is read, so run
+The theme supplies the entire `[colors]` table, with every colour derived from
+the theme's palette. Themes are resolved when the config is read, so run
 `instantwmctl reload` (or restart instantWM) after changing `theme`.
 
 ### Built-in themes
@@ -74,8 +74,8 @@ choice (and any overrides) in its own file and pull it in with
 [includes](#config-includes).
 
 :::info
-An unknown theme name is not fatal. instantWM prints a warning and falls back to
-the default theme (`instantos`) — the rest of your config still loads normally.
+If the theme name is unknown, instantWM prints a warning and falls back to the
+default theme (`instantos`). The rest of your config still loads normally.
 :::
 
 ### Switching themes at runtime
@@ -88,7 +88,7 @@ instantwmctl theme nord      # switch to a theme
 instantwmctl theme --list    # list available themes
 ```
 
-The bar, borders and tags recolour immediately. This is a runtime change only —
+The bar, borders and tags recolour immediately. The change is not saved:
 `instantwmctl reload` reverts to whatever `theme` is set to in `config.toml`.
 To make a theme permanent, set `theme = "..."` in the config.
 
@@ -282,7 +282,7 @@ Valid values:
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
 - `scroll_factor`: Floating point multiplier applied to scroll events (defaults to `1.0` when unset)
-- `left_handed`: "enabled" or "disabled" — swaps the primary/secondary buttons for left-handed use
+- `left_handed`: "enabled" or "disabled"; swaps the primary/secondary buttons for left-handed use
 
 ## Layout tree and gaps
 
@@ -315,20 +315,18 @@ new_window_placement = "auto-resize"
 `new_window_placement` controls where a window that is not yet in a tag's
 persistent tiling tree gets inserted:
 
-- `"auto-resize"` (default) — place the newcomer automatically and resize the
+- `"auto-resize"` (default): place the newcomer automatically and resize the
   existing tree to give it room.
-- `"auto"` — split the best existing leaf without deliberately rebalancing the
+- `"auto"`: split the best existing leaf without deliberately rebalancing the
   rest of the tree.
-- `"force"` — give the first newcomer a leading half of a new vertical root
+- `"force"`: give the first newcomer a leading half of a new vertical root
   split; consecutive untouched insertions adapt that region into balanced rows
   or columns, and any manual tree edit starts a new sequence.
 
-Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0.
+Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0. Gaps do not apply to floating windows.
 
-Floating windows are not affected.
-
-Layout presets such as Grid are one-shot tree rewrites. These settings govern
-the manual edits which remain afterward; see [Layouts](layouts.md).
+Layout presets such as Grid rewrite the tree once. The settings above apply to
+the manual edits you make afterwards; see [Layouts](layouts.md).
 
 ## Floating windows and click-to-raise
 
@@ -357,9 +355,9 @@ speed = 1.0
 |---------|------|---------|-------------|
 | `speed` | float | `1.0` | Global animation speed multiplier; valid range `0.01`–`100.0` |
 
-Below `1.0` slows animations down, above `1.0` speeds them up. Because
-durations are scaled, a factor of `2.0` does not skip frames — it halves every
-animation's duration. Use `instantwmctl toggle animated` (or
+Below `1.0` slows animations down, above `1.0` speeds them up. Durations are
+scaled, so a factor of `2.0` halves every animation's duration rather than
+skipping frames. Use `instantwmctl toggle animated` (or
 ++super+shift+alt+s++) to disable animations entirely; the speed multiplier
 then has no effect until animations are re-enabled.
 
@@ -370,8 +368,8 @@ instantwmctl config get animations.speed
 instantwmctl config set animations.speed 1.5
 ```
 
-`instantwmctl config set` applies immediately but is not persisted — keep the
-value in `config.toml` for a permanent setting.
+`instantwmctl config set` applies immediately but is not saved. Put the value
+in `config.toml` for a permanent setting.
 
 ## Custom Keybinds
 
@@ -437,9 +435,8 @@ Simple actions use a string, for example `action = "begin_tree_placement"` or
 - `layout_float`, `layout_maximized`, and `toggle_tiling_maximized`
 - `edge_scratchpad_create` and `edge_scratchpad_toggle`
 
-Do not copy a static action catalog from the web and assume it matches a custom
-build. `instantwm --list-actions` or `instantwmctl action --list` prints the
-authoritative, parser-backed list with descriptions and argument examples.
+For the full list for your build, with descriptions and argument examples, run
+`instantwm --list-actions` or `instantwmctl action --list`.
 
 Structured actions accepted in TOML are:
 
@@ -512,14 +509,11 @@ Only the first matching rule is applied to a window.
 
 ## Control Commands
 
-Runtime control is provided by `instantwmctl`. See the canonical
+Runtime control is provided by `instantwmctl`. See the
 [instantwmctl command reference](instantwmctl.md) for commands and examples.
-For actions usable in keybindings, `instantwmctl action --list` is the current
-runtime-generated list.
+`instantwmctl action --list` prints the actions usable in keybindings.
 
 ## Runtime Control
-
-instantWM provides the `instantwmctl` command-line tool for runtime control. See the [instantwmctl](instantwmctl.md) documentation for a complete reference.
 
 instantWM reads status text from the X11 root window name property (X11) or writes to the status bar directly (Wayland). Configure a status command in your config:
 
@@ -536,7 +530,7 @@ instantwmctl update-status "My Status"
 ## Custom modes
 
 Modes use the same binding format and can invoke the tree actions above. See
-[Modes](modes.md) for a complete, current example and for customizing the
+[Modes](modes.md) for a full example and for customizing the
 built-in `placement` mode.
 
 ## Startup commands
@@ -654,18 +648,18 @@ These are standard freedesktop variables. `config.toml` takes precedence when se
 |---|---|---|
 | `XKB_DEFAULT_LAYOUT` | `[keyboard].layouts` when the list is empty. Empty string → `us`. | `de` |
 | `XKB_DEFAULT_VARIANT` | Single-layout variant | `nodeadkeys` |
-| `XKB_DEFAULT_OPTIONS` | `[keyboard].options` (`or_else` if unset) | `compose:ralt` |
-| `XKB_DEFAULT_MODEL` | `[keyboard].model` (`or_else` if unset) | `pc105` |
+| `XKB_DEFAULT_OPTIONS` | `[keyboard].options` when unset | `compose:ralt` |
+| `XKB_DEFAULT_MODEL` | `[keyboard].model` when unset | `pc105` |
 | `XCURSOR_THEME` | `[cursor].theme` on Wayland DRM | `Adwaita` |
-| `XCURSOR_SIZE` | `[cursor].size` on Wayland DRM (parsed as `u32`) | `24` |
+| `XCURSOR_SIZE` | `[cursor].size` on Wayland DRM (non-negative integer) | `24` |
 
 ### Variables set by instantWM for children
 
 Do not set these manually; instantWM overwrites them at startup for toolkit and script detection:
 
-* `INSTANTWM=1` — generic "inside instantWM" flag.
-* `INSTANTWM_BACKEND=x11` | `wayland-nested` | `wayland-drm` — selected backend. Checked internally to gate `systemctl --user stop/start` of `xdg-desktop-portal*` and `instantwm-session.target` (DRM only).
-* `INSTANTWM_SOCKET` — published IPC path (see above).
-* On Wayland, `apply_session_env` also exports `WAYLAND_DISPLAY`, `XDG_SESSION_TYPE=wayland`, `XDG_CURRENT_DESKTOP=instantwm`, `XDG_SESSION_DESKTOP=instantwm`, `DESKTOP_SESSION=instantwm`, unsets `DISPLAY` initially, and sets `GDK_BACKEND=wayland`, `QT_QPA_PLATFORM=wayland`, `SDL_VIDEODRIVER=wayland`, `CLUTTER_BACKEND=wayland`. XWayland then sets `DISPLAY=:N`.
+* `INSTANTWM=1`: generic "inside instantWM" flag.
+* `INSTANTWM_BACKEND=x11` | `wayland-nested` | `wayland-drm`: selected backend. instantWM checks it so that `systemctl --user stop/start` of `xdg-desktop-portal*` and `instantwm-session.target` only runs on DRM.
+* `INSTANTWM_SOCKET`: published IPC path (see above).
+* On Wayland, instantWM also exports `WAYLAND_DISPLAY`, `XDG_SESSION_TYPE=wayland`, `XDG_CURRENT_DESKTOP=instantwm`, `XDG_SESSION_DESKTOP=instantwm`, `DESKTOP_SESSION=instantwm`, unsets `DISPLAY` initially, and sets `GDK_BACKEND=wayland`, `QT_QPA_PLATFORM=wayland`, `SDL_VIDEODRIVER=wayland`, `CLUTTER_BACKEND=wayland`. XWayland then sets `DISPLAY=:N`.
 
 Check the current export with `printenv | grep -E '^INSTANTWM|^WAYLAND_DISPLAY|^DISPLAY'` inside a terminal launched from instantWM.
