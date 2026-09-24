@@ -39,12 +39,12 @@ action = "key_resize_right"
 [[modes.resize.keybinds]]
 modifiers = []
 key = "Escape"
-action = { set_mode = "default" }
+action = ["set_mode", "default"]
 
 [[modes.resize.keybinds]]
 modifiers = []
 key = "Return"
-action = { set_mode = "default" }
+action = ["set_mode", "default"]
 ```
 
 Bind another key to enter it:
@@ -53,11 +53,11 @@ Bind another key to enter it:
 [[keybinds]]
 modifiers = ["Super"]
 key = "r"
-action = { set_mode = "resize" }
+action = ["set_mode", "resize"]
 ```
 
 The description is displayed in the bar in place of the internal name. Use
-`set_mode = "default"` to leave any custom mode. Mode changes also cancel any
+`["set_mode", "default"]` to leave any custom mode. Mode changes also cancel any
 state owned by the previous mode, such as a layout-placement preview.
 
 Named modes fall back to global and desktop bindings when they do not override

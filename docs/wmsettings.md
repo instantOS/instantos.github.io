@@ -171,7 +171,7 @@ options = "compose:ralt"
 [[keybinds]]
 modifiers = ["Super"]
 key = "Return"
-action = { spawn = ["alacritty"] }
+action = ["spawn", "alacritty"]
 
 [[keybinds]]
 modifiers = ["Super", "Shift"]
@@ -187,7 +187,7 @@ action = "next_keyboard_layout"
 [[desktop_keybinds]]
 modifiers = ["Super"]
 key = "d"
-action = { spawn = ["instantmenu"] }
+action = ["spawn", "instantmenu"]
 ```
 
 ## Color Schemes
@@ -380,7 +380,7 @@ Add or override keybinds:
 [[keybinds]]
 modifiers = ["Super"]
 key = "Return"
-action = { spawn = ["alacritty"] }
+action = ["spawn", "alacritty"]
 
 # Named actions
 [[keybinds]]
@@ -392,25 +392,25 @@ action = "kill"
 [[keybinds]]
 modifiers = ["Super"]
 key = "f"
-action = { unbind = true }
+action = "none"
 
 # Apply a tree preset
 [[keybinds]]
 modifiers = ["Super"]
 key = "g"
-action = { set_layout = "grid" }
+action = ["set_layout", "grid"]
 
 # Adjust master window count
 [[keybinds]]
 modifiers = ["Super"]
 key = "i"
-action = { inc_master_count = 1 }
+action = ["inc_master_count", "1"]
 
 # Enter a mode
 [[keybinds]]
 modifiers = ["Super"]
 key = "r"
-action = { set_mode = "resize" }
+action = ["set_mode", "resize"]
 ```
 
 ### Available Modifiers
@@ -438,16 +438,15 @@ Simple actions use a string, for example `action = "begin_tree_placement"` or
 For the full list for your build, with descriptions and argument examples, run
 `instantwm --list-actions` or `instantwmctl action --list`.
 
-Structured actions accepted in TOML are:
-
-- `spawn`: `action = { spawn = ["alacritty"] }`
-- `unbind`: `action = { unbind = true }`
-- `none`: use `action = "none"` to remove a binding (equivalent to `unbind`)
-- `set_layout`: `action = { set_layout = "tile" }`
-- `focus_stack`: `action = { focus_stack = "next" }`
-- `inc_master_count`: `action = { inc_master_count = 1 }`
-- `keyboard_layout`: `action = { keyboard_layout = "us(intl)" }`
-- `set_mode`: `action = { set_mode = "resize" }`
+Actions with arguments use an array: the action name followed by its arguments,
+all as strings. Examples include `action = ["spawn", "alacritty"]`,
+`action = ["set_layout", "tile"]`, `action = ["focus_stack", "next"]`,
+`action = ["inc_master_count", "1"]`, and
+`action = ["keyboard_layout", "us(intl)"]`. Use `action = "none"` to remove a
+binding. For multiple actions, use
+`action = { sequence = [["set_layout", "tile"], ["spawn", "alacritty"]] }`.
+The former action tables such as `{ spawn = [...] }`, `{ set_layout = "tile" }`,
+and `{ unbind = true }` are no longer accepted.
 
 See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
@@ -561,18 +560,18 @@ as a [keybind action](#custom-keybinds): named actions, `spawn`, `sequence`,
 # Re-apply wallpaper etc. whenever the monitor setup changes in any way
 [[hooks]]
 event = "monitors_changed"
-action = { spawn = ["sh", "-c", "~/.local/bin/monitors-changed.sh"] }
+action = ["spawn", "sh", "-c", "~/.local/bin/monitors-changed.sh"]
 
 # Only react to one specific output being plugged in
 [[hooks]]
 event = "monitor_connected"
 monitor = "HDMI-A-1"
-action = { sequence = [{ set_layout = "tile" }, { spawn = ["notify-send", "Docked"] }] }
+action = { sequence = [["set_layout", "tile"], ["spawn", "notify-send", "Docked"]] }
 
 # Notify whenever any monitor goes away
 [[hooks]]
 event = "monitor_disconnected"
-action = { spawn = ["notify-send", "Monitor disconnected"] }
+action = ["spawn", "notify-send", "Monitor disconnected"]
 ```
 
 | Field | Required | Description |
@@ -649,7 +648,7 @@ error names the offending entry, e.g.
 
 ::: details What counts as invalid
 An unknown `event`, a misspelled field, an unknown action, `"none"`, a missing
-argument (such as `spawn = []`), or a `monitor` filter on `monitors_changed`.
+argument (such as `action = ["spawn"]`), or a `monitor` filter on `monitors_changed`.
 On reload the previous config stays active; at startup the built-in defaults
 are used.
 :::
@@ -668,6 +667,9 @@ enable = true
 transform = "normal"      # rotation / reflection
 vrr = "auto"              # variable refresh rate policy
 
+# To mirror another output instead, set mirror = "DP-1" on the mirror head.
+# mirror_fit = "contain"   # Wayland: contain (bars) or cover (crop)
+
 [monitors."HDMI-A-1"]
 position = "left-of:DP-1"
 ```
@@ -682,6 +684,14 @@ Position can be specified as:
 
 `vrr` controls variable refresh rate (FreeSync / G-Sync) and accepts `"off"`
 (default), `"auto"` (let the driver decide), or `"on"`.
+
+Set `mirror = "DP-1"` on a second output to show the source output's content.
+The pair acts as one logical monitor. The mirror's `position` and `scale` are
+ignored. On Wayland, its own resolution, refresh rate, and transform still
+control scanout; `mirror_fit = "contain"` (default) adds bars when aspect ratios
+differ, while `"cover"` crops. X11 uses the source's mode and cannot scale the
+mirror. A disconnected or disabled source leaves the other output independent
+until the source returns. Use `mirror = "none"` to clear the setting.
 
 ## Bar height
 
