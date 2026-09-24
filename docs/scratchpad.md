@@ -8,7 +8,7 @@ show or hide it.
 
 ## Advanced: named scratchpads
 
-instantWM also supports multiple named scratchpads through `instantwmctl`:
+You can create multiple named scratchpads with `instantwmctl`:
 
 ```bash
 instantwmctl scratchpad create terminal

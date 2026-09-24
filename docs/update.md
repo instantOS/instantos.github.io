@@ -19,7 +19,7 @@ will however require a restart to become visible.
 "You don't need to restart Linux after an update" does not apply to desktops.
 You *can* use your computer without restarting, but things will get buggy or
 break. This is not an instantOS specific issue, that is just how graphical
-desktops work, if Vulkan does not work, then you might have forgotten to restart
+desktops work. If Vulkan does not work, you might have forgotten to restart
 after an update. 
 :::
 

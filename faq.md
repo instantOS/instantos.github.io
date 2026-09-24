@@ -170,13 +170,12 @@ base system and previously not accessible to non-technical people.
 
 ## Wayland
 
-instantWM now supports both X11 and Wayland! The Rust rewrite includes native Wayland support.
-You can choose which session to use:
+instantWM supports both X11 and Wayland. You can choose which session to use:
 
 - **X11**: instantwm-x11 (traditional X11 session)
 - **Wayland**: instantwm-wayland (native Wayland compositor)
 
-Wayland support includes most features from the X11 version, with continued development to maintain feature parity.
+The Wayland session has most features of the X11 version, and work on full parity is ongoing.
 Both sessions share the same configuration file at `~/.config/instantwm/config.toml`.
 
 ## Can I change keybindings

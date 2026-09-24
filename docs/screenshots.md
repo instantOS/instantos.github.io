@@ -10,7 +10,7 @@
 
 ## Keybindings
 
-The default screenshot shortcuts are maintained in the
+The default screenshot shortcuts are listed in the
 [instantWM keybindings reference](hotkeys.md#screenshots).
 
 ::: details installation on third party systems
@@ -20,5 +20,5 @@ These bindings require instantassist and instantutils to be installed
 ## instantASSIST
 
 instantASSIST contains additional screenshot tools under the `s` assist. See
-the canonical [screenshot assists catalog](instantassist.md#screenshot-assists-s)
-for the available chords and their current behavior.
+the [screenshot assists catalog](instantassist.md#screenshot-assists-s) for the
+available chords.

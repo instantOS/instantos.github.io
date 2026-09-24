@@ -1,10 +1,9 @@
 # Notifications (`ins notify`)
 
-`ins notify` is the instantOS notification center. It replaces the old
-instantNOTIFY/instantnotify implementation and stores notifications sent
-through the standard desktop notification interface without taking over from
-the notification daemon. Dunst or mako still displays the popup; `ins notify`
-records and manages the history.
+`ins notify` is the instantOS notification center. It stores notifications
+sent through the standard desktop notification interface and works alongside
+your notification daemon: dunst or mako still displays the popup, while
+`ins notify` records and manages the history.
 
 ## Open the notification center
 
@@ -17,8 +16,7 @@ ins notify --gui
 ```
 
 On instantWM, it can also be opened with Super + right-click on the desktop or
-window bar, or with Super+Ctrl + left-click on the status text. The current
-compiled instantWM defaults do not bind Super+G.
+window bar, or with Super+Ctrl + left-click on the status text.
 
 Selecting a notification marks it as read and opens its detail view. From
 there it can be marked unread or deleted. The Options menu provides Do Not
@@ -26,8 +24,7 @@ Disturb, bulk read/delete operations, filtering by application or keyword, and
 the history-size setting.
 
 If capture is not running, the notification center shows an **Enable and start
-notification capture** action. Nothing is enabled merely by opening the TUI;
-the service is changed only after selecting that action.
+notification capture** action.
 
 Do Not Disturb controls the active notification daemon: `dunstctl` is used for
 dunst and `makoctl` for mako.

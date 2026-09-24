@@ -7,7 +7,7 @@ input options and IPC details are all documented there.
 
 ## `ins settings`
 
-`ins settings` is fully compatible with niri. Mouse speed, accel profile and
+`ins settings` works with niri. Mouse speed, accel profile and
 keyboard layouts are written directly into the niri config file and applied via
 `niri msg action load-config-file`, so changes take effect immediately without
 a session restart.

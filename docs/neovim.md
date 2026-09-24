@@ -47,7 +47,7 @@ Q: $...$
 A: This is the answer to the math question
 ```
 
-All of the LaTeX snippets are also working here, whenever you are inside a math
+All of the LaTeX snippets also work here, whenever you are inside a math
 environment, meaning `$...$` or `$$...$$`.
 
 ### LaTeX

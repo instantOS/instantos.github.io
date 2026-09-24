@@ -20,10 +20,10 @@ The script requests elevated permissions when needed, so do not run the command
 itself with `sudo`.
 
 There is an ongoing effort to make the instantOS utilities available on other
-distros. A large part of them are already working, and at this point vanilla
-Arch can be considered fully supported by the new instantOS utilities. 
+distros. A large part of them already work, and vanilla Arch is fully
+supported. 
 
-This also largely works on Ubuntu and Debian. 
+Most of it also works on Ubuntu and Debian. 
 
 ## System requirements
 
