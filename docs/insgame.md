@@ -35,7 +35,7 @@ ins game setup # set up an existing game on a new device
 
 ### Installation
 
-This requires the following to be installed
+This requires the following to be installed:
 
 - ins (obviously)
 - restic
@@ -59,7 +59,7 @@ storage provider which supports `rclone`.
 ins game init
 ```
 
-This will ask you to select a your cloud storage provider configured in `rclone`
+This will ask you to select your cloud storage provider configured in `rclone`
 and will create a folder for your game saves. 
 
 ### Adding a game
@@ -69,7 +69,7 @@ ins game add
 ```
 
 
-## Comand reference
+## Command reference
 
 ### `ins game --help`
 

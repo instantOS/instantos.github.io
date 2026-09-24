@@ -22,10 +22,6 @@ The exported actions are `edge_scratchpad_create`,
 `edge_scratchpad_direction_left`, `_right`, `_up`, and `_down` actions, which
 are useful in custom bindings or modes.
 
-This feature used to be bound to Super+W and was usually called simply
-“overlay”. Super+W now toggles tiled/maximized presentation; Super+T owns the
-edge overlay controls.
-
 :::
 
 See [Scratchpad](scratchpad.md) for named, non-edge scratchpads.

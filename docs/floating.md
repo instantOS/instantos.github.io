@@ -14,7 +14,7 @@ window does **not** make it float: it previews and applies a new position in the
 layout. Drop it in another tiled window's centre to swap them, or near an edge
 to place it on that side. See [Layouts](layouts.md#pointer-placement-and-resizing).
 
-Screen-edge and tag-bar drop targets still take precedence. They can move a
+Screen-edge and tag-bar drop targets take precedence. They can move a
 window to an adjacent tag, put it on a selected tag, or create an edge overlay.
 
 ## Resizing windows

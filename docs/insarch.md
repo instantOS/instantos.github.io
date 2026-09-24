@@ -21,7 +21,7 @@ relaunch itself. You can still run `sudo ins arch install` if you prefer.
 - Automatic or manual partitioning
 - Dual boot feasibility checks with resize guidance
 - Disk encryption
-- Minimal-mode for a vanilla Arch install
+- Minimal Mode for a vanilla Arch install
 - Asks questions first, then runs all install steps in one go
 
 ### Requirements

@@ -20,8 +20,8 @@ using simple markdown syntax.
 ### Setup
 
 `ins video setup`
-This should download the required data. This can be quite a lot of data as
-WhisperX is used for transcription.
+This downloads the required data, which can be quite a lot because WhisperX is
+used for transcription.
 
 
 ### Edit videos
@@ -32,7 +32,7 @@ Assuming the video file you want to edit is called `input.mp4`
 ins video convert input.mp4
 ```
 
-This produces `input.video.md` file which contains a transcript of the video
+This produces `input.video.md`, which contains a transcript of the video.
 You can now edit the `input.video.md` file using any text editor.
 
 ```sh

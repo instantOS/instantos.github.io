@@ -3,9 +3,8 @@
 
 ![screenshot](https://i.imgur.com/MtoxsKn.png)
 
-`ins clip` is the instantOS clipboard-history picker. It replaces the old
-`instantclipmenu` wrapper and automatically selects a small, session-native
-capture backend:
+`ins clip` is the instantOS clipboard-history picker. It picks a capture
+backend based on your session:
 
 - Wayland uses `cliphist`
 - X11 uses `clipmenu`

@@ -2,7 +2,7 @@
 
 `ins` is the main command-line interface shipped by instantCLI. It bundles most user-facing instantOS tools into one binary, including settings, wallpaper management, diagnostics, updates, dotfiles, game-save sync, installer workflows, and several utility interfaces.
 
-Some larger `ins` subcommands already have dedicated pages:
+The larger `ins` subcommands have their own pages:
 
 - [ins arch](insarch.md)
 - [ins dot](insdot.md)
