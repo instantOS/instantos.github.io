@@ -556,6 +556,106 @@ exec = ["killall picom; picom"]
 re-run on each config reload, so it suits commands that need to be kept alive
 or restarted when the config changes.
 
+## Hooks
+
+Hooks run an action when something happens in the window manager, such as a
+monitor being plugged in or out. The `action` accepts exactly the same values
+as a [keybind action](#custom-keybinds): named actions, `spawn`, `sequence`,
+`set_layout`, `set_mode`, and so on.
+
+```toml
+# Re-apply wallpaper etc. whenever the monitor setup changes in any way
+[[hooks]]
+event = "monitors_changed"
+action = { spawn = ["sh", "-c", "~/.local/bin/monitors-changed.sh"] }
+
+# Only react to one specific output being plugged in
+[[hooks]]
+event = "monitor_connected"
+monitor = "HDMI-A-1"
+action = { sequence = [{ set_layout = "tile" }, { spawn = ["notify-send", "Docked"] }] }
+
+# Notify whenever any monitor goes away
+[[hooks]]
+event = "monitor_disconnected"
+action = { spawn = ["notify-send", "Monitor disconnected"] }
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `event` | yes | One of the events below |
+| `monitor` | no | Output name to filter on (e.g. `"DP-1"`). Only valid for `monitor_connected` / `monitor_disconnected`. Without it the hook fires for every output. |
+| `action` | yes | Any keybind action |
+
+### Events
+
+| Event | Fires | Per monitor? |
+|-------|-------|--------------|
+| `monitor_connected` | Once for each output that appeared (plugged in or enabled) | yes |
+| `monitor_disconnected` | Once for each output that disappeared (unplugged or disabled) | yes |
+| `monitors_changed` | **Once** whenever the monitor setup changed in any way: outputs added or removed, or their size, position, scale or order changed | no |
+
+If you don't care *what* changed and just want to react to the new setup, use
+`monitors_changed`. Plugging in a dock with two screens runs it once, not
+twice.
+
+You can define any number of hooks. When several events happen together they
+run in this order: all `monitor_disconnected`, then all `monitor_connected`,
+then a single `monitors_changed`. Hooks for the same event run in config order.
+
+### When hooks fire
+
+- instantWM checks the monitor setup once per event-loop iteration, after the
+  layout has been updated, and compares it with the setup it saw last. Changes
+  that happen together (e.g. a dock bringing up several screens) are therefore
+  combined, and an output that disconnects and reconnects within one iteration
+  fires nothing.
+- Hooks only fire for changes **while instantWM is running**. The monitors
+  present at startup do not trigger any hook; use
+  [`exec` / `exec_once`](#startup-commands) for startup work.
+- Changes count regardless of their source: physical hotplug,
+  [`[monitors]`](#monitor-configuration) settings (including `enable = false`)
+  on reload, `instantwmctl`, output-management tools like `wlr-randr`, or
+  `xrandr` on X11. Outputs that are physically mirrored into one monitor count
+  as that single monitor.
+- Only changes that affect the layout count. Refresh rate, VRR, and rotations
+  or flips that keep the output size (e.g. 180°) do not; 90°/270° rotations
+  do, because they change the size. UI-only changes such as a different bar
+  height do not count either.
+- Avoid feedback loops: a `monitors_changed` hook that changes the output
+  configuration itself (e.g. by running `xrandr`) will trigger itself again.
+
+### Environment for spawned commands
+
+Processes started by a hook (via `spawn`) receive these extra variables, so a
+single script can handle every case:
+
+| Variable | Example | Description |
+|----------|---------|-------------|
+| `INSTANTWM_HOOK_EVENT` | `monitor_connected` | The event that fired |
+| `INSTANTWM_MONITOR` | `HDMI-A-1` | The output that changed (per-monitor events only) |
+| `INSTANTWM_MONITORS` | `eDP-1 HDMI-A-1` | All current outputs, space separated |
+
+```sh
+#!/bin/sh
+# ~/.local/bin/monitor-hook.sh
+case "$INSTANTWM_HOOK_EVENT" in
+  monitor_connected)    notify-send "Docked: $INSTANTWM_MONITOR" ;;
+  monitor_disconnected) notify-send "Undocked: $INSTANTWM_MONITOR" ;;
+  monitors_changed)     notify-send "Outputs: $INSTANTWM_MONITORS" ;;
+esac
+```
+
+### Validation
+
+Unlike keybinds, invalid hooks are configuration errors rather than being
+silently skipped. An unknown `event`, a misspelled field, an unknown action,
+`"none"`, a missing argument (such as `spawn = []`), or a `monitor` filter on
+`monitors_changed` makes the config fail to load. On reload the previous
+config stays active; at startup the built-in defaults are used. The error
+names the offending entry, for example
+`hooks[1] (monitor_connected): unknown action 'foo'`.
+
 ## Monitor Configuration
 
 Configure specific monitor settings:
