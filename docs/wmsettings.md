@@ -438,10 +438,12 @@ Simple actions use a string, for example `action = "begin_tree_placement"` or
 For the full list for your build, with descriptions and argument examples, run
 `instantwm --list-actions` or `instantwmctl action --list`.
 
-Actions with arguments can use a table: `action = { spawn = ["alacritty"] }`,
-`action = { set_layout = "tile" }`, `action = { focus_stack = "next" }`,
-`action = { inc_master_count = 1 }`, `action = { keyboard_layout = "us(intl)" }`,
-or `action = { set_mode = "resize" }`. The array form, such as
+Any named action with arguments can use a table containing exactly one action
+name. Give it a string, integer, or boolean for one argument, or an array for
+multiple arguments. For example: `action = { spawn = ["alacritty"] }`,
+`action = { set_layout = "tile" }`, `action = { inc_master_count = 1 }`, or
+`action = { toggle_animated = "on" }`. The action parser checks the name,
+argument count, and values. The array form, such as
 `action = ["set_layout", "tile"]`, also works. Use `action = "none"` to remove a
 binding. For multiple actions, use
 `action = { sequence = [{ set_layout = "tile" }, { spawn = ["alacritty"] }] }`.
