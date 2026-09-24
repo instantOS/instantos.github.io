@@ -171,7 +171,7 @@ options = "compose:ralt"
 [[keybinds]]
 modifiers = ["Super"]
 key = "Return"
-action = ["spawn", "alacritty"]
+action = { spawn = ["alacritty"] }
 
 [[keybinds]]
 modifiers = ["Super", "Shift"]
@@ -187,7 +187,7 @@ action = "next_keyboard_layout"
 [[desktop_keybinds]]
 modifiers = ["Super"]
 key = "d"
-action = ["spawn", "instantmenu"]
+action = { spawn = ["instantmenu"] }
 ```
 
 ## Color Schemes
@@ -380,7 +380,7 @@ Add or override keybinds:
 [[keybinds]]
 modifiers = ["Super"]
 key = "Return"
-action = ["spawn", "alacritty"]
+action = { spawn = ["alacritty"] }
 
 # Named actions
 [[keybinds]]
@@ -398,19 +398,19 @@ action = "none"
 [[keybinds]]
 modifiers = ["Super"]
 key = "g"
-action = ["set_layout", "grid"]
+action = { set_layout = "grid" }
 
 # Adjust master window count
 [[keybinds]]
 modifiers = ["Super"]
 key = "i"
-action = ["inc_master_count", "1"]
+action = { inc_master_count = 1 }
 
 # Enter a mode
 [[keybinds]]
 modifiers = ["Super"]
 key = "r"
-action = ["set_mode", "resize"]
+action = { set_mode = "resize" }
 ```
 
 ### Available Modifiers
@@ -438,15 +438,14 @@ Simple actions use a string, for example `action = "begin_tree_placement"` or
 For the full list for your build, with descriptions and argument examples, run
 `instantwm --list-actions` or `instantwmctl action --list`.
 
-Actions with arguments use an array: the action name followed by its arguments,
-all as strings. Examples include `action = ["spawn", "alacritty"]`,
-`action = ["set_layout", "tile"]`, `action = ["focus_stack", "next"]`,
-`action = ["inc_master_count", "1"]`, and
-`action = ["keyboard_layout", "us(intl)"]`. Use `action = "none"` to remove a
+Actions with arguments can use a table: `action = { spawn = ["alacritty"] }`,
+`action = { set_layout = "tile" }`, `action = { focus_stack = "next" }`,
+`action = { inc_master_count = 1 }`, `action = { keyboard_layout = "us(intl)" }`,
+or `action = { set_mode = "resize" }`. The array form, such as
+`action = ["set_layout", "tile"]`, also works. Use `action = "none"` to remove a
 binding. For multiple actions, use
-`action = { sequence = [["set_layout", "tile"], ["spawn", "alacritty"]] }`.
-The former action tables such as `{ spawn = [...] }`, `{ set_layout = "tile" }`,
-and `{ unbind = true }` are no longer accepted.
+`action = { sequence = [{ set_layout = "tile" }, { spawn = ["alacritty"] }] }`.
+`{ unbind = true }` is no longer accepted; use `"none"` instead.
 
 See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
@@ -560,18 +559,18 @@ as a [keybind action](#custom-keybinds): named actions, `spawn`, `sequence`,
 # Re-apply wallpaper etc. whenever the monitor setup changes in any way
 [[hooks]]
 event = "monitors_changed"
-action = ["spawn", "sh", "-c", "~/.local/bin/monitors-changed.sh"]
+action = { spawn = ["sh", "-c", "~/.local/bin/monitors-changed.sh"] }
 
 # Only react to one specific output being plugged in
 [[hooks]]
 event = "monitor_connected"
 monitor = "HDMI-A-1"
-action = { sequence = [["set_layout", "tile"], ["spawn", "notify-send", "Docked"]] }
+action = { sequence = [{ set_layout = "tile" }, { spawn = ["notify-send", "Docked"] }] }
 
 # Notify whenever any monitor goes away
 [[hooks]]
 event = "monitor_disconnected"
-action = ["spawn", "notify-send", "Monitor disconnected"]
+action = { spawn = ["notify-send", "Monitor disconnected"] }
 ```
 
 | Field | Required | Description |
@@ -648,7 +647,7 @@ error names the offending entry, e.g.
 
 ::: details What counts as invalid
 An unknown `event`, a misspelled field, an unknown action, `"none"`, a missing
-argument (such as `action = ["spawn"]`), or a `monitor` filter on `monitors_changed`.
+argument (such as `action = { spawn = [] }`), or a `monitor` filter on `monitors_changed`.
 On reload the previous config stays active; at startup the built-in defaults
 are used.
 :::
