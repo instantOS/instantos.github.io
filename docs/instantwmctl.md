@@ -208,6 +208,14 @@ instantwmctl toggle hide-tags off
 instantwmctl toggle focus-follows-mouse normal
 ```
 
+`animated`, `focus-follows-mouse`, `focus-follows-float-mouse`, `alt-tag`, and
+`hide-tags` are runtime overrides of persisted config defaults
+(`[animations] enabled`, `[window] focus_follows_mouse`,
+`[window] focus_follows_float_mouse`, `[tags] show_alt_names`, and
+`[bar] show_tags`); the runtime change lasts until `instantwmctl reload`
+restores the configured value. See
+[the config reference](wmsettings.md) for all keys.
+
 ## Keyboard commands
 
 | Command | Description |

@@ -45,11 +45,11 @@ the theme's palette. Themes are resolved when the config is read, so run
 
 | Name | Description |
 |------|-------------|
-| `instantos` | The default theme. Dark background with blue, green, yellow and red accents. |
+| `classic` | The classic instantOS look: dark background with blue, green, yellow and red accents. |
 | `catppuccin-latte` | Light pastel theme (Catppuccin Latte). |
 | `catppuccin-frappe` | Dark, muted theme (Catppuccin Frappé). |
 | `catppuccin-macchiato` | Dark theme (Catppuccin Macchiato). |
-| `catppuccin-mocha` | Dark theme (Catppuccin Mocha). |
+| `catppuccin-mocha` | Dark theme (Catppuccin Mocha). This is the default when no `theme` is set. |
 | `nord` | Dark, cool-blue theme (Nord). |
 | `gruvbox` | Dark, warm earth-tone theme (Gruvbox). |
 
@@ -75,7 +75,7 @@ choice (and any overrides) in its own file and pull it in with
 
 :::info
 If the theme name is unknown, instantWM prints a warning and falls back to the
-default theme (`instantos`). The rest of your config still loads normally.
+default theme (`catppuccin-mocha`). The rest of your config still loads normally.
 :::
 
 ### Switching themes at runtime
@@ -95,8 +95,12 @@ To make a theme permanent, set `theme = "..."` in the config.
 ## Full Configuration Example
 
 ```toml
-# Fonts - first font is primary, others are fallbacks
-fonts = ["Cantarell-Regular:size=12", "JetBrains Mono:size=11"]
+# Fonts - separate families and sizes for text and icons
+[fonts]
+text_family = "Inter"
+text_size = 12.0
+icon_family = "Symbols Nerd Font"
+icon_size = 16.0
 
 # Color configuration
 [colors.tag.normal]
@@ -240,6 +244,31 @@ Each element has three colors:
 - `float_focus`: Focused floating window border
 - `snap`: Snapped window border
 
+## Fonts
+
+The `[fonts]` section configures the text and icon fonts used by the status
+bar. Text and icons have separate families and sizes (logical pixels):
+
+```toml
+[fonts]
+text_family = "Inter"             # font family for bar text
+text_size = 12.0                  # bar text size in logical pixels
+icon_family = "Symbols Nerd Font" # font family for icons (Nerd Fonts glyphs)
+icon_size = 16.0                  # icon size in logical pixels
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `text_family` | string | `"Inter"` | Font family used for bar text |
+| `text_size` | float | `12.0` | Bar text size in logical pixels |
+| `icon_family` | string | `"Symbols Nerd Font"` | Font family used for icons |
+| `icon_size` | float | `16.0` | Icon size in logical pixels |
+
+Both families must be non-empty and both sizes positive. The older list form
+(`fonts = ["Inter:size=12", ...]`) is no longer accepted. When
+[`bar.height`](#status-bar) is `0` (the default), the bar height is derived
+from these font metrics.
+
 ## Keyboard Configuration
 
 The `[keyboard]` section configures XKB keyboard layouts:
@@ -277,12 +306,13 @@ pointer_accel = 0.3
 ```
 
 Valid values:
-- `tap`: "enabled" or "disabled"
-- `natural_scroll`: "enabled" or "disabled"
+- `tap`: "enabled" or "disabled" (the CLI spellings "on" / "off" are also accepted)
+- `natural_scroll`: "enabled" or "disabled" ("on" / "off" also accepted)
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
 - `scroll_factor`: Floating point multiplier applied to scroll events (defaults to `1.0` when unset)
-- `left_handed`: "enabled" or "disabled"; swaps the primary/secondary buttons for left-handed use
+- `left_handed`: "enabled" or "disabled" ("on" / "off" also accepted); swaps the primary/secondary buttons for left-handed use
+- `map_to_output`: Output name (e.g. `"eDP-1"`) that receives absolute events from this device, such as a drawing tablet; use `"*"` to map the device across the complete active output layout
 
 ## Layout tree and gaps
 
@@ -342,10 +372,43 @@ without changing the stacking order, which keeps manually arranged floating
 windows where you put them. Set it to `true` if you prefer each click to also
 bring the window to the front.
 
-## Animation speed
+The setting also lives as `raise_floating_on_click` inside the
+[`[window]`](#window-behaviour) section; either location enables it.
+
+## Window behaviour
+
+The `[window]` section controls border width, snapping and how instantWM
+honours client-provided window hints:
+
+```toml
+[window]
+border_width_px = 3     # WM border width in pixels
+snap_threshold = 32     # snap distance while dragging (pixels)
+resize_hints = true     # respect client size hints
+decor_hints = true      # honour client decoration requests (X11)
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `border_width_px` | integer | `3` | Width of the WM border drawn around managed windows. Must be non-negative |
+| `snap_threshold` | integer | `32` | Distance in pixels within which a dragged window snaps to screen edges and other windows. Must be non-negative |
+| `resize_hints` | boolean | `true` | Respect clients' size hints when resizing; terminals, for example, then resize in whole rows and columns instead of arbitrary pixels |
+| `decor_hints` | boolean | `true` | X11 only: honour `_MOTIF_WM_HINTS` decoration requests. When a client asks to be drawn without border or title (some games and toolkits do), instantWM draws no border for it. Set to `false` to always draw the configured border regardless of what the client requests. On Wayland, decoration negotiation happens through the `xdg-decoration` protocol instead and is not affected by this key |
+| `focus_follows_mouse` | string | `"normal"` | Pointer-focus policy: `"off"` never moves keyboard focus with the pointer, `"normal"` moves it on physical pointer motion, and `"force"` also moves focus when a scene change puts a different window under the pointer. `toggle focus-follows-mouse` overrides this for the session; `reload` restores the configured value |
+| `focus_follows_float_mouse` | boolean | `true` | Whether hover focus also applies to floating windows while a tiling layout is active. `toggle focus-follows-float-mouse` overrides this for the session |
+| `raise_floating_on_click` | boolean | `false` | Same as the top-level `raise_floating_on_click` key; either location enables it |
+
+Every key can be read and changed at runtime with
+`instantwmctl config get window.<key>` / `instantwmctl config set window.<key>
+<value>`. As with other `config set` calls, the change applies immediately but
+is not persisted; put the value in `config.toml` to keep it across reloads and
+restarts.
+
+## Animations
 
 ```toml
 [animations]
+enabled = true
 # 1.0 = designed speed; 0.5 = half speed (durations doubled);
 # 2.0 = twice as fast (durations halved)
 speed = 1.0
@@ -353,19 +416,25 @@ speed = 1.0
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
+| `enabled` | boolean | `true` | Master switch for window animations. `false` disables them entirely |
 | `speed` | float | `1.0` | Global animation speed multiplier; valid range `0.01`–`100.0` |
 
 Below `1.0` slows animations down, above `1.0` speeds them up. Durations are
 scaled, so a factor of `2.0` halves every animation's duration rather than
-skipping frames. Use `instantwmctl toggle animated` (or
-++super+shift+alt+s++) to disable animations entirely; the speed multiplier
-then has no effect until animations are re-enabled.
+skipping frames.
 
-The speed can also be changed at runtime:
+`enabled` and `toggle animated` control the same switch. The config value is
+the persistent setting; `instantwmctl toggle animated` (or
+++super+shift+alt+s++) flips it for the current session, and `instantwmctl
+reload` restores the configured value.
+
+The speed and switch can also be changed at runtime:
 
 ```bash
 instantwmctl config get animations.speed
 instantwmctl config set animations.speed 1.5
+instantwmctl config get animations.enabled
+instantwmctl config set animations.enabled false
 ```
 
 `instantwmctl config set` applies immediately but is not saved. Put the value
@@ -694,16 +763,59 @@ differ, while `"cover"` crops. X11 uses the source's mode and cannot scale the
 mirror. A disconnected or disabled source leaves the other output independent
 until the source returns. Use `mirror = "none"` to clear the setting.
 
-## Bar height
+## Status bar
+
+The `[bar]` section controls the visibility and geometry of the status bar:
 
 ```toml
-# Bar height in logical pixels. 0 = derive from the configured fonts.
-bar_height = 0
+[bar]
+show = true           # show the top status bar
+show_bottom = false   # show the bottom gesture strip
+height = 0            # bar height in logical pixels; 0 = derive from fonts
+startmenu_size = 30   # width of the start-menu hit target in logical pixels
 ```
 
-By default (`0`) the bar height is derived from the font metrics of the
-configured `fonts`. Set a fixed pixel height if you want the bar to stay a
-specific size regardless of font choice.
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `show` | boolean | `true` | Show the top status bar |
+| `show_bottom` | boolean | `false` | Show the bottom gesture strip (a plain background with no contents). Also toggled at runtime with ++super+shift+b++ or `instantwmctl toggle bottom-bar` |
+| `show_tags` | boolean | `true` | Show the tag indicators section of the bar. `toggle hide-tags` overrides this per monitor for the session; `reload` restores the configured value |
+| `height` | integer | `0` | Bar height in logical pixels. `0` derives the height from the configured [fonts](#fonts). Must be non-negative |
+| `startmenu_size` | integer | `30` | Width of the start-menu hit target in logical pixels |
+
+Both `height` and `startmenu_size` must be non-negative.
+
+## System tray
+
+The `[systray]` section controls the tray icons shown in the status bar:
+
+```toml
+[systray]
+show = true            # show tray icons in the bar
+pinning = 0            # monitor the tray lives on; 0 = follow the selected monitor
+spacing = 0            # extra padding around tray icons in logical pixels
+menu_backend = "auto"  # how a tray icon's context menu is presented
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `show` | boolean | `true` | Show system tray icons in the status bar |
+| `pinning` | integer | `0` | `0` keeps the tray on the currently selected monitor; any other value pins it to that 1-based layout position (falling back to the first monitor when fewer are connected) |
+| `spacing` | integer | `0` | Extra spacing around each tray icon in logical pixels |
+| `menu_backend` | string | `"auto"` | How a tray icon's context menu is presented: `"auto"` uses instantMENU when available and falls back to the bar, `"statusbar"` always renders the menu inline in the bar, and `"instantmenu"` always delegates to an external instantMENU process |
+
+## Tags
+
+The `[tags]` section configures how tags are displayed:
+
+```toml
+[tags]
+show_alt_names = false  # show alternative tag names (icon glyphs) instead
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `show_alt_names` | boolean | `false` | Show the alternative tag names (icon glyphs) in the bar instead of the plain tag names. Set this if you prefer the icon look permanently — no need to re-toggle it every session. `toggle alt-tag` flips it for the current session; `reload` restores the configured value |
 
 ## Cursor (Wayland)
 
