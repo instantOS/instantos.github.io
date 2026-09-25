@@ -22,8 +22,7 @@ Global options:
 | `reload` | Reload configuration from disk |
 | `monitor` | Inspect monitors and change output settings |
 | `window` | List or inspect windows, set geometry, or close a window |
-| `tag` | Switch tags and rename/reset tag names |
-| `toggle` | Toggle runtime behavior flags |
+| `tag` | Switch tags, list them, and rename/reset tag names |
 | `spawn` | Spawn a command through instantWM |
 | `warp-focus` | Warp the pointer to the focused window |
 | `send-mon` | Move the focused window to another monitor |
@@ -38,7 +37,7 @@ Global options:
 | `mode` | List, enter, or toggle configured modes |
 | `update-status` | Replace the bar status text |
 | `wallpaper` | Set wallpaper using `swaybg` on Wayland or `feh` on X11 |
-| `config` | Print defaults or inspect/change runtime config values |
+| `config` | Print defaults, inspect/change runtime config values, or flip booleans |
 | `keybinds` | List active global, desktop, and mode keybindings |
 | `quit` | Ask instantWM to quit |
 
@@ -119,8 +118,13 @@ for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-la
 | Command | Description |
 | --- | --- |
 | `instantwmctl tag view <number>` | View a specific tag |
-| `instantwmctl tag name "<name>"` | Rename the current tag |
-| `instantwmctl tag reset` | Reset all tag names |
+| `instantwmctl tag list` | List the selected monitor's tags with name, icon, the label currently shown, and occupancy/selection state |
+| `instantwmctl tag name "<name>"` | Rename the tags in the current view for the session (an empty name restores the configured label) |
+| `instantwmctl tag reset` | Drop all session renames and restore the labels from `config.toml` |
+
+Tag names come from `[tags] names` in `config.toml`; `tag name` and
+`tag reset` are session-only overrides on top of them, cleared by
+`instantwmctl reload`.
 
 ## Monitor commands
 
@@ -144,6 +148,8 @@ for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-la
 - `--enable <true|false>`
 - `--mirror <OUTPUT|none>`
 - `--mirror-fit <contain|cover>` (Wayland)
+- `--show-empty-tags <true|false>` (tag display, this output only)
+- `--tag-slots <1-21>` (tag cells in this output's bar)
 
 Examples:
 
@@ -156,6 +162,7 @@ instantwmctl monitor set focused -r 2560x1440 -f 144 --vrr on
 instantwmctl monitor set HDMI-A-1 --enable false
 instantwmctl monitor set HDMI-A-1 --mirror DP-1 --mirror-fit contain
 instantwmctl monitor set HDMI-A-1 --mirror none
+instantwmctl monitor set DP-1 --show-empty-tags false --tag-slots 5
 ```
 
 A mirror presents its source as one logical monitor. Wayland fits the source
@@ -186,35 +193,50 @@ Monitors can be plugged and unplugged without restarting: instantWM picks up
 new outputs automatically and keeps windows from a removed monitor reachable by
 moving them to a surviving monitor.
 
-## Toggle commands
+## Toggling settings
 
-The current IPC surface exposes these toggles:
-
-- `animated`
-- `focus-follows-mouse`
-- `focus-follows-float-mouse`
-- `alt-tag`
-- `hide-tags`
-- `bottom-bar`
-
-Boolean toggles accept `on`, `off`, or no argument to invert the current state.
-`true`/`1` and `false`/`0` are also accepted. `focus-follows-mouse` instead
-requires `off`, `normal`, or `force`.
+There is no dedicated `toggle` command: **any boolean config value** flips
+with `instantwmctl config toggle <key>`, which prints the new value.
 
 ```bash
-instantwmctl toggle animated
-instantwmctl toggle animated on
-instantwmctl toggle hide-tags off
-instantwmctl toggle focus-follows-mouse normal
+instantwmctl config toggle animations.enabled
+instantwmctl config toggle tags.show_icons
+instantwmctl config toggle window.focus_follows_float_mouse
+instantwmctl config toggle input."type:touchpad".tap
 ```
 
-`animated`, `focus-follows-mouse`, `focus-follows-float-mouse`, `alt-tag`, and
-`hide-tags` are runtime overrides of persisted config defaults
-(`[animations] enabled`, `[window] focus_follows_mouse`,
-`[window] focus_follows_float_mouse`, `[tags] show_alt_names`, and
-`[bar] show_tags`); the runtime change lasts until `instantwmctl reload`
-restores the configured value. See
-[the config reference](wmsettings.md) for all keys.
+`config toggle` works on plain booleans and on the `enabled`/`disabled`
+input toggles; numbers, strings, and multi-state options are rejected with an
+error rather than silently mangled. For those, use `config set`:
+
+```bash
+instantwmctl config set window.focus_follows_mouse force
+instantwmctl config set animations.speed 1.5
+```
+
+Config changes are session-scoped: `instantwmctl reload` restores every value
+from `config.toml`.
+
+A few toggles are **runtime state rather than config** — they act on the
+selected monitor or tag view and are reached through the
+[action](#common-examples) runner, which is also the keybind vocabulary:
+
+| Command | Effect |
+| --- | --- |
+| `instantwmctl action toggle_bar` | Hide/show the bar on the current tag view (super+b); `reload` restores `bar.show` |
+| `instantwmctl action toggle_hide_tags on` | Hide/show empty tags on the selected monitor; overrides `bar.show_empty_tags` for the session |
+| `instantwmctl action toggle_bottom_bar on` | Show/hide the bottom gesture strip on every monitor |
+
+::: tip Changed
+The old `instantwmctl toggle <feature>` command (with `animated`,
+`alt-tag`, `hide-tags`, `bottom-bar`, …) was removed. Use
+`instantwmctl config toggle <key>` for config-backed options and
+`instantwmctl action <name>` for the runtime toggles above. The same applies
+to keybinds: the dedicated `toggle_animated`, `toggle_alt_tag`,
+`toggle_focus_follows_float_mouse`, and `set_focus_follows_mouse` actions were
+replaced by the generic [`config_set` / `config_toggle`](wmsettings.md#available-actions)
+actions.
+:::
 
 ## Keyboard commands
 
@@ -380,11 +402,16 @@ instantwmctl config list           # runtime-editable keys and values
 instantwmctl config list layout    # only keys under layout
 instantwmctl config get layout.inner_gap
 instantwmctl config set layout.inner_gap 12
+instantwmctl config toggle bar.show_empty_tags   # flip a boolean
 ```
 
 `instantwmctl config set` changes runtime state. Put persistent choices in
 `~/.config/instantwm/config.toml`. `config list` accepts an optional section or
 key prefix; the compositor filters the returned values.
+
+Two keys are deliberately read-only at runtime: `tags.names` and `tags.icons`
+define the tag set, so they apply on startup and `reload` — `config set`
+rejects them with an explanatory error rather than pretending to work.
 
 ## Environment variables
 

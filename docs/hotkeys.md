@@ -99,9 +99,9 @@ to be under the pointer.
 
 | Binding | Action |
 | --- | --- |
-| ++super+b++ | Toggle the bar |
-| ++super+alt+s++ | Toggle alternative tag labels |
-| ++super+shift+ctrl+s++ | Show/hide empty tags |
+| ++super+b++ | Toggle the bar on the current tag view |
+| ++super+alt+s++ | Toggle tag icons instead of names |
+| ++super+shift+ctrl+s++ | Show/hide empty tags on this monitor |
 | ++super+shift+alt+s++ | Toggle animations |
 | ++super+alt+space++ | Select the next keyboard layout |
 | ++super+f2++ | Toggle the legacy prefix mode |

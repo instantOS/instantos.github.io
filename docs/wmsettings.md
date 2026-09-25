@@ -394,15 +394,16 @@ decor_hints = true      # honour client decoration requests (X11)
 | `snap_threshold` | integer | `32` | Distance in pixels within which a dragged window snaps to screen edges and other windows. Must be non-negative |
 | `resize_hints` | boolean | `true` | Respect clients' size hints when resizing; terminals, for example, then resize in whole rows and columns instead of arbitrary pixels |
 | `decor_hints` | boolean | `true` | X11 only: honour `_MOTIF_WM_HINTS` decoration requests. When a client asks to be drawn without border or title (some games and toolkits do), instantWM draws no border for it. Set to `false` to always draw the configured border regardless of what the client requests. On Wayland, decoration negotiation happens through the `xdg-decoration` protocol instead and is not affected by this key |
-| `focus_follows_mouse` | string | `"normal"` | Pointer-focus policy: `"off"` never moves keyboard focus with the pointer, `"normal"` moves it on physical pointer motion, and `"force"` also moves focus when a scene change puts a different window under the pointer. `toggle focus-follows-mouse` overrides this for the session; `reload` restores the configured value |
-| `focus_follows_float_mouse` | boolean | `true` | Whether hover focus also applies to floating windows while a tiling layout is active. `toggle focus-follows-float-mouse` overrides this for the session |
+| `focus_follows_mouse` | string | `"normal"` | Pointer-focus policy: `"off"` never moves keyboard focus with the pointer, `"normal"` moves it on physical pointer motion, and `"force"` also moves focus when a scene change puts a different window under the pointer. `instantwmctl config set window.focus_follows_mouse <mode>` overrides this for the session; `reload` restores the configured value |
+| `focus_follows_float_mouse` | boolean | `true` | Whether hover focus also applies to floating windows while a tiling layout is active. Flip it for the session with `instantwmctl config toggle window.focus_follows_float_mouse` |
 | `raise_floating_on_click` | boolean | `false` | Same as the top-level `raise_floating_on_click` key; either location enables it |
 
 Every key can be read and changed at runtime with
-`instantwmctl config get window.<key>` / `instantwmctl config set window.<key>
-<value>`. As with other `config set` calls, the change applies immediately but
-is not persisted; put the value in `config.toml` to keep it across reloads and
-restarts.
+`instantwmctl config get window.<key>` / `instantwmctl config set window.<key> <value>`,
+and booleans can be flipped in one step with
+`instantwmctl config toggle window.<key>`. As with other `config set` calls,
+the change applies immediately but is not persisted; put the value in
+`config.toml` to keep it across reloads and restarts.
 
 ## Animations
 
@@ -423,10 +424,10 @@ Below `1.0` slows animations down, above `1.0` speeds them up. Durations are
 scaled, so a factor of `2.0` halves every animation's duration rather than
 skipping frames.
 
-`enabled` and `toggle animated` control the same switch. The config value is
-the persistent setting; `instantwmctl toggle animated` (or
-++super+shift+alt+s++) flips it for the current session, and `instantwmctl
-reload` restores the configured value.
+`enabled` is the persistent setting; ++super+shift+alt+s++ (bound to the
+`config_toggle` action) or `instantwmctl config toggle animations.enabled`
+flips it for the current session, and `instantwmctl reload` restores the
+configured value.
 
 The speed and switch can also be changed at runtime:
 
@@ -434,7 +435,7 @@ The speed and switch can also be changed at runtime:
 instantwmctl config get animations.speed
 instantwmctl config set animations.speed 1.5
 instantwmctl config get animations.enabled
-instantwmctl config set animations.enabled false
+instantwmctl config toggle animations.enabled   # prints the new value
 ```
 
 `instantwmctl config set` applies immediately but is not saved. Put the value
@@ -511,12 +512,27 @@ Any named action with arguments can use a table containing exactly one action
 name. Give it a string, integer, or boolean for one argument, or an array for
 multiple arguments. For example: `action = { spawn = ["alacritty"] }`,
 `action = { set_layout = "tile" }`, `action = { inc_master_count = 1 }`, or
-`action = { toggle_animated = "on" }`. The action parser checks the name,
-argument count, and values. The array form, such as
+`action = { config_toggle = "animations.enabled" }`. The action parser checks
+the name, argument count, and values. The array form, such as
 `action = ["set_layout", "tile"]`, also works. Use `action = "none"` to remove a
 binding. For multiple actions, use
 `action = { sequence = [{ set_layout = "tile" }, { spawn = ["alacritty"] }] }`.
 `{ unbind = true }` is no longer accepted; use `"none"` instead.
+
+`config_set` and `config_toggle` reach **any** runtime config key from a
+keybind, so booleans and values do not need a dedicated action:
+
+```toml
+[[keybinds]]
+modifiers = ["Super", "Alt", "Shift", "Ctrl"]
+key = "d"
+action = { config_toggle = "window.decor_hints" }
+
+[[keybinds]]
+modifiers = ["Super", "Alt", "Shift", "Ctrl"]
+key = "g"
+action = { config_set = ["layout.inner_gap", "12"] }
+```
 
 See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
@@ -736,12 +752,20 @@ scale = 1.0
 enable = true
 transform = "normal"      # rotation / reflection
 vrr = "auto"              # variable refresh rate policy
+# Tag display, overridden for this output only (see [Status bar](#status-bar)):
+show_empty_tags = false   # hide tags without windows on this display
+tag_slots = 5             # fewer tag cells on this display
 
 # To mirror another output instead, set mirror = "DP-1" on the mirror head.
 # mirror_fit = "contain"   # Wayland: contain (bars) or cover (crop)
 
 [monitors."HDMI-A-1"]
 position = "left-of:DP-1"
+
+# Defaults for every output without its own entry:
+[monitors."*"]
+show_empty_tags = true
+tag_slots = 7
 ```
 
 Position can be specified as:
@@ -763,27 +787,49 @@ differ, while `"cover"` crops. X11 uses the source's mode and cannot scale the
 mirror. A disconnected or disabled source leaves the other output independent
 until the source returns. Use `mirror = "none"` to clear the setting.
 
+`show_empty_tags` and `tag_slots` are per-output display settings: each
+resolves as `[monitors."<name>"]` → `[monitors."*"]` → the `[bar]` default,
+field by field, so an entry that sets one of them keeps inheriting the other.
+They apply on startup and `reload`, and can be changed at runtime with
+`instantwmctl monitor set DP-1 --show-empty-tags false --tag-slots 5` or
+`instantwmctl config set monitors.DP-1.tag_slots 5` (which takes effect
+immediately, without a reload).
+
 ## Status bar
 
 The `[bar]` section controls the visibility and geometry of the status bar:
 
 ```toml
 [bar]
-show = true           # show the top status bar
-show_bottom = false   # show the bottom gesture strip
-height = 0            # bar height in logical pixels; 0 = derive from fonts
-startmenu_size = 30   # width of the start-menu hit target in logical pixels
+show = true             # show the top status bar
+show_bottom = false     # show the bottom gesture strip
+show_empty_tags = true  # show tags that hold no windows
+tag_slots = 9           # number of tag cells in the bar
+height = 0              # bar height in logical pixels; 0 = derive from fonts
+startmenu_size = 30     # width of the start-menu hit target in logical pixels
 ```
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| `show` | boolean | `true` | Show the top status bar |
-| `show_bottom` | boolean | `false` | Show the bottom gesture strip (a plain background with no contents). Also toggled at runtime with ++super+shift+b++ or `instantwmctl toggle bottom-bar` |
-| `show_tags` | boolean | `true` | Show the tag indicators section of the bar. `toggle hide-tags` overrides this per monitor for the session; `reload` restores the configured value |
+| `show` | boolean | `true` | Show the top status bar. ++super+b++ hides it on the **current tag view only** (a session override, cleared by `reload` or `config set bar.show`) |
+| `show_bottom` | boolean | `false` | Show the bottom gesture strip (a plain background with no contents). Also toggled at runtime with ++super+shift+b++ or `instantwmctl config toggle bar.show_bottom` |
+| `show_empty_tags` | boolean | `true` | Show tags that hold no windows and are not selected. Can be overridden per output (see [Monitor configuration](#monitor-configuration)); ++super+ctrl+shift+s++ (`toggle_hide_tags`) overrides it on the selected monitor for the session, and `reload` restores the configured value |
+| `tag_slots` | integer | `9` | Number of tag cells in the bar, `1`–`21`. Outputs with fewer tags show all of them; when the tag set is wider, the **last cell shows the current tag** instead of a fixed index (the classic dwm overflow cell). Fewer cells suit wordy tag names, more suit icon labels. Can be overridden per output |
 | `height` | integer | `0` | Bar height in logical pixels. `0` derives the height from the configured [fonts](#fonts). Must be non-negative |
 | `startmenu_size` | integer | `30` | Width of the start-menu hit target in logical pixels |
 
-Both `height` and `startmenu_size` must be non-negative.
+`height` and `startmenu_size` must be non-negative; `tag_slots` must be
+between `1` and `21`.
+
+All of these are runtime-editable, and booleans have a one-step flip:
+
+```bash
+instantwmctl config toggle bar.show_empty_tags   # prints the new value
+instantwmctl config set bar.tag_slots 5
+```
+
+`config set bar.*` re-applies the bar immediately, including dropping any
+per-view bar overrides from ++super+b++.
 
 ## System tray
 
@@ -806,16 +852,41 @@ menu_backend = "auto"  # how a tray icon's context menu is presented
 
 ## Tags
 
-The `[tags]` section configures how tags are displayed:
+The `[tags]` section defines the tag set itself and how the bar labels it:
 
 ```toml
 [tags]
-show_alt_names = false  # show alternative tag names (icon glyphs) instead
+# One entry per tag — the list length is the number of tags (max 21).
+# The last entry is the scratchpad tag.
+names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "s"]
+# Optional nerd-font glyphs, positionally matched to `names`.
+# A shorter list leaves the remaining tags without an icon; an empty
+# string always means "no icon".
+icons = ["", "", "", "", "", "", "", "", ""]
+# Show the icons instead of the names (++super+alt+s++ flips this).
+show_icons = false
 ```
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
-| `show_alt_names` | boolean | `false` | Show the alternative tag names (icon glyphs) in the bar instead of the plain tag names. Set this if you prefer the icon look permanently — no need to re-toggle it every session. `toggle alt-tag` flips it for the current session; `reload` restores the configured value |
+| `names` | list of strings | `"1"` … `"20"`, `"s"` | Label per tag; the list length is the number of tags. At most 21 entries, each 1–16 bytes and non-empty |
+| `icons` | list of strings | empty | Icon label per tag, positionally matched to `names`. Shown instead of the name while `show_icons` is on. May be shorter than `names` (the rest get no icon); longer is rejected |
+| `show_icons` | boolean | `false` | Show the icons in the tag bar instead of the names. Flip for the session with ++super+alt+s++ or `instantwmctl config toggle tags.show_icons`; `reload` restores the configured value |
+
+Because tag icons usually need a symbol font, point `[fonts] icon_family` at
+one (for example `"Symbols Nerd Font"` or `"Font Awesome 6 Free"`).
+
+`names` and `icons` define the tag set, so they take effect on startup and
+`reload` only — `config set tags.names …` is rejected and says so. To relabel
+a tag for the current session instead:
+
+```bash
+instantwmctl tag name "web"   # rename the tags in the current view
+instantwmctl tag list         # names, icons, the active label, occupancy
+instantwmctl tag reset        # drop session renames, back to config
+```
+
+## Cursor (Wayland)
 
 ## Cursor (Wayland)
 
