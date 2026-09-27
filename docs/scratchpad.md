@@ -14,7 +14,7 @@ You can create multiple named scratchpads with `instantwmctl`:
 instantwmctl scratchpad create terminal
 instantwmctl scratchpad toggle terminal
 instantwmctl scratchpad list
-instantwmctl scratchpad delete
+instantwmctl scratchpad restore
 ```
 
 ::: details Scripting and launcher integration

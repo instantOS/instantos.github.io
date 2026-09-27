@@ -57,7 +57,7 @@ action = { set_mode = "resize" }
 ```
 
 The description is displayed in the bar in place of the internal name. Use
-`set_mode = "default"` to leave any custom mode. Changing modes also cancels
+`{ set_mode = "default" }` to leave any custom mode. Changing modes also cancels
 anything the previous mode had in progress, such as a placement preview.
 
 Named modes fall back to global and desktop bindings when they do not override

@@ -37,3 +37,47 @@ Multiple tags can be toggled so all windows assigned to these tags become visibl
 The key binding to do this is ++super+ctrl+"Tag-number"++. Right clicking on the
 tag indicator achieves the same thing. Actions that focus on a single tag like
 following a window or clicking on the indicator will deactivate all additional tags.
+
+### Naming tags
+
+Tags are named `1` … `20` plus a scratchpad tag `s` by default. Change them in
+`config.toml` — the number of entries is the number of tags:
+
+```toml
+[tags]
+names = ["1", "2", "3", "web", "mail", "chat", "media", "s"]
+```
+
+For a quick, session-only relabel, `instantwmctl tag name "web"` renames the
+tags in the current view, `instantwmctl tag list` shows every tag with its
+name, icon, and state, and `instantwmctl tag reset` goes back to the
+configured names. A `reload` also restores them.
+
+### Tag icons
+
+Every tag can carry a second label — usually a nerd-font glyph — and the bar
+can switch between names and icons with ++super+alt+s++ (or permanently with
+`[tags] show_icons = true`):
+
+```toml
+[fonts]
+icon_family = "Symbols Nerd Font"   # any font with the glyphs you use
+
+[tags]
+names = ["1", "2", "3", "web", "mail", "s"]
+icons = ["", "", "", "", "", ""]   # positional: index i is the icon for tag i
+```
+
+The icon list may be shorter than the name list (the remaining tags keep
+their names); an empty string means "no icon", and the name is shown for that
+tag even in icon mode.
+
+### How many tags the bar shows
+
+The bar draws up to `[bar] tag_slots` cells (9 by default). Fewer cells suit
+wordy names, more suit icons. When you have more tags than cells, the last
+cell shows the current tag instead of a fixed one, so every tag stays
+reachable. Both the cell count and "hide tags without windows"
+(`[bar] show_empty_tags`, ++super+ctrl+shift+s++) can be set per monitor in
+its `[monitors."<output>"]` entry — see
+[Monitor configuration](wmsettings.md#monitor-configuration).

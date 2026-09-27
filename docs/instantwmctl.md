@@ -22,11 +22,10 @@ Global options:
 | `reload` | Reload configuration from disk |
 | `monitor` | Inspect monitors and change output settings |
 | `window` | List or inspect windows, set geometry, or close a window |
-| `tag` | Switch tags and rename/reset tag names |
-| `toggle` | Toggle runtime behavior flags |
+| `tag` | Switch tags, list them, and rename/reset tag names |
 | `spawn` | Spawn a command through instantWM |
 | `warp-focus` | Warp the pointer to the focused window |
-| `tag-mon` | Move the focused window to another monitor |
+| `send-mon` | Move the focused window to another monitor |
 | `follow-mon` | Move the focused window to another monitor and follow it |
 | `layout` | Set the current layout |
 | `theme` | Inspect, list, or switch the runtime colour theme |
@@ -38,7 +37,8 @@ Global options:
 | `mode` | List, enter, or toggle configured modes |
 | `update-status` | Replace the bar status text |
 | `wallpaper` | Set wallpaper using `swaybg` on Wayland or `feh` on X11 |
-| `config` | Print defaults or inspect/change runtime config values |
+| `config` | Print defaults, inspect/change runtime config values, or flip booleans |
+| `keybinds` | List active global, desktop, and mode keybindings |
 | `quit` | Ask instantWM to quit |
 
 ## Common examples
@@ -54,7 +54,7 @@ instantwmctl window list
 instantwmctl tag view 3
 
 # Change the current layout
-instantwmctl layout grid
+instantwmctl layout set grid
 
 # List available named actions
 instantwmctl action --list
@@ -69,10 +69,10 @@ instantwmctl keyboard status
 instantwmctl scratchpad toggle
 
 # Make the very next spawned window float, expires after 30s
-instantwmctl pending-tmp-rule add --float
+instantwmctl pending-tmp-rule add --floating true
 
 # Open the next mpv window floating on tag 3, with a 5-minute timeout
-instantwmctl pending-tmp-rule add --class mpv --float --tag 3 --timeout-ms 300000
+instantwmctl pending-tmp-rule add --class mpv --floating true --tag 3 --timeout-ms 300000
 
 # Focus a monitor by output name instead of index
 instantwmctl monitor switch DP-1
@@ -80,7 +80,7 @@ instantwmctl monitor switch DP-1
 
 ## Layouts
 
-`instantwmctl layout <name>` accepts:
+`instantwmctl layout set <name>` accepts:
 
 - `tile`
 - `grid`
@@ -116,10 +116,14 @@ presentation modes. See [Layouts](layouts.md#starting-arrangements).
 
 | Command | Description |
 | --- | --- |
-| `instantwmctl tag view` | View tag 2, the built-in default |
 | `instantwmctl tag view <number>` | View a specific tag |
-| `instantwmctl tag name "<name>"` | Rename the current tag |
-| `instantwmctl tag reset` | Reset all tag names |
+| `instantwmctl tag list` | List the selected monitor's tags with name, icon, the label currently shown, and occupancy/selection state |
+| `instantwmctl tag name "<name>"` | Rename the tags in the current view for the session (an empty name restores the configured label) |
+| `instantwmctl tag reset` | Drop all session renames and restore the labels from `config.toml` |
+
+Tag names come from `[tags] names` in `config.toml`; `tag name` and
+`tag reset` are session-only overrides on top of them, cleared by
+`instantwmctl reload`.
 
 ## Monitor commands
 
@@ -134,14 +138,17 @@ presentation modes. See [Layouts](layouts.md#starting-arrangements).
 
 `monitor set` supports:
 
-- `-r`, `--res <WIDTHxHEIGHT>`
-- `-f`, `--rate <HZ>`
-- `-p`, `--pos <X,Y>`
+- `-r`, `--resolution <WIDTHxHEIGHT>`
+- `-f`, `--refresh-rate <HZ>`
+- `-p`, `--position <X,Y|left-of:OUTPUT|right-of:OUTPUT|above:OUTPUT|below:OUTPUT>`
 - `-s`, `--scale <FACTOR>`
 - `-t`, `--transform <normal|90|180|270|flipped|flipped-90|flipped-180|flipped-270>`
 - `--vrr <off|auto|on>`
-- `--enable`
-- `--disable`
+- `--enable <true|false>`
+- `--mirror <OUTPUT|none>`
+- `--mirror-fit <contain|cover>` (Wayland)
+- `--show-empty-tags <true|false>` (tag display, this output only)
+- `--tag-slots <1-21>` (tag cells in this output's bar)
 
 Examples:
 
@@ -151,8 +158,17 @@ instantwmctl monitor modes focused
 instantwmctl monitor switch DP-1
 instantwmctl monitor switch 1
 instantwmctl monitor set focused -r 2560x1440 -f 144 --vrr on
-instantwmctl monitor set HDMI-A-1 --disable
+instantwmctl monitor set HDMI-A-1 --enable false
+instantwmctl monitor set HDMI-A-1 --mirror DP-1 --mirror-fit contain
+instantwmctl monitor set HDMI-A-1 --mirror none
+instantwmctl monitor set DP-1 --show-empty-tags false --tag-slots 5
 ```
+
+A mirror presents its source as one logical monitor. Wayland fits the source
+with bars (`contain`) or crops it (`cover`) when aspect ratios differ. X11 uses
+the source's mode and cannot scale it. `monitor list` reports both active
+mirrors and requested mirrors that have not become active yet.
+The source must be connected when setting a new mirror through the CLI.
 
 ### Monitor selectors
 
@@ -176,23 +192,50 @@ Monitors can be plugged and unplugged without restarting: instantWM picks up
 new outputs automatically and keeps windows from a removed monitor reachable by
 moving them to a surviving monitor.
 
-## Toggle commands
+## Toggling settings
 
-Available toggles:
-
-- `animated`
-- `focus-follows-mouse`
-- `focus-follows-float-mouse`
-- `alt-tag`
-- `hide-tags`
-
-Each toggle accepts `enable`, `disable`, or no argument to invert the current state.
+Use `instantwmctl config toggle <key>` to flip a boolean config value. The
+command prints the new value.
 
 ```bash
-instantwmctl toggle animated
-instantwmctl toggle animated enable
-instantwmctl toggle hide-tags disable
+instantwmctl config toggle animations.enabled
+instantwmctl config toggle tags.show_icons
+instantwmctl config toggle window.focus_follows_float_mouse
+instantwmctl config toggle input."type:touchpad".tap
 ```
+
+`config toggle` works on plain booleans and on the `enabled`/`disabled`
+input toggles; numbers, strings, and multi-state options are rejected with an
+error rather than silently mangled. For those, use `config set`:
+
+```bash
+instantwmctl config set window.focus_follows_mouse force
+instantwmctl config set animations.speed 1.5
+```
+
+Config changes are session-scoped: `instantwmctl reload` restores every value
+from `config.toml`.
+
+A few toggles are **runtime state rather than config** — they act on the
+selected monitor or tag view and are reached through the
+[action](#common-examples) runner, which is also the keybind vocabulary:
+
+| Command | Effect |
+| --- | --- |
+| `instantwmctl action toggle_bar` | Hide/show the bar on the current tag view (super+b); `reload` restores `bar.show` |
+| `instantwmctl action toggle_hide_tags on` | Hide/show empty tags on the selected monitor; overrides `bar.show_empty_tags` for the session |
+| `instantwmctl action toggle_bottom_bar on` | Show/hide the bottom gesture strip on every monitor |
+
+::: tip Changed
+The old `instantwmctl toggle <feature>` command (with `animated`,
+`alt-tag`, `hide-tags`, `bottom-bar`, …) was removed. Use
+`instantwmctl config toggle <key>` for config-backed options and
+`instantwmctl action <name>` for the runtime toggles above. The same applies
+to keybinds: the dedicated `toggle_animated`, `toggle_alt_tag`,
+`toggle_focus_follows_float_mouse`, and `set_focus_follows_mouse` actions were
+replaced by the generic [`config_set` / `config_toggle`](wmsettings.md#available-actions)
+actions.
+:::
 
 ## Keyboard commands
 
@@ -211,8 +254,7 @@ instantwmctl toggle hide-tags disable
 
 | Command | Description |
 | --- | --- |
-| `instantwmctl scratchpad list` | List scratchpads |
-| `instantwmctl scratchpad status [name]` | Show scratchpad status |
+| `instantwmctl scratchpad status [name]` | Show all scratchpads, or one by name (`list` is an alias) |
 | `instantwmctl scratchpad show [name]` | Show one scratchpad |
 | `instantwmctl scratchpad show --all` | Show all scratchpads |
 | `instantwmctl scratchpad hide [name]` | Hide one scratchpad |
@@ -221,8 +263,8 @@ instantwmctl toggle hide-tags disable
 | `instantwmctl scratchpad create [name]` | Create a scratchpad from the focused window |
 | `instantwmctl scratchpad create [name] --status shown` | Create it and show it immediately |
 | `instantwmctl scratchpad create [name] --window-id 123` | Create from a specific window |
-| `instantwmctl scratchpad delete` | Remove scratchpad state from the focused window |
-| `instantwmctl scratchpad delete --window-id 123` | Remove scratchpad state from a specific window |
+| `instantwmctl scratchpad restore` | Restore the focused scratchpad as an ordinary window |
+| `instantwmctl scratchpad restore --window-id 123` | Restore a specific window |
 
 If no name is given, the default scratchpad name is `instantwm_scratchpad`.
 
@@ -236,12 +278,12 @@ Pending tmp rules are not [modes](modes.md), which are persistent keybinding con
 
 | Command | Description |
 | --- | --- |
-| `instantwmctl pending-tmp-rule add --float` | Make the next window float (default TTL 30 s) |
-| `instantwmctl pending-tmp-rule add --class mpv --float` | Float only when the next `mpv` window appears |
-| `instantwmctl pending-tmp-rule add --tile` | Force the next window tiled |
-| `instantwmctl pending-tmp-rule add --tile --tag 3` | Force the next window tiled on tag 3 |
-| `instantwmctl pending-tmp-rule add --float --on-monitor DP-1` | Float the next window on the `DP-1` output |
-| `instantwmctl pending-tmp-rule add --float --borderless` | Float the next window without a WM border |
+| `instantwmctl pending-tmp-rule add --floating true` | Make the next window float (default TTL 30 s) |
+| `instantwmctl pending-tmp-rule add --class mpv --floating true` | Float only when the next `mpv` window appears |
+| `instantwmctl pending-tmp-rule add --floating false` | Force the next window tiled |
+| `instantwmctl pending-tmp-rule add --floating false --tag 3` | Force the next window tiled on tag 3 |
+| `instantwmctl pending-tmp-rule add --floating true --on-monitor DP-1` | Float the next window on the `DP-1` output |
+| `instantwmctl pending-tmp-rule add --floating true --borderless` | Float the next window without a WM border |
 | `instantwmctl pending-tmp-rule add --class mpv --geometry 100,50,1280,720` | Pin the next `mpv` to an exact spot on that monitor's work area |
 | `instantwmctl pending-tmp-rule add --timeout-ms 60000` | Set a 60-second TTL |
 | `instantwmctl pending-tmp-rule list` | List current pending rules with id and remaining time |
@@ -253,11 +295,10 @@ Pending tmp rules are not [modes](modes.md), which are persistent keybinding con
 - `--class <SUBSTRING>`: match against the WM class (substring, case-sensitive)
 - `--instance <SUBSTRING>`: match against the WM instance
 - `--title <SUBSTRING>`: match against the window title
-- `--float`: force the matched window to floating. Mutually exclusive with `--tile`.
-- `--tile`: force the matched window to tiled. Mutually exclusive with `--float` and `--geometry`.
+- `--floating <true|false>`: force the matched window to floating or tiled.
 - `--tag <N>`: assign tag `N` (1-indexed)
 - `--on-monitor <MONITOR>`: place the matched window on the given monitor (see [Monitor selectors](#monitor-selectors))
-- `--geometry <X,Y,W,H>`: exact floating placement, relative to the target monitor's work area (the usable area below the bar). Implies `--float`.
+- `--geometry <X,Y,W,H>`: exact floating placement, relative to the target monitor's work area (the usable area below the bar). Implies floating placement.
 - `--borderless`: manage the matched window without a WM border
 - `--timeout-ms <MS>`: TTL in milliseconds. Default 30000. Must be `> 0` and `<= 86400000` (24 h)
 
@@ -267,7 +308,7 @@ Output examples:
 
 ```bash
 # Add, get an id back
-$ instantwmctl pending-tmp-rule add --class mpv --float
+$ instantwmctl pending-tmp-rule add --class mpv --floating true
 pending-tmp-rule added: id=1 timeout_ms=30000
 
 # List
@@ -310,9 +351,9 @@ A pending tmp rule is consumed by the *first* matching window's initial rule app
 | Command | Description |
 | --- | --- |
 | `instantwmctl mouse list` | List configured input settings |
-| `instantwmctl mouse list --identifier "type:touchpad"` | Show one device class |
+| `instantwmctl mouse list "type:touchpad"` | Show one device class |
 | `instantwmctl mouse devices` | List detected devices |
-| `instantwmctl mouse speed 0.5 --identifier "type:touchpad"` | Set pointer acceleration |
+| `instantwmctl mouse pointer-accel 0.5 --identifier "type:touchpad"` | Set pointer acceleration |
 | `instantwmctl mouse accel-profile flat --identifier "type:touchpad"` | Set accel profile |
 | `instantwmctl mouse tap enabled --identifier "type:touchpad"` | Enable tap-to-click |
 | `instantwmctl mouse natural-scroll enabled --identifier "type:touchpad"` | Enable natural scrolling |
@@ -357,12 +398,19 @@ instantwmctl theme nord            # switch until config is reloaded
 
 instantwmctl config default        # commented default config
 instantwmctl config list           # runtime-editable keys and values
+instantwmctl config list layout    # only keys under layout
 instantwmctl config get layout.inner_gap
 instantwmctl config set layout.inner_gap 12
+instantwmctl config toggle bar.show_empty_tags   # flip a boolean
 ```
 
 `instantwmctl config set` changes runtime state. Put persistent choices in
-`~/.config/instantwm/config.toml`.
+`~/.config/instantwm/config.toml`. `config list` accepts an optional section or
+key prefix; the compositor filters the returned values.
+
+Two keys are deliberately read-only at runtime: `tags.names` and `tags.icons`
+define the tag set, so they apply on startup and `reload` — `config set`
+rejects them with an explanatory error rather than pretending to work.
 
 ## Environment variables
 
