@@ -26,10 +26,10 @@ corresponding number key. To move a window to another tag, use Super + Shift + T
 To move a window to a tag and follow it there, use Super + Alt + Tag-number.
 You can also drag a tag indicator to another tag to move the selected window.
 Hold Alt when releasing to move the window and follow it to the destination.
-The same rule applies when dropping a floating or tiled window on a tag:
-without Alt it moves there while your current view stays put; with Alt it moves
-there and the destination tag becomes the active view. The modifier is read at
-release, so you can press or release Alt while dragging.
+Dropping a floating or tiled window on a tag works the same way: without Alt,
+the window moves and your view stays put; with Alt, the destination tag
+becomes the active view. Alt is checked on release, so you can press or
+release it mid-drag.
 
 ### Activating multiple tags
 

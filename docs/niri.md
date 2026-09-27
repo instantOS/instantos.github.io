@@ -24,16 +24,15 @@ general settings flow.
 
 `++super+a++` opens instantASSIST. On niri it is the Rust `ins assist`
 implementation, the same one used on Sway and Hyprland. The mouse-speed assist
-(tm) is one of the few assists that branches on the detected compositor: on
-niri it edits `accel-speed` and `accel-profile` in the niri config and
-reloads it, instead of talking to a running WM over IPC like instantWM does.
+(`tm`) edits `accel-speed` and `accel-profile` in the niri config and reloads
+it.
 
 See [instantASSIST](instantassist.md) for the full key catalog.
 
 ## Fuzzel and instantMENU
 
 The instantOS niri config binds ++mod+space++ to `fuzzel` and ++mod+p++ to
-`instantmenu_smartrun`, so both launchers are reachable from the keyboard. 
+`instantmenu_smartrun`.
 Fuzzel is the default application launcher, chosen for its built-in frecency
 and fast startup. The current instantMENU also has frecency and runs natively
 on Wayland through layer-shell; it no longer needs XWayland. It is wired up the
@@ -45,7 +44,7 @@ niri has no built-in scratchpad concept, so `ins` implements its own: a
 scratchpad is a terminal with an `app_id` prefixed `scratchpad_`. When hidden
 it is moved to a reserved workspace named `scratchpad`; if no such workspace
 exists, `ins` renames an empty one. `ins scratchpad` and the assist-based
-scratchpads go through this provider transparently.
+scratchpads both use this.
 
 ## XWayland
 

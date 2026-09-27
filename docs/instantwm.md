@@ -32,10 +32,12 @@ IPC command.
 
 - [instantWM configuration](wmsettings.md) documents `config.toml`, themes,
   inputs, monitors, keybindings, and layout geometry.
-- [Environment variables](wmsettings.md#environment-variables) covers `WAYLAND_DISPLAY`/`DISPLAY` backend auto-detection, `INSTANTWM_LOG`, `INSTANTWM_SOCKET`, `INSTANTWM_AUTOSTART`, `XKB_*`/`XCURSOR_*` fallbacks and the variables instantWM exports for children. The CLI flag `instantwm --backend x11|nested|drm` overrides the display-variable detection.
+- [Environment variables](wmsettings.md#environment-variables) covers backend
+  detection, logging, the IPC socket, autostart, keyboard and cursor fallbacks,
+  and the variables instantWM exports for child processes.
+  `instantwm --backend x11|nested|drm` overrides backend detection.
 - [Modes](modes.md) explains custom modes and the built-in keyboard placement
   mode.
-- [instantwmctl](instantwmctl.md) is the runtime IPC reference.
 - [Visibility options](visibility.md) covers the bar, tag labels, and empty
   tags.
 - [Screenshots](screenshots.md), [notifications](notify.md), and
@@ -44,7 +46,6 @@ IPC command.
 
 ## Scripting and development
 
-- [Modes](modes.md) explains how to create contextual groups of keybindings.
 - [instantwmctl](instantwmctl.md) is the command-line and IPC reference for
   scripts and integrations.
 
