@@ -6,7 +6,7 @@ move windows with the built-in placement mode, see
 [Layouts](layouts.md#keyboard-placement).
 :::
 
-Modes in instantWM work similarly to Sway/i3 modes, allowing you to define sets of keybindings that are only active in certain contexts. This is useful for defining specialized keybindings for tasks like resizing windows, navigating scratchpads, or running specific commands.
+Modes in instantWM work like Sway/i3 modes: each mode is a set of keybindings that is only active while that mode is on. Use them for tasks like resizing windows, navigating scratchpads, or running specific commands.
 
 ## Defining a mode
 
@@ -57,8 +57,8 @@ action = { set_mode = "resize" }
 ```
 
 The description is displayed in the bar in place of the internal name. Use
-`{ set_mode = "default" }` to leave any custom mode. Mode changes also cancel any
-state owned by the previous mode, such as a layout-placement preview.
+`{ set_mode = "default" }` to leave any custom mode. Changing modes also cancels
+anything the previous mode had in progress, such as a placement preview.
 
 Named modes fall back to global and desktop bindings when they do not override
 a key. Set `transient = true` on a mode to return to Default after any matched
@@ -100,19 +100,14 @@ action = "placement_right"
 Useful names include `placement_left`, `placement_right`, `placement_up`,
 `placement_down`, their `placement_swap_*` and `placement_resize_*` variants,
 and `placement_next`, `placement_previous`, `placement_center`,
-`placement_apply`, and `placement_cancel`. Removing a placement binding makes
-that non-modifier key unrelated, so pressing it cancels the mode.
+`placement_apply`, and `placement_cancel`. If you remove a placement binding,
+pressing that key cancels the mode.
 
 ::: details Implementation note
 
-IPC can list the active `placement` mode and can leave it by changing modes.
-It deliberately cannot enter placement with `mode set placement`: entry needs
-a validated source window and candidate set. Invoke the
-`begin_tree_placement` action instead.
-
-Mouse drags are interactions, not artificial move/resize modes. They share the
-same backend-neutral layout operations without pretending to be keyboard mode
-transitions.
+IPC can list the active `placement` mode and leave it by changing modes, but
+`mode set placement` cannot enter it, because placement needs a source window
+and a set of targets. Invoke the `begin_tree_placement` action instead.
 
 :::
 

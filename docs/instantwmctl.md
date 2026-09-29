@@ -71,7 +71,7 @@ instantwmctl scratchpad toggle
 # Make the very next spawned window float, expires after 30s
 instantwmctl pending-tmp-rule add --floating true
 
-# Open the next mpv window floating on tag 3 with a 5-minute window
+# Open the next mpv window floating on tag 3, with a 5-minute timeout
 instantwmctl pending-tmp-rule add --class mpv --floating true --tag 3 --timeout-ms 300000
 
 # Focus a monitor by output name instead of index
@@ -93,8 +93,7 @@ instantwmctl monitor switch DP-1
 `tile`, `grid`, `bottom-stack`, `horiz-grid`, and `bstack-horiz` are one-shot
 transformations of the persistent manual tree, not automatic algorithms which
 rerun after every change. `floating` and `maximized` select persistent
-presentation modes. Layout names are canonical rather than maintaining aliases
-for removed automatic layouts. See [Layouts](layouts.md#presets-not-automatic-layouts).
+presentation modes. See [Layouts](layouts.md#starting-arrangements).
 
 ## Window commands
 
@@ -195,8 +194,8 @@ moving them to a surviving monitor.
 
 ## Toggling settings
 
-There is no dedicated `toggle` command: **any boolean config value** flips
-with `instantwmctl config toggle <key>`, which prints the new value.
+Use `instantwmctl config toggle <key>` to flip a boolean config value. The
+command prints the new value.
 
 ```bash
 instantwmctl config toggle animations.enabled
@@ -271,11 +270,11 @@ If no name is given, the default scratchpad name is `instantwm_scratchpad`.
 
 ## Pending tmp rules
 
-A **pending tmp rule** is a one-shot window rule that the WM consumes the next time a matching window applies its initial rules. After consumption the rule is gone. Each rule has a TTL (default 30 seconds) and is dropped silently when the deadline passes, so a misplaced rule never lingers beyond its lifetime.
+A **pending tmp rule** is a one-shot window rule that the WM consumes the next time a matching window applies its initial rules. After consumption the rule is gone. Each rule has a TTL (default 30 seconds) and is dropped silently if no window matches before it expires.
 
-Pending tmp rules share the fields of config `[[rules]]` (see [Window rules](wmsettings.md#window-rules)): `class`, `instance`, `title`, `is_floating`, `tags`, `monitor`, `geometry`, and `borderless`. They apply once. With no `--class`, `--instance`, or `--title` filter the rule matches the next window regardless of identity.
+Pending tmp rules share the fields of config `[[rules]]` (see [Window rules](wmsettings.md#window-rules)): `class`, `instance`, `title`, `is_floating`, `tags`, `monitor`, `geometry`, and `borderless`. With no `--class`, `--instance`, or `--title` filter the rule matches the next window regardless of identity.
 
-Pending tmp rules are not modes. Modes are persistent modal keybinding contexts (see [Modes](modes.md)). A pending tmp rule is consumed in a single event and does not change keybindings or focus behavior.
+Pending tmp rules are not [modes](modes.md), which are persistent keybinding contexts. A pending tmp rule is consumed in a single event and does not change keybindings or focus behavior.
 
 | Command | Description |
 | --- | --- |
@@ -343,11 +342,11 @@ $ instantwmctl --json pending-tmp-rule list
 ]
 ```
 
-A pending tmp rule is consumed by the *first* matching window's initial rule application only; later `title_changed` or `app_id_changed` property refreshes do not consume it. If no window matches before the TTL expires, the rule drops silently and nothing happens.
+A pending tmp rule is consumed by the *first* matching window's initial rule application only; later `title_changed` or `app_id_changed` property refreshes do not consume it.
 
 ## Mouse and input commands
 
-`mouse` is the public command name. `input` is available as an alias.
+`input` is an alias for `mouse`.
 
 | Command | Description |
 | --- | --- |
@@ -378,7 +377,7 @@ a validated destination set. Use `instantwmctl action begin_tree_placement`.
 
 ## Named actions
 
-`instantwmctl action --list` prints the actions exported by the current build. This is the most reliable way to inspect what can be called directly, because it comes from the same metadata that the parser uses.
+`instantwmctl action --list` prints the actions exported by the installed build. Because the list comes from the build itself, it is the most reliable reference for what you can call.
 
 Examples:
 
@@ -418,7 +417,7 @@ rejects them with an explanatory error rather than pretending to work.
 `instantwmctl` discovers the compositor via the IPC socket, and respects:
 
 * `INSTANTWM_SOCKET` — path to the Unix socket. Defaults to `/tmp/instantwm-<uid>.sock` (with `-<n>` suffix if that path is busy). `instantwm` publishes the bound path here for its children, so a terminal inside the session inherits it automatically. Override for a custom location or a nested/test compositor: `INSTANTWM_SOCKET=/tmp/instantwm-1000-1.sock instantwmctl status`.
-* `INSTANTWM_SOCKET_BIND` — **server-side** variable read only by `instantwm` at bind time (not by `instantwmctl`). Forces an exact bind path with no suffix fallback; the compositor removes it from the environment before spawning children. Used by `tests/e2e.sh` (`INSTANTWM_SOCKET_BIND=/tmp/... INSTANTWM_TEST=1 … instantwm`) to avoid silently talking to another compositor.
+* `INSTANTWM_SOCKET_BIND` — **server-side** variable read only by `instantwm` at bind time (not by `instantwmctl`). Forces an exact bind path with no suffix fallback; the compositor removes it from the environment before spawning children. Useful for test setups (`INSTANTWM_SOCKET_BIND=/tmp/... INSTANTWM_TEST=1 … instantwm`) that must not accidentally talk to another compositor.
 
 See [WM Settings — Environment variables](wmsettings.md#environment-variables) for the full list (`INSTANTWM_LOG`, `INSTANTWM_TEST`, `INSTANTWM_AUTOSTART`, `XKB_*`, `XCURSOR_*`, backend selection via `WAYLAND_DISPLAY`/`DISPLAY`/`--backend`).
 

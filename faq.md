@@ -213,7 +213,7 @@ systemd-swap.
 ## Calamares
 
 instantOS uses its own installer, `ins arch`, instead of Calamares. The older
-Bash implementation was called `instantARCH`.
+Bash implementation was called `instantARCH`. Reasons for not using Calamares:
 
 - Calamares has higher system
 requirements than the OS itself which would lock out a potential userbase.

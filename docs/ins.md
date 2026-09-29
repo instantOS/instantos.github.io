@@ -13,11 +13,11 @@ The larger `ins` subcommands have their own pages:
 - [ins notify](notify.md)
 - [ins clip](clip.md)
 
-This page documents the remaining core commands that were only mentioned indirectly in the site before.
+This page covers the remaining core commands.
 
 ## Top-level commands
 
-The current instantCLI build exposes these main command groups:
+The main command groups are:
 
 - `arch`
 - `dot`
@@ -68,7 +68,7 @@ ins settings --gui
 
 ### `ins settings apply`
 
-`ins settings apply` is the missing piece in the old docs. It re-applies non-persistent settings from the saved settings store and then attempts to re-apply the configured wallpaper.
+`ins settings apply` re-applies non-persistent settings from the saved settings store, then tries to re-apply the configured wallpaper.
 
 This is useful when:
 
@@ -95,7 +95,7 @@ ins settings list --categories
 ins settings list --filter appearance
 ```
 
-Current category IDs include:
+Category IDs include:
 
 - `install`
 - `appearance`
@@ -133,7 +133,7 @@ ins wallpaper random --no-logo
 ins wallpaper colored --bg "#1a1a2e" --fg "#ffffff"
 ```
 
-The implementation currently applies wallpapers on:
+`ins wallpaper` can apply wallpapers on:
 
 - Sway
 - instantWM
@@ -167,11 +167,11 @@ ins doctor fix --all
 ins doctor fix --choose
 ```
 
-The command also supports `--concurrency <N>` on the top-level `ins doctor` command.
+The top-level `ins doctor` command also accepts `--concurrency <N>`.
 
 ## Update
 
-`ins update` is the higher-level instantOS update command.
+`ins update` runs the full instantOS update.
 
 ```bash
 ins update
@@ -190,7 +190,7 @@ ins self-update
 
 ## Autostart
 
-`ins autostart` runs instantOS session startup tasks such as restoring settings integrations, updating dots, and related helper startup logic.
+`ins autostart` runs instantOS session startup tasks such as restoring settings and updating dotfiles.
 
 ```bash
 ins autostart
@@ -202,7 +202,7 @@ If you prefer not to use it, `ins settings apply` is the manual fallback for rea
 
 `ins setup` configures instantOS integrations for supported window managers and compositors.
 
-Current setup targets:
+Supported targets:
 
 - `ins setup sway`
 - `ins setup i3`
@@ -211,7 +211,7 @@ Current setup targets:
 
 ## Scratchpad, Menu, Launch, and Pass helpers
 
-There are also built-in terminal utility commands that do not currently have their own user docs page:
+These utility commands don't have their own page yet:
 
 - `ins scratchpad`
 - `ins menu` (script dialogs; see [Menu API for scripts](/development/menu))
@@ -236,8 +236,8 @@ ins launch --list
 ins launch -b instantmenu|tui|scratchpad
 ```
 
-These are real supported subcommands, but `ins launch` and `ins menu` are
-mostly used internally or from desktop integrations.
+`ins launch` and `ins menu` are mostly used internally or from desktop
+integrations.
 
 ## Related pages
 

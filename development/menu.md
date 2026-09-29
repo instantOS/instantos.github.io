@@ -13,10 +13,10 @@ Every dialog accepts `-b/--backend` to select how it is displayed:
 | `tui` | In-terminal UI using fzf |
 | `scratchpad` | Hosted terminal through the [menu server](#menu-server), auto-spawned on first use |
 
-With `auto`, `INS_MENU_BACKEND` wins when set; otherwise a graphical session
+With `auto`, `INS_MENU_BACKEND` wins when set. Otherwise, a graphical session
 (`WAYLAND_DISPLAY`/`DISPLAY` set) with piped input or output uses the native
-overlay — or the hosted terminal where no native dialog exists (`pick` and
-`chord`) — and anything else uses the terminal UI. The global
+overlay, or the hosted terminal for dialogs that have no native version (`pick`
+and `chord`). Anything else uses the terminal UI. The global
 `--menu-fallback` flag forces transient kitty terminals instead of the
 persistent server.
 
@@ -64,8 +64,8 @@ slow-producer | ins menu choice --prompt "Choose:"
 ### Custom action bindings
 
 `--bind KEY:LABEL` registers a global action with a visible hint (repeatable).
-It works on all backends, including streamed input, `--allow-multiple`, `--items`, and
-`--frecency-cache`:
+It works on all backends and combines with streamed input, `--allow-multiple`,
+`--items`, and `--frecency-cache`:
 
 ```bash
 printf '%s\n' alpha beta | ins menu choice --bind 'ctrl-e:Edit' --bind 'alt-s:Save'

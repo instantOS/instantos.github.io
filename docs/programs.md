@@ -4,7 +4,7 @@
 This is a command line tool which manages most of instantOS and unifies most
 utilities in a single portable binary. Many of its features are distro agnostic.
 
-It currently includes, among other things:
+Among other things, it includes:
 
 - desktop settings via `ins settings`
 - wallpaper management via `ins wallpaper`

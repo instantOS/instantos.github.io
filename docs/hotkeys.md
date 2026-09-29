@@ -91,9 +91,8 @@ For each number 1–9:
 | ++super+alt+comma++ / ++super+alt+period++ | Move the window to previous/next monitor and follow |
 
 After a move-and-follow operation, instantWM keeps the moved window focused and
-warps the pointer to its position on the destination. Repeating the binding
-therefore continues to act on the same window instead of whichever window used
-to be under the pointer.
+warps the pointer to its position on the destination, so repeating the binding
+keeps acting on the same window.
 
 ## Bar and input
 

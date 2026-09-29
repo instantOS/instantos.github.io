@@ -9,16 +9,15 @@ The Wayland session uses Sway, and has some notable differences from instantWM.
 
 ## Settings
 
-`ins settings` is completely compatible with Sway, providing easy access to
-sorts of basics which allow new users to use Sway without having to learn the
-dotfile structure first. 
+`ins settings` fully supports Sway and gives new users access to the basics
+without having to learn the dotfile structure first. 
 
 You can also use `ins settings apply` after startup if you want to restore
 non-persistent settings without running the full autostart helper.
 
 ## instantASSIST
 
-++super+a++ opens up the newly rewritten instantASSIST. instantASSIST on sway
+++super+a++ opens up instantASSIST. instantASSIST on sway
 uses sway modes instead of instantmenu and as such is a lot lighter and faster
 here, at the expense of mouse support. Given that instantASSIST is entirely
 keyboard driven, this is not a big loss. 
@@ -29,7 +28,7 @@ server agnostic terminal scratchpads.
 
 ## Fuzzel
 
-Fuzzel is a really nice application launcher and it notable for having a basic
+Fuzzel is a really nice application launcher and is notable for having a basic
 form of frecency and being quite a bit faster to start than rofi. 
 
 ## instantMENU
@@ -50,8 +49,7 @@ Integration with the compositor is also incredibly poor. There is no
 standardized way to do basically anything. I cannot focus, move, minimize or
 close windows from the status bar. 
 
-This, along with the mouse support are probably the two biggest missing
-features. 
+This and mouse support are probably the two biggest missing features. 
 
 I do not want my status bar to be a web view, I have windows for that. 
 
