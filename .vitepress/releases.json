@@ -1,8 +1,21 @@
 {
-  "release": null,
+  "release": {
+    "version": "2026.09.29",
+    "tag": "v2026.09.29-5",
+    "publishedAt": "2026-09-29T19:50:56Z",
+    "url": "https://github.com/instantOS/instantOS/releases/tag/v2026.09.29-5",
+    "iso": {
+      "name": "instantos-2026.09.29-x86_64.iso",
+      "size": 1956659200,
+      "url": "https://github.com/instantOS/instantOS/releases/download/v2026.09.29-5/instantos-2026.09.29-x86_64.iso"
+    },
+    "sha256Url": "https://github.com/instantOS/instantOS/releases/download/v2026.09.29-5/instantos-2026.09.29-x86_64.iso.sha256",
+    "sha256": "3e428d3420a0ccb87ac36f4007b9ce952c07fbb402e5001092c85ea659171d14"
+  },
   "offline": {
-    "size": null
+    "size": 4578476032,
+    "sha256": "1933b1f5f9bc8c5a92648af1fcbf6bca329cce97408abee9f9933c3282bcfe85"
   },
   "releasesPage": "https://github.com/instantOS/instantOS/releases/latest",
-  "generatedAt": null
+  "generatedAt": "2026-09-29T20:54:25.240Z"
 }
