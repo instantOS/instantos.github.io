@@ -6,6 +6,9 @@
     "vitepress": "^2.0.0-alpha.19"
   },
   "scripts": {
+    "fetch-releases": "node .vitepress/fetch-releases.mjs",
+    "predev": "node .vitepress/fetch-releases.mjs",
+    "prebuild": "node .vitepress/fetch-releases.mjs",
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"

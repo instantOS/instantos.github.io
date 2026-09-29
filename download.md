@@ -1,15 +1,28 @@
 # Download
 
-## Install instantOS or instantCLI
+<DownloadButtons />
 
-The same installer handles both a fresh instantOS installation and adding the
-instantOS command-line utilities to an existing Linux system:
+## Which ISO do I need?
+
+The **live ISO** is the normal choice. Boot it to run the installer, or to try
+instantOS without touching your machine at all.
+
+The **offline ISO** carries a complete package bundle, so it can install a full
+system with no network connection at all. It is considerably larger, so reach
+for it when you cannot rely on a working internet connection during the install.
+
+Both are x86-64 images. Updating to a new build does not require reinstalling:
 
 ```sh
-bash <(curl -fsSL instantos.io/install)
+ins update
 ```
 
-It detects the environment automatically:
+takes care of that.
+
+## Install instantOS or instantCLI
+
+The installer behind the copy button above detects the environment
+automatically:
 
 - **On an up-to-date Arch Linux live ISO**, it installs `ins` and starts the
   interactive instantOS system installer.
@@ -21,9 +34,9 @@ itself with `sudo`.
 
 There is an ongoing effort to make the instantOS utilities available on other
 distros. A large part of them already work, and vanilla Arch is fully
-supported. 
+supported.
 
-Most of it also works on Ubuntu and Debian. 
+Most of it also works on Ubuntu and Debian.
 
 ## System requirements
 
@@ -31,24 +44,9 @@ Most of it also works on Ubuntu and Debian.
 - 64-bit processor
 - Potato or better
 
-Updating to a new build does NOT require reinstalling the OS. A simple
-
-```sh
-ins update
-```
-
-takes care of that.
-
 instantOS-specific packages are hosted on
 [packages.instantos.io](https://packages.instantos.io).  
 For other packages, the default Arch repos are used.
-
-## What happened to the live ISO?
-
-The Arch Linux ISO build process changed, which breaks the way instantOS builds
-its ISOs. Additionally, the package repo config changed upstream which
-requires up-to-date Arch-based ISOs to install. For that reason, until this
-is fixed, use the CLI installer from an Arch Linux ISO.
 
 ## Nix packages
 
@@ -58,7 +56,6 @@ Quick instructions on how to install using Nix and NixOS can be found here:
 
  - **[instantNIX](https://github.com/instantOS/instantNIX)** GitHub repo
  - **[Wiki](https://github.com/instantOS/instantNIX/wiki)** for **instantNIX**
-
 
 ## Information about the live ISO
 

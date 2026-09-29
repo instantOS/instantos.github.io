@@ -8,6 +8,13 @@ on:
   push:
     branches: [main]
 
+  # The download page bakes in the latest ISO's file name and size, which change
+  # whenever instantOS publishes a release. Rebuild daily so a new ISO shows up
+  # without waiting for someone to commit to this repository. Scheduled off the
+  # hour to avoid the busiest part of GitHub's scheduler queue.
+  schedule:
+    - cron: '17 4 * * *'
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -53,6 +60,12 @@ jobs:
             exit 1
           }
       - name: Build with VitePress
+        # Raises the GitHub API rate limit for the release metadata lookup that
+        # .vitepress/fetch-releases.mjs runs as a prebuild step. The lookup
+        # degrades to the releases page on failure, so a missing token is not
+        # fatal.
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: bun run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
