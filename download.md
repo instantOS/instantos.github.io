@@ -2,6 +2,12 @@
 
 <DownloadButtons />
 
+Install instantCLI, or instantOS from an Arch live ISO:
+
+```bash
+bash <(curl -fsSL instantos.io/install)
+```
+
 ## Which ISO do I need?
 
 The **live ISO** is the normal choice. Boot it to run the installer, or to try

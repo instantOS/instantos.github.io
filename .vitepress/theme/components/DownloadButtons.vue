@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import releases from '../../releases.json'
 
 // Release metadata is resolved at build time by .vitepress/fetch-releases.mjs.
@@ -7,8 +7,6 @@ import releases from '../../releases.json'
 // the live ISO needs a lookup; without one the button links the releases page.
 const release = releases.release
 const offlineSize = releases.offline?.size ?? null
-
-const INSTALL_COMMAND = 'bash <(curl -fsSL instantos.io/install)'
 
 const formatSize = (bytes) => {
   if (!bytes || bytes < 0) return null
@@ -53,30 +51,6 @@ const cards = computed(() => [
   }
 ])
 
-const copied = ref(false)
-let resetTimer = null
-
-const copy = async () => {
-  try {
-    await navigator.clipboard.writeText(INSTALL_COMMAND)
-  } catch {
-    // navigator.clipboard needs a secure context, which is unavailable when
-    // previewing over plain http on a LAN address.
-    const scratch = document.createElement('textarea')
-    scratch.value = INSTALL_COMMAND
-    scratch.setAttribute('readonly', '')
-    scratch.style.position = 'fixed'
-    scratch.style.opacity = '0'
-    document.body.appendChild(scratch)
-    scratch.select()
-    document.execCommand('copy')
-    scratch.remove()
-  }
-
-  copied.value = true
-  clearTimeout(resetTimer)
-  resetTimer = setTimeout(() => (copied.value = false), 2000)
-}
 </script>
 
 <template>
@@ -135,48 +109,6 @@ const copy = async () => {
       </span>
     </div>
 
-    <div class="instantos-downloads__command">
-      <div class="instantos-downloads__command-head">
-        <span class="instantos-downloads__command-label">
-          Install instantCLI, or instantOS from an Arch live ISO
-        </span>
-        <button
-          type="button"
-          class="instantos-downloads__copy"
-          :aria-label="copied ? 'Command copied' : 'Copy install command'"
-          @click="copy"
-        >
-          <svg
-            v-if="!copied"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-          </svg>
-          <svg
-            v-else
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <span aria-live="polite">{{ copied ? 'Copied' : 'Copy' }}</span>
-        </button>
-      </div>
-      <pre class="instantos-downloads__code"><code>{{ INSTALL_COMMAND }}</code></pre>
-    </div>
-
     <p v-if="generatedDate" class="instantos-downloads__stamp">
       Version information last checked on
       <time :datetime="releases.generatedAt">{{ generatedDate }}</time>.
@@ -206,7 +138,7 @@ const copy = async () => {
 .instantos-downloads__card {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
   padding: 16px;
   border: 1px solid;
   border-radius: 12px;
@@ -254,7 +186,6 @@ const copy = async () => {
   flex: none;
   width: 22px;
   height: 22px;
-  margin-top: 2px;
 }
 
 .instantos-downloads__body {
@@ -308,63 +239,6 @@ const copy = async () => {
 
 .instantos-downloads__which {
   opacity: 0.7;
-}
-
-.instantos-downloads__command {
-  margin-top: 20px;
-  padding: 12px 16px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background-color: var(--vp-c-bg-soft);
-}
-
-.instantos-downloads__command-head {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.instantos-downloads__command-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-}
-
-.instantos-downloads__copy {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex: none;
-  padding: 4px 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 999px;
-  background-color: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
-}
-
-.instantos-downloads__copy:hover {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-}
-
-.instantos-downloads__copy svg {
-  width: 13px;
-  height: 13px;
-}
-
-.instantos-downloads__code {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  font-size: 13px;
-  overflow-x: auto;
 }
 
 .instantos-downloads__stamp {
