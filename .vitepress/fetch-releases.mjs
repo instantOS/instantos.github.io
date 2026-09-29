@@ -25,7 +25,8 @@ const RELEASES_API =
 const RELEASES_PAGE = 'https://github.com/instantOS/instantOS/releases/latest'
 const OFFLINE_ISO =
   'https://sourceforge.net/projects/instantos/files/offline/latest/instantos-offline-latest.iso/download'
-const OFFLINE_SHA256 = `${OFFLINE_ISO}.sha256`
+const OFFLINE_SHA256 =
+  'https://sourceforge.net/projects/instantos/files/offline/latest/instantos-offline-latest.iso.sha256/download'
 
 // instantos-2026.09.29-x86_64.iso -> 2026.09.29
 const VERSION_PATTERN = /^instantos-(.+)-x86_64\.iso$/
@@ -68,6 +69,13 @@ const findIso = (assets) => {
   return isos.find((asset) => !asset.name.endsWith('-offline.iso')) ?? isos[0]
 }
 
+const fetchChecksum = async (url) => {
+  const response = await fetch(url, { signal: AbortSignal.timeout(15000) })
+  if (!response.ok) throw new Error(`Checksum request responded ${response.status}`)
+  const contents = await response.text()
+  return contents.match(/^([a-f0-9]{64})(?:\s|$)/im)?.[1].toLowerCase() ?? null
+}
+
 const fetchLatestRelease = async () => {
   const headers = {
     accept: 'application/vnd.github+json',
@@ -104,7 +112,11 @@ const fetchLatestRelease = async () => {
       size: iso.size ?? null,
       url: iso.browser_download_url
     },
-    sha256Url: checksum ? checksum.browser_download_url : null
+    sha256Url: checksum ? checksum.browser_download_url : null,
+    sha256: iso.digest?.match(/^sha256:([a-f0-9]{64})$/i)?.[1].toLowerCase()
+      ?? (checksum
+        ? await settle('live ISO checksum', () => fetchChecksum(checksum.browser_download_url))
+        : null) ?? null
   }
 }
 
@@ -137,9 +149,10 @@ const settle = async (label, task) => {
 }
 
 const main = async () => {
-  const [release, offlineSize] = await Promise.all([
+  const [release, offlineSize, offlineSha256] = await Promise.all([
     settle('live ISO lookup', fetchLatestRelease),
-    settle('offline ISO size', fetchOfflineSize)
+    settle('offline ISO size', fetchOfflineSize),
+    settle('offline ISO checksum', () => fetchChecksum(OFFLINE_SHA256))
   ])
 
   const previous = readFallback()
@@ -147,7 +160,11 @@ const main = async () => {
     // On failure, keep whatever the last successful build recorded so the page
     // keeps linking a real ISO instead of falling back to the releases page.
     release: release ?? previous.release ?? null,
-    offline: { size: offlineSize ?? previous.offline?.size ?? null },
+    offline: {
+      size: offlineSize ?? previous.offline?.size ?? null,
+      // The alias can move to a new build; never retain a hash after a failed lookup.
+      sha256: offlineSha256 ?? null
+    },
     releasesPage: RELEASES_PAGE
   }
 

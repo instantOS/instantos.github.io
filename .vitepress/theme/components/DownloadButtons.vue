@@ -33,7 +33,6 @@ const cards = computed(() => [
       ? [formatSize(release.iso.size), release.version]
       : [formatSize(null)],
     href: release?.iso.url ?? releases.releasesPage,
-    checksum: release?.sha256Url ?? null,
     // The releases page is the fallback, so only the direct asset gets a
     // "download" hint. Both open in a new tab either way.
     action: release ? 'Download' : 'View releases'
@@ -45,8 +44,6 @@ const cards = computed(() => [
     meta: [formatSize(offlineSize), 'installs without a network'],
     href:
       'https://sourceforge.net/projects/instantos/files/offline/latest/instantos-offline-latest.iso/download',
-    checksum:
-      'https://sourceforge.net/projects/instantos/files/offline/latest/instantos-offline-latest.iso.sha256/download',
     action: 'Download'
   }
 ])
@@ -96,17 +93,6 @@ const cards = computed(() => [
         </span>
         <span class="instantos-downloads__action">{{ card.action }}</span>
       </a>
-    </div>
-
-    <div class="instantos-downloads__checksums">
-      <span v-for="card in cards" :key="card.key">
-        <template v-if="card.checksum">
-          <a :href="card.checksum" target="_blank" rel="noreferrer">
-            SHA256
-            <span class="instantos-downloads__which">{{ card.key }}</span>
-          </a>
-        </template>
-      </span>
     </div>
 
     <p v-if="generatedDate" class="instantos-downloads__stamp">
@@ -222,23 +208,6 @@ const cards = computed(() => [
   font-weight: 600;
   line-height: 1.6;
   opacity: 0.85;
-}
-
-.instantos-downloads__checksums {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.instantos-downloads__checksums a {
-  font-weight: 500;
-  color: var(--vp-c-brand-1);
-}
-
-.instantos-downloads__which {
-  opacity: 0.7;
 }
 
 .instantos-downloads__stamp {

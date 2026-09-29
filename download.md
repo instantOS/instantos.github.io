@@ -71,3 +71,9 @@ The default user and password are `instantos` and `instantos` with no root passw
 
 This contains an archive of older installation ISOs. It is usually recommended
 not to use these and go for the latest build instead.
+
+## SHA256 checksums
+
+Use the checksum for your downloaded ISO to verify its contents with `sha256sum`.
+
+<!-- download-checksums -->
