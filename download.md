@@ -1,23 +1,34 @@
 # Download
 
+Choose **one of three ways** to install instantOS:
+
+## Boot an instantOS ISO
+
+**1. Live ISO** — Boot it to start the installer, or to try instantOS before
+installing. This is the usual choice.
+
+**2. Offline ISO** — Boot it to install without an internet connection. It
+includes the full package bundle, so the download is larger.
+
+Both instantOS ISOs include the installer, ready to use when you boot them.
+
 <DownloadButtons />
 
-Install instantCLI, or instantOS from an Arch live ISO:
+## Or: 3. Use a standard Arch Linux ISO
+
+Already have an Arch Linux ISO? Boot an up-to-date copy and run this command
+to start the instantOS installer:
 
 ```bash
 bash <(curl -fsSL instantos.io/install)
 ```
 
-## Which ISO do I need?
+The script requests elevated permissions when needed, so run the command
+without `sudo`.
 
-The **live ISO** is the normal choice. Boot it to run the installer, or to try
-instantOS without touching your machine at all.
+## Updating instantOS
 
-The **offline ISO** carries a complete package bundle, so it can install a full
-system with no network connection at all. It is considerably larger, so reach
-for it when you cannot rely on a working internet connection during the install.
-
-Both are x86-64 images. Updating to a new build does not require reinstalling:
+Updating to a new build does not require reinstalling:
 
 ```sh
 ins update
@@ -25,18 +36,11 @@ ins update
 
 takes care of that.
 
-## Install instantOS or instantCLI
+## Install instantCLI on an existing system
 
-The installer behind the copy button above detects the environment
-automatically:
-
-- **On an up-to-date Arch Linux live ISO**, it installs `ins` and starts the
-  interactive instantOS system installer.
-- **On an existing Linux installation**, it installs instantCLI and its `ins`
-  utilities without starting the system installer.
-
-The script requests elevated permissions when needed, so do not run the command
-itself with `sudo`.
+The same command above installs instantCLI and its `ins` utilities when run
+on an existing Linux installation. In that case, it does not start the
+instantOS system installer.
 
 There is an ongoing effort to make the instantOS utilities available on other
 distros. A large part of them already work, and vanilla Arch is fully
@@ -47,7 +51,7 @@ Most of it also works on Ubuntu and Debian.
 ## System requirements
 
 - 5.8 GB storage
-- 64-bit processor
+- x86-64 processor
 - Potato or better
 
 instantOS-specific packages are hosted on
