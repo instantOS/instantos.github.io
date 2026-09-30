@@ -24,8 +24,7 @@ ins clip --gui
 Type to filter the history. The preview understands more than plain text:
 images are rendered directly in Kitty-compatible terminals, PDFs and videos
 get a visual thumbnail when the relevant system tools are available, and
-audio, archives, and unknown binary data get useful metadata instead of raw
-bytes. `chafa` is used as an optional image fallback in other terminals.
+audio, archives, and unknown binary data show metadata instead of raw bytes. `chafa` is used as an optional image fallback in other terminals.
 
 Recognizable code and structured text are syntax-highlighted when the optional
 `bat` command is installed. Detection intentionally stays conservative because

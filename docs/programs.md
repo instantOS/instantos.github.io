@@ -1,7 +1,7 @@
 # instantOS specific programs and features
 ## ins
 
-This is a command line tool which manages most of instantOS and unifies most
+A command line tool that manages most of instantOS and bundles most of its
 utilities in a single portable binary. Many of its features are distro agnostic.
 
 Among other things, it includes:
@@ -19,14 +19,12 @@ See [ins](ins.md) for the command reference.
 
 The instantOS window manager. It works on X11 and Wayland and features:
 
-- Tiled and floating windows with easy keyboard and mouse placement
+- Tiled and floating windows with keyboard and mouse placement
 - Multiple monitors and tags
 - Scratchpad and overlay windows
 - Custom keybindings and modes
 
-See the [instantWM documentation hub](instantwm.md) for all instantWM guides,
-including layouts, floating windows, overlays, keybindings, configuration, and
-scripting.
+See the [instantWM documentation hub](instantwm.md) for all instantWM guides.
 
 ## instantwmctl
 
@@ -55,7 +53,7 @@ on stdout, full keyboard control) while adding mouse support, animations,
 item icons, headings, alt-tab behaviour, streamed input, a slider mode,
 frecency and native support for both X11 and Wayland. It includes Catppuccin,
 classic and Gruvbox themes plus a cross-platform TOML appearance file. The
-command line uses modern long options (`--width`,
+command line uses long options (`--width`,
 `--prompt`, `--match-mode`, ...) with a few single-letter shortcuts (`-i`,
 `-p`, `-l`, ...).
 
@@ -100,19 +98,18 @@ Deprecated. Its functionality is built into `instantmenu slide`.
 
 ## instantLOCK
 
-The lock screen in the instantWM session
+The lock screen in the instantWM session.
 
 ## instantNOTIFY / instantnotify
 
-Deprecated and replaced by [`ins notify`](notify.md). The new implementation is
-part of instantCLI, works with dunst and mako, and provides interactive, GUI,
-and scriptable notification-history management.
+Deprecated and replaced by [`ins notify`](notify.md), which works with dunst
+and mako and manages notification history interactively, from a GUI, or from
+scripts.
 
 ## instantclipmenu
 
 Deprecated and replaced by [`ins clip`](clip.md). Existing shortcuts continue
-to work through a compatibility shim, while new integrations get searchable
-previews, service management, stable entry IDs, and scriptable JSON output.
+to work through a compatibility shim.
 
 ## instantSTATUS
 

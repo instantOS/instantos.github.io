@@ -18,7 +18,7 @@ not been customized by the user.
 
 There is a TUI settings manager, which allows changing most of the standard
 settings similar to how GNOME, macOS or Windows do it. 
-These should be pretty self-explanatory, they include things like Wi-Fi,
+These should be pretty self-explanatory and include things like Wi-Fi,
 wallpaper, audio, keyboard layout, mouse sensitivity and more. 
 
 The control panel can be opened by ++super+left++ clicking on the status text,
