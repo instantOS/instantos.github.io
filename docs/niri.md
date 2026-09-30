@@ -34,9 +34,9 @@ See [instantASSIST](instantassist.md) for the full key catalog.
 The instantOS niri config binds ++mod+space++ to `fuzzel` and ++mod+p++ to
 `instantmenu_smartrun`.
 Fuzzel is the default application launcher, chosen for its built-in frecency
-and fast startup. The current instantMENU also has frecency and runs natively
-on Wayland through layer-shell; it no longer needs XWayland. It is wired up the
-same way it is on Sway.
+and fast startup. instantMENU also has frecency and runs natively on Wayland
+through layer-shell, so it doesn't need XWayland. It is set up the same way as
+on Sway.
 
 ## Scratchpads
 

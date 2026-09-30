@@ -25,7 +25,7 @@ The control panel can be opened by ++super+left++ clicking on the status text,
 with ++super+ctrl+c++, from the start menu or by typing `ins settings` in the
 terminal.
 
-For the command reference, see [ins CLI](ins.md).
+For the command reference, see [the `ins settings` documentation](ins.md#settings).
 
 ## Use it in your own setup
 

@@ -24,8 +24,8 @@ picture-in-picture.
 
 Toggle it with ++super+shift+f++. If the application is not currently
 fullscreen, the visible effect begins when it later requests fullscreen. Some
-applications do not tolerate resizing while fullscreen, so behavior remains
-application-dependent.
+applications do not tolerate resizing while fullscreen, so results vary by
+application.
 
 ## Shortcut inhibition
 

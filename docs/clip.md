@@ -27,20 +27,18 @@ get a visual thumbnail when the relevant system tools are available, and
 audio, archives, and unknown binary data show metadata instead of raw bytes. `chafa` is used as an optional image fallback in other terminals.
 
 Recognizable code and structured text are syntax-highlighted when the optional
-`bat` command is installed. Detection intentionally stays conservative because
-clipboard snippets have no filename; ambiguous content remains readable plain
-text instead of being highlighted as the wrong language.
+`bat` command is installed. Clipboard snippets have no filename, so detection
+is conservative: ambiguous content is shown as plain text.
 
-Preview detection is lazy: opening the picker does not decode every item in
-your history. Press Enter to restore the selected entry to the clipboard, or
-Escape to close without changing it.
+Press Enter to restore the selected entry to the clipboard, or Escape to close
+without changing it.
 
-The picker remains useful when history is empty or capture is stopped. Its
-header shows the current entry count and capture state, and dedicated rows let
-you enable capture, open settings, or close without changing the clipboard.
+The header shows the entry count and capture state. Extra rows let you enable
+capture, open settings, or close without changing the clipboard, even when
+history is empty or capture is stopped.
 
-instantWM opens the graphical picker with ++super+v++. The previous quick-menu
-binding is available at ++super+shift+v++.
+In instantWM, ++super+v++ opens the graphical picker and ++super+shift+v++
+opens the quick menu.
 
 ## Settings
 
@@ -54,9 +52,9 @@ The settings menu shows the active backend, installation and login-start
 state, and lets you start or stop background capture. Stopping capture
 preserves existing entries.
 
-Clearing history uses two safeguards: first a review screen showing the number
-of entries and representative examples, then an explicit confirmation dialog.
-The clear action remains visible but disabled when history is already empty.
+Clearing history first shows a review screen with the number of entries and
+some examples, then asks for confirmation. The clear action is disabled when
+history is empty.
 
 ## Capture service
 
@@ -105,10 +103,10 @@ ins --output json clip status
 ```
 
 JSON list output includes each entry's ID, summary, and complete content, so
-scripts do not need to know which backend is active or read its private data.
+scripts work the same regardless of the active backend.
 
 ## Compatibility
 
-The old `instantclipmenu` executable remains as a compatibility shim for
-existing shortcuts. New integrations should call `ins clip --gui`; the old
-`instantclipmenu delete` action maps to `ins clip clear`.
+The `instantclipmenu` executable remains as a compatibility shim for existing
+shortcuts. New integrations should call `ins clip --gui`. `instantclipmenu
+delete` maps to `ins clip clear`.
