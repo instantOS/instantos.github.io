@@ -1194,6 +1194,54 @@ download_release_asset() {
 	fi
 }
 
+# Hand off to the freshly installed CLI once the artifacts are in place:
+# unattended with a questions config when one was provided, otherwise the
+# interactive instantOS installer. A downloaded questions file needs the shell
+# to stay alive until the CLI exits so it can remove the temporary copy.
+launch_os_installer() {
+	if ! should_launch_os_installer; then
+		return 0
+	fi
+
+	if [ -n "$UNATTENDED_CONFIG" ]; then
+		case "$UNATTENDED_CONFIG" in
+		http://* | https://*)
+			downloaded_config=$(mktemp /tmp/instant_questions.XXXXXX.toml)
+			trap 'rm -f "$downloaded_config"' EXIT
+			trap 'exit 130' INT
+			trap 'exit 143' TERM
+			trap 'exit 129' HUP
+			log "Downloading installation configuration from $UNATTENDED_CONFIG..."
+			if ! curl -fsSL "$UNATTENDED_CONFIG" -o "$downloaded_config"; then
+				fatal "failed to download configuration from $UNATTENDED_CONFIG"
+			fi
+			log "Starting instantOS unattended installer..."
+			if [ "$DRY_RUN" -eq 1 ]; then
+				"$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$downloaded_config"
+			else
+				"$INSTALL_DIR/$BIN_NAME" arch exec -f "$downloaded_config"
+			fi
+			exit $?
+			;;
+		*)
+			[ -f "$UNATTENDED_CONFIG" ] || fatal "configuration file not found: $UNATTENDED_CONFIG"
+			UNATTENDED_CONFIG=$(cd "$(dirname "$UNATTENDED_CONFIG")" && pwd)/$(basename "$UNATTENDED_CONFIG")
+			;;
+		esac
+
+		log "Starting instantOS unattended installer..."
+		if [ "$DRY_RUN" -eq 1 ]; then
+			exec "$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$UNATTENDED_CONFIG"
+		else
+			exec "$INSTALL_DIR/$BIN_NAME" arch exec -f "$UNATTENDED_CONFIG"
+		fi
+	else
+		log "Starting instantOS installer..."
+		# The CLI configures networking as the desktop user, then escalates itself.
+		exec "$INSTALL_DIR/$BIN_NAME" arch install
+	fi
+}
+
 # Coordinate validation, artifact installation, cleanup, and optional OS handoff.
 main() {
 	parse_args "$@"
@@ -1264,37 +1312,7 @@ main() {
 	cleanup_tmpdir
 	trap - EXIT INT TERM HUP
 
-	# Launch instantOS installer if on live disk or requested
-	if should_launch_os_installer; then
-		if [ -n "$UNATTENDED_CONFIG" ]; then
-			case "$UNATTENDED_CONFIG" in
-			http://* | https://*)
-				downloaded_config=$(mktemp /tmp/instant_questions.XXXXXX.toml)
-				log "Downloading installation configuration from $UNATTENDED_CONFIG..."
-				if ! curl -fsSL "$UNATTENDED_CONFIG" -o "$downloaded_config"; then
-					rm -f "$downloaded_config"
-					fatal "failed to download configuration from $UNATTENDED_CONFIG"
-				fi
-				UNATTENDED_CONFIG="$downloaded_config"
-				;;
-			*)
-				[ -f "$UNATTENDED_CONFIG" ] || fatal "configuration file not found: $UNATTENDED_CONFIG"
-				UNATTENDED_CONFIG=$(cd "$(dirname "$UNATTENDED_CONFIG")" && pwd)/$(basename "$UNATTENDED_CONFIG")
-				;;
-			esac
-
-			log "Starting instantOS unattended installer..."
-			if [ "$DRY_RUN" -eq 1 ]; then
-				exec "$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$UNATTENDED_CONFIG"
-			else
-				exec "$INSTALL_DIR/$BIN_NAME" arch exec -f "$UNATTENDED_CONFIG"
-			fi
-		else
-			log "Starting instantOS installer..."
-			# The CLI configures networking as the desktop user, then escalates itself.
-			exec "$INSTALL_DIR/$BIN_NAME" arch install
-		fi
-	fi
+	launch_os_installer
 
 	print_summary
 }
