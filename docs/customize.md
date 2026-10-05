@@ -52,8 +52,8 @@ opening a category or setting and listing available IDs, lives in
 Colors are remembered for future use. The `random` command fetches from Wallhaven
 and applies the instantOS logo overlay unless `--no-logo` is passed.
 
-See [the `ins wallpaper` documentation](ins.md#wallpaper) for the current
-commands, options, examples, and supported environments.
+See [the `ins wallpaper` documentation](ins.md#wallpaper) for commands,
+options, and supported environments.
 
 ## Theming
 
@@ -61,10 +61,10 @@ commands, options, examples, and supported environments.
 
 Most applications on instantOS have built-in theming support which is documented
 elsewhere. 
-This includes but is not limited to the following
+These include:
 
-- instantMENU — see [the instantMENU docs](/development/instantMENU)
-- instantWM — see [instantWM themes](/docs/wmsettings#themes)
+- instantMENU (see [the instantMENU docs](/development/instantMENU))
+- instantWM (see [instantWM themes](/docs/wmsettings#themes))
 - Kitty
 - Sway
 - Hyprland
@@ -72,14 +72,14 @@ This includes but is not limited to the following
 - Fuzzel
 - Rofi
 
-Theme away, instantOS will stop updating the dotfiles for any file you change. 
+Theme away. instantOS will stop updating the dotfiles for any file you change. 
 `ins dot reset <filename>` can be used to reset any dotfile to the default. 
 
 
 ### GTK
 
 There is a GTK theme section in the Appearance tab of the settings panel. 
-On X11, changing this might require restarting GTK applications for this to take
+On X11, you might need to restart GTK applications for the change to take
 effect. 
 
 :::info
