@@ -41,8 +41,11 @@ features:
 
 ## Install instantOS or instantCLI
 
-One command installs instantCLI on an existing Linux system. Run it from an
-up-to-date Arch Linux live ISO and it starts the full instantOS installer:
+[Choose an installation method](/download): boot the instantOS Live ISO,
+boot the Offline ISO, **or** run the command below from a standard, up-to-date
+Arch Linux ISO. Both instantOS ISOs already include the installer.
+
+On an existing Linux system, this command installs instantCLI:
 
 ```sh
 bash <(curl -fsSL instantos.io/install)

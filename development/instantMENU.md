@@ -24,10 +24,10 @@ finished. A fast producer is normally combined into the first render.
 
 The command line uses modern long options (`--width`, `--prompt`,
 `--match-mode`, ...) with single-letter shortcuts for the common flags
-(`-i`, `-p`, `-l`, `-g`, `-m`, `-w`, ...). The old multi-character dmenu
-style flags are gone (`-fn` is `--font`, `-nb`/`-nf`/`-sb`/`-sf` are
+(`-i`, `-p`, `-l`, `-g`, `-m`, `-w`, ...). dmenu's multi-character flags
+are not accepted: `-fn` is `--font`, `-nb`/`-nf`/`-sb`/`-sf` are
 `--normal-bg`/`--normal-fg`/`--selected-bg`/`--selected-fg`, `-q` is
-`--placeholder`, `-h` is now `--help`).
+`--placeholder`, and `-h` is `--help`.
 
 A few options worth knowing:
 
@@ -57,7 +57,7 @@ A few options worth knowing:
 | `--managed` | Let instantmenu be managed by the window manager as a normal window |
 | `--embed <ID>` | Embed into an X11 window (X11 only) |
 | `-w auto, --width auto` | Size to the widest item and prompt |
-| `--preselect <VALUE>` / `--initial-text <TEXT>` | Start with the item whose value matches selected / input pre-filled |
+| `--preselect <VALUE>` / `--initial-text <TEXT>` | Start with the matching item selected / the input pre-filled |
 | `--frecency-cache <ID>` | Rank future menus using past selections |
 | `--theme catppuccin\|classic\|gruvbox` | Select a built-in palette |
 

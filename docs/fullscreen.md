@@ -15,10 +15,6 @@ same stable order shown by the titles in the bar. Press ++super+w++ again to
 restore the previous arrangement. Floating windows remain visible above the
 maximized tiled windows.
 
-This replaces the old “monocle” workflow and covers the useful part of the
-removed per-window temporary-fullscreen action. There is no default
-Super+Ctrl+F binding for temporary fullscreen.
-
 ## Fake fullscreen
 
 Fake fullscreen allows instantWM to move, tile, float, and resize a window
@@ -28,8 +24,8 @@ picture-in-picture.
 
 Toggle it with ++super+shift+f++. If the application is not currently
 fullscreen, the visible effect begins when it later requests fullscreen. Some
-applications do not tolerate resizing while fullscreen, so behavior remains
-application-dependent.
+applications do not tolerate resizing while fullscreen, so results vary by
+application.
 
 ## Shortcut inhibition
 

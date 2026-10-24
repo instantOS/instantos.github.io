@@ -21,11 +21,11 @@ You can request assistance, report bugs, or chat with the community in the follo
 
 ## Troubleshooting system issues
 
-instantOS includes a diagnostic tool to check and fix common system problems:
-
-Checks include: network connectivity, locale, pending updates, disk health, swap status, display configuration, and more.
-See [the `ins doctor` command reference](/docs/ins#doctor) for the current
-commands and options.
+instantOS includes a diagnostic tool, `ins doctor`, that checks for and fixes
+common system problems such as network connectivity, locale, pending updates,
+disk health, swap status and display configuration.
+See [the `ins doctor` command reference](/docs/ins#doctor) for commands and
+options.
 
 
 ## Does it use its own repos
@@ -38,9 +38,9 @@ everything else the Arch repos are used.
 Yes. During an `ins arch install` with automatic partitioning, the installer
 asks whether you want to enable disk encryption. It uses **LUKS on LVM** with
 a dedicated LUKS container, LVM volume group (`instantOS`), and separate
-logical volumes for swap and root. Encryption is handled automatically —
-partitioning, luksFormat, LVM setup, mkinitcpio hooks (`sd-encrypt`), and
-GRUB boot parameters are all configured for you.
+logical volumes for swap and root. Partitioning, luksFormat, LVM setup,
+mkinitcpio hooks (`sd-encrypt`) and GRUB boot parameters are all configured
+for you.
 
 If you prefer to set it up manually, select manual partitioning instead.
 

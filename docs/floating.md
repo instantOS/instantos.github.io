@@ -29,8 +29,8 @@ Keyboard movement and resize use ++super+shift+"H/J/K/L"++ and
 ++super+alt+"H/J/K/L"++. For tiled windows these bindings swap and resize
 windows; for floating windows they move and resize them freely.
 
-Use ++super+alt+w++ to centre a floating window. The window-drawing action at
-++super+shift+d++ is another way to choose free geometry.
+Use ++super+alt+w++ to centre a floating window. You can also draw a window's
+position and size with ++super+shift+d++.
 
 ## Dragging to tags and edges
 

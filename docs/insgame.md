@@ -73,13 +73,13 @@ ins game add
 
 ### `ins game --help`
 
-This has built in help for all commands and subcommands, often times, this is
-all you need. 
+This has built-in help for all commands and subcommands. Often, this is all
+you need.
 
 ### `ins game init`
 
-This allows selecting which location to back up your game saves to and
-configures all `ins game` commands to use that location.
+Select which location to back up your game saves to. All `ins game` commands
+will use that location.
 
 ```bash
 # Interactive (prompts for repository path and password)

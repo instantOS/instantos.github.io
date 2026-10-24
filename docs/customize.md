@@ -18,14 +18,14 @@ not been customized by the user.
 
 There is a TUI settings manager, which allows changing most of the standard
 settings similar to how GNOME, macOS or Windows do it. 
-These should be pretty self-explanatory, they include things like Wi-Fi,
+These should be pretty self-explanatory and include things like Wi-Fi,
 wallpaper, audio, keyboard layout, mouse sensitivity and more. 
 
 The control panel can be opened by ++super+left++ clicking on the status text,
 with ++super+ctrl+c++, from the start menu or by typing `ins settings` in the
 terminal.
 
-For the command reference, see [ins CLI](ins.md).
+For the command reference, see [the `ins settings` documentation](ins.md#settings).
 
 ## Use it in your own setup
 
@@ -52,8 +52,8 @@ opening a category or setting and listing available IDs, lives in
 Colors are remembered for future use. The `random` command fetches from Wallhaven
 and applies the instantOS logo overlay unless `--no-logo` is passed.
 
-See [the `ins wallpaper` documentation](ins.md#wallpaper) for the current
-commands, options, examples, and supported environments.
+See [the `ins wallpaper` documentation](ins.md#wallpaper) for commands,
+options, and supported environments.
 
 ## Theming
 
@@ -61,10 +61,10 @@ commands, options, examples, and supported environments.
 
 Most applications on instantOS have built-in theming support which is documented
 elsewhere. 
-This includes but is not limited to the following
+These include:
 
-- instantMENU — see [the instantMENU docs](/development/instantMENU)
-- instantWM — see [instantWM themes](/docs/wmsettings#themes)
+- instantMENU (see [the instantMENU docs](/development/instantMENU))
+- instantWM (see [instantWM themes](/docs/wmsettings#themes))
 - Kitty
 - Sway
 - Hyprland
@@ -72,14 +72,14 @@ This includes but is not limited to the following
 - Fuzzel
 - Rofi
 
-Theme away, instantOS will stop updating the dotfiles for any file you change. 
+Theme away. instantOS will stop updating the dotfiles for any file you change. 
 `ins dot reset <filename>` can be used to reset any dotfile to the default. 
 
 
 ### GTK
 
 There is a GTK theme section in the Appearance tab of the settings panel. 
-On X11, changing this might require restarting GTK applications for this to take
+On X11, you might need to restart GTK applications for the change to take
 effect. 
 
 :::info

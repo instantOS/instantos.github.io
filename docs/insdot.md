@@ -130,8 +130,7 @@ There are two scopes:
   which files that repository is willing to accept.
 
 This is mainly useful for files that may exist alongside useful config, but
-should never be committed, such as API keys, tokens, machine-local secrets, or
-other sensitive state.
+should never be committed, such as API keys, tokens, or other secrets.
 
 ### Home-scoped `.insignore`
 
@@ -176,7 +175,7 @@ If that repository is selected as the destination:
 - `ins dot add --all .ssh` adds other files in `.ssh`, but skips
   `id_ed25519` and `id_rsa`
 - `ins dot add .ssh/id_ed25519` refuses to add the file to that repo
-- the skip is printed in the output so it is obvious why the file was not added
+- the skip is reported in the command output
 
 This is a good safety net for public dotfile repositories where certain files
 should never be tracked by accident.
@@ -210,13 +209,13 @@ Paths are stored in `~/.config/instant/dots.toml` under `skipped_paths`.
 
 Common use cases:
 
-- **Migrating between configs** — you switched from `init.vim` to `init.lua`
-  and want the old file gone for good instead of restored on every update.
-- **Machine-local exclusions** — a file is useful on other machines but you
-  don't want it on this one (e.g., GPU-specific Xorg config).
-- **Temporary removal** — stop a file from being managed without deleting it
-  from the repo or having to manually modify it to trigger the user-modified
-  skip (which only works while the file still exists).
+- You switched from `init.vim` to `init.lua` and want the old file gone for
+  good instead of restored on every update.
+- A file is useful on other machines but you don't want it on this one (e.g.,
+  GPU-specific Xorg config).
+- You want to stop managing a file without deleting it from the repo, and
+  without modifying it by hand to trigger the user-modified skip (which only
+  works while the file still exists).
 
 This is different from `.insignore` files, which only prevent files from
 being *added* to a repository. `ins dot skip` prevents already-tracked

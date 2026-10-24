@@ -561,6 +561,86 @@ instantos_logo_animation() {
 	trap - INT TERM HUP QUIT
 }
 
+# shellcheck shell=sh
+# The public key is bundled so installation never depends on a keyserver.
+# Keep this snapshot in sync with the vendored instantos-keyring public key.
+bootstrap_instant_keyring() (
+	instant_conf=${1:-/etc/pacman.conf}
+	instant_master=E5C4740F883910B29694D6BE10DA645A82CF5206
+	instant_signer=86D0589DC0EC55E4E5DFCE4436276C1C0A17CCD1
+	instant_gpgdir=$(pacman-conf --config "$instant_conf" GPGDir) || return 1
+	case "$instant_gpgdir" in
+	/*) ;;
+	*)
+		echo "Invalid pacman GPGDir: $instant_gpgdir" >&2
+		return 1
+		;;
+	esac
+	instant_tmp=$(mktemp -d) || return 1
+	trap 'rm -rf -- "$instant_tmp"' EXIT
+	chmod 700 "$instant_tmp" || return 1
+	cat >"$instant_tmp/public.asc" <<'INSTANTOS_PUBLIC_KEY'
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEao8erhYJKwYBBAHaRw8BAQdAz6DdUv1yPniksezj/bp66MMNvwfnSJuH7fbL
+RnQg9hK0J2luc3RhbnRPUyBQYWNrYWdlcyA8aGVsbG9AaW5zdGFudG9zLmlvPoiQ
+BBMWCgA4FiEE5cR0D4g5ELKWlNa+ENpkWoLPUgYFAmqPHq4CGwEFCwkIBwIGFQoJ
+CAsCBBYCAwECHgECF4AACgkQENpkWoLPUgYZbwD+O5dVIT+xahnPkWXeTy8iow0N
+UADqYXAhigVm5wHjUCcA/RidbEHS6SbXeiqYHnsb7b4Yx+bjXmyRMNMRkshdffoN
+uDMEao/85RYJKwYBBAHaRw8BAQdAwcKDRw77X2duANRsdCnx2IbfxQHtGLUw8uK3
+3TI+PaqI9QQYFgoAJhYhBOXEdA+IORCylpTWvhDaZFqCz1IGBQJqj/zlAhsCBQkD
+wmcAAIEJEBDaZFqCz1IGdiAEGRYKAB0WIQSG0FidwOxV5OXfzkQ2J2wcChfM0QUC
+ao/85QAKCRA2J2wcChfM0ZytAP9kVeA/bnKTBrRY/yj+XEwRtmbY3QZUSGfvA27Y
+6qYlTQEA6XMO9HVQu3Nfe1gFjRHVSH5UTSXNpdFtXucaYctXeAmVnAEA9noFaRWg
+9fh4u37WMAciVTRD3JKP0TvfMfTiX6/9OlEBAN7Y44EQmYTTD/KSKmm4A8hCYy71
+KAhi4hmd3fp0FMoO
+=+5Jk
+-----END PGP PUBLIC KEY BLOCK-----
+INSTANTOS_PUBLIC_KEY
+	# Validate both fingerprints before changing pacman's keyring. A key file
+	# containing any additional primary key is rejected.
+	gpg --homedir "$instant_tmp" --batch --with-colons --with-subkey-fingerprint \
+		--show-keys "$instant_tmp/public.asc" >"$instant_tmp/listing" || return 1
+	awk -F: -v master="$instant_master" -v signer="$instant_signer" '
+        $1 == "pub" { kind = "pub"; count++ }
+        $1 == "sub" { kind = "sub" }
+        $1 == "fpr" && kind == "pub" && $10 != master { bad = 1 }
+        $1 == "fpr" && kind == "sub" && $10 == signer { found = 1 }
+        END { exit !(count == 1 && !bad && found) }
+    ' "$instant_tmp/listing" || {
+		echo "Bundled instantOS key does not match the pinned fingerprints" >&2
+		return 1
+	}
+	instant_pacman_key() {
+		if [ "$(id -u)" -eq 0 ]; then
+			pacman-key --gpgdir "$instant_gpgdir" "$@"
+		else
+			sudo pacman-key --gpgdir "$instant_gpgdir" "$@"
+		fi
+	}
+	instant_pacman_key --init || return 1
+	instant_pacman_key --add "$instant_tmp/public.asc" || return 1
+	instant_pacman_key --lsign-key "$instant_master" || return 1
+	instant_pacman_key --updatedb || return 1
+	# Fail rather than reporting success for a revoked or expired installed key.
+	if [ "$(id -u)" -eq 0 ]; then
+		gpg --homedir "$instant_gpgdir" --batch --with-colons --list-keys "$instant_master" \
+			>"$instant_tmp/installed" || return 1
+	else
+		# shellcheck disable=SC2024 # The caller owns this temporary output file.
+		sudo gpg --homedir "$instant_gpgdir" --batch --with-colons --list-keys "$instant_master" \
+			>"$instant_tmp/installed" || return 1
+	fi
+	awk -F: '
+        $1 == "pub" { trusted = ($2 == "f" || $2 == "u") }
+        $1 == "sub" && trusted && $2 !~ /^[redi]$/ && $12 ~ /s/ { usable = 1 }
+        END { exit !usable }
+    ' "$instant_tmp/installed" || {
+		echo "instantOS signing key is missing, unusable, or untrusted after import" >&2
+		return 1
+	}
+)
+
 # -------------------------------------------------------------
 # Environment & Command checks
 # -------------------------------------------------------------
@@ -638,7 +718,7 @@ set_catppuccin_tty() {
 	printf '%s[0m' "$esc"
 }
 
-# Initialize and refresh the Arch keyring, escalating only these commands when needed.
+# Initialize both repository keyrings before the first database sync.
 # Any failure is fatal because the following OS installation depends on pacman.
 prepare_live_keyring() {
 	command -v pacman-key >/dev/null 2>&1 || fatal "required command 'pacman-key' not found"
@@ -648,10 +728,12 @@ prepare_live_keyring() {
 	if [ "$(id -u)" -eq 0 ]; then
 		pacman-key --init || fatal "failed to initialize the package keyring"
 		pacman-key --populate archlinux || fatal "failed to populate the package keyring"
+		bootstrap_instant_keyring || fatal "failed to prepare the instantOS signing key"
 		pacman -Sy --needed archlinux-keyring --noconfirm || fatal "failed to update the Arch Linux keyring"
 	elif command -v sudo >/dev/null 2>&1; then
 		sudo pacman-key --init || fatal "failed to initialize the package keyring"
 		sudo pacman-key --populate archlinux || fatal "failed to populate the package keyring"
+		bootstrap_instant_keyring || fatal "failed to prepare the instantOS signing key"
 		sudo pacman -Sy --needed archlinux-keyring --noconfirm || fatal "failed to update the Arch Linux keyring"
 	else
 		fatal "preparing the package keyring requires root permissions"
@@ -1194,6 +1276,54 @@ download_release_asset() {
 	fi
 }
 
+# Hand off to the freshly installed CLI once the artifacts are in place:
+# unattended with a questions config when one was provided, otherwise the
+# interactive instantOS installer. A downloaded questions file needs the shell
+# to stay alive until the CLI exits so it can remove the temporary copy.
+launch_os_installer() {
+	if ! should_launch_os_installer; then
+		return 0
+	fi
+
+	if [ -n "$UNATTENDED_CONFIG" ]; then
+		case "$UNATTENDED_CONFIG" in
+		http://* | https://*)
+			downloaded_config=$(mktemp /tmp/instant_questions.XXXXXX.toml)
+			trap 'rm -f "$downloaded_config"' EXIT
+			trap 'exit 130' INT
+			trap 'exit 143' TERM
+			trap 'exit 129' HUP
+			log "Downloading installation configuration from $UNATTENDED_CONFIG..."
+			if ! curl -fsSL "$UNATTENDED_CONFIG" -o "$downloaded_config"; then
+				fatal "failed to download configuration from $UNATTENDED_CONFIG"
+			fi
+			log "Starting instantOS unattended installer..."
+			if [ "$DRY_RUN" -eq 1 ]; then
+				"$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$downloaded_config"
+			else
+				"$INSTALL_DIR/$BIN_NAME" arch exec -f "$downloaded_config"
+			fi
+			exit $?
+			;;
+		*)
+			[ -f "$UNATTENDED_CONFIG" ] || fatal "configuration file not found: $UNATTENDED_CONFIG"
+			UNATTENDED_CONFIG=$(cd "$(dirname "$UNATTENDED_CONFIG")" && pwd)/$(basename "$UNATTENDED_CONFIG")
+			;;
+		esac
+
+		log "Starting instantOS unattended installer..."
+		if [ "$DRY_RUN" -eq 1 ]; then
+			exec "$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$UNATTENDED_CONFIG"
+		else
+			exec "$INSTALL_DIR/$BIN_NAME" arch exec -f "$UNATTENDED_CONFIG"
+		fi
+	else
+		log "Starting instantOS installer..."
+		# The CLI configures networking as the desktop user, then escalates itself.
+		exec "$INSTALL_DIR/$BIN_NAME" arch install
+	fi
+}
+
 # Coordinate validation, artifact installation, cleanup, and optional OS handoff.
 main() {
 	parse_args "$@"
@@ -1264,37 +1394,7 @@ main() {
 	cleanup_tmpdir
 	trap - EXIT INT TERM HUP
 
-	# Launch instantOS installer if on live disk or requested
-	if should_launch_os_installer; then
-		if [ -n "$UNATTENDED_CONFIG" ]; then
-			case "$UNATTENDED_CONFIG" in
-			http://* | https://*)
-				downloaded_config=$(mktemp /tmp/instant_questions.XXXXXX.toml)
-				log "Downloading installation configuration from $UNATTENDED_CONFIG..."
-				if ! curl -fsSL "$UNATTENDED_CONFIG" -o "$downloaded_config"; then
-					rm -f "$downloaded_config"
-					fatal "failed to download configuration from $UNATTENDED_CONFIG"
-				fi
-				UNATTENDED_CONFIG="$downloaded_config"
-				;;
-			*)
-				[ -f "$UNATTENDED_CONFIG" ] || fatal "configuration file not found: $UNATTENDED_CONFIG"
-				UNATTENDED_CONFIG=$(cd "$(dirname "$UNATTENDED_CONFIG")" && pwd)/$(basename "$UNATTENDED_CONFIG")
-				;;
-			esac
-
-			log "Starting instantOS unattended installer..."
-			if [ "$DRY_RUN" -eq 1 ]; then
-				exec "$INSTALL_DIR/$BIN_NAME" arch exec --dry-run -f "$UNATTENDED_CONFIG"
-			else
-				exec "$INSTALL_DIR/$BIN_NAME" arch exec -f "$UNATTENDED_CONFIG"
-			fi
-		else
-			log "Starting instantOS installer..."
-			# The CLI configures networking as the desktop user, then escalates itself.
-			exec "$INSTALL_DIR/$BIN_NAME" arch install
-		fi
-	fi
+	launch_os_installer
 
 	print_summary
 }
