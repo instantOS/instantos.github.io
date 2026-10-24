@@ -21,6 +21,7 @@ npx skills add instantOS/instantos.github.io
 - [instantWM documentation](instantwm.md)
 - [Keybindings](hotkeys.md)
 - [ins CLI reference](ins.md)
+- [Password management](pass.md)
 - [resolvething duplicate and Syncthing conflict cleanup](resolvething.md)
 - [WM configuration](wmsettings.md)
 - [instantwmctl reference](instantwmctl.md)

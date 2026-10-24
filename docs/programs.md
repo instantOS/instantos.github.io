@@ -42,9 +42,17 @@ See [instantwmctl](instantwmctl.md) for the complete command reference.
 The custom instantOS installer, built into `ins`. See [the installation guide](insarch.md).
 
 
-## instantPASS
+## ins pass
 
-An instantMENU GUI for the unix-pass password manager with some extra features
+The password-store picker and management interface built into `ins`. It supports
+passwords, OTP codes, generation, editing, and decrypted file export.
+
+See [Password management](pass.md) for setup and usage.
+
+### instantPASS (deprecated)
+
+instantPASS has been replaced by `ins pass`. Use `ins pass` for quick access and
+`ins pass menu` for password-store management.
 
 ## instantMENU
 

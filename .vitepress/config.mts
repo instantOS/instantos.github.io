@@ -138,6 +138,7 @@ export default defineConfig({
             { text: 'Neovim', link: '/docs/neovim' },
             { text: 'File Search', link: '/docs/filesearch' },
             { text: 'Clipboard History', link: '/docs/clip' },
+            { text: 'Passwords', link: '/docs/pass' },
             { text: 'Notifications', link: '/docs/notify' },
             { text: 'Programs', link: '/docs/programs' },
             { text: 'Quick Menu', link: '/docs/quickmenu' },

@@ -12,6 +12,7 @@ The larger `ins` subcommands have their own pages:
 - [ins resolvething](resolvething.md)
 - [ins notify](notify.md)
 - [ins clip](clip.md)
+- [ins pass](pass.md)
 
 This page covers the remaining core commands.
 
@@ -209,14 +210,13 @@ Supported targets:
 - `ins setup instant-wm`
 - `ins setup niri`
 
-## Scratchpad, Menu, Launch, and Pass helpers
+## Scratchpad, Menu, and Launch helpers
 
 These utility commands don't have their own page yet:
 
 - `ins scratchpad`
 - `ins menu` (script dialogs; see [Menu API for scripts](/development/menu))
 - `ins launch`
-- `ins pass` (password-store picker)
 - `ins welcome` (opens itself in a terminal when launched graphically)
 
 `ins launch` is the interactive application launcher. It ranks entries with a
