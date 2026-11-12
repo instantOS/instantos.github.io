@@ -19,20 +19,17 @@ will however require a restart to become visible.
 "You don't need to restart Linux after an update" does not apply to desktops.
 You *can* use your computer without restarting, but things will get buggy or
 break. This is not an instantOS specific issue, that is just how graphical
-desktops work, if Vulkan does not work, then you might have forgotten to restart
+desktops work. If Vulkan does not work, you might have forgotten to restart
 after an update. 
 :::
 
 ## `ins update`
 
-The legacy `instantupdate` package has been replaced by the update command built
-into instantCLI. Run `ins update` in a
-terminal to update the entire system, including pacman packages, config files
-and anything else which is found to be outdated. Most of the work here is being
-done by `topgrade` as a universal updater, with some instantOS specific
-additions. If `topgrade` is not installed yet, `ins update` installs it first.
+`ins update` updates the entire system, including pacman packages, config files
+and anything else which is found to be outdated. Most of the work is done by
+`topgrade` as a universal updater, with some instantOS specific additions. If `topgrade` is not installed yet, `ins update` installs it first.
 
-In the current instantCLI implementation, `ins update` also:
+`ins update` also:
 
 - updates managed dotfiles
 - syncs game saves

@@ -21,11 +21,11 @@ You can request assistance, report bugs, or chat with the community in the follo
 
 ## Troubleshooting system issues
 
-instantOS includes a diagnostic tool to check and fix common system problems:
-
-Checks include: network connectivity, locale, pending updates, disk health, swap status, display configuration, and more.
-See [the `ins doctor` command reference](/docs/ins#doctor) for the current
-commands and options.
+instantOS includes a diagnostic tool, `ins doctor`, that checks for and fixes
+common system problems such as network connectivity, locale, pending updates,
+disk health, swap status and display configuration.
+See [the `ins doctor` command reference](/docs/ins#doctor) for commands and
+options.
 
 
 ## Does it use its own repos
@@ -38,9 +38,9 @@ everything else the Arch repos are used.
 Yes. During an `ins arch install` with automatic partitioning, the installer
 asks whether you want to enable disk encryption. It uses **LUKS on LVM** with
 a dedicated LUKS container, LVM volume group (`instantOS`), and separate
-logical volumes for swap and root. Encryption is handled automatically —
-partitioning, luksFormat, LVM setup, mkinitcpio hooks (`sd-encrypt`), and
-GRUB boot parameters are all configured for you.
+logical volumes for swap and root. Partitioning, luksFormat, LVM setup,
+mkinitcpio hooks (`sd-encrypt`) and GRUB boot parameters are all configured
+for you.
 
 If you prefer to set it up manually, select manual partitioning instead.
 
@@ -170,13 +170,12 @@ base system and previously not accessible to non-technical people.
 
 ## Wayland
 
-instantWM now supports both X11 and Wayland! The Rust rewrite includes native Wayland support.
-You can choose which session to use:
+instantWM supports both X11 and Wayland. You can choose which session to use:
 
 - **X11**: instantwm-x11 (traditional X11 session)
 - **Wayland**: instantwm-wayland (native Wayland compositor)
 
-Wayland support includes most features from the X11 version, with continued development to maintain feature parity.
+The Wayland session has most features of the X11 version, and work on full parity is ongoing.
 Both sessions share the same configuration file at `~/.config/instantwm/config.toml`.
 
 ## Can I change keybindings
@@ -214,7 +213,7 @@ systemd-swap.
 ## Calamares
 
 instantOS uses its own installer, `ins arch`, instead of Calamares. The older
-Bash implementation was called `instantARCH`.
+Bash implementation was called `instantARCH`. Reasons for not using Calamares:
 
 - Calamares has higher system
 requirements than the OS itself which would lock out a potential userbase.

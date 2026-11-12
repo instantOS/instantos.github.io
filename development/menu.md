@@ -13,10 +13,10 @@ Every dialog accepts `-b/--backend` to select how it is displayed:
 | `tui` | In-terminal UI using fzf |
 | `scratchpad` | Hosted terminal through the [menu server](#menu-server), auto-spawned on first use |
 
-With `auto`, `INS_MENU_BACKEND` wins when set; otherwise a graphical session
+With `auto`, `INS_MENU_BACKEND` wins when set. Otherwise, a graphical session
 (`WAYLAND_DISPLAY`/`DISPLAY` set) with piped input or output uses the native
-overlay — or the hosted terminal where no native dialog exists (`pick` and
-`chord`) — and anything else uses the terminal UI. The global
+overlay, or the hosted terminal for dialogs that have no native version (`pick`
+and `chord`). Anything else uses the terminal UI. The global
 `--menu-fallback` flag forces transient kitty terminals instead of the
 persistent server.
 
@@ -64,8 +64,8 @@ slow-producer | ins menu choice --prompt "Choose:"
 ### Custom action bindings
 
 `--bind KEY:LABEL` registers a global action with a visible hint (repeatable).
-It works on all backends, including streamed input, `--allow-multiple`, `--items`, and
-`--frecency-cache`:
+It works on all backends and combines with streamed input, `--allow-multiple`,
+`--items`, and `--frecency-cache`:
 
 ```bash
 printf '%s\n' alpha beta | ins menu choice --bind 'ctrl-e:Edit' --bind 'alt-s:Save'
@@ -119,7 +119,7 @@ ins menu slide --min 0 --max 255 --step 1 --big-step 16 \
     --label "Red" --command mycolorsetter --red
 ```
 
-Commands run asynchronously with output suppressed to avoid UI interference. The command only executes when the value actually changes.
+Commands run asynchronously with their output suppressed so they don't disturb the UI, and only when the value changes.
 
 ## Chord navigator
 
@@ -141,7 +141,7 @@ The sequence you type is printed to stdout on selection. Use `--stdin` to read c
 
 ## Menu Server
 
-The menu server provides persistent GUI dialogs through a client-server architecture.
+The menu server runs persistently in a scratchpad terminal and displays menus there when clients request them.
 
 ### How it works
 

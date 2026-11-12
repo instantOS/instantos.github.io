@@ -52,7 +52,7 @@ Hold Super and left-drag a tiled window to preview a new position:
 - Release it outside a valid target to cancel.
 
 Hold Super and right-drag near an edge to resize a tiled window. Floating
-windows use the familiar free move and resize gestures instead; see
+windows use the usual move and resize gestures instead; see
 [Floating windows](floating.md).
 
 ## Starting arrangements
@@ -71,7 +71,7 @@ preset.
 | `floating` | Freely positioned windows |
 | `maximized` | One tiled window visible at a time |
 
-Use ++super+c++ for the Grid preset, ++super+f++ for floating presentation,
+Use ++super+c++ for the Grid preset, ++super+f++ for floating presentation, and
 ++super+w++ to toggle between tiled and maximized presentation.
 ++super+ctrl+comma++ and ++super+ctrl+period++ cycle the available presets.
 Left/right clicking the layout indicator cycles them; middle-clicking applies

@@ -26,10 +26,10 @@ corresponding number key. To move a window to another tag, use Super + Shift + T
 To move a window to a tag and follow it there, use Super + Alt + Tag-number.
 You can also drag a tag indicator to another tag to move the selected window.
 Hold Alt when releasing to move the window and follow it to the destination.
-The same rule applies when dropping a floating or tiled window on a tag:
-without Alt it moves there while your current view stays put; with Alt it moves
-there and the destination tag becomes the active view. The modifier is read at
-release, so you can press or release Alt while dragging.
+Dropping a floating or tiled window on a tag works the same way: without Alt,
+the window moves and your view stays put; with Alt, the destination tag
+becomes the active view. Alt is checked on release, so you can press or
+release it mid-drag.
 
 ### Activating multiple tags
 
@@ -37,3 +37,47 @@ Multiple tags can be toggled so all windows assigned to these tags become visibl
 The key binding to do this is ++super+ctrl+"Tag-number"++. Right clicking on the
 tag indicator achieves the same thing. Actions that focus on a single tag like
 following a window or clicking on the indicator will deactivate all additional tags.
+
+### Naming tags
+
+Tags are named `1` … `20` plus a scratchpad tag `s` by default. Change them in
+`config.toml` — the number of entries is the number of tags:
+
+```toml
+[tags]
+names = ["1", "2", "3", "web", "mail", "chat", "media", "s"]
+```
+
+For a quick, session-only relabel, `instantwmctl tag name "web"` renames the
+tags in the current view, `instantwmctl tag list` shows every tag with its
+name, icon, and state, and `instantwmctl tag reset` goes back to the
+configured names. A `reload` also restores them.
+
+### Tag icons
+
+Every tag can carry a second label — usually a nerd-font glyph — and the bar
+can switch between names and icons with ++super+alt+s++ (or permanently with
+`[tags] show_icons = true`):
+
+```toml
+[fonts]
+icon_family = "Symbols Nerd Font"   # any font with the glyphs you use
+
+[tags]
+names = ["1", "2", "3", "web", "mail", "s"]
+icons = ["", "", "", "", "", ""]   # positional: index i is the icon for tag i
+```
+
+The icon list may be shorter than the name list (the remaining tags keep
+their names); an empty string means "no icon", and the name is shown for that
+tag even in icon mode.
+
+### How many tags the bar shows
+
+The bar draws up to `[bar] tag_slots` cells (9 by default). Fewer cells suit
+wordy names, more suit icons. When you have more tags than cells, the last
+cell shows the current tag instead of a fixed one, so every tag stays
+reachable. Both the cell count and "hide tags without windows"
+(`[bar] show_empty_tags`, ++super+ctrl+shift+s++) can be set per monitor in
+its `[monitors."<output>"]` entry — see
+[Monitor configuration](wmsettings.md#monitor-configuration).

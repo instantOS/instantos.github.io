@@ -10,7 +10,7 @@ Configure the status bar by setting `status_command` in your config:
 status_command = "i3status-rs"
 ```
 
-This spawns an external command that outputs status text. The command should write to stdout.
+instantWM runs this command and displays the status text it writes to stdout.
 
 ### Default Status
 
@@ -106,4 +106,4 @@ If the status bar is not working:
 1. Check that `status_command` is set in your config
 2. Verify the command runs standalone
 3. Check instantWM logs for errors
-4. Try `instantwmctl update-status "test"` to verify basic functionality
+4. Run `instantwmctl update-status "test"` to check whether the bar itself works

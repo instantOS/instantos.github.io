@@ -2,7 +2,7 @@
 
 instantWM is customized through a TOML configuration file at `~/.config/instantwm/config.toml`.
 
-After editing the config file, you can either restart instantWM or use `instantwmctl` to apply changes dynamically for certain settings.
+After editing the config file, restart instantWM, or use `instantwmctl` to apply some settings without restarting.
 
 ## Configuration File Location
 
@@ -10,7 +10,7 @@ After editing the config file, you can either restart instantWM or use `instantw
 ~/.config/instantwm/config.toml
 ```
 
-If the file doesn't exist, instantWM will use sensible defaults.
+If the file doesn't exist, instantWM uses its defaults.
 
 ## Config Includes
 
@@ -37,19 +37,19 @@ tags, window titles, borders and close buttons together. Set the top-level
 theme = "nord"
 ```
 
-That single line replaces the entire `[colors]` table — every colour is derived
-from the theme's palette. Themes are resolved when the config is read, so run
+The theme supplies the entire `[colors]` table, with every colour derived from
+the theme's palette. Themes are resolved when the config is read, so run
 `instantwmctl reload` (or restart instantWM) after changing `theme`.
 
 ### Built-in themes
 
 | Name | Description |
 |------|-------------|
-| `instantos` | The default theme. Dark background with blue, green, yellow and red accents. |
+| `classic` | The classic instantOS look: dark background with blue, green, yellow and red accents. |
 | `catppuccin-latte` | Light pastel theme (Catppuccin Latte). |
 | `catppuccin-frappe` | Dark, muted theme (Catppuccin Frappé). |
 | `catppuccin-macchiato` | Dark theme (Catppuccin Macchiato). |
-| `catppuccin-mocha` | Dark theme (Catppuccin Mocha). |
+| `catppuccin-mocha` | Dark theme (Catppuccin Mocha). This is the default when no `theme` is set. |
 | `nord` | Dark, cool-blue theme (Nord). |
 | `gruvbox` | Dark, warm earth-tone theme (Gruvbox). |
 
@@ -74,8 +74,8 @@ choice (and any overrides) in its own file and pull it in with
 [includes](#config-includes).
 
 :::info
-An unknown theme name is not fatal. instantWM prints a warning and falls back to
-the default theme (`instantos`) — the rest of your config still loads normally.
+If the theme name is unknown, instantWM prints a warning and falls back to the
+default theme (`catppuccin-mocha`). The rest of your config still loads normally.
 :::
 
 ### Switching themes at runtime
@@ -88,15 +88,19 @@ instantwmctl theme nord      # switch to a theme
 instantwmctl theme --list    # list available themes
 ```
 
-The bar, borders and tags recolour immediately. This is a runtime change only —
+The bar, borders and tags recolour immediately. The change is not saved:
 `instantwmctl reload` reverts to whatever `theme` is set to in `config.toml`.
 To make a theme permanent, set `theme = "..."` in the config.
 
 ## Full Configuration Example
 
 ```toml
-# Fonts - first font is primary, others are fallbacks
-fonts = ["Cantarell-Regular:size=12", "JetBrains Mono:size=11"]
+# Fonts - separate families and sizes for text and icons
+[fonts]
+text_family = "Inter"
+text_size = 12.0
+icon_family = "Symbols Nerd Font"
+icon_size = 16.0
 
 # Color configuration
 [colors.tag.normal]
@@ -240,6 +244,31 @@ Each element has three colors:
 - `float_focus`: Focused floating window border
 - `snap`: Snapped window border
 
+## Fonts
+
+The `[fonts]` section configures the text and icon fonts used by the status
+bar. Text and icons have separate families and sizes (logical pixels):
+
+```toml
+[fonts]
+text_family = "Inter"             # font family for bar text
+text_size = 12.0                  # bar text size in logical pixels
+icon_family = "Symbols Nerd Font" # font family for icons (Nerd Fonts glyphs)
+icon_size = 16.0                  # icon size in logical pixels
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `text_family` | string | `"Inter"` | Font family used for bar text |
+| `text_size` | float | `12.0` | Bar text size in logical pixels |
+| `icon_family` | string | `"Symbols Nerd Font"` | Font family used for icons |
+| `icon_size` | float | `16.0` | Icon size in logical pixels |
+
+Both families must be non-empty and both sizes positive. The older list form
+(`fonts = ["Inter:size=12", ...]`) is no longer accepted. When
+[`bar.height`](#status-bar) is `0` (the default), the bar height is derived
+from these font metrics.
+
 ## Keyboard Configuration
 
 The `[keyboard]` section configures XKB keyboard layouts:
@@ -277,12 +306,13 @@ pointer_accel = 0.3
 ```
 
 Valid values:
-- `tap`: "enabled" or "disabled"
-- `natural_scroll`: "enabled" or "disabled"
+- `tap`: "enabled" or "disabled" (the CLI spellings "on" / "off" are also accepted)
+- `natural_scroll`: "enabled" or "disabled" ("on" / "off" also accepted)
 - `accel_profile`: "flat" or "adaptive"
 - `pointer_accel`: Floating point number
 - `scroll_factor`: Floating point multiplier applied to scroll events (defaults to `1.0` when unset)
-- `left_handed`: "enabled" or "disabled" — swaps the primary/secondary buttons for left-handed use
+- `left_handed`: "enabled" or "disabled" ("on" / "off" also accepted); swaps the primary/secondary buttons for left-handed use
+- `map_to_output`: Output name (e.g. `"eDP-1"`) that receives absolute events from this device, such as a drawing tablet; use `"*"` to map the device across the complete active output layout
 
 ## Layout tree and gaps
 
@@ -315,20 +345,18 @@ new_window_placement = "auto-resize"
 `new_window_placement` controls where a window that is not yet in a tag's
 persistent tiling tree gets inserted:
 
-- `"auto-resize"` (default) — place the newcomer automatically and resize the
+- `"auto-resize"` (default): place the newcomer automatically and resize the
   existing tree to give it room.
-- `"auto"` — split the best existing leaf without deliberately rebalancing the
+- `"auto"`: split the best existing leaf without deliberately rebalancing the
   rest of the tree.
-- `"force"` — give the first newcomer a leading half of a new vertical root
+- `"force"`: give the first newcomer a leading half of a new vertical root
   split; consecutive untouched insertions adapt that region into balanced rows
   or columns, and any manual tree edit starts a new sequence.
 
-Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0.
+Inner gaps are split evenly between adjacent windows. Outer gaps shrink the layout area inward from all four edges. Both values are clamped to a minimum of 0. Gaps do not apply to floating windows.
 
-Floating windows are not affected.
-
-Layout presets such as Grid are one-shot tree rewrites. These settings govern
-the manual edits which remain afterward; see [Layouts](layouts.md).
+Layout presets such as Grid rewrite the tree once. The settings above apply to
+the manual edits you make afterwards; see [Layouts](layouts.md).
 
 ## Floating windows and click-to-raise
 
@@ -344,10 +372,44 @@ without changing the stacking order, which keeps manually arranged floating
 windows where you put them. Set it to `true` if you prefer each click to also
 bring the window to the front.
 
-## Animation speed
+The setting also lives as `raise_floating_on_click` inside the
+[`[window]`](#window-behaviour) section; either location enables it.
+
+## Window behaviour
+
+The `[window]` section controls border width, snapping and how instantWM
+honours client-provided window hints:
+
+```toml
+[window]
+border_width_px = 3     # WM border width in pixels
+snap_threshold = 32     # snap distance while dragging (pixels)
+resize_hints = true     # respect client size hints
+decor_hints = true      # honour client decoration requests (X11)
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `border_width_px` | integer | `3` | Width of the WM border drawn around managed windows. Must be non-negative |
+| `snap_threshold` | integer | `32` | Distance in pixels within which a dragged window snaps to screen edges and other windows. Must be non-negative |
+| `resize_hints` | boolean | `true` | Respect clients' size hints when resizing; terminals, for example, then resize in whole rows and columns instead of arbitrary pixels |
+| `decor_hints` | boolean | `true` | X11 only: honour `_MOTIF_WM_HINTS` decoration requests. When a client asks to be drawn without border or title (some games and toolkits do), instantWM draws no border for it. Set to `false` to always draw the configured border regardless of what the client requests. On Wayland, decoration negotiation happens through the `xdg-decoration` protocol instead and is not affected by this key |
+| `focus_follows_mouse` | string | `"normal"` | Pointer-focus policy: `"off"` never moves keyboard focus with the pointer, `"normal"` moves it on physical pointer motion, and `"force"` also moves focus when a scene change puts a different window under the pointer. `instantwmctl config set window.focus_follows_mouse <mode>` overrides this for the session; `reload` restores the configured value |
+| `focus_follows_float_mouse` | boolean | `true` | Whether hover focus also applies to floating windows while a tiling layout is active. Flip it for the session with `instantwmctl config toggle window.focus_follows_float_mouse` |
+| `raise_floating_on_click` | boolean | `false` | Same as the top-level `raise_floating_on_click` key; either location enables it |
+
+Every key can be read and changed at runtime with
+`instantwmctl config get window.<key>` / `instantwmctl config set window.<key> <value>`,
+and booleans can be flipped in one step with
+`instantwmctl config toggle window.<key>`. As with other `config set` calls,
+the change applies immediately but is not persisted; put the value in
+`config.toml` to keep it across reloads and restarts.
+
+## Animations
 
 ```toml
 [animations]
+enabled = true
 # 1.0 = designed speed; 0.5 = half speed (durations doubled);
 # 2.0 = twice as fast (durations halved)
 speed = 1.0
@@ -355,23 +417,29 @@ speed = 1.0
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
+| `enabled` | boolean | `true` | Master switch for window animations. `false` disables them entirely |
 | `speed` | float | `1.0` | Global animation speed multiplier; valid range `0.01`–`100.0` |
 
-Below `1.0` slows animations down, above `1.0` speeds them up. Because
-durations are scaled, a factor of `2.0` does not skip frames — it halves every
-animation's duration. Use `instantwmctl toggle animated` (or
-++super+shift+alt+s++) to disable animations entirely; the speed multiplier
-then has no effect until animations are re-enabled.
+Below `1.0` slows animations down, above `1.0` speeds them up. Durations are
+scaled, so a factor of `2.0` halves every animation's duration rather than
+skipping frames.
 
-The speed can also be changed at runtime:
+`enabled` is the persistent setting; ++super+shift+alt+s++ (bound to the
+`config_toggle` action) or `instantwmctl config toggle animations.enabled`
+flips it for the current session, and `instantwmctl reload` restores the
+configured value.
+
+The speed and switch can also be changed at runtime:
 
 ```bash
 instantwmctl config get animations.speed
 instantwmctl config set animations.speed 1.5
+instantwmctl config get animations.enabled
+instantwmctl config toggle animations.enabled   # prints the new value
 ```
 
-`instantwmctl config set` applies immediately but is not persisted — keep the
-value in `config.toml` for a permanent setting.
+`instantwmctl config set` applies immediately but is not saved. Put the value
+in `config.toml` for a permanent setting.
 
 ## Custom Keybinds
 
@@ -394,7 +462,7 @@ action = "kill"
 [[keybinds]]
 modifiers = ["Super"]
 key = "f"
-action = { unbind = true }
+action = "none"
 
 # Apply a tree preset
 [[keybinds]]
@@ -437,20 +505,34 @@ Simple actions use a string, for example `action = "begin_tree_placement"` or
 - `layout_float`, `layout_maximized`, and `toggle_tiling_maximized`
 - `edge_scratchpad_create` and `edge_scratchpad_toggle`
 
-Do not copy a static action catalog from the web and assume it matches a custom
-build. `instantwm --list-actions` or `instantwmctl action --list` prints the
-authoritative, parser-backed list with descriptions and argument examples.
+For the full list for your build, with descriptions and argument examples, run
+`instantwm --list-actions` or `instantwmctl action --list`.
 
-Structured actions accepted in TOML are:
+Any named action with arguments can use a table containing exactly one action
+name. Give it a string, integer, or boolean for one argument, or an array for
+multiple arguments. For example: `action = { spawn = ["alacritty"] }`,
+`action = { set_layout = "tile" }`, `action = { inc_master_count = 1 }`, or
+`action = { config_toggle = "animations.enabled" }`. The action parser checks
+the name, argument count, and values. The array form, such as
+`action = ["set_layout", "tile"]`, also works. Use `action = "none"` to remove a
+binding. For multiple actions, use
+`action = { sequence = [{ set_layout = "tile" }, { spawn = ["alacritty"] }] }`.
+`{ unbind = true }` is no longer accepted; use `"none"` instead.
 
-- `spawn`: `action = { spawn = ["alacritty"] }`
-- `unbind`: `action = { unbind = true }`
-- `none`: use `action = "none"` to remove a binding (equivalent to `unbind`)
-- `set_layout`: `action = { set_layout = "tile" }`
-- `focus_stack`: `action = { focus_stack = "next" }`
-- `inc_master_count`: `action = { inc_master_count = 1 }`
-- `keyboard_layout`: `action = { keyboard_layout = "us(intl)" }`
-- `set_mode`: `action = { set_mode = "resize" }`
+`config_set` and `config_toggle` reach **any** runtime config key from a
+keybind, so booleans and values do not need a dedicated action:
+
+```toml
+[[keybinds]]
+modifiers = ["Super", "Alt", "Shift", "Ctrl"]
+key = "d"
+action = { config_toggle = "window.decor_hints" }
+
+[[keybinds]]
+modifiers = ["Super", "Alt", "Shift", "Ctrl"]
+key = "g"
+action = { config_set = ["layout.inner_gap", "12"] }
+```
 
 See [Modes](modes.md) for mode-local bindings and the built-in placement mode.
 
@@ -480,11 +562,19 @@ class = "steam"
 title = "Friends List"
 is_floating = "float"
 
-# Pin a game to fullscreen on the second monitor
+# Pin a game to fullscreen on the second monitor (layout position 1)
 [[rules]]
 class = "complex-game"
 is_floating = "float_fullscreen"
-monitor = { index = 1 }
+monitor = 1
+
+# Open a mixer pinned to an exact spot on a specific output, without a border
+[[rules]]
+class = "pavucontrol"
+is_floating = "float"
+monitor = "DP-1"
+geometry = { x = 100, y = 50, width = 800, height = 600 }
+borderless = true
 ```
 
 | Field | Description |
@@ -492,9 +582,11 @@ monitor = { index = 1 }
 | `class` | Match the window's WM class (substring). |
 | `instance` | Match the window's WM instance (substring). |
 | `title` | Match the window title (substring). |
-| `tags` | Bitmask of tags to assign. Bit 0 (value `1`) is tag 1, bit 1 (value `2`) is tag 2, bit 2 (value `4`) is tag 3, and so on. Combine tags with bitwise OR (tags 1 + 3 = `1 | 4` = `5`). The bits are merged into the window's tags; `0` or unset leaves the tags unchanged. |
+| `tags` | Bitmask of tags to assign. Bit 0 (value `1`) is tag 1, bit 1 (value `2`) is tag 2, bit 2 (value `4`) is tag 3, and so on. Combine tags with bitwise OR (tags 1 + 3 = `1 \| 4` = `5`). The bits are merged into the window's tags; `0` or unset leaves the tags unchanged. |
 | `is_floating` | Initial mode: `"tiled"`, `"float"`, `"float_center"`, `"float_fullscreen"`, or `"scratchpad"`. |
-| `monitor` | `"any"` (default) or `{ index = N }` for a specific monitor by 0-based index. |
+| `monitor` | Which monitor the window lands on: an output name (`"DP-1"`), a 0-based layout position (`1`), `"focused"`, `"primary"`, or `"any"` (default). Same grammar as the CLI; see [Monitor selectors](instantwmctl.md#monitor-selectors). |
+| `geometry` | Exact floating placement relative to the target monitor's work area (the usable area below the bar): `{ x = 100, y = 50, width = 800, height = 600 }`. Setting a geometry implies floating placement; the window keeps this exact spot even when monitors are rearranged, because coordinates are relative to the monitor rather than the desktop. |
+| `borderless` | Manage the matched window without the WM border (`true`/`false`, default `false`). |
 
 Only the first matching rule is applied to a window.
 
@@ -502,14 +594,11 @@ Only the first matching rule is applied to a window.
 
 ## Control Commands
 
-Runtime control is provided by `instantwmctl`. See the canonical
+Runtime control is provided by `instantwmctl`. See the
 [instantwmctl command reference](instantwmctl.md) for commands and examples.
-For actions usable in keybindings, `instantwmctl action --list` is the current
-runtime-generated list.
+`instantwmctl action --list` prints the actions usable in keybindings.
 
 ## Runtime Control
-
-instantWM provides the `instantwmctl` command-line tool for runtime control. See the [instantwmctl](instantwmctl.md) documentation for a complete reference.
 
 instantWM reads status text from the X11 root window name property (X11) or writes to the status bar directly (Wayland). Configure a status command in your config:
 
@@ -526,7 +615,7 @@ instantwmctl update-status "My Status"
 ## Custom modes
 
 Modes use the same binding format and can invoke the tree actions above. See
-[Modes](modes.md) for a complete, current example and for customizing the
+[Modes](modes.md) for a full example and for customizing the
 built-in `placement` mode.
 
 ## Startup commands
@@ -546,6 +635,110 @@ exec = ["killall picom; picom"]
 re-run on each config reload, so it suits commands that need to be kept alive
 or restarted when the config changes.
 
+## Hooks
+
+Hooks run an action when something happens in the window manager, such as a
+monitor being plugged in or out. The `action` accepts exactly the same values
+as a [keybind action](#custom-keybinds): named actions, `spawn`, `sequence`,
+`set_layout`, `set_mode`, and so on.
+
+```toml
+# Re-apply wallpaper etc. whenever the monitor setup changes in any way
+[[hooks]]
+event = "monitors_changed"
+action = { spawn = ["sh", "-c", "~/.local/bin/monitors-changed.sh"] }
+
+# Only react to one specific output being plugged in
+[[hooks]]
+event = "monitor_connected"
+monitor = "HDMI-A-1"
+action = { sequence = [{ set_layout = "tile" }, { spawn = ["notify-send", "Docked"] }] }
+
+# Notify whenever any monitor goes away
+[[hooks]]
+event = "monitor_disconnected"
+action = { spawn = ["notify-send", "Monitor disconnected"] }
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `event` | yes | One of the events below |
+| `monitor` | no | Output name to filter on (e.g. `"DP-1"`). Only valid for `monitor_connected` / `monitor_disconnected`. Without it the hook fires for every output. |
+| `action` | yes | Any keybind action |
+
+### Events
+
+| Event | Fires | Per monitor? |
+|-------|-------|--------------|
+| `monitor_connected` | Once for each output that appeared (plugged in or enabled) | yes |
+| `monitor_disconnected` | Once for each output that disappeared (unplugged or disabled) | yes |
+| `monitors_changed` | **Once** whenever the monitor setup changed in any way: outputs added or removed, or their size, position, scale or order changed | no |
+
+If you don't care *what* changed and just want to react to the new setup, use
+`monitors_changed`. Plugging in a dock with two screens runs it once, not
+twice.
+
+Hooks do not fire for the monitors present at startup; use
+[`exec` / `exec_once`](#startup-commands) for startup work.
+
+::: warning
+A hook that changes the output configuration itself (e.g. by running
+`xrandr`) triggers `monitors_changed` again and can loop forever.
+:::
+
+::: details Technical behavior
+- **Order:** when several events happen together they run as: all
+  `monitor_disconnected`, then all `monitor_connected`, then a single
+  `monitors_changed`. Hooks for the same event run in config order.
+- **Detection:** instantWM compares the monitor setup with the one it saw last,
+  once per event-loop iteration and after the layout has been updated. Changes
+  that happen together are combined, and an output that disconnects and
+  reconnects within one iteration fires nothing.
+- **Sources:** changes count regardless of where they come from: physical
+  hotplug, [`[monitors]`](#monitor-configuration) settings (including
+  `enable = false`) on reload, `instantwmctl`, output-management tools like
+  `wlr-randr`, or `xrandr` on X11. Outputs that are physically mirrored into
+  one monitor count as that single monitor.
+- **What counts:** only changes that affect the layout. Refresh rate, VRR, and
+  rotations or flips that keep the output size (e.g. 180°) do not; 90°/270°
+  rotations do, because they change the size. UI-only changes such as a
+  different bar height do not count either.
+:::
+
+### Environment for spawned commands
+
+Processes started by a hook (via `spawn`) receive these extra variables, so a
+single script can handle every case:
+
+| Variable | Example | Description |
+|----------|---------|-------------|
+| `INSTANTWM_HOOK_EVENT` | `monitor_connected` | The event that fired |
+| `INSTANTWM_MONITOR` | `HDMI-A-1` | The output that changed (per-monitor events only) |
+| `INSTANTWM_MONITORS` | `eDP-1 HDMI-A-1` | All current outputs, space separated |
+
+```sh
+#!/bin/sh
+# ~/.local/bin/monitor-hook.sh
+case "$INSTANTWM_HOOK_EVENT" in
+  monitor_connected)    notify-send "Docked: $INSTANTWM_MONITOR" ;;
+  monitor_disconnected) notify-send "Undocked: $INSTANTWM_MONITOR" ;;
+  monitors_changed)     notify-send "Outputs: $INSTANTWM_MONITORS" ;;
+esac
+```
+
+### Validation
+
+Unlike keybinds, an invalid hook makes the whole config fail to load, and the
+error names the offending entry, e.g.
+`hooks[1] (monitor_connected): unknown action 'foo'`.
+
+::: details What counts as invalid
+An unknown `event`, a misspelled field, an unknown action, `"none"`, a missing
+argument (such as `action = { spawn = [] }`), or a `monitor` filter on `monitors_changed`.
+On reload the previous config stays active; at startup the built-in defaults
+are used.
+:::
+
 ## Monitor Configuration
 
 Configure specific monitor settings:
@@ -559,9 +752,20 @@ scale = 1.0
 enable = true
 transform = "normal"      # rotation / reflection
 vrr = "auto"              # variable refresh rate policy
+# Tag display, overridden for this output only (see [Status bar](#status-bar)):
+show_empty_tags = false   # hide tags without windows on this display
+tag_slots = 5             # fewer tag cells on this display
+
+# To mirror another output instead, set mirror = "DP-1" on the mirror head.
+# mirror_fit = "contain"   # Wayland: contain (bars) or cover (crop)
 
 [monitors."HDMI-A-1"]
 position = "left-of:DP-1"
+
+# Defaults for every output without its own entry:
+[monitors."*"]
+show_empty_tags = true
+tag_slots = 7
 ```
 
 Position can be specified as:
@@ -575,16 +779,114 @@ Position can be specified as:
 `vrr` controls variable refresh rate (FreeSync / G-Sync) and accepts `"off"`
 (default), `"auto"` (let the driver decide), or `"on"`.
 
-## Bar height
+Set `mirror = "DP-1"` on a second output to show the source output's content.
+The pair acts as one logical monitor. The mirror's `position` and `scale` are
+ignored. On Wayland, its own resolution, refresh rate, and transform still
+control scanout; `mirror_fit = "contain"` (default) adds bars when aspect ratios
+differ, while `"cover"` crops. X11 uses the source's mode and cannot scale the
+mirror. A disconnected or disabled source leaves the other output independent
+until the source returns. Use `mirror = "none"` to clear the setting.
+
+`show_empty_tags` and `tag_slots` are per-output display settings: each
+resolves as `[monitors."<name>"]` → `[monitors."*"]` → the `[bar]` default,
+field by field, so an entry that sets one of them keeps inheriting the other.
+They apply on startup and `reload`, and can be changed at runtime with
+`instantwmctl monitor set DP-1 --show-empty-tags false --tag-slots 5` or
+`instantwmctl config set monitors.DP-1.tag_slots 5` (which takes effect
+immediately, without a reload).
+
+## Status bar
+
+The `[bar]` section controls the visibility and geometry of the status bar:
 
 ```toml
-# Bar height in logical pixels. 0 = derive from the configured fonts.
-bar_height = 0
+[bar]
+show = true             # show the top status bar
+show_bottom = false     # show the bottom gesture strip
+show_empty_tags = true  # show tags that hold no windows
+tag_slots = 9           # number of tag cells in the bar
+height = 0              # bar height in logical pixels; 0 = derive from fonts
+startmenu_size = 30     # width of the start-menu hit target in logical pixels
 ```
 
-By default (`0`) the bar height is derived from the font metrics of the
-configured `fonts`. Set a fixed pixel height if you want the bar to stay a
-specific size regardless of font choice.
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `show` | boolean | `true` | Show the top status bar. ++super+b++ hides it on the **current tag view only** (a session override, cleared by `reload` or `config set bar.show`) |
+| `show_bottom` | boolean | `false` | Show the bottom gesture strip (a plain background with no contents). Also toggled at runtime with ++super+shift+b++ or `instantwmctl config toggle bar.show_bottom` |
+| `show_empty_tags` | boolean | `true` | Show tags that hold no windows and are not selected. Can be overridden per output (see [Monitor configuration](#monitor-configuration)); ++super+ctrl+shift+s++ (`toggle_hide_tags`) overrides it on the selected monitor for the session, and `reload` restores the configured value |
+| `tag_slots` | integer | `9` | Number of tag cells in the bar, `1`–`21`. Outputs with fewer tags show all of them; when the tag set is wider, the **last cell shows the current tag** instead of a fixed index (the classic dwm overflow cell). Fewer cells suit wordy tag names, more suit icon labels. Can be overridden per output |
+| `height` | integer | `0` | Bar height in logical pixels. `0` derives the height from the configured [fonts](#fonts). Must be non-negative |
+| `startmenu_size` | integer | `30` | Width of the start-menu hit target in logical pixels |
+
+`height` and `startmenu_size` must be non-negative; `tag_slots` must be
+between `1` and `21`.
+
+All of these are runtime-editable, and booleans have a one-step flip:
+
+```bash
+instantwmctl config toggle bar.show_empty_tags   # prints the new value
+instantwmctl config set bar.tag_slots 5
+```
+
+`config set bar.*` re-applies the bar immediately, including dropping any
+per-view bar overrides from ++super+b++.
+
+## System tray
+
+The `[systray]` section controls the tray icons shown in the status bar:
+
+```toml
+[systray]
+show = true            # show tray icons in the bar
+pinning = 0            # monitor the tray lives on; 0 = follow the selected monitor
+spacing = 0            # extra padding around tray icons in logical pixels
+menu_backend = "auto"  # how a tray icon's context menu is presented
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `show` | boolean | `true` | Show system tray icons in the status bar |
+| `pinning` | integer | `0` | `0` keeps the tray on the currently selected monitor; any other value pins it to that 1-based layout position (falling back to the first monitor when fewer are connected) |
+| `spacing` | integer | `0` | Extra spacing around each tray icon in logical pixels |
+| `menu_backend` | string | `"auto"` | How a tray icon's context menu is presented: `"auto"` uses instantMENU when available and falls back to the bar, `"statusbar"` always renders the menu inline in the bar, and `"instantmenu"` always delegates to an external instantMENU process |
+
+## Tags
+
+The `[tags]` section defines the tag set itself and how the bar labels it:
+
+```toml
+[tags]
+# One entry per tag — the list length is the number of tags (max 21).
+# The last entry is the scratchpad tag.
+names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "s"]
+# Optional nerd-font glyphs, positionally matched to `names`.
+# A shorter list leaves the remaining tags without an icon; an empty
+# string always means "no icon".
+icons = ["", "", "", "", "", "", "", "", ""]
+# Show the icons instead of the names (++super+alt+s++ flips this).
+show_icons = false
+```
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `names` | list of strings | `"1"` … `"20"`, `"s"` | Label per tag; the list length is the number of tags. At most 21 entries, each 1–16 bytes and non-empty |
+| `icons` | list of strings | empty | Icon label per tag, positionally matched to `names`. Shown instead of the name while `show_icons` is on. May be shorter than `names` (the rest get no icon); longer is rejected |
+| `show_icons` | boolean | `false` | Show the icons in the tag bar instead of the names. Flip for the session with ++super+alt+s++ or `instantwmctl config toggle tags.show_icons`; `reload` restores the configured value |
+
+Because tag icons usually need a symbol font, point `[fonts] icon_family` at
+one (for example `"Symbols Nerd Font"` or `"Font Awesome 6 Free"`).
+
+`names` and `icons` define the tag set, so they take effect on startup and
+`reload` only — `config set tags.names …` is rejected and says so. To relabel
+a tag for the current session instead:
+
+```bash
+instantwmctl tag name "web"   # rename the tags in the current view
+instantwmctl tag list         # names, icons, the active label, occupancy
+instantwmctl tag reset        # drop session renames, back to config
+```
+
+## Cursor (Wayland)
 
 ## Cursor (Wayland)
 
@@ -644,18 +946,18 @@ These are standard freedesktop variables. `config.toml` takes precedence when se
 |---|---|---|
 | `XKB_DEFAULT_LAYOUT` | `[keyboard].layouts` when the list is empty. Empty string → `us`. | `de` |
 | `XKB_DEFAULT_VARIANT` | Single-layout variant | `nodeadkeys` |
-| `XKB_DEFAULT_OPTIONS` | `[keyboard].options` (`or_else` if unset) | `compose:ralt` |
-| `XKB_DEFAULT_MODEL` | `[keyboard].model` (`or_else` if unset) | `pc105` |
+| `XKB_DEFAULT_OPTIONS` | `[keyboard].options` when unset | `compose:ralt` |
+| `XKB_DEFAULT_MODEL` | `[keyboard].model` when unset | `pc105` |
 | `XCURSOR_THEME` | `[cursor].theme` on Wayland DRM | `Adwaita` |
-| `XCURSOR_SIZE` | `[cursor].size` on Wayland DRM (parsed as `u32`) | `24` |
+| `XCURSOR_SIZE` | `[cursor].size` on Wayland DRM (non-negative integer) | `24` |
 
 ### Variables set by instantWM for children
 
 Do not set these manually; instantWM overwrites them at startup for toolkit and script detection:
 
-* `INSTANTWM=1` — generic "inside instantWM" flag.
-* `INSTANTWM_BACKEND=x11` | `wayland-nested` | `wayland-drm` — selected backend. Checked internally to gate `systemctl --user stop/start` of `xdg-desktop-portal*` and `instantwm-session.target` (DRM only).
-* `INSTANTWM_SOCKET` — published IPC path (see above).
-* On Wayland, `apply_session_env` also exports `WAYLAND_DISPLAY`, `XDG_SESSION_TYPE=wayland`, `XDG_CURRENT_DESKTOP=instantwm`, `XDG_SESSION_DESKTOP=instantwm`, `DESKTOP_SESSION=instantwm`, unsets `DISPLAY` initially, and sets `GDK_BACKEND=wayland`, `QT_QPA_PLATFORM=wayland`, `SDL_VIDEODRIVER=wayland`, `CLUTTER_BACKEND=wayland`. XWayland then sets `DISPLAY=:N`.
+* `INSTANTWM=1`: generic "inside instantWM" flag.
+* `INSTANTWM_BACKEND=x11` | `wayland-nested` | `wayland-drm`: selected backend. instantWM checks it so that `systemctl --user stop/start` of `xdg-desktop-portal*` and `instantwm-session.target` only runs on DRM.
+* `INSTANTWM_SOCKET`: published IPC path (see above).
+* On Wayland, instantWM also exports `WAYLAND_DISPLAY`, `XDG_SESSION_TYPE=wayland`, `XDG_CURRENT_DESKTOP=instantwm`, `XDG_SESSION_DESKTOP=instantwm`, `DESKTOP_SESSION=instantwm`, unsets `DISPLAY` initially, and sets `GDK_BACKEND=wayland`, `QT_QPA_PLATFORM=wayland`, `SDL_VIDEODRIVER=wayland`, `CLUTTER_BACKEND=wayland`. XWayland then sets `DISPLAY=:N`.
 
 Check the current export with `printenv | grep -E '^INSTANTWM|^WAYLAND_DISPLAY|^DISPLAY'` inside a terminal launched from instantWM.
