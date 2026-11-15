@@ -40,7 +40,7 @@ Its instantMENU backend runs natively on Wayland through layer-shell.
 ## Scratchpads
 
 niri has no built-in scratchpad concept, so `ins` implements its own: a
-scratchpad is a terminal with an `app_id` prefixed `scratchpad_`. When hidden
+scratchpad is a terminal with an `app_id` prefixed `org.instantos.scratchpad.`. When hidden
 it is moved to a reserved workspace named `scratchpad`; if no such workspace
 exists, `ins` renames an empty one. `ins scratchpad` and the assist-based
 scratchpads both use this.
