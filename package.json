@@ -3,7 +3,7 @@
     "@catppuccin/vitepress": "^0.1.4"
   },
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.20"
+    "vitepress": "^2.0.0-alpha.21"
   },
   "scripts": {
     "fetch-releases": "node .vitepress/fetch-releases.mjs",
