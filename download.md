@@ -43,9 +43,15 @@ takes care of that.
 
 ## Install instantCLI on an existing system
 
-The same command above installs instantCLI and its `ins` utilities when run
-on an existing Linux installation. In that case, it does not start the
-instantOS system installer.
+Install instantCLI and its `ins` utilities with:
+
+```sh
+curl -fsSL https://instantos.io/install | sh -s -- --cli-only
+```
+
+The `--cli-only` option installs the CLI without starting the instantOS system
+installer. Run the command without `sudo`; the script requests elevated
+permissions when needed.
 
 There is an ongoing effort to make the instantOS utilities available on other
 distros. A large part of them already work, and vanilla Arch is fully
