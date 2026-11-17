@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue'
 import releases from '../../releases.json'
-import { LIVE_ISO, OFFLINE_ISO } from '../../downloads.mjs'
+import { RELEASES_PAGE } from '../../downloads.mjs'
 
-// Metadata supplies optional labels; permanent links always resolve on GitLab.
+// GitHub publishes verified package URLs; the release page is the fallback.
 const release = releases.release
 const offlineSize = releases.offline?.size ?? null
 
@@ -29,16 +29,16 @@ const cards = computed(() => [
     label: 'instantOS Live ISO',
     // Boot it to install, or to try instantOS without touching your machine.
     meta: release ? [formatSize(release.iso.size), release.version] : [formatSize(null)],
-    href: LIVE_ISO,
-    action: 'Download',
+    href: release?.iso.url ?? RELEASES_PAGE,
+    action: release ? 'Download' : 'View releases',
   },
   {
     key: 'offline',
     variant: 'alt',
     label: 'instantOS Offline ISO',
     meta: [formatSize(offlineSize), 'installs without a network'],
-    href: OFFLINE_ISO,
-    action: 'Download',
+    href: releases.offline?.url ?? RELEASES_PAGE,
+    action: releases.offline?.url ? 'Download' : 'View releases',
   },
 ])
 </script>

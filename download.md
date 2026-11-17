@@ -14,10 +14,10 @@ Both instantOS ISOs include the installer, ready to use when you boot them.
 
 <DownloadButtons />
 
-ISOs and checksums are hosted on
-[GitLab releases](https://gitlab.com/instantos/instantos-releases/-/releases).
-The latest two builds are retained. Updating an installed system does not require
-downloading a newer ISO.
+ISOs and checksums are hosted in GitLab’s Package Registry.
+[GitHub Releases](https://github.com/instantOS/instantOS/releases/latest)
+contains the latest download links and release notes. Previous builds are kept
+available. Updating an installed system does not require downloading a newer ISO.
 
 ## Or: 3. Use a standard Arch Linux ISO
 

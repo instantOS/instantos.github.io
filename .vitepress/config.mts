@@ -2,7 +2,8 @@ import { copyFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import { keyboardShortcutsPlugin } from './plugins/keyboard-shortcuts.mjs'
-import { LIVE_ISO, OFFLINE_ISO } from './downloads.mjs'
+import { RELEASES_PAGE } from './downloads.mjs'
+import releases from './releases.json' with { type: 'json' }
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -32,8 +33,8 @@ export default defineConfig({
         state.src = state.src.replace(
           '<!-- download-checksums -->',
           [
-            `[Live ISO SHA256](${LIVE_ISO}.sha256)`,
-            `[Offline ISO SHA256](${OFFLINE_ISO}.sha256)`,
+            `[Live ISO SHA256](${releases.release?.sha256Url ?? RELEASES_PAGE})`,
+            `[Offline ISO SHA256](${releases.offline?.sha256Url ?? RELEASES_PAGE})`,
           ].join('\n\n'),
         )
       })
