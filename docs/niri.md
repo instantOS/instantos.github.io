@@ -32,11 +32,10 @@ See [instantASSIST](instantassist.md) for the full key catalog.
 ## Fuzzel and instantMENU
 
 The instantOS niri config binds ++mod+space++ to `fuzzel` and ++mod+p++ to
-`instantmenu_smartrun`.
-Fuzzel is the default application launcher, chosen for its built-in frecency
-and fast startup. instantMENU also has frecency and runs natively on Wayland
-through layer-shell, so it doesn't need XWayland. It is set up the same way as
-on Sway.
+`ins launch`.
+Fuzzel remains the default application launcher. `ins launch` provides the
+instantOS application launcher with frecency and terminal application support.
+Its instantMENU backend runs natively on Wayland through layer-shell.
 
 ## Scratchpads
 
@@ -69,7 +68,7 @@ defaults:
 | --- | --- |
 | ++mod+return++ | Open `kitty` |
 | ++mod+space++ | Open `fuzzel` |
-| ++mod+p++ | Open `instantmenu_smartrun` |
+| ++mod+p++ | Open `ins launch` |
 | ++mod+a++ | Run `ins assist` |
 | ++mod+ctrl+q++ | Open the shutdown menu (`instantshutdown`) |
 | ++super+ctrl+l++ | Lock the screen via `hyprlock` |
