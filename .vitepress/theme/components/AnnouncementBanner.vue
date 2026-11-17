@@ -47,7 +47,7 @@ const setupObserver = () => {
 onMounted(() => {
   updateHeight()
   window.addEventListener('resize', updateHeight)
-  
+
   if (!setupObserver()) {
     const interval = setInterval(() => {
       if (setupObserver()) clearInterval(interval)
@@ -66,7 +66,7 @@ onUnmounted(() => {
 <template>
   <!-- To re-enable banner, uncomment the div below and add your content -->
   <!-- <div v-if="frontmatter.layout === 'home' && !isMenuOpen" ref="banner" class="announcement-banner"> -->
-    <!-- Your announcement text goes here -->
+  <!-- Your announcement text goes here -->
   <!-- </div> -->
 </template>
 

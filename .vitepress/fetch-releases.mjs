@@ -13,8 +13,12 @@ export function metadataFromManifest(manifest) {
   }
   for (const key of ['live', 'offline']) {
     const item = manifest[key]
-    if (!item || !/^[A-Za-z0-9_.-]+\.iso$/.test(item.name) ||
-        !Number.isSafeInteger(item.size) || item.size <= 0) {
+    if (
+      !item ||
+      !/^[A-Za-z0-9_.-]+\.iso$/.test(item.name) ||
+      !Number.isSafeInteger(item.size) ||
+      item.size <= 0
+    ) {
       throw new Error(`Invalid ${key} ISO metadata`)
     }
   }
@@ -24,21 +28,21 @@ export function metadataFromManifest(manifest) {
       tag: manifest.build,
       publishedAt: manifest.builtAt,
       iso: { name: manifest.live.name, size: manifest.live.size, url: LIVE_ISO },
-      sha256Url: `${LIVE_ISO}.sha256`
+      sha256Url: `${LIVE_ISO}.sha256`,
     },
     offline: {
       size: manifest.offline.size,
       name: manifest.offline.name,
       url: OFFLINE_ISO,
-      sha256Url: `${OFFLINE_ISO}.sha256`
+      sha256Url: `${OFFLINE_ISO}.sha256`,
     },
-    releasesPage: RELEASES_PAGE
+    releasesPage: RELEASES_PAGE,
   }
 }
 
 export async function fetchLatestRelease(fetcher = fetch) {
   const response = await fetcher(`${LATEST}/build.json`, {
-    signal: AbortSignal.timeout(15000)
+    signal: AbortSignal.timeout(15000),
   })
   if (!response.ok) throw new Error(`GitLab metadata request responded ${response.status}`)
   return metadataFromManifest(await response.json())
@@ -48,12 +52,17 @@ async function main() {
   let previous = { release: null, offline: { size: null }, releasesPage: RELEASES_PAGE }
   try {
     previous = JSON.parse(readFileSync(OUT, 'utf8'))
-  } catch { /* A fresh clone can build without optional release metadata. */ }
+  } catch {
+    /* A fresh clone can build without optional release metadata. */
+  }
   try {
     const data = await fetchLatestRelease()
     const { generatedAt, ...oldData } = previous
     if (JSON.stringify(data) !== JSON.stringify(oldData)) {
-      writeFileSync(OUT, `${JSON.stringify({ ...data, generatedAt: new Date().toISOString() }, null, 2)}\n`)
+      writeFileSync(
+        OUT,
+        `${JSON.stringify({ ...data, generatedAt: new Date().toISOString() }, null, 2)}\n`,
+      )
     }
     console.log(`fetch-releases: GitLab ${data.release.tag}`)
   } catch (error) {

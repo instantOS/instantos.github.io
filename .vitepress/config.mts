@@ -6,22 +6,19 @@ import { LIVE_ISO, OFFLINE_ISO } from './downloads.mjs'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "instantOS",
-  description: "instantOS website and docs",
+  title: 'instantOS',
+  description: 'instantOS website and docs',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
-    ['link', { rel: 'manifest', href: '/manifest.json' }]
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
   ],
   async buildEnd(siteConfig) {
     // Serve the same installer script at /install and /install.sh
     // without keeping a duplicate copy in the repo.
-    copyFileSync(
-      resolve(siteConfig.outDir, 'install'),
-      resolve(siteConfig.outDir, 'install.sh')
-    )
+    copyFileSync(resolve(siteConfig.outDir, 'install'), resolve(siteConfig.outDir, 'install.sh'))
   },
   markdown: {
     theme: {
@@ -32,26 +29,29 @@ export default defineConfig({
       md.use(keyboardShortcutsPlugin)
       md.core.ruler.before('block', 'download-checksums', (state) => {
         if (!state.src.includes('<!-- download-checksums -->')) return
-        state.src = state.src.replace('<!-- download-checksums -->', [
-          `[Live ISO SHA256](${LIVE_ISO}.sha256)`,
-          `[Offline ISO SHA256](${OFFLINE_ISO}.sha256)`
-        ].join('\n\n'))
+        state.src = state.src.replace(
+          '<!-- download-checksums -->',
+          [
+            `[Live ISO SHA256](${LIVE_ISO}.sha256)`,
+            `[Offline ISO SHA256](${OFFLINE_ISO}.sha256)`,
+          ].join('\n\n'),
+        )
       })
-    }
+    },
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {
-      provider: 'local'
+      provider: 'local',
     },
-    
+
     nav: [
       { text: 'Download', link: '/download' },
       { text: 'Documentation', link: '/docs/' },
       { text: 'Tips', link: '/tips/vim' },
       { text: 'Development', link: '/development/development' },
       { text: 'FAQ & Support', link: '/faq' },
-      { text: 'Donate', link: '/docs/donate' }
+      { text: 'Donate', link: '/docs/donate' },
     ],
 
     sidebar: {
@@ -66,9 +66,9 @@ export default defineConfig({
             { text: 'Links', link: '/links' },
             { text: 'iConf', link: '/development/iconf' },
             { text: 'Menu API', link: '/development/menu' },
-            { text: 'Status Bar', link: '/development/status' }
-          ]
-        }
+            { text: 'Status Bar', link: '/development/status' },
+          ],
+        },
       ],
       '/archive/': [
         {
@@ -81,8 +81,8 @@ export default defineConfig({
             { text: 'instantTHEMES', link: '/archive/instantthemes' },
             { text: 'Terminal Theme', link: '/archive/terminaltheme' },
             { text: 'iBuild', link: '/archive/ibuild' },
-          ]
-        }
+          ],
+        },
       ],
       '/tips/': [
         {
@@ -90,8 +90,8 @@ export default defineConfig({
           items: [
             { text: 'Vim hotkeys', link: '/tips/vim' },
             { text: 'Game Begin Guide', link: '/tips/gamebegin' },
-          ]
-        }
+          ],
+        },
       ],
       '/docs/': [
         {
@@ -100,13 +100,11 @@ export default defineConfig({
             { text: 'Get Started', link: '/docs/' },
             { text: 'Arch Installer (ins arch)', link: '/docs/insarch' },
             { text: 'Update', link: '/docs/update' },
-          ]
+          ],
         },
         {
           text: "Beginner's Guide",
-          items: [
-            { text: 'Installation Guide', link: '/docs/beginner/installguide' },
-          ]
+          items: [{ text: 'Installation Guide', link: '/docs/beginner/installguide' }],
         },
         {
           text: 'Configuration',
@@ -117,7 +115,7 @@ export default defineConfig({
             { text: 'instantwmctl', link: '/docs/instantwmctl' },
             { text: 'Dotfile management', link: '/docs/insdot' },
             { text: 'Customize', link: '/docs/customize' },
-          ]
+          ],
         },
         {
           text: 'Basic Features',
@@ -127,7 +125,7 @@ export default defineConfig({
             { text: 'Instant Assist', link: '/docs/instantassist' },
             { text: 'Screen Lock', link: '/docs/instantlock' },
             { text: 'Audio', link: '/docs/audio' },
-          ]
+          ],
         },
         {
           text: 'Wayland',
@@ -135,7 +133,7 @@ export default defineConfig({
             { text: 'Sway', link: '/docs/sway' },
             { text: 'Hyprland', link: '/docs/hyprland' },
             { text: 'Niri', link: '/docs/niri' },
-          ]
+          ],
         },
         {
           text: 'Tools & Utilities',
@@ -150,7 +148,7 @@ export default defineConfig({
             { text: 'Notifications', link: '/docs/notify' },
             { text: 'Programs', link: '/docs/programs' },
             { text: 'Quick Menu', link: '/docs/quickmenu' },
-          ]
+          ],
         },
         {
           text: 'Window Management',
@@ -170,14 +168,12 @@ export default defineConfig({
             { text: 'Shutdown', link: '/docs/shutdown' },
             { text: 'Visibility', link: '/docs/visibility' },
             { text: 'Drawing', link: '/docs/drawing' },
-          ]
+          ],
         },
         {
           text: 'Gaming',
-          items: [
-            { text: 'Gaming', link: '/docs/gaming/gaming' },
-          ]
-        }
+          items: [{ text: 'Gaming', link: '/docs/gaming/gaming' }],
+        },
       ],
       '/': [
         {
@@ -190,10 +186,10 @@ export default defineConfig({
             { text: 'Links', link: '/links' },
             { text: 'Releases', link: '/releases/beta6' },
             { text: 'Archive', link: '/archive/' },
-            { text: 'Thanks', link: '/thanks' }
-          ]
-        }
-      ]
+            { text: 'Thanks', link: '/thanks' },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
@@ -203,10 +199,10 @@ export default defineConfig({
       { icon: 'homepage', link: 'https://paperbenni.xyz' },
       {
         icon: {
-          svg: '<svg role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M512 194.8c0 101.3-82.4 183.8-183.8 183.8-101.7 0-184.4-82.4-184.4-183.8 0-101.6 82.7-184.3 184.4-184.3C429.6 10.5 512 93.2 512 194.8zM0 501.5h90v-491H0v491z"/></svg>'
+          svg: '<svg role="img" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M512 194.8c0 101.3-82.4 183.8-183.8 183.8-101.7 0-184.4-82.4-184.4-183.8 0-101.6 82.7-184.3 184.4-184.3C429.6 10.5 512 93.2 512 194.8zM0 501.5h90v-491H0v491z"/></svg>',
         },
-        link: 'https://patreon.com/paperbenni'
-      }
-    ]
-  }
+        link: 'https://patreon.com/paperbenni',
+      },
+    ],
+  },
 })

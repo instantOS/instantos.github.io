@@ -28,11 +28,9 @@ const cards = computed(() => [
     variant: 'brand',
     label: 'instantOS Live ISO',
     // Boot it to install, or to try instantOS without touching your machine.
-    meta: release
-      ? [formatSize(release.iso.size), release.version]
-      : [formatSize(null)],
+    meta: release ? [formatSize(release.iso.size), release.version] : [formatSize(null)],
     href: LIVE_ISO,
-    action: 'Download'
+    action: 'Download',
   },
   {
     key: 'offline',
@@ -40,10 +38,9 @@ const cards = computed(() => [
     label: 'instantOS Offline ISO',
     meta: [formatSize(offlineSize), 'installs without a network'],
     href: OFFLINE_ISO,
-    action: 'Download'
-  }
+    action: 'Download',
+  },
 ])
-
 </script>
 
 <template>
@@ -75,16 +72,10 @@ const cards = computed(() => [
         <span class="instantos-downloads__body">
           <span class="instantos-downloads__title">{{ card.label }}</span>
           <span class="instantos-downloads__meta">
-            <span
-              v-for="(item, index) in card.meta.filter(Boolean)"
-              :key="item"
-            >
-              {{ item }}<span
-                v-if="index < card.meta.filter(Boolean).length - 1"
-                class="instantos-downloads__sep"
-                aria-hidden="true"
-              >·</span>
-            </span>
+            <template v-for="(item, index) in card.meta.filter(Boolean)" :key="item">
+              <span v-if="index > 0" class="instantos-downloads__sep" aria-hidden="true">·</span>
+              {{ item }}
+            </template>
           </span>
         </span>
         <span class="instantos-downloads__action">{{ card.action }}</span>
@@ -125,7 +116,10 @@ const cards = computed(() => [
   border: 1px solid;
   border-radius: 12px;
   text-decoration: none;
-  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background-color 0.25s;
 }
 
 .instantos-downloads__card--brand {

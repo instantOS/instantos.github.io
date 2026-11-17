@@ -8,7 +8,7 @@ const fixture = () => ({
   version: '2026.11.17',
   builtAt: '2026-11-17T12:00:00Z',
   live: { name: 'instantos-2026.11.17-x86_64.iso', size: 2255716352 },
-  offline: { name: 'instantos-2026.11.17-offline.iso', size: 5172035584 }
+  offline: { name: 'instantos-2026.11.17-offline.iso', size: 5172035584 },
 })
 
 test('both downloads and checksums stay on the permanent GitLab release paths', () => {
@@ -32,12 +32,23 @@ test('metadata lookup needs no credentials and follows the complete-release mani
 })
 
 test('missing releases and incomplete or malformed manifests are rejected', async () => {
-  await assert.rejects(fetchLatestRelease(async () => ({ ok: false, status: 404 })), /404/)
+  await assert.rejects(
+    fetchLatestRelease(async () => ({ ok: false, status: 404 })),
+    /404/,
+  )
   for (const mutate of [
-    m => { delete m.offline },
-    m => { m.live.size = -1 },
-    m => { m.live.name = 'not-an-iso' },
-    m => { m.build = 'not-a-build' }
+    (m) => {
+      delete m.offline
+    },
+    (m) => {
+      m.live.size = -1
+    },
+    (m) => {
+      m.live.name = 'not-an-iso'
+    },
+    (m) => {
+      m.build = 'not-a-build'
+    },
   ]) {
     const manifest = fixture()
     mutate(manifest)
