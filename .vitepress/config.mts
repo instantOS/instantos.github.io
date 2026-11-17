@@ -1,7 +1,8 @@
-import { copyFileSync, readFileSync } from 'node:fs'
+import { copyFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitepress'
 import { keyboardShortcutsPlugin } from './plugins/keyboard-shortcuts.js'
+import { LIVE_ISO, OFFLINE_ISO } from './downloads.mjs'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -31,16 +32,9 @@ export default defineConfig({
       md.use(keyboardShortcutsPlugin)
       md.core.ruler.before('block', 'download-checksums', (state) => {
         if (!state.src.includes('<!-- download-checksums -->')) return
-        const releases = JSON.parse(readFileSync(
-          new URL('./releases.json', import.meta.url), 'utf8'
-        ))
-        const checksumBlock = (label, hash, name) =>
-          hash && /^[a-f0-9]{64}$/i.test(hash)
-            ? `### ${label}\n\n\`\`\`text\n${hash}  ${name}\n\`\`\``
-            : `### ${label}\n\nChecksum currently unavailable.`
         state.src = state.src.replace('<!-- download-checksums -->', [
-          checksumBlock('Live ISO', releases.release?.sha256, releases.release?.iso.name),
-          checksumBlock('Offline ISO', releases.offline?.sha256, 'instantos-offline-latest.iso')
+          `[Live ISO SHA256](${LIVE_ISO}.sha256)`,
+          `[Offline ISO SHA256](${OFFLINE_ISO}.sha256)`
         ].join('\n\n'))
       })
     }

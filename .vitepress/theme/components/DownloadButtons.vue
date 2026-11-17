@@ -1,10 +1,9 @@
 <script setup>
 import { computed } from 'vue'
 import releases from '../../releases.json'
+import { LIVE_ISO, OFFLINE_ISO } from '../../downloads.mjs'
 
-// Release metadata is resolved at build time by .vitepress/fetch-releases.mjs.
-// The offline ISO and the installer are served from permanent aliases, so only
-// the live ISO needs a lookup; without one the button links the releases page.
+// Metadata supplies optional labels; permanent links always resolve on GitLab.
 const release = releases.release
 const offlineSize = releases.offline?.size ?? null
 
@@ -32,18 +31,15 @@ const cards = computed(() => [
     meta: release
       ? [formatSize(release.iso.size), release.version]
       : [formatSize(null)],
-    href: release?.iso.url ?? releases.releasesPage,
-    // The releases page is the fallback, so only the direct asset gets a
-    // "download" hint. Both open in a new tab either way.
-    action: release ? 'Download' : 'View releases'
+    href: LIVE_ISO,
+    action: 'Download'
   },
   {
     key: 'offline',
     variant: 'alt',
     label: 'instantOS Offline ISO',
     meta: [formatSize(offlineSize), 'installs without a network'],
-    href:
-      'https://sourceforge.net/projects/instantos/files/offline/latest/instantos-offline-latest.iso/download',
+    href: OFFLINE_ISO,
     action: 'Download'
   }
 ])
