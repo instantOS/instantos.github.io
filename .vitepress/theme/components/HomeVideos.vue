@@ -11,9 +11,8 @@ interface Video {
 
 const videos: Video[] = videoConfig
 const track = ref<HTMLUListElement>()
-const player = ref<HTMLDialogElement>()
 const activeIndex = ref(0)
-const playing = ref<Video | null>(null)
+const playingId = ref<string>()
 
 let drag: { pointerId: number; startX: number; startScroll: number; startIndex: number } | null =
   null
@@ -53,7 +52,7 @@ function moveSlide(direction: number, focusCard = false) {
   if (!rail || index < 0 || index >= videos.length) return
 
   if (focusCard) {
-    rail.children[index].querySelector('button')?.focus({ preventScroll: true })
+    rail.children[index].querySelector('button, iframe')?.focus({ preventScroll: true })
   }
   rail.scrollTo({ left: slideOffset(rail, index) })
 }
@@ -111,10 +110,16 @@ function preventDragClick(event: MouseEvent) {
   event.stopPropagation()
 }
 
-async function play(video: Video) {
-  playing.value = video
-  await nextTick()
-  player.value?.showModal()
+async function play(video: Video, index: number, event: MouseEvent) {
+  playingId.value = video.id
+  const rail = track.value
+  if (!rail) return
+
+  rail.scrollTo({ left: slideOffset(rail, index) })
+  if (event.detail === 0) {
+    await nextTick()
+    rail.children[index].querySelector('iframe')?.focus({ preventScroll: true })
+  }
 }
 </script>
 
@@ -172,8 +177,38 @@ async function play(video: Video) {
       @keydown.left.prevent="moveSlide(-1, true)"
       @keydown.right.prevent="moveSlide(1, true)"
     >
-      <li v-for="video in videos" :key="video.id">
-        <button type="button" class="video-card" aria-haspopup="dialog" @click="play(video)">
+      <li v-for="(video, index) in videos" :key="video.id">
+        <div v-if="playingId === video.id" class="video-card">
+          <iframe
+            class="video-cover"
+            :src="
+              'https://www.youtube-nocookie.com/embed/' + video.id + '?autoplay=1&playsinline=1'
+            "
+            :title="video.title"
+            allow="
+              accelerometer;
+              autoplay;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+          ></iframe>
+          <a
+            class="video-title"
+            :href="'https://www.youtube.com/watch?v=' + video.id"
+            :aria-label="'Watch ' + video.title + ' on YouTube'"
+            >{{ video.title }} <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <button
+          v-else
+          type="button"
+          class="video-card"
+          :aria-label="'Play ' + video.title"
+          @click="play(video, index, $event)"
+        >
           <span class="video-cover">
             <img
               :src="thumbnailUrl(video)"
@@ -184,7 +219,9 @@ async function play(video: Video) {
               decoding="async"
               draggable="false"
             />
-            <span class="play-icon" aria-hidden="true"></span>
+            <svg class="play-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M11 5L41 24L11 43Z" />
+            </svg>
           </span>
           <span class="video-title">{{ video.title }}</span>
         </button>
@@ -194,29 +231,6 @@ async function play(video: Video) {
     <a class="channel-link" href="https://www.youtube.com/@PaperBenni/videos"
       >More from Paper Benni on YouTube <span aria-hidden="true">↗</span></a
     >
-
-    <dialog
-      ref="player"
-      class="video-dialog"
-      aria-labelledby="home-video-title"
-      @close="playing = null"
-    >
-      <div class="dialog-heading">
-        <p id="home-video-title">{{ playing?.title }}</p>
-        <button type="button" aria-label="Close video" autofocus @click="player?.close()">×</button>
-      </div>
-      <template v-if="playing">
-        <iframe
-          :src="'https://www.youtube-nocookie.com/embed/' + playing.id + '?autoplay=1'"
-          :title="playing.title"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-        <a class="channel-link" :href="'https://www.youtube.com/watch?v=' + playing.id"
-          >Watch on YouTube <span aria-hidden="true">↗</span></a
-        >
-      </template>
-    </dialog>
   </section>
 </template>
 
@@ -226,8 +240,7 @@ async function play(video: Video) {
   margin-top: clamp(40px, 6vw, 72px);
 }
 
-.video-heading,
-.dialog-heading {
+.video-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -291,23 +304,6 @@ async function play(video: Video) {
   cursor: default;
 }
 
-.dialog-heading button {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-}
-
-.dialog-heading button:hover {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
-}
-
 .arrow {
   width: 8px;
   height: 8px;
@@ -362,11 +358,11 @@ ul.video-track.is-dragging {
 }
 
 @media (any-pointer: fine) {
-  .video-track:has(li:nth-child(2)) .video-card {
+  .video-track:has(li:nth-child(2)) button.video-card {
     cursor: grab;
   }
 
-  .video-track.is-dragging .video-card {
+  .video-track.is-dragging button.video-card {
     cursor: grabbing;
   }
 }
@@ -391,7 +387,7 @@ ul.video-track.is-dragging {
   text-align: left;
 }
 
-.video-card:hover {
+button.video-card:hover {
   border-color: var(--vp-c-brand-1);
 }
 
@@ -404,12 +400,23 @@ ul.video-track.is-dragging {
   position: relative;
   display: grid;
   place-items: center;
+  width: 100%;
   aspect-ratio: 16 / 9;
+  min-height: 200px;
+  overflow: hidden;
   background: var(--vp-c-bg-alt);
 }
 
-.video-cover img {
+iframe.video-cover {
   display: block;
+  border: 0;
+  background: #000;
+}
+
+.video-cover img {
+  position: absolute;
+  inset: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -417,28 +424,17 @@ ul.video-track.is-dragging {
 
 .play-icon {
   position: absolute;
-  display: grid;
-  place-items: center;
-  width: clamp(48px, 8vw, 72px);
-  aspect-ratio: 1;
-  border: 1px solid rgb(255 255 255 / 65%);
-  border-radius: 50%;
-  background: rgb(12 16 24 / 85%);
-  color: white;
-}
-
-.play-icon::after {
-  content: '';
-  margin-left: 4px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 16px solid currentColor;
+  width: clamp(44px, 7vw, 64px);
+  fill: rgb(12 16 24 / 85%);
+  stroke: white;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 60%));
 }
 
 .video-card:hover .play-icon,
 .video-card:focus-visible .play-icon {
-  background: var(--vp-c-brand-3);
-  color: #111827;
+  fill: var(--vp-c-brand-3);
 }
 
 .video-title {
@@ -459,40 +455,6 @@ ul.video-track.is-dragging {
 
 .channel-link:hover {
   text-decoration: underline;
-}
-
-.video-dialog {
-  max-width: 900px;
-  width: calc(100% - 32px);
-  margin: auto;
-  padding: 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 14px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-
-.video-dialog::backdrop {
-  background: rgb(0 0 0 / 80%);
-}
-
-.dialog-heading p {
-  margin: 0;
-  font-weight: 600;
-}
-
-.dialog-heading button {
-  font-size: 24px;
-}
-
-.video-dialog iframe {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: 12px;
-  border: 0;
-  border-radius: 8px;
-  background: #000;
 }
 
 @media (min-width: 640px) {
