@@ -131,24 +131,26 @@ async function play(video: Video) {
         <span class="video-position" aria-live="polite"
           >{{ activeIndex + 1 }} / {{ videos.length }}</span
         >
-        <button
-          type="button"
-          aria-label="Previous video"
-          aria-controls="home-video-track"
-          :aria-disabled="activeIndex === 0"
-          @click="moveSlide(-1)"
-        >
-          <span class="arrow arrow-prev" aria-hidden="true"></span>
-        </button>
-        <button
-          type="button"
-          aria-label="Next video"
-          aria-controls="home-video-track"
-          :aria-disabled="activeIndex === videos.length - 1"
-          @click="moveSlide(1)"
-        >
-          <span class="arrow" aria-hidden="true"></span>
-        </button>
+        <div class="video-navigation" role="group" aria-label="Video navigation">
+          <button
+            type="button"
+            aria-label="Previous video"
+            aria-controls="home-video-track"
+            :aria-disabled="activeIndex === 0"
+            @click="moveSlide(-1)"
+          >
+            <span class="arrow arrow-prev" aria-hidden="true"></span>
+          </button>
+          <button
+            type="button"
+            aria-label="Next video"
+            aria-controls="home-video-track"
+            :aria-disabled="activeIndex === videos.length - 1"
+            @click="moveSlide(1)"
+          >
+            <span class="arrow" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -245,17 +247,50 @@ async function play(video: Video) {
   display: flex;
   align-items: center;
   flex: none;
-  gap: 8px;
+  gap: 12px;
 }
 
 .video-position {
-  margin-right: 4px;
   color: var(--vp-c-text-2);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 
-.video-controls button,
+.video-navigation {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+
+.video-navigation button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 36px;
+  color: var(--vp-c-text-2);
+}
+
+.video-navigation button + button {
+  border-left: 1px solid var(--vp-c-divider);
+}
+
+.video-navigation button:not([aria-disabled='true']):hover {
+  background: var(--vp-c-default-soft);
+  color: var(--vp-c-text-1);
+}
+
+.video-navigation button:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+}
+
+.video-navigation button[aria-disabled='true'] {
+  color: var(--vp-c-text-3);
+  cursor: default;
+}
+
 .dialog-heading button {
   display: grid;
   place-items: center;
@@ -268,15 +303,9 @@ async function play(video: Video) {
   color: var(--vp-c-text-1);
 }
 
-.video-controls button:not([aria-disabled='true']):hover,
 .dialog-heading button:hover {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
-}
-
-.video-controls button[aria-disabled='true'] {
-  opacity: 0.45;
-  cursor: default;
 }
 
 .arrow {
