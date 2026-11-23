@@ -43,14 +43,18 @@ export function keyboardShortcutsPlugin(md) {
       return true
     }
 
-    // Create token
-    state.push('kbd_open', 'kbd', 1)
+    // Split at plus signs outside quoted key names, such as "+/-".
+    const parts = content.split(/\+(?=(?:[^"]*"[^"]*")*[^"]*$)/).map((part) => part.trim())
+    const keys = parts.every(Boolean) ? parts : [content]
 
-    // Add content as text token
-    const textToken = state.push('text', '', 0)
-    textToken.content = content
-
-    state.push('kbd_close', 'kbd', -1)
+    for (const [index, key] of keys.entries()) {
+      if (index > 0) {
+        state.push('text', '', 0).content = ' + '
+      }
+      state.push('kbd_open', 'kbd', 1)
+      state.push('text', '', 0).content = key
+      state.push('kbd_close', 'kbd', -1)
+    }
 
     // Update position
     state.pos = end + 2

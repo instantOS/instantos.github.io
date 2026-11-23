@@ -1,7 +1,21 @@
 {
-  "release": null,
-  "offline": {
-    "size": null
+  "release": {
+    "version": "2026.11.17",
+    "tag": "build-10-1",
+    "publishedAt": "2026-11-17T16:33:59+00:00",
+    "iso": {
+      "name": "instantos-2026.11.17-x86_64.iso",
+      "size": 2255716352,
+      "url": "https://gitlab.com/api/v4/projects/89059216/packages/generic/instantos-iso/build-10-1/instantos-2026.11.17-x86_64.iso"
+    },
+    "sha256Url": "https://gitlab.com/api/v4/projects/89059216/packages/generic/instantos-iso/build-10-1/instantos-2026.11.17-x86_64.iso.sha256"
   },
-  "releasesPage": "https://github.com/instantOS/instantOS/releases/latest"
+  "offline": {
+    "size": 5172035584,
+    "name": "instantos-2026.11.17-offline.iso",
+    "url": "https://gitlab.com/api/v4/projects/89059216/packages/generic/instantos-iso/build-10-1/instantos-2026.11.17-offline.iso",
+    "sha256Url": "https://gitlab.com/api/v4/projects/89059216/packages/generic/instantos-iso/build-10-1/instantos-2026.11.17-offline.iso.sha256"
+  },
+  "releasesPage": "https://github.com/instantOS/instantOS/releases/latest",
+  "generatedAt": "2026-11-23T17:38:57.086Z"
 }

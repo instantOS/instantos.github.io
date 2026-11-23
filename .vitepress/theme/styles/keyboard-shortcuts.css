@@ -1,5 +1,5 @@
 /* Keyboard shortcuts styling with Catppuccin colors */
-kbd {
+.vp-doc kbd {
   /* Light theme - using Catppuccin Latte colors */
   background-color: #eff1f5; /* base */
   border: 1px solid #ccd0da; /* surface0 */
@@ -23,7 +23,7 @@ kbd {
 }
 
 /* Dark theme - using Catppuccin Mocha colors */
-html.dark kbd {
+html.dark .vp-doc kbd {
   background-color: #313244; /* surface0 */
   border-color: #45475a; /* surface1 */
   box-shadow:
@@ -33,21 +33,21 @@ html.dark kbd {
 }
 
 /* Hover effects */
-kbd:hover {
+.vp-doc kbd:hover {
   transform: translateY(-1px);
   box-shadow:
     0 3px 0 #bcc0cc,
     0 4px 0 #acb0be;
 }
 
-html.dark kbd:hover {
+html.dark .vp-doc kbd:hover {
   box-shadow:
     0 3px 0 #585b70,
     0 4px 0 #6c7086;
 }
 
 /* Make kbd elements look more like keyboard keys */
-kbd::before {
+.vp-doc kbd::before {
   content: '';
   position: absolute;
   top: 0;
@@ -64,7 +64,7 @@ kbd::before {
   pointer-events: none;
 }
 
-html.dark kbd::before {
+html.dark .vp-doc kbd::before {
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1) 0%,
@@ -74,7 +74,7 @@ html.dark kbd::before {
 }
 
 /* Blue accent variant for special keys */
-kbd[data-accent='blue'] {
+.vp-doc kbd[data-accent='blue'] {
   background-color: #89b4fa; /* blue */
   border-color: #74c7ec; /* sky */
   color: #1e1e2e; /* base */
@@ -83,7 +83,7 @@ kbd[data-accent='blue'] {
     0 3px 0 #89dceb;
 }
 
-html.dark kbd[data-accent='blue'] {
+html.dark .vp-doc kbd[data-accent='blue'] {
   background-color: #89b4fa; /* blue */
   border-color: #74c7ec; /* sky */
   color: #1e1e2e; /* base */
@@ -93,7 +93,7 @@ html.dark kbd[data-accent='blue'] {
 }
 
 /* Smaller variant for inline text */
-kbd.small {
+.vp-doc kbd.small {
   font-size: 0.7em;
   padding: 0.15em 0.3em;
   margin: 0 0.1em;
