@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: Documentation
       link: /docs/
+    - theme: alt
+      text: See it in action
+      link: '#see-it-in-action'
 features:
   - title: Just works
     icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -39,6 +42,12 @@ features:
     details: A keyboard centered workflow can make you much more productive but getting rid of the mouse is not the best thing for everyone.
 ---
 
+<script setup>
+import HomeVideos from './.vitepress/theme/components/HomeVideos.vue'
+</script>
+
+<HomeVideos />
+
 ## Install instantOS or instantCLI
 
 [Choose an installation method](/download): boot the instantOS Live ISO,
@@ -55,12 +64,6 @@ bash <(curl -fsSL instantos.io/install)
 
 In addition to the usual [Arch packages](https://github.com/instantOS/packages), we also package for the [Nix](https://nixos.org/explore.html) universal package manager (and [NixOS](https://nixos.org)) via **[instantNIX](https://github.com/instantOS/instantNIX/)**.
 
-## instantOS beta 7 released
-
-<div align="center">
-    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/7Xu5TXPG8Bw" frameborder="10" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 ## Support/Community
 
 Until the user base outgrows this, any questions will be answered immediately by the devs. You can open issues on [GitHub](https://github.com/instantOS), ask for help on the [Discord server](https://dsc.gg/instantos), on the [Subreddit](https://reddit.com/r/instantos) or write an email to [instantos@paperbenni.xyz](mailto:instantos@paperbenni.xyz)
@@ -68,7 +71,7 @@ Until the user base outgrows this, any questions will be answered immediately by
 ## Get Involved
 
 - [GitHub](https://github.com/instantos) - Contribute to the project
-- [Documentation](/documentation) - See it in action
+- [Documentation](/documentation)
 - [Patreon](https://www.patreon.com/paperbenni) - Support on Patreon
 - [Buy Me a Coffee](https://www.buymeacoffee.com/paperbenni) - One-time support
 - [Liberapay](https://liberapay.com/paperbenni/) - Recurrent donations
