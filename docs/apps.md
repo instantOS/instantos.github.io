@@ -10,6 +10,8 @@
 
 Opening applications can be done in several ways.
 
+To choose an application for a specific file or folder, see [Open With (`ins open`)](insopen.md).
+
 ## Graphical launcher
 
 The most beginner-friendly one is probably the graphical launcher.  It is

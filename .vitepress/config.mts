@@ -144,6 +144,7 @@ export default defineConfig({
             { text: 'Video Editing', link: '/docs/insvideo' },
             { text: 'Neovim', link: '/docs/neovim' },
             { text: 'File Search', link: '/docs/filesearch' },
+            { text: 'Open With (ins open)', link: '/docs/insopen' },
             { text: 'Clipboard History', link: '/docs/clip' },
             { text: 'Passwords', link: '/docs/pass' },
             { text: 'Notifications', link: '/docs/notify' },

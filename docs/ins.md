@@ -2,7 +2,7 @@
 
 `ins` is the main command-line interface shipped by instantCLI. It bundles most user-facing instantOS tools into one binary, including settings, wallpaper management, diagnostics, updates, dotfiles, game-save sync, installer workflows, and several utility interfaces.
 
-The larger `ins` subcommands have their own pages:
+These `ins` subcommands have their own pages:
 
 - [ins arch](insarch.md)
 - [ins dot](insdot.md)
@@ -13,6 +13,7 @@ The larger `ins` subcommands have their own pages:
 - [ins notify](notify.md)
 - [ins clip](clip.md)
 - [ins pass](pass.md)
+- [ins open](insopen.md)
 
 This page covers the remaining core commands.
 
@@ -27,6 +28,7 @@ The main command groups are:
 - `resolvething`
 - `doctor`
 - `dev`
+- `open`
 - `launch`
 - `assist`
 - `menu`
