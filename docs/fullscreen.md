@@ -23,9 +23,12 @@ which choose the wrong monitor and for making a fullscreen video behave like
 picture-in-picture.
 
 Toggle it with ++super+shift+f++. If the application is not currently
-fullscreen, the visible effect begins when it later requests fullscreen. Some
-applications do not tolerate resizing while fullscreen, so results vary by
-application.
+fullscreen, the visible effect begins when it later requests fullscreen. The
+bar title shows a Nerd Font badge while the policy is armed or active. Toggling
+the policy off while the application is in active fake fullscreen promotes the
+window back to real fullscreen; use the application's own fullscreen control
+to leave fullscreen. Some applications do not tolerate resizing while
+fullscreen, so results vary by application.
 
 ## Shortcut inhibition
 
